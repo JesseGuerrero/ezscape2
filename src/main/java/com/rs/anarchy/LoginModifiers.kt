@@ -2,14 +2,18 @@ package com.rs.anarchy
 
 import com.rs.Settings
 import com.rs.engine.command.Commands
+import com.rs.engine.miniquest.Miniquest
+import com.rs.engine.quest.Quest
 import com.rs.game.World
 import com.rs.game.content.achievements.Achievement
 import com.rs.game.content.tutorialisland.TutorialIslandController
+import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onLogin
+import java.util.*
 
 @ServerStartupEvent
 fun mapLoginModifiers() {
@@ -31,7 +35,28 @@ fun mapLoginModifiers() {
         }
     }
 
-    Commands.add(Rights.DEVELOPER, "overlay", "") { p, args ->
-        p.interfaceManager.sendOverlay(args[0].toInt())
+    Commands.add(Rights.PLAYER, "completequest [questName]", "Completes the specified quest.") { p, args ->
+        for (quest in Quest.entries)
+            if (quest.name.lowercase(Locale.getDefault()).contains(args[0]!!)) {
+                p.questManager.completeQuest(quest)
+                p.sendMessage("Completed quest: " + quest.name)
+                return@add
+            }
+        for (quest in Miniquest.entries)
+            if (quest.name.lowercase(Locale.getDefault()).contains(args[0]!!)) {
+                p.miniquestManager.complete(quest)
+                p.sendMessage("Completed miniquest: " + quest.name)
+                return@add
+            }
+    }
+
+    Commands.add(Rights.PLAYER, "item,spawn [itemId (amount)]", "Spawns an item with specified id and amount.") { p, args ->
+        val itemId = args[0].toInt()
+        if (arrayOf(5733, 25349, 25357).contains(itemId)) {
+            p.sendMessage("You can't spawn that item.")
+            return@add
+        }
+        p.inventory.addItem(args[0].toInt(), if (args.size >= 2) args[1].toInt() else 1)
+        p.stopAll()
     }
 }
