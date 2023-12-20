@@ -6,7 +6,10 @@ import com.rs.engine.miniquest.Miniquest
 import com.rs.engine.quest.Quest
 import com.rs.game.World
 import com.rs.game.content.achievements.Achievement
+import com.rs.game.content.skills.magic.Magic.TeleType
 import com.rs.game.content.tutorialisland.TutorialIslandController
+import com.rs.game.model.entity.Entity
+import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.game.tasks.WorldTasks
@@ -33,7 +36,11 @@ fun mapLoginModifiers() {
                 interfaceManager.sendAchievementComplete(Achievement.THE_JOURNEY_BEGINS_3521)
                 appearance.generateAppearanceData()
             }
+            controllerManager.addCanAttackHook(::anarchyCanAttackCheck)
+            controllerManager.addKeepFightingHook(::anarchyKeepFightingCheck)
+            controllerManager.addCanHitHook(::anarchyCanHitCheck)
             controllerManager.addDeathHook(::anarchyPvpDeathCheck)
+            controllerManager.addTeleportHook(::teleportCheck)
         }
     }
 
@@ -61,6 +68,30 @@ fun mapLoginModifiers() {
         p.inventory.addItem(args[0].toInt(), if (args.size >= 2) args[1].toInt() else 1)
         p.stopAll()
     }
+}
+
+fun anarchyKeepFightingCheck(player: Player, target: Entity): Boolean {
+    if (target is NPC) return true
+    if (!anarchyCanAttackCheck(player, target)) return false
+    if (target is Player) if (!player.attackedBy(target.username)) player.setWildernessSkull()
+    return true;
+}
+
+fun anarchyCanAttackCheck(player: Player, target: Entity): Boolean {
+    return anarchyCanHitCheck(player, target)
+}
+
+fun anarchyCanHitCheck(player: Player, target: Entity): Boolean {
+    if (target is Player && player.isCanPvp && !target.isCanPvp) {
+        player.sendMessage("That player is not in the wilderness.")
+        return false
+    }
+    //combat level checks here
+    return true
+}
+
+fun teleportCheck(player: Player, tile: Tile, teleType: TeleType): Boolean {
+    return true
 }
 
 fun anarchyPvpDeathCheck(player: Player): Boolean {
