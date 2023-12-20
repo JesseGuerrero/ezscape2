@@ -131,7 +131,7 @@ fun anarchyPvpDeathCheck(player: Player): Boolean {
                 player.tele(Settings.getConfig().playerRespawnTile)
                 player.anim(-1)
             }
-            4 -> {
+            5 -> {
                 player.jingle(90)
                 return@scheduleTimer false
             }
