@@ -13,7 +13,9 @@ import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.game.tasks.WorldTasks
+import com.rs.lib.game.Animation
 import com.rs.lib.game.Rights
+import com.rs.lib.game.SpotAnim
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemAddedToInventory
@@ -82,6 +84,7 @@ fun updateSkull(player: Player) {
         4 -> player.skullId = 3
         else -> player.skullId = 2
     }
+    player.appearance.generateAppearanceData()
 }
 
 fun anarchyKeepFightingCheck(player: Player, target: Entity): Boolean {
@@ -108,7 +111,26 @@ fun anarchyCanHitCheck(player: Player, target: Entity): Boolean {
 }
 
 fun teleportCheck(player: Player, tile: Tile, teleType: TeleType): Boolean {
-    return true
+    player.tasks.scheduleTimer { tick ->
+        if (player.hasBeenHit(600)) {
+            player.anim(-1)
+            return@scheduleTimer false
+        }
+        when(tick) {
+            0 -> {
+                player.nextAnimation = Animation(16385)
+                player.setNextSpotAnim(SpotAnim(3017))
+            }
+            18 -> {
+                player.tele(tile)
+                player.controllerManager.onTeleported(teleType)
+                player.anim(-1)
+                return@scheduleTimer false
+            }
+        }
+        return@scheduleTimer true
+    }
+    return false
 }
 
 fun anarchyPvpDeathCheck(player: Player): Boolean {
