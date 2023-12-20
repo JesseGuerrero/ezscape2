@@ -9,6 +9,7 @@ import com.rs.game.content.achievements.Achievement
 import com.rs.game.content.tutorialisland.TutorialIslandController
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.InterfaceManager
+import com.rs.game.tasks.WorldTasks
 import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -32,6 +33,7 @@ fun mapLoginModifiers() {
                 interfaceManager.sendAchievementComplete(Achievement.THE_JOURNEY_BEGINS_3521)
                 appearance.generateAppearanceData()
             }
+            controllerManager.addDeathHook(::anarchyPvpDeathCheck)
         }
     }
 
@@ -59,4 +61,34 @@ fun mapLoginModifiers() {
         p.inventory.addItem(args[0].toInt(), if (args.size >= 2) args[1].toInt() else 1)
         p.stopAll()
     }
+}
+
+fun anarchyPvpDeathCheck(player: Player): Boolean {
+    val killer = player.mostDamageReceivedSourcePlayer
+    if (killer == null || killer == player)
+        return false
+    player.lock(8)
+    player.stopAll()
+    WorldTasks.scheduleTimer { loop ->
+        when (loop) {
+            0 -> player.anim(836)
+            1 -> player.sendMessage("Oh dear, you have died.")
+            4 -> {
+                killer.removeDamage(player)
+                killer.increaseKillCount(player)
+                player.sendPVPItemsOnDeath(killer)
+                player.equipment.init()
+                player.inventory.init()
+                player.reset()
+                player.tele(Settings.getConfig().playerRespawnTile)
+                player.anim(-1)
+            }
+            4 -> {
+                player.jingle(90)
+                return@scheduleTimer false
+            }
+        }
+        return@scheduleTimer true
+    }
+    return true
 }
