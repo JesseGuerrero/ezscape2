@@ -20586,31 +20586,31 @@ IComponent(762, 53) = 7
 2 = Resources
 } 
 
-1810: <int, Sprite> - null - 1510 { 
-225 = 1510
-161 = 1514
-130 = 3806
-162 = 1519
-2 = 8459
-67 = 3807
-69 = 1516
-101 = 1522
-38 = 1512
-166 = 1520
-103 = 1529
-74 = 1530
-43 = 1525
-77 = 1511
-174 = 3805
-15 = 1523
-16 = 1513
-48 = 1527
-179 = 1528
-22 = 1518
-152 = 1526
-58 = 1521
-31 = 1524
-191 = 1515
+1810: <int, Sprite> - null - 1510 { //Lobby flag ids
+225 = 1510 //USA
+161 = 1514 //Netherlands
+130 = 3806 //Lithuania
+162 = 1519 //Norway
+2 = 8459   //Satanic flag
+67 = 3807  //Spain
+69 = 1516  //Finland
+101 = 1522 //Ireland
+38 = 1512  //Canada
+166 = 1520 //New Zealand
+103 = 1529 //India (poop)
+74 = 1530  //France
+43 = 1525  //Switzerland
+77 = 1511  //UK
+174 = 3805 //Poland
+15 = 1523  //Austria
+16 = 1513  //Australia
+48 = 1527  //China
+179 = 1528 //Portugal
+22 = 1518  //Belgium
+152 = 1526 //Mexico
+58 = 1521  //Denmark
+31 = 1524  //Brazil
+191 = 1515 //Sweden
 } 
 
 1823: <int, Item> - null - 11760 { 
