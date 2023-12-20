@@ -16,6 +16,7 @@ import com.rs.game.tasks.WorldTasks
 import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
+import com.rs.plugin.kts.onItemAddedToInventory
 import com.rs.plugin.kts.onLogin
 import java.util.*
 
@@ -44,6 +45,8 @@ fun mapLoginModifiers() {
         }
     }
 
+    onItemAddedToInventory(24444) { updateSkull(it.player) }
+
     Commands.add(Rights.PLAYER, "completequest [questName]", "Completes the specified quest.") { p, args ->
         for (quest in Quest.entries)
             if (quest.name.lowercase(Locale.getDefault()).contains(args[0]!!)) {
@@ -70,10 +73,24 @@ fun mapLoginModifiers() {
     }
 }
 
+fun updateSkull(player: Player) {
+    when(player.inventory.getNumberOf(24444)) {
+        0 -> player.skullId = 0
+        1 -> player.skullId = 6
+        2 -> player.skullId = 5
+        3 -> player.skullId = 4
+        4 -> player.skullId = 3
+        else -> player.skullId = 2
+    }
+}
+
 fun anarchyKeepFightingCheck(player: Player, target: Entity): Boolean {
     if (target is NPC) return true
     if (!anarchyCanAttackCheck(player, target)) return false
-    if (target is Player) if (!player.attackedBy(target.username)) player.setWildernessSkull()
+    if (target is Player && !player.attackedBy(target.username)) {
+        player.setWildernessSkull()
+        updateSkull(player)
+    }
     return true;
 }
 
