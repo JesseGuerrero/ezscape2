@@ -78,15 +78,17 @@ fun mapLoginModifiers() {
 }
 
 fun updateSkull(player: Player) {
-    when(player.inventory.getNumberOf(24444)) {
-        0 -> player.skullId = 0
-        1 -> player.skullId = 6
-        2 -> player.skullId = 5
-        3 -> player.skullId = 4
-        4 -> player.skullId = 3
-        else -> player.skullId = 2
+    player.tasks.schedule {
+        when(player.inventory.getNumberOf(24444)) {
+            0 -> player.skullId = 0
+            1 -> player.skullId = 6
+            2 -> player.skullId = 5
+            3 -> player.skullId = 4
+            4 -> player.skullId = 3
+            else -> player.skullId = 2
+        }
+        player.appearance.generateAppearanceData()
     }
-    player.appearance.generateAppearanceData()
 }
 
 fun anarchyKeepFightingCheck(player: Player, target: Entity): Boolean {
@@ -113,6 +115,8 @@ fun anarchyCanHitCheck(player: Player, target: Entity): Boolean {
 }
 
 fun teleportCheck(player: Player, teleport: Teleport): Boolean {
+    if (!player.isCanPvp)
+        return true
     player.actionManager.action = object : PlayerAction() {
         override fun start(player: Player): Boolean {
             player.sync(16385, 3017)
