@@ -32,6 +32,7 @@ import java.util.*
 fun mapLoginModifiers() {
     onLogin {
         it.player.apply {
+            sendMessage("Latest commit: ${Settings.COMMIT_HISTORY.lastOrNull()?.substring(0, 65)}")
             checkZone(this, this.chunkId, true)
             if (controllerManager.isIn(TutorialIslandController::class.java)) {
                 setIronMan(false)
