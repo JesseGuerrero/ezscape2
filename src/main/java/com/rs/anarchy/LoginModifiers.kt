@@ -21,18 +21,35 @@ import com.rs.game.model.entity.player.managers.InterfaceManager.Sub
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
+import com.rs.lib.util.Utils.clampI
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemAddedToInventory
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onXpDrop
 import com.rs.utils.Ticks
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
+import java.util.regex.Pattern
 
 @ServerStartupEvent
 fun mapLoginModifiers() {
-    onLogin {
+    onLogin { it ->
         it.player.apply {
-            sendMessage("Latest commit: ${Settings.COMMIT_HISTORY.lastOrNull()?.substring(0, 65)}")
+            sendMessage("Latest commit: ${
+                try {
+                    ZonedDateTime.parse(
+                        Settings.COMMIT_HISTORY[2].substring(8).trim(),
+                        DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss yyyy Z")
+                    ).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+                } catch (e: ParseException) {
+                    "Error parsing date: ${e.message}"
+                }
+            } - ${Settings.COMMIT_HISTORY[3].substring(9).trim()}")
+
             checkZone(this, this.chunkId, true)
             if (controllerManager.isIn(TutorialIslandController::class.java)) {
                 setIronMan(false)
