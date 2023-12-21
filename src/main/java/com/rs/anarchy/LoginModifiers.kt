@@ -12,6 +12,7 @@ import com.rs.game.model.entity.Teleport
 import com.rs.game.model.entity.actions.Action
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
+import com.rs.game.model.entity.player.Skills
 import com.rs.game.model.entity.player.actions.PlayerAction
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.game.tasks.WorldTasks
@@ -22,6 +23,7 @@ import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemAddedToInventory
 import com.rs.plugin.kts.onLogin
+import com.rs.plugin.kts.onXpDrop
 import java.util.*
 
 @ServerStartupEvent
@@ -47,6 +49,13 @@ fun mapLoginModifiers() {
             controllerManager.addDeathHook(::anarchyPvpDeathCheck)
             controllerManager.addTeleportHook(::teleportCheck)
         }
+    }
+
+    val combatSkills = arrayOf(Skills.ATTACK, Skills.STRENGTH, Skills.DEFENSE, Skills.MAGIC, Skills.RANGE, Skills.HITPOINTS)
+
+    onXpDrop { e ->
+        if (combatSkills.contains(e.skillId))
+            e.
     }
 
     onItemAddedToInventory(24444) { updateSkull(it.player) }
@@ -135,9 +144,10 @@ fun teleportCheck(player: Player, teleport: Teleport): Boolean {
 
         override fun processWithDelay(player: Player): Int {
             player.tele(teleport.destination)
+            player.controllerManager.onTeleported(teleport.type)
+            Teleport.checkDestinationControllers(player, teleport.destination)
             if (teleport.end != null)
                 teleport.end.run()
-            player.controllerManager.onTeleported(teleport.type)
             player.anim(-1)
             return -1
         }
