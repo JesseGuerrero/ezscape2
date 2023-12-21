@@ -5,31 +5,33 @@ import com.rs.engine.command.Commands
 import com.rs.engine.miniquest.Miniquest
 import com.rs.engine.quest.Quest
 import com.rs.game.World
+import com.rs.game.content.Toolbelt
+import com.rs.game.content.Toolbelt.Tools
 import com.rs.game.content.achievements.Achievement
+import com.rs.game.content.skills.magic.LodestoneAction.Lodestone
 import com.rs.game.content.tutorialisland.TutorialIslandController
 import com.rs.game.model.entity.Entity
 import com.rs.game.model.entity.Teleport
-import com.rs.game.model.entity.actions.Action
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
 import com.rs.game.model.entity.player.actions.PlayerAction
-import com.rs.game.model.entity.player.managers.InterfaceManager
+import com.rs.game.model.entity.player.managers.InterfaceManager.Sub
 import com.rs.game.tasks.WorldTasks
-import com.rs.lib.game.Animation
 import com.rs.lib.game.Rights
-import com.rs.lib.game.SpotAnim
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemAddedToInventory
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onXpDrop
+import com.rs.utils.Ticks
 import java.util.*
 
 @ServerStartupEvent
 fun mapLoginModifiers() {
     onLogin {
         it.player.apply {
+
             checkZone(this, this.chunkId, true)
             if (controllerManager.isIn(TutorialIslandController::class.java)) {
                 setIronMan(false)
@@ -38,11 +40,25 @@ fun mapLoginModifiers() {
                 tele(Tile.of(Settings.getConfig().playerStartTile))
                 controllerManager.forceStop()
                 interfaceManager.flashTabOff()
-                interfaceManager.sendSubDefaults(*InterfaceManager.Sub.ALL_GAME_TABS)
+                interfaceManager.sendSubDefaults(*Sub.ALL_GAME_TABS)
                 giveStarter()
                 interfaceManager.sendAchievementComplete(Achievement.THE_JOURNEY_BEGINS_3521)
                 appearance.generateAppearanceData()
+
+                for (stone in Lodestone.entries) {
+                    if (listOf(Lodestone.BANDIT_CAMP, Lodestone.LUNAR_ISLE).contains(stone)) continue
+                    unlockLodestone(stone, null)
+                }
+
+                for (tool in Tools.entries) {
+                    if (toolbelt[tool] != null) continue
+                    toolbelt[tool] = 1
+                }
+                addToolbelt(1265)
+                Toolbelt.refreshToolbelt(this)
             }
+            nsv.setL("lastRandom", World.getServerTicks() + Ticks.fromHours(300))
+
             controllerManager.addCanAttackHook(::anarchyCanAttackCheck)
             controllerManager.addKeepFightingHook(::anarchyKeepFightingCheck)
             controllerManager.addCanHitHook(::anarchyCanHitCheck)
@@ -54,8 +70,14 @@ fun mapLoginModifiers() {
     val combatSkills = arrayOf(Skills.ATTACK, Skills.STRENGTH, Skills.DEFENSE, Skills.MAGIC, Skills.RANGE, Skills.HITPOINTS)
 
     onXpDrop { e ->
-        if (combatSkills.contains(e.skillId))
-            e.
+        if (combatSkills.contains(e.skillId)) {
+            val currLevel = e.player.skills.getLevelForXp(e.skillId)
+            e.multiplier = when {
+                currLevel < 50 -> 5.0
+                currLevel < 99 -> 5.0 - (currLevel - 49) * 0.05
+                else -> 1.0
+            }
+        }
     }
 
     onItemAddedToInventory(24444) { updateSkull(it.player) }
