@@ -6,11 +6,13 @@ import com.rs.engine.miniquest.Miniquest
 import com.rs.engine.quest.Quest
 import com.rs.game.World
 import com.rs.game.content.achievements.Achievement
-import com.rs.game.content.skills.magic.Magic.TeleType
 import com.rs.game.content.tutorialisland.TutorialIslandController
 import com.rs.game.model.entity.Entity
+import com.rs.game.model.entity.Teleport
+import com.rs.game.model.entity.actions.Action
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
+import com.rs.game.model.entity.player.actions.PlayerAction
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.game.Animation
@@ -110,25 +112,35 @@ fun anarchyCanHitCheck(player: Player, target: Entity): Boolean {
     return true
 }
 
-fun teleportCheck(player: Player, tile: Tile, teleType: TeleType): Boolean {
-    player.tasks.scheduleTimer { tick ->
-        if (player.hasBeenHit(600)) {
-            player.anim(-1)
-            return@scheduleTimer false
+fun teleportCheck(player: Player, teleport: Teleport): Boolean {
+    player.actionManager.action = object : PlayerAction() {
+        override fun start(player: Player): Boolean {
+            player.sync(16385, 3017)
+            player.actionManager.actionDelay = 18
+            return true
         }
-        when(tick) {
-            0 -> {
-                player.nextAnimation = Animation(16385)
-                player.setNextSpotAnim(SpotAnim(3017))
-            }
-            18 -> {
-                player.tele(tile)
-                player.controllerManager.onTeleported(teleType)
+
+        override fun process(player: Player): Boolean {
+            if (player.hasBeenHit(1000) || player.inCombat(1000)) {
+                player.sendMessage("Your teleport has been interrupted.")
                 player.anim(-1)
-                return@scheduleTimer false
+                return false
             }
+            return true
         }
-        return@scheduleTimer true
+
+        override fun processWithDelay(player: Player): Int {
+            player.tele(teleport.destination)
+            if (teleport.end != null)
+                teleport.end.run()
+            player.controllerManager.onTeleported(teleport.type)
+            player.anim(-1)
+            return -1
+        }
+
+        override fun stop(player: Player) {
+            player.anim(-1)
+        }
     }
     return false
 }
