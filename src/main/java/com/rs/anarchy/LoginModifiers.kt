@@ -5,6 +5,7 @@ import com.rs.engine.command.Commands
 import com.rs.engine.miniquest.Miniquest
 import com.rs.engine.quest.Quest
 import com.rs.game.World
+import com.rs.game.content.Effect
 import com.rs.game.content.Toolbelt
 import com.rs.game.content.Toolbelt.Tools
 import com.rs.game.content.achievements.Achievement
@@ -31,7 +32,6 @@ import java.util.*
 fun mapLoginModifiers() {
     onLogin {
         it.player.apply {
-
             checkZone(this, this.chunkId, true)
             if (controllerManager.isIn(TutorialIslandController::class.java)) {
                 setIronMan(false)
@@ -80,7 +80,11 @@ fun mapLoginModifiers() {
         }
     }
 
-    onItemAddedToInventory(24444) { updateSkull(it.player) }
+    onItemAddedToInventory(24444) {
+        if (it.player.hasSkull())
+            it.player.addEffect(Effect.SKULL, Ticks.fromMinutes(15).toLong())
+        updateSkull(it.player)
+    }
 
     Commands.add(Rights.PLAYER, "completequest [questName]", "Completes the specified quest.") { p, args ->
         for (quest in Quest.entries)
@@ -119,6 +123,7 @@ fun updateSkull(player: Player) {
             else -> player.skullId = 2
         }
         player.appearance.generateAppearanceData()
+        player.packets.sendRunScript(2434, player.getEffectTicks(Effect.SKULL).toInt())
     }
 }
 
@@ -126,7 +131,8 @@ fun anarchyKeepFightingCheck(player: Player, target: Entity): Boolean {
     if (target is NPC) return true
     if (!anarchyCanAttackCheck(player, target)) return false
     if (target is Player && !player.attackedBy(target.username)) {
-        player.setWildernessSkull()
+        player.addEffect(Effect.SKULL, Ticks.fromMinutes(5).toLong())
+        player.skullId = 0
         updateSkull(player)
     }
     return true;
@@ -138,7 +144,7 @@ fun anarchyCanAttackCheck(player: Player, target: Entity): Boolean {
 
 fun anarchyCanHitCheck(player: Player, target: Entity): Boolean {
     if (target is Player && player.isCanPvp && !target.isCanPvp) {
-        player.sendMessage("That player is not in the wilderness.")
+        player.sendMessage("That player is not in an attackable target.")
         return false
     }
     //combat level checks here
@@ -146,6 +152,10 @@ fun anarchyCanHitCheck(player: Player, target: Entity): Boolean {
 }
 
 fun teleportCheck(player: Player, teleport: Teleport): Boolean {
+    if (player.hasSkull()) {
+        player.sendMessage("You are unable to teleport with your skull!")
+        return false
+    }
     if (!player.isCanPvp)
         return true
     player.actionManager.action = object : PlayerAction() {

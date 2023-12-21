@@ -2,7 +2,12 @@ package com.rs.anarchy
 
 import com.rs.cache.loaders.NPCDefinitions
 import com.rs.game.World
+import com.rs.game.model.entity.Entity
+import com.rs.game.model.entity.pathing.Direction
 import com.rs.game.model.entity.player.Player
+import com.rs.lib.game.SpotAnim
+import com.rs.lib.game.Tile
+import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onChunkEnter
 import com.rs.tools.MapSearcher
@@ -35,7 +40,7 @@ fun mapChunkChanges() {
     onChunkEnter { e ->
         if (e.player == null || !e.player.hasStarted())
             return@onChunkEnter
-        checkZone(e.player, e.chunkId);
+        checkZone(e.player, e.chunkId)
     }
 }
 
@@ -48,6 +53,13 @@ fun checkZone(player: Player, chunkId: Int, login: Boolean = false) {
 
     //Safe chunks
     if (safeChunks.contains(chunkId)) {
+        if (player.hasSkull()) {
+            player.tele(Tile.of(player.lastTile))
+            player.temporaryMoveType = if (Utils.getDistance(player.tile, player.lastTile) > 4) Entity.MoveType.TELE else Entity.MoveType.WALK
+            World.sendSpotAnim(Tile.of(player.tile), SpotAnim(654, 50, 0, Direction.getDirectionTo(player, player.lastTile)?.id ?: 0))
+            player.sendMessage("A magical force prevents you from entering a safe zone with your skull.")
+            return
+        }
         if (login) {
             player.isCanPvp = false
             updateUI(player)
@@ -107,4 +119,5 @@ fun updateUI(player: Player, timer: Int = -1) {
     player.packets.setIFHidden(745, 5, true)
     player.packets.setIFHidden(745, 3, player.isCanPvp)
     player.packets.setIFHidden(745, 6, !player.isCanPvp)
+    updateSkull(player)
 }

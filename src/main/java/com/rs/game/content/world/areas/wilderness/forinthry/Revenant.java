@@ -121,6 +121,8 @@ public class Revenant extends NPC {
 
 		double g = Utils.clampD(Math.sqrt(combatLevel), 1.0, 12.0);
 		double r = 60000.0 / g;
+		if (killer != null && killer.hasSkull())
+			r /= 5.0;
 
 		Utils.add(drops, DropTable.calculateDrops(killer, new DropSet(
 				//1/R chance each to obtain an Ancient, Seren, Armadyl, Zamorak, Saradomin or Bandos statuette, or a random brawling glove. The rate for brawling gloves is 2/15 for Smithing and Hunter gloves, and 1/15 for all others
