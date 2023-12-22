@@ -37,19 +37,24 @@ import java.util.regex.Pattern
 
 @ServerStartupEvent
 fun mapLoginModifiers() {
-    onLogin { it ->
+    onLogin {
         it.player.apply {
-            sendMessage("Latest commit: ${
-                try {
-                    ZonedDateTime.parse(
-                        Settings.COMMIT_HISTORY[2].substring(8).trim(),
-                        DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss yyyy Z")
-                    ).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
-                } catch (e: ParseException) {
-                    "Error parsing date: ${e.message}"
-                }
-            } - ${Settings.COMMIT_HISTORY[3].substring(9).trim()}")
-
+            try {
+                sendMessage(
+                    "Latest commit: ${
+                        try {
+                            ZonedDateTime.parse(
+                                Settings.COMMIT_HISTORY[2].substring(8).trim(),
+                                DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss yyyy Z")
+                            ).format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+                        } catch (e: ParseException) {
+                            "Error parsing date: ${e.message}"
+                        }
+                    } - ${Settings.COMMIT_HISTORY[3].substring(9).trim()}"
+                )
+            } catch(e: Throwable) {
+                sendMessage("Error loading recent version")
+            }
             checkZone(this, this.chunkId, true)
             if (controllerManager.isIn(TutorialIslandController::class.java)) {
                 setIronMan(false)
