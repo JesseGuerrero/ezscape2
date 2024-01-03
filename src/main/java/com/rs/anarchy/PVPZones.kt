@@ -2,6 +2,7 @@ package com.rs.anarchy
 
 import com.rs.cache.loaders.NPCDefinitions
 import com.rs.game.World
+import com.rs.game.content.skills.magic.LodestoneAction.Lodestone
 import com.rs.game.model.entity.Entity
 import com.rs.game.model.entity.pathing.Direction
 import com.rs.game.model.entity.player.Player
@@ -36,6 +37,8 @@ fun mapChunkChanges() {
         if (it.defs.hasOption("Bank"))
             safeChunks.addAll(World.getChunkRadius(it.tile.chunkId, 1))
     }
+
+    Lodestone.entries.forEach { safeChunks.addAll(World.getChunkRadius(it.tile.chunkId, 1)) }
 
     onChunkEnter { e ->
         if (e.player == null || !e.player.hasStarted())

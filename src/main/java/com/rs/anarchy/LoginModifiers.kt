@@ -38,6 +38,7 @@ import java.util.regex.Pattern
 @ServerStartupEvent
 fun mapLoginModifiers() {
     onLogin {
+        it.player.packets.sendDrawOrder(true)
         it.player.apply {
             try {
                 sendMessage(
@@ -136,9 +137,12 @@ fun mapLoginModifiers() {
 }
 
 fun updateSkull(player: Player) {
-    player.tasks.schedule {
+    player.tasks.scheduleTimer("anarchySkullUpdateCheck") { tick ->
         when(player.inventory.getNumberOf(24444)) {
-            0 -> player.skullId = 0
+            0 -> {
+                player.skullId = 0
+                return@scheduleTimer false
+            }
             1 -> player.skullId = 6
             2 -> player.skullId = 5
             3 -> player.skullId = 4
@@ -146,14 +150,16 @@ fun updateSkull(player: Player) {
             else -> player.skullId = 2
         }
         player.appearance.generateAppearanceData()
-        player.packets.sendRunScript(2434, player.getEffectTicks(Effect.SKULL).toInt())
+        if (tick % 5 == 0)
+            player.packets.sendRunScript(2434, player.getEffectTicks(Effect.SKULL).toInt())
+        return@scheduleTimer true
     }
 }
 
 fun anarchyKeepFightingCheck(player: Player, target: Entity): Boolean {
     if (target is NPC) return true
     if (!anarchyCanAttackCheck(player, target)) return false
-    if (target is Player && !player.attackedBy(target.username)) {
+    if (target is Player && !player.attackedBy(target.username) && !player.hasEffect(Effect.SKULL)) {
         player.addEffect(Effect.SKULL, Ticks.fromMinutes(5).toLong())
         player.skullId = 0
         updateSkull(player)
