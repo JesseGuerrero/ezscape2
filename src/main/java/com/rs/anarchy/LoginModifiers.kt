@@ -21,19 +21,15 @@ import com.rs.game.model.entity.player.managers.InterfaceManager.Sub
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
-import com.rs.lib.util.Utils.clampI
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemAddedToInventory
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onXpDrop
 import com.rs.utils.Ticks
 import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
-import java.util.regex.Pattern
 
 @ServerStartupEvent
 fun mapLoginModifiers() {
@@ -236,6 +232,8 @@ fun anarchyPvpDeathCheck(player: Player): Boolean {
                 player.sendPVPItemsOnDeath(killer)
                 player.equipment.init()
                 player.inventory.init()
+                if (player.familiar != null)
+                    player.familiar.sendDeath(killer)
                 player.reset()
                 player.tele(Settings.getConfig().playerRespawnTile)
                 player.anim(-1)
