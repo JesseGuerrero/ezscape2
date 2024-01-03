@@ -218,22 +218,27 @@ fun teleportCheck(player: Player, teleport: Teleport): Boolean {
 
 fun anarchyPvpDeathCheck(player: Player): Boolean {
     val killer = player.mostDamageReceivedSourcePlayer
-    if (killer == null || killer == player)
+    if (!player.hasSkull() && (killer == null || killer == player))
         return false
     player.lock(8)
     player.stopAll()
     WorldTasks.scheduleTimer { loop ->
         when (loop) {
-            0 -> player.anim(836)
+            0 -> {
+                player.anim(836)
+                if (player.familiar != null)
+                    player.familiar.sendDeath(killer)
+            }
             1 -> player.sendMessage("Oh dear, you have died.")
             4 -> {
-                killer.removeDamage(player)
-                killer.increaseKillCount(player)
+                if (killer != null) {
+                    killer.removeDamage(player)
+                    killer.increaseKillCount(player)
+                } else
+                    player.inventory.deleteItem(24444, 50)
                 player.sendPVPItemsOnDeath(killer)
                 player.equipment.init()
                 player.inventory.init()
-                if (player.familiar != null)
-                    player.familiar.sendDeath(killer)
                 player.reset()
                 player.tele(Settings.getConfig().playerRespawnTile)
                 player.anim(-1)
