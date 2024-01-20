@@ -8129,7 +8129,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vial of holy water, good against certain demons."
   },
@@ -9265,7 +9265,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A bronze-tipped javelin."
   },
@@ -9279,7 +9279,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An iron-tipped javelin."
   },
@@ -9293,7 +9293,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A steel-tipped javelin."
   },
@@ -9307,7 +9307,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A mithril tipped javelin."
   },
@@ -9321,7 +9321,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An adamant tipped javelin."
   },
@@ -9335,7 +9335,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A rune tipped javelin."
   },
@@ -9349,7 +9349,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A bronze-tipped javelin."
   },
@@ -9363,7 +9363,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An iron-tipped javelin."
   },
@@ -9377,7 +9377,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A steel-tipped javelin."
   },
@@ -9391,7 +9391,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A mithril tipped javelin."
   },
@@ -9405,7 +9405,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An adamant tipped javelin."
   },
@@ -9419,7 +9419,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A rune tipped javelin."
   },
@@ -9436,7 +9436,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "This fires crossbow bolts."
   },
@@ -9464,7 +9464,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A nice sturdy bow."
   },
@@ -9492,7 +9492,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.33,
     "examine": "A shortbow made of wood."
   },
@@ -47603,7 +47603,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "This bow has been signed by Robin, Master Bowman."
   },
@@ -63323,7 +63323,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A bronze-tipped javelin."
   },
@@ -63337,7 +63337,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An iron-tipped javelin."
   },
@@ -63351,7 +63351,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A steel-tipped javelin."
   },
@@ -63365,7 +63365,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A mithril tipped javelin."
   },
@@ -63379,7 +63379,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An adamant tipped javelin."
   },
@@ -63393,7 +63393,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A rune tipped javelin."
   },
@@ -63407,7 +63407,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "It's a Bronze jav'n (p++)."
   },
@@ -63421,7 +63421,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An iron-tipped javelin."
   },
@@ -63435,7 +63435,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A steel-tipped javelin."
   },
@@ -63449,7 +63449,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A mithril tipped javelin."
   },
@@ -63463,7 +63463,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "An adamant tipped javelin."
   },
@@ -63477,7 +63477,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A rune tipped javelin."
   },
@@ -73275,7 +73275,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A razor sharp ring of obsidian."
   },
@@ -108516,7 +108516,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.3,
     "examine": "Light and flexible, good for a beginner."
   },
@@ -153260,7 +153260,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A finely balanced throwing axe."
   },
@@ -155083,7 +155083,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -155097,7 +155097,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -155111,7 +155111,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -155125,7 +155125,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -155139,7 +155139,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious throwing axe."
   },
@@ -155966,7 +155966,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -155980,7 +155980,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -155994,7 +155994,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -156008,7 +156008,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious javelin."
   },
@@ -156022,7 +156022,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A vicious throwing axe."
   },
@@ -157906,7 +157906,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "The sacred clay weapon has transformed into a bow."
   },
@@ -158730,7 +158730,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "The sacred clay has transformed into a wood-like substance."
   },
@@ -158755,7 +158755,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "The sacred clay has transformed into a wood-like substance."
   },
@@ -158780,7 +158780,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "The sacred clay has transformed into a wood-like substance."
   },
@@ -158805,7 +158805,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "The sacred clay has transformed into a wood-like substance."
   },
@@ -158830,7 +158830,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "The sacred clay has transformed into a wood-like substance."
   },
@@ -170383,7 +170383,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 3.6,
     "examine": "A miniature dwarven cannon."
   },
@@ -174350,7 +174350,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.2,
     "examine": "A brightly coloured sling."
   },
@@ -177107,7 +177107,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.5,
     "examine": "It is stronger against targets with magical powers."
   },
@@ -194923,7 +194923,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.5,
     "examine": "It is stronger against targets with magical powers."
   },
@@ -215368,7 +215368,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "A bow imbued with the power of Saradomin."
   },
@@ -215393,7 +215393,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 2.0,
     "examine": "A bow imbued with the power of Saradomin."
   },
@@ -215407,7 +215407,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.0,
     "examine": "A bow imbued with the power of Guthix."
   },
@@ -215432,7 +215432,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.0,
     "examine": "A bow imbued with the power of Guthix."
   },
@@ -215446,7 +215446,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.4,
     "examine": "A bow imbued with the power of Zamorak."
   },
@@ -215471,7 +215471,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.4,
     "examine": "A bow imbued with the power of Zamorak."
   },
@@ -222972,7 +222972,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A basic sling to fire projectile at your enemies with."
   },
@@ -226726,7 +226726,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.6,
     "examine": "A powerful bow imbued with the fury of Zaros."
   },
@@ -226751,7 +226751,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.6,
     "examine": "A powerful bow imbued with the fury of Zaros."
   },
@@ -240029,7 +240029,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A hardened wooden spear equipped with an amentum."
   },
@@ -240043,7 +240043,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 0.0,
     "examine": "A strong vine with weights attached at both ends. Also a tripping hazard."
   },
@@ -252657,7 +252657,7 @@
     },
     "defendAnim": 420,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.8,
     "examine": "Imbued with power from the fungi growing on it."
   },
@@ -252682,7 +252682,7 @@
     },
     "defendAnim": 420,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.8,
     "examine": "Imbued with power from the fungi growing on it."
   },
@@ -252696,7 +252696,7 @@
     },
     "defendAnim": 420,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.8,
     "examine": "Imbued with power from the fungi growing on it."
   },
@@ -258713,7 +258713,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.3,
     "examine": "A ranged weapon with special properties."
   },
@@ -267299,7 +267299,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.3,
     "examine": "It's a Barbed bow."
   },
@@ -274413,7 +274413,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.8,
     "examine": "It's a Decimation."
   },
@@ -274614,7 +274614,7 @@
     },
     "defendAnim": -1,
     "defendSound": -1,
-    "attackRange": 0,
+    "attackRange": 8,
     "weight": 1.3,
     "examine": "It's a Boogie bow."
   },
