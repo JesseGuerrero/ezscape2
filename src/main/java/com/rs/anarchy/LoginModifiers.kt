@@ -6,9 +6,13 @@ import com.rs.engine.miniquest.Miniquest
 import com.rs.engine.quest.Quest
 import com.rs.game.World
 import com.rs.game.content.Effect
+import com.rs.game.content.ItemConstants
+import com.rs.game.content.ItemConstants.ItemDegrade
+import com.rs.game.content.Potions
 import com.rs.game.content.Toolbelt
 import com.rs.game.content.Toolbelt.Tools
 import com.rs.game.content.achievements.Achievement
+import com.rs.game.content.skills.cooking.Foods
 import com.rs.game.content.skills.magic.LodestoneAction.Lodestone
 import com.rs.game.content.tutorialisland.TutorialIslandController
 import com.rs.game.model.entity.Entity
@@ -19,17 +23,24 @@ import com.rs.game.model.entity.player.Skills
 import com.rs.game.model.entity.player.actions.PlayerAction
 import com.rs.game.model.entity.player.managers.InterfaceManager.Sub
 import com.rs.game.tasks.WorldTasks
+import com.rs.lib.game.Item
 import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
+import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemAddedToInventory
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onXpDrop
 import com.rs.utils.Ticks
+import com.rs.utils.drop.Drop
+import com.rs.utils.drop.DropSet
+import com.rs.utils.drop.DropTable
 import java.text.ParseException
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import java.util.concurrent.CopyOnWriteArrayList
+import kotlin.math.sqrt
 
 @ServerStartupEvent
 fun mapLoginModifiers() {
@@ -234,6 +245,7 @@ fun anarchyPvpDeathCheck(player: Player): Boolean {
                 if (killer != null) {
                     killer.removeDamage(player)
                     killer.increaseKillCount(player)
+                    rollPvpDropTable(player, killer)
                 } else
                     player.inventory.deleteItem(24444, 50)
                 player.sendPVPItemsOnDeath(killer)
@@ -251,4 +263,159 @@ fun anarchyPvpDeathCheck(player: Player): Boolean {
         return@scheduleTimer true
     }
     return true
+}
+
+fun rollPvpDropTable(player: Player, killer: Player) {
+    fun getPlayerItems(container: Array<Item>, range: IntRange): List<Item> =
+        range.mapNotNull { container[it] }.filter { it.id != -1 && it.amount != -1 }.map { Item(it.id, it.amount, it.metaData) }
+
+    fun handleNonTradeableItem(item: Item, killer: Player, player: Player): Item {
+        val deg = ItemDegrade.entries.find { it.degradedId == item.id || it.itemId == item.id }
+        return when {
+            deg != null && deg.brokenId != -1 -> {
+                val broken = Item(deg.brokenId, item.amount)
+                if (!ItemConstants.isTradeable(broken) && killer !== player) Item(995, item.definitions.getValue()) else broken
+            }
+            else -> Item(995, item.definitions.getValue())
+        }
+    }
+
+    if (killer.username != player.username && killer.isIronMan) return
+
+    val containedItems = CopyOnWriteArrayList<Item>().apply {
+        addAll(getPlayerItems(player.equipment.itemsCopy, 0..13))
+        addAll(getPlayerItems(player.inventory.items.array(), 0..27))
+    }
+
+    if (containedItems.isEmpty()) return
+
+    val keptAmount = (if (player.hasSkull()) 0 else 3) + if (player.prayer.isProtectingItem) 1 else 0
+    val keptItems = generateSequence { containedItems.maxByOrNull { it.definitions.getValue() } }.take(keptAmount).onEach { containedItems.remove(it) }.toList()
+    keptItems.filter { it.id != 1 }.forEach { player.inventory.addItem(it) }
+
+    val droppedItems = containedItems.map { item ->
+        when {
+            ItemConstants.isTradeable(item) || item.id == 24444 -> item
+            else -> handleNonTradeableItem(item, killer, player)
+        }
+    }
+
+    val lostItems = droppedItems.filterNot { Foods.isConsumable(it) || Potions.Potion.POTS.containsKey(it.id) || it.id == 24444 }
+
+    generatePKDrop(lostItems.sumOf { it.definitions.value }).forEach {
+        World.addGroundItem(it, player.lastTile, killer, true, 60)
+    }
+}
+
+fun generatePKDrop(pkedPlayerDropValue: Int): List<Item> {
+    val drops: MutableList<Item> = ArrayList()
+
+    val g = Utils.clampD(sqrt(sqrt(pkedPlayerDropValue.toDouble())), 1.0, 20.0)
+    var r = 60000.0 / g
+
+    Utils.add(
+        drops, DropTable.calculateDrops(
+            DropSet(
+                //1/R chance each to obtain an Ancient, Seren, Armadyl, Zamorak, Saradomin or Bandos statuette, or a random brawling glove. The rate for brawling gloves is 2/15 for Smithing and Hunter gloves, and 1/15 for all others
+                DropTable(1.0, r, Drop(14876)),
+                DropTable(1.0, r, Drop(14877)),
+                DropTable(1.0, r, Drop(14878)),
+                DropTable(1.0, r, Drop(14879)),
+                DropTable(1.0, r, Drop(14880)),
+                DropTable(1.0, r, Drop(14881)),
+                DropTable(1.0, r,
+                    Drop(13845),
+                    Drop(13846),
+                    Drop(13847),
+                    Drop(13848),
+                    Drop(13849),
+                    Drop(13850),
+                    Drop(13851),
+                    Drop(13852),
+                    Drop(13853),
+                    Drop(13854),
+                    Drop(13855),
+                    Drop(13856),
+                    Drop(13857),
+                    Drop(13855),
+                    Drop(13853)
+                ),
+
+                //2/R chance each to obtain a Ruby chalice, Guthixian brazier, Armadyl totem, Zamorak medallion, Saradomin carving, Bandos scrimshaw or a corrupt dragon item
+                DropTable(2.0, r, Drop(14882)),
+                DropTable(2.0, r, Drop(14883)),
+                DropTable(2.0, r, Drop(14884)),
+                DropTable(2.0, r, Drop(14885)),
+                DropTable(2.0, r, Drop(14886)),
+                DropTable(2.0, r, Drop(14887)),
+                DropTable(2.0, r,
+                    Drop(13958),
+                    Drop(13961),
+                    Drop(13964),
+                    Drop(13967),
+                    Drop(13970),
+                    Drop(13973),
+                    Drop(13976),
+                    Drop(13979),
+                    Drop(13982),
+                    Drop(13985),
+                    Drop(13988)
+                ),
+
+                //3/R chance each to obtain a Saradomin amphora, Ancient psaltery bridge, Bronzed dragon claw, Third age carafe or broken statue headdress
+                DropTable(3.0, r, Drop(14888)),
+                DropTable(3.0, r, Drop(14889)),
+                DropTable(3.0, r, Drop(14890)),
+                DropTable(3.0, r, Drop(14891)),
+                DropTable(3.0, r, Drop(14892)),
+
+                //10/R chance each to obtain a piece of Ancient Warriors' equipment or its corrupt version
+                DropTable(10.0, r,
+                    Drop(13858),
+                    Drop(13861),
+                    Drop(13864),
+                    Drop(13867),
+                    Drop(13870),
+                    Drop(13873),
+                    Drop(13876),
+                    Drop(13879, 15, 50),
+                    Drop(13883, 15, 50),
+                    Drop(13884),
+                    Drop(13887),
+                    Drop(13890),
+                    Drop(13893),
+                    Drop(13896),
+                    Drop(13899),
+                    Drop(13902),
+                    Drop(13905)
+                ),
+                DropTable(10.0, r,
+                    Drop(13908),
+                    Drop(13911),
+                    Drop(13914),
+                    Drop(13917),
+                    Drop(13920),
+                    Drop(13923),
+                    Drop(13926),
+                    Drop(13929),
+                    Drop(13932),
+                    Drop(13935),
+                    Drop(13938),
+                    Drop(13941),
+                    Drop(13944),
+                    Drop(13947),
+                    Drop(13950),
+                    Drop(13953, 15, 50),
+                    Drop(13957, 15, 50)
+                ),
+
+                //5/R chance to get an ultra rare lucky
+                DropTable(5.0, r, *(23679..23700).map { Drop(it) }.toTypedArray())
+            )
+        )
+    )
+
+    //If no unique is dropped, then a final roll for coins appear, the cap roughly equal to 50 times G.
+    if (drops.isEmpty()) drops.add(Item(995, (200.0 * g).toInt()))
+    return drops
 }
