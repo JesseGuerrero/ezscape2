@@ -290,8 +290,7 @@ fun rollPvpDropTable(player: Player, killer: Player) {
     if (containedItems.isEmpty()) return
 
     val keptAmount = (if (player.hasSkull()) 0 else 3) + if (player.prayer.isProtectingItem) 1 else 0
-    val keptItems = generateSequence { containedItems.maxByOrNull { it.definitions.getValue() } }.take(keptAmount).onEach { containedItems.remove(it) }.toList()
-    keptItems.filter { it.id != 1 }.forEach { player.inventory.addItem(it) }
+    generateSequence { containedItems.maxByOrNull { it.definitions.getValue() } }.take(keptAmount).onEach { containedItems.remove(it) }.toList()
 
     val droppedItems = containedItems.map { item ->
         when {
@@ -310,7 +309,7 @@ fun rollPvpDropTable(player: Player, killer: Player) {
 fun generatePKDrop(pkedPlayerDropValue: Int): List<Item> {
     val drops: MutableList<Item> = ArrayList()
 
-    val g = Utils.clampD(sqrt(sqrt(pkedPlayerDropValue.toDouble())), 1.0, 20.0)
+    val g = Utils.clampD(sqrt(sqrt(pkedPlayerDropValue.toDouble())), 1.0, 50.0)
     var r = 60000.0 / g
 
     Utils.add(
