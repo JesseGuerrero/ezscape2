@@ -390,8 +390,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -5135,8 +5135,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5161,8 +5161,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5187,8 +5187,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5213,8 +5213,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5239,8 +5239,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5265,8 +5265,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5291,8 +5291,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5449,8 +5449,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5475,8 +5475,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5501,8 +5501,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5527,8 +5527,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5553,8 +5553,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5579,8 +5579,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5605,8 +5605,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -5631,8 +5631,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -7406,8 +7406,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -8282,8 +8282,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -8297,8 +8297,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13614,8 +13614,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13640,8 +13640,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13666,8 +13666,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13692,8 +13692,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13718,8 +13718,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13744,8 +13744,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13770,8 +13770,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13796,8 +13796,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13822,8 +13822,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13848,8 +13848,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13874,8 +13874,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13900,8 +13900,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13926,8 +13926,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13952,8 +13952,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -13978,8 +13978,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -14004,8 +14004,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -14030,8 +14030,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -14056,9 +14056,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14083,9 +14083,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14110,9 +14110,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14137,9 +14137,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14164,9 +14164,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14191,9 +14191,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14218,9 +14218,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14245,9 +14245,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14272,9 +14272,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14299,9 +14299,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14326,9 +14326,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14353,9 +14353,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14380,9 +14380,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14407,9 +14407,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -14434,8 +14434,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -14460,8 +14460,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -14486,8 +14486,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -14512,8 +14512,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -14538,8 +14538,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -14564,8 +14564,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -14590,8 +14590,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -14616,8 +14616,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -14642,8 +14642,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -14668,8 +14668,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -14694,8 +14694,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -14720,8 +14720,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -14746,8 +14746,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -14772,8 +14772,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14798,8 +14798,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14824,8 +14824,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14850,8 +14850,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14876,8 +14876,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14902,8 +14902,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14928,8 +14928,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14954,8 +14954,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -14978,10 +14978,11 @@
     "uidName": "bronze_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -15004,10 +15005,11 @@
     "uidName": "iron_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -15030,10 +15032,11 @@
     "uidName": "steel_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -15056,10 +15059,11 @@
     "uidName": "black_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -15082,10 +15086,11 @@
     "uidName": "mithril_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -15108,10 +15113,11 @@
     "uidName": "adamant_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -15134,10 +15140,11 @@
     "uidName": "rune_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -15162,8 +15169,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -15188,8 +15195,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -15214,8 +15221,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -15240,8 +15247,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -15266,8 +15273,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -15292,8 +15299,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -15318,8 +15325,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -15519,8 +15526,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -15545,8 +15552,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -15571,8 +15578,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -15597,8 +15604,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -15623,8 +15630,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -15649,8 +15656,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -15675,8 +15682,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -16400,8 +16407,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -16426,8 +16433,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -16452,8 +16459,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -16478,8 +16485,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -16504,8 +16511,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -16530,8 +16537,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -16556,8 +16563,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -16582,8 +16589,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -27234,8 +27241,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -33300,8 +33307,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -34895,8 +34902,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -34910,8 +34917,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -34925,8 +34932,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -34940,8 +34947,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -34955,8 +34962,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -34970,8 +34977,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -34985,8 +34992,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -35748,9 +35755,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -35764,9 +35771,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -35780,9 +35787,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -35796,9 +35803,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -35812,9 +35819,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -35828,9 +35835,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -35844,9 +35851,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36003,8 +36010,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36029,8 +36036,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36055,8 +36062,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36081,8 +36088,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36107,8 +36114,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36133,8 +36140,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36159,8 +36166,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -36185,8 +36192,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -45693,8 +45700,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -46610,9 +46617,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -46637,7 +46644,7 @@
     "equipSound": 2243,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 2661
+      "0": 1665
     },
     "defendAnim": 1666,
     "defendSound": -1,
@@ -46695,9 +46702,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -46711,9 +46718,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -50539,8 +50546,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -50598,8 +50605,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -51394,9 +51401,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -51421,9 +51428,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -51448,9 +51455,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -51486,8 +51493,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -52937,8 +52944,8 @@
     "equipSound": 2232,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": 12004,
     "defendSound": -1,
@@ -53029,9 +53036,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -54821,8 +54828,8 @@
     "equipSound": 2232,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": 12004,
     "defendSound": -1,
@@ -54836,8 +54843,8 @@
     "equipSound": 2232,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": 12004,
     "defendSound": -1,
@@ -54851,8 +54858,8 @@
     "equipSound": 2232,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": 12004,
     "defendSound": -1,
@@ -54866,8 +54873,8 @@
     "equipSound": 2232,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": 12004,
     "defendSound": -1,
@@ -54881,8 +54888,8 @@
     "equipSound": 2232,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": 12004,
     "defendSound": -1,
@@ -55105,9 +55112,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -55121,9 +55128,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -55137,9 +55144,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -55153,9 +55160,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -55169,9 +55176,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -56338,9 +56345,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -63725,8 +63732,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63751,8 +63758,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63777,8 +63784,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63803,8 +63810,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63829,8 +63836,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63855,8 +63862,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63881,8 +63888,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63907,8 +63914,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63933,8 +63940,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63959,8 +63966,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -63985,8 +63992,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64011,8 +64018,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64037,8 +64044,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64063,8 +64070,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64089,8 +64096,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64115,8 +64122,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64141,8 +64148,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64167,8 +64174,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -64193,9 +64200,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64220,9 +64227,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64247,9 +64254,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64274,9 +64281,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64301,9 +64308,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64328,9 +64335,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64355,9 +64362,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64382,9 +64389,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64409,9 +64416,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64436,9 +64443,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64463,9 +64470,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64490,9 +64497,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64517,9 +64524,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64544,9 +64551,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64593,9 +64600,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -64620,9 +64627,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -74001,8 +74008,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -74052,8 +74059,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -74078,8 +74085,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -74104,8 +74111,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -74130,8 +74137,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -74156,8 +74163,8 @@
     "equipSound": 2248,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -74182,8 +74189,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -74233,8 +74240,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -74259,8 +74266,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -74283,10 +74290,11 @@
     "uidName": "white_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -74311,8 +74319,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -75729,8 +75737,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -75755,8 +75763,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -75803,8 +75811,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -75818,8 +75826,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -80190,8 +80198,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -80368,10 +80376,11 @@
     "uidName": "dragon_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -86070,8 +86079,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -86990,8 +86999,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -87522,8 +87531,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -87551,8 +87560,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -87566,9 +87575,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -89144,8 +89153,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -98927,8 +98936,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -99272,8 +99281,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -99298,8 +99307,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -99324,8 +99333,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -99350,8 +99359,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -108486,8 +108495,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -117197,8 +117206,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -121238,8 +121247,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -123220,8 +123229,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -123488,8 +123497,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -126897,8 +126906,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -126923,8 +126932,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -126949,8 +126958,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -126975,8 +126984,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127001,8 +127010,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127027,8 +127036,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127053,8 +127062,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127079,8 +127088,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127094,8 +127103,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127120,8 +127129,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127146,8 +127155,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127172,8 +127181,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127187,8 +127196,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127213,8 +127222,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127239,8 +127248,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127265,8 +127274,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127280,8 +127289,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127306,8 +127315,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127332,8 +127341,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127358,8 +127367,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127373,8 +127382,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127399,8 +127408,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127425,8 +127434,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127451,8 +127460,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127466,8 +127475,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127492,8 +127501,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127518,8 +127527,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127544,8 +127553,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127559,8 +127568,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -127585,8 +127594,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -130614,9 +130623,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -130641,9 +130650,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -130668,9 +130677,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -130695,9 +130704,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -130874,11 +130883,11 @@
     "uidName": "zamorakian_spear",
     "dropSound": 2739,
     "equipSound": 2247,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 428,
-      "1": 440,
-      "2": 429
+      "2": 12009,
+      "0": 12006,
+      "1": 12005
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -131033,10 +131042,11 @@
     "uidName": "saradomin_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -148301,8 +148311,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -149849,10 +149859,11 @@
     "uidName": "dragon_2h_sword_lend",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -150009,9 +150020,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -150025,7 +150036,7 @@
     "equipSound": 2243,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 2661
+      "0": 1665
     },
     "defendAnim": 1666,
     "defendSound": -1,
@@ -150083,9 +150094,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -150099,9 +150110,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -150115,9 +150126,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -150131,9 +150142,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -150145,11 +150156,11 @@
     "uidName": "zamorakian_spear_lend",
     "dropSound": 2739,
     "equipSound": 2247,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 428,
-      "1": 440,
-      "2": 429
+      "2": 12009,
+      "0": 12006,
+      "1": 12005
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -150227,10 +150238,11 @@
     "uidName": "saradomin_sword_lend",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -150277,8 +150289,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -150292,8 +150304,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -150307,8 +150319,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -150322,8 +150334,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -150337,8 +150349,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -150352,8 +150364,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -150409,8 +150421,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -150424,8 +150436,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -150439,8 +150451,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -150454,8 +150466,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -150469,8 +150481,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -150484,8 +150496,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -150499,8 +150511,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -153732,8 +153744,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -153747,8 +153759,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -153762,8 +153774,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -153777,8 +153789,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -153792,8 +153804,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -153807,9 +153819,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153823,9 +153835,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153839,9 +153851,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153855,9 +153867,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153871,9 +153883,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153887,9 +153899,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153903,9 +153915,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153919,9 +153931,9 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153935,8 +153947,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -153948,10 +153960,11 @@
     "uidName": "rune_2h_sword_lend",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -153965,8 +153978,8 @@
     "equipSound": 2247,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -153980,8 +153993,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -155314,8 +155327,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -155340,8 +155353,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -155394,9 +155407,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -155421,9 +155434,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -155602,8 +155615,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -155628,8 +155641,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -155682,9 +155695,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -155709,9 +155722,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -156236,8 +156249,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -156262,8 +156275,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 377,
+      "0": 376
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -156277,8 +156290,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -156303,8 +156316,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -156318,8 +156331,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -156344,8 +156357,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -156359,8 +156372,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -156385,8 +156398,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -156400,9 +156413,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -156427,9 +156440,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -157609,8 +157622,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -157635,8 +157648,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -157650,8 +157663,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -157734,8 +157747,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -157749,8 +157762,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -157916,8 +157929,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -157942,8 +157955,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -157968,8 +157981,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -157994,8 +158007,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -158020,8 +158033,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -158046,8 +158059,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -158072,8 +158085,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -158098,8 +158111,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -158124,8 +158137,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -158150,8 +158163,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -159786,8 +159799,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -159812,8 +159825,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -159838,8 +159851,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -159864,8 +159877,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -159890,8 +159903,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 15071,
-      "2": 15072
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -159916,8 +159929,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -159942,8 +159955,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -159968,8 +159981,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -159994,8 +160007,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -160020,8 +160033,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -162023,8 +162036,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -162049,8 +162062,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -163659,8 +163672,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -164180,8 +164193,7 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "0": 400
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -164206,8 +164218,7 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "0": 400
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -170580,8 +170591,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -170606,8 +170617,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -171017,8 +171028,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -172176,8 +172187,8 @@
     "equipSound": 2232,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -172598,9 +172609,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -172614,9 +172625,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -172630,9 +172641,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -172646,9 +172657,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -173113,8 +173124,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -173293,8 +173305,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -174331,8 +174344,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -176982,8 +176995,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -176997,8 +177010,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177238,8 +177251,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177253,8 +177266,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177268,8 +177281,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177283,8 +177296,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177298,8 +177311,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177313,8 +177326,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177328,8 +177341,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177343,8 +177356,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177358,8 +177371,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177373,8 +177386,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177388,8 +177401,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177403,8 +177416,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177418,8 +177431,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177433,8 +177446,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177448,8 +177461,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177463,8 +177476,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177478,8 +177491,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177493,8 +177506,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177508,8 +177521,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177523,8 +177536,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177538,8 +177551,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177553,8 +177566,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177568,8 +177581,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177583,8 +177596,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177598,8 +177611,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177613,8 +177626,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177628,8 +177641,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177643,8 +177656,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177658,8 +177671,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177673,8 +177686,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177688,8 +177701,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177703,8 +177716,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177718,8 +177731,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177733,8 +177746,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177748,8 +177761,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177763,8 +177776,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177778,8 +177791,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177793,8 +177806,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177808,8 +177821,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177823,8 +177836,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177838,8 +177851,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177853,8 +177866,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177868,8 +177881,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -177883,8 +177896,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -179053,8 +179066,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179068,8 +179081,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179083,8 +179096,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179098,8 +179111,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179113,8 +179126,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179128,8 +179141,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179143,8 +179156,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179158,8 +179171,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179173,8 +179186,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179188,8 +179201,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179203,8 +179216,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -179460,8 +179473,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179475,8 +179488,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179490,8 +179503,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179505,8 +179518,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179520,8 +179533,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179535,8 +179548,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179550,8 +179563,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179565,8 +179578,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179580,8 +179593,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179595,8 +179608,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179610,8 +179623,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -179625,8 +179638,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179640,8 +179653,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179655,8 +179668,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179670,8 +179683,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179685,8 +179698,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179700,8 +179713,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179715,8 +179728,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179730,8 +179743,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179745,8 +179758,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179760,8 +179773,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -179775,8 +179788,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -180712,10 +180725,11 @@
     "uidName": "novite_2h_sword_bnovite_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180727,10 +180741,11 @@
     "uidName": "bathus_2h_sword_bbathus_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180742,10 +180757,11 @@
     "uidName": "marmaros_2h_sword_bmarmaros_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180757,10 +180773,11 @@
     "uidName": "kratonite_2h_sword_bkratonite_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180772,10 +180789,11 @@
     "uidName": "fractite_2h_sword_bfractite_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180787,10 +180805,11 @@
     "uidName": "zephyrium_2h_sword_bzephyrium_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180802,10 +180821,11 @@
     "uidName": "argonite_2h_sword_bargonite_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180817,10 +180837,11 @@
     "uidName": "katagon_2h_sword_bkatagon_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180832,10 +180853,11 @@
     "uidName": "gorgonite_2h_sword_bgorgonite_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180847,10 +180869,11 @@
     "uidName": "promethium_2h_sword_bpromethium_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180862,10 +180885,11 @@
     "uidName": "primal_2h_sword_bprimal_2h_sword_b_bound",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -180923,8 +180947,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -180938,8 +180962,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -180953,8 +180977,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -180968,8 +180992,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -180983,8 +181007,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -180998,8 +181022,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -181013,8 +181037,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -181028,8 +181052,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -181043,8 +181067,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -181058,8 +181082,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -181073,8 +181097,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -181932,9 +181956,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -181948,9 +181972,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -181964,9 +181988,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -181980,9 +182004,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -181996,9 +182020,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182012,9 +182036,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182028,9 +182052,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182044,9 +182068,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182060,9 +182084,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182076,9 +182100,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182092,9 +182116,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182108,9 +182132,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182124,9 +182148,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182140,9 +182164,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182156,9 +182180,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182172,9 +182196,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182188,9 +182212,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182204,9 +182228,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182220,9 +182244,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182236,9 +182260,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182252,9 +182276,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182268,9 +182292,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182284,9 +182308,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182300,9 +182324,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182316,9 +182340,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182332,9 +182356,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182348,9 +182372,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182364,9 +182388,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182380,9 +182404,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182396,9 +182420,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182412,9 +182436,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182428,9 +182452,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182444,9 +182468,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182460,9 +182484,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182476,9 +182500,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182492,9 +182516,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182508,9 +182532,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182524,9 +182548,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182540,9 +182564,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182556,9 +182580,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182572,9 +182596,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182588,9 +182612,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182604,9 +182628,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182620,9 +182644,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -182999,8 +183023,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183025,8 +183049,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183051,8 +183075,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183077,8 +183101,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183103,8 +183127,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183129,8 +183153,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183155,8 +183179,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183181,8 +183205,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183207,8 +183231,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183233,8 +183257,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183259,8 +183283,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183835,8 +183859,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183861,8 +183885,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183887,8 +183911,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183913,8 +183937,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183939,8 +183963,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183965,8 +183989,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -183991,8 +184015,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -184017,8 +184041,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -184043,8 +184067,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -184069,8 +184093,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -184095,8 +184119,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -184121,8 +184145,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184147,8 +184171,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184173,8 +184197,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184199,8 +184223,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184225,8 +184249,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184251,8 +184275,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184277,8 +184301,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184303,8 +184327,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184329,8 +184353,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184355,8 +184379,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -184381,8 +184405,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -188312,8 +188336,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188338,8 +188362,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188364,8 +188388,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188390,8 +188414,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188416,8 +188440,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188442,8 +188466,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188468,8 +188492,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188494,8 +188518,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188520,8 +188544,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188546,8 +188570,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188572,8 +188596,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188598,8 +188622,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188624,8 +188648,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188650,8 +188674,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188676,8 +188700,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188702,8 +188726,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188728,8 +188752,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188754,8 +188778,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188780,8 +188804,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188806,8 +188830,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188832,8 +188856,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188858,8 +188882,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188884,8 +188908,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188910,8 +188934,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188936,8 +188960,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188962,8 +188986,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -188988,8 +189012,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189014,8 +189038,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189040,8 +189064,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189066,8 +189090,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189092,8 +189116,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189118,8 +189142,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189144,8 +189168,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189170,8 +189194,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189196,8 +189220,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189222,8 +189246,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189248,8 +189272,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189274,8 +189298,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189300,8 +189324,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189326,8 +189350,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189352,8 +189376,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189378,8 +189402,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189404,8 +189428,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -189430,8 +189454,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -190004,10 +190028,11 @@
     "uidName": "novite_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190030,10 +190055,11 @@
     "uidName": "bathus_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190056,10 +190082,11 @@
     "uidName": "marmaros_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190082,10 +190109,11 @@
     "uidName": "kratonite_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190108,10 +190136,11 @@
     "uidName": "fractite_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190134,10 +190163,11 @@
     "uidName": "zephyrium_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190160,10 +190190,11 @@
     "uidName": "argonite_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190186,10 +190217,11 @@
     "uidName": "katagon_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190212,10 +190244,11 @@
     "uidName": "gorgonite_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190238,10 +190271,11 @@
     "uidName": "promethium_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190264,10 +190298,11 @@
     "uidName": "primal_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -190556,8 +190591,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190582,8 +190617,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190608,8 +190643,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190634,8 +190669,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190660,8 +190695,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190686,8 +190721,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190712,8 +190747,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190738,8 +190773,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190764,8 +190799,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190790,8 +190825,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190816,8 +190851,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190842,8 +190877,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190868,8 +190903,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -190894,8 +190929,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -190920,8 +190955,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -191041,10 +191076,11 @@
     "uidName": "fractite_2h_sword_dupe2",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -192136,9 +192172,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192163,9 +192199,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192190,9 +192226,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192217,9 +192253,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192244,9 +192280,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192271,9 +192307,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192298,9 +192334,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192325,9 +192361,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192352,9 +192388,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192379,9 +192415,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192406,9 +192442,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192433,9 +192469,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192460,9 +192496,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192487,9 +192523,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192514,9 +192550,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192541,9 +192577,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192568,9 +192604,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192595,9 +192631,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192622,9 +192658,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192649,9 +192685,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192676,9 +192712,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192703,9 +192739,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192730,9 +192766,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192757,9 +192793,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192784,9 +192820,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192811,9 +192847,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192838,9 +192874,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192865,9 +192901,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192892,9 +192928,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192919,9 +192955,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192946,9 +192982,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -192973,9 +193009,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193000,9 +193036,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193027,9 +193063,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193054,9 +193090,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193081,9 +193117,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193108,9 +193144,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193135,9 +193171,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193162,9 +193198,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193189,9 +193225,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193216,9 +193252,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193243,9 +193279,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193270,9 +193306,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -193297,9 +193333,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -194688,8 +194724,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -194714,8 +194750,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -206534,8 +206570,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -206549,8 +206585,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -206564,8 +206600,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -206579,8 +206615,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -206747,8 +206783,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -206762,8 +206798,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -206777,8 +206813,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -206792,8 +206828,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -206805,10 +206841,11 @@
     "uidName": "gravite_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -206820,10 +206857,11 @@
     "uidName": "gravite_2h_sword_broken",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -210538,8 +210576,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -211431,10 +211469,10 @@
     "uidName": "korasis_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -222408,10 +222446,10 @@
     "uidName": "korasis_sword_dupe2",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -222456,10 +222494,10 @@
     "uidName": "korasis_sword_dupe3",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -230710,8 +230748,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230725,8 +230763,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230740,8 +230778,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230755,8 +230793,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230770,8 +230808,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230785,8 +230823,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230800,8 +230838,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230815,8 +230853,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230830,8 +230868,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230845,8 +230883,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230860,8 +230898,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230875,8 +230913,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230890,8 +230928,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230905,8 +230943,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230920,8 +230958,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230935,8 +230973,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230950,8 +230988,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230965,8 +231003,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230980,8 +231018,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -230995,8 +231033,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -231010,8 +231048,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -231025,8 +231063,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -231040,8 +231078,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -231055,8 +231093,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -231070,8 +231108,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -232328,8 +232366,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -232354,8 +232392,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -233535,8 +233573,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -233550,8 +233588,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -233565,8 +233603,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -233580,8 +233618,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -233595,8 +233633,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -233610,8 +233648,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -233625,8 +233663,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -234012,10 +234050,11 @@
     "uidName": "thoks_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -234150,8 +234189,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -234418,8 +234457,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -234593,8 +234632,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -234617,10 +234656,11 @@
     "uidName": "gorgonite_2h_sword_dupe2",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -235228,8 +235268,8 @@
     "equipSound": 2248,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 1884,
-      "2": 1882
+      "2": 1882,
+      "0": 1884
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -235320,8 +235360,8 @@
     "equipSound": 2248,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 1884,
-      "2": 1882
+      "2": 1882,
+      "0": 1884
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -239702,8 +239742,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -240108,9 +240148,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -240124,9 +240164,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -240140,9 +240180,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -240156,9 +240196,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -240172,9 +240212,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -240496,8 +240536,8 @@
     "equipSound": 2229,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 395,
-      "2": 401
+      "2": 401,
+      "0": 395
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -240511,8 +240551,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -242525,8 +242565,8 @@
     "equipSound": 2247,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 428,
-      "1": 440
+      "1": 440,
+      "0": 428
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -244311,8 +244351,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -244337,8 +244377,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -244352,8 +244392,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -244367,8 +244407,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -244382,8 +244422,8 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -244397,8 +244437,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -249431,8 +249471,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -249446,8 +249487,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -249461,8 +249503,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -249476,8 +249519,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -249491,8 +249535,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -249506,8 +249551,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -249521,8 +249567,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -249536,8 +249583,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 414,
+      "0": 15072,
+      "1": 15071
     },
     "defendAnim": 420,
     "defendSound": -1,
@@ -250990,10 +251038,11 @@
     "uidName": "dominion_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 5,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -251608,10 +251657,10 @@
     "uidName": "korasis_sword_dupe4",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 15072,
+      "0": 15071
     },
     "defendAnim": 15074,
     "defendSound": -1,
@@ -251647,8 +251696,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -251662,8 +251711,8 @@
     "equipSound": 2232,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 12002,
-      "2": 12003
+      "2": 12003,
+      "0": 12002
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -251677,8 +251726,8 @@
     "equipSound": 2246,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -251692,8 +251741,8 @@
     "equipSound": 2232,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 400
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 397,
     "defendSound": -1,
@@ -258693,9 +258742,9 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 7041,
+      "2": 7048,
       "3": 7049,
-      "2": 7048
+      "0": 7041
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -265665,8 +265714,8 @@
     "equipSound": 2248,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 1884,
-      "2": 1882
+      "2": 1882,
+      "0": 1884
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -265724,9 +265773,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -265740,9 +265789,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -265756,9 +265805,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -265772,9 +265821,9 @@
     "equipSound": 2248,
     "attackDelay": 5,
     "attackAnims": {
-      "0": 11979,
+      "2": 11980,
       "3": 11981,
-      "2": 11980
+      "0": 11979
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -265788,9 +265837,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 428,
-      "1": 440,
-      "2": 429
+      "2": 12009,
+      "0": 12006,
+      "1": 12005
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -265868,10 +265917,11 @@
     "uidName": "lucky_saradomin_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 3,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -265885,9 +265935,9 @@
     "equipSound": 2249,
     "attackDelay": 3,
     "attackAnims": {
+      "2": 11970,
       "0": 11968,
-      "1": 11969,
-      "2": 11970
+      "1": 11969
     },
     "defendAnim": 11974,
     "defendSound": -1,
@@ -265934,8 +265984,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 1067,
-      "2": 393
+      "2": 1067,
+      "0": 393
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -265947,10 +265997,11 @@
     "uidName": "lucky_dragon_2h_sword",
     "dropSound": 2739,
     "equipSound": 2248,
-    "attackDelay": 4,
+    "attackDelay": 6,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 7048,
+      "3": 7049,
+      "0": 7041
     },
     "defendAnim": 7050,
     "defendSound": -1,
@@ -271370,8 +271421,8 @@
     "equipSound": 2248,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 400,
-      "2": 390
+      "2": 390,
+      "0": 400
     },
     "defendAnim": 378,
     "defendSound": -1,
@@ -271385,8 +271436,8 @@
     "equipSound": 2248,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -272590,8 +272641,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": 403,
     "defendSound": -1,
@@ -274144,8 +274195,8 @@
     "equipSound": 2248,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 1884,
-      "2": 1882
+      "2": 1882,
+      "0": 1884
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -274159,8 +274210,8 @@
     "equipSound": 2248,
     "attackDelay": 6,
     "attackAnims": {
-      "0": 1884,
-      "2": 1882
+      "2": 1882,
+      "0": 1884
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -274394,8 +274445,8 @@
     "equipSound": 2246,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 401,
-      "2": 402
+      "2": 400,
+      "0": 401
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -275702,8 +275753,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -275717,8 +275768,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -276574,8 +276625,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -276589,8 +276640,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -279827,8 +279878,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12311,
-      "2": 12310
+      "2": 12310,
+      "0": 12311
     },
     "defendAnim": 388,
     "defendSound": -1,
@@ -281647,9 +281698,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -281663,9 +281714,9 @@
     "equipSound": 2247,
     "attackDelay": 4,
     "attackAnims": {
+      "2": 429,
       "0": 428,
-      "1": 440,
-      "2": 429
+      "1": 440
     },
     "defendAnim": 430,
     "defendSound": -1,
@@ -281679,8 +281730,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -281694,8 +281745,8 @@
     "equipSound": 2240,
     "attackDelay": 3,
     "attackAnims": {
-      "0": 13049,
-      "2": 13048
+      "2": 13048,
+      "0": 13049
     },
     "defendAnim": 13038,
     "defendSound": -1,
@@ -283574,8 +283625,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -283589,8 +283640,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -283604,8 +283655,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
@@ -283619,8 +283670,8 @@
     "equipSound": 2240,
     "attackDelay": 4,
     "attackAnims": {
-      "0": 12310,
-      "2": 12311
+      "2": 12311,
+      "0": 12310
     },
     "defendAnim": -1,
     "defendSound": -1,
