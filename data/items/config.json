@@ -242563,12 +242563,12 @@
     "uidName": "blisterwood_polearm",
     "dropSound": 2739,
     "equipSound": 2247,
-    "attackDelay": 3,
+    "attackDelay": 6,
     "attackAnims": {
       "1": 440,
       "0": 428
     },
-    "defendAnim": -1,
+    "defendAnim": 430,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 1.8,
