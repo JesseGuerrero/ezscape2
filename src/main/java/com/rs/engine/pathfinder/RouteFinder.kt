@@ -2,13 +2,12 @@
 
 package com.rs.engine.pathfinder
 
-import com.rs.engine.pathfinder.collision.CollisionStrategies
 import com.rs.engine.pathfinder.collision.CollisionStrategy
+import com.rs.engine.pathfinder.collision.CollisionStrategyType
 import com.rs.engine.pathfinder.flag.CollisionFlag
 import com.rs.engine.pathfinder.flag.DirectionFlag
 import com.rs.engine.pathfinder.reach.DefaultReachStrategy
 import com.rs.engine.pathfinder.reach.ReachStrategy
-import com.rs.game.World
 import com.rs.game.model.entity.Entity
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.`object`.GameObject
@@ -66,7 +65,7 @@ public class PathFinder(
         objShape: Int = DEFAULT_OBJ_SHAPE,
         accessBitMask: Int = DEFAULT_ACCESS_BITMASK,
         maxTurns: Int = DEFAULT_MAX_TURNS,
-        collision: CollisionStrategy = CollisionStrategies.Normal,
+        collision: CollisionStrategy = CollisionStrategyType.NORMAL.strategy,
         reachStrategy: ReachStrategy = DefaultReachStrategy
     ): Route {
         if (resetOnSearch) {
@@ -1520,11 +1519,12 @@ internal inline fun getIndexInZone(x: Int, y: Int): Int {
 }
 
 fun routeEntityToObject(entity: Entity, obj: GameObject, maxTurns: Int = DEFAULT_MAX_TURNS): Route {
-    return PathFinder(flags = WorldCollision.allFlags)
+    return PathFinder(flags = WorldCollision.allFlags, useRouteBlockerFlags = true)
         .findPath(
             entity.x, entity.y,
             obj.x, obj.y,
             entity.plane,
+            collision = entity.collisionStrategy,
             srcSize = entity.size,
             destWidth = if (obj.rotation == 0 || obj.rotation == 2) obj.definitions.getSizeX() else obj.definitions.getSizeY(),
             destHeight = if (obj.rotation == 0 || obj.rotation == 2) obj.definitions.getSizeY() else obj.definitions.getSizeX(),
@@ -1536,11 +1536,12 @@ fun routeEntityToObject(entity: Entity, obj: GameObject, maxTurns: Int = DEFAULT
 }
 
 fun routeEntityToEntity(entity: Entity, target: Entity, maxTurns: Int = DEFAULT_MAX_TURNS): Route {
-    return PathFinder(flags = WorldCollision.allFlags)
+    return PathFinder(flags = WorldCollision.allFlags, useRouteBlockerFlags = true)
         .findPath(
             entity.x, entity.y,
             target.x, target.y,
             entity.plane,
+            collision = entity.collisionStrategy,
             objShape = -2,
             srcSize = entity.size,
             destWidth = target.size,
@@ -1550,13 +1551,13 @@ fun routeEntityToEntity(entity: Entity, target: Entity, maxTurns: Int = DEFAULT_
 }
 
 fun routeEntityToTile(entity: Entity, tile: Tile, maxTurns: Int = DEFAULT_MAX_TURNS): Route {
-    return PathFinder(flags = WorldCollision.allFlags)
-        .findPath(entity.x, entity.y, tile.x, tile.y, entity.plane, srcSize = entity.size, maxTurns = maxTurns)
+    return PathFinder(flags = WorldCollision.allFlags, useRouteBlockerFlags = true)
+        .findPath(entity.x, entity.y, tile.x, tile.y, entity.plane, collision = entity.collisionStrategy, srcSize = entity.size, maxTurns = maxTurns)
 }
 
 fun routeEntityWalkRequest(entity: Entity, request: Walk, maxTurns: Int = DEFAULT_MAX_TURNS): Route {
     return PathFinder(flags = WorldCollision.allFlags, useRouteBlockerFlags = true)
-        .findPath(entity.x, entity.y, request.x, request.y, entity.plane, srcSize = entity.size, maxTurns = maxTurns)
+        .findPath(entity.x, entity.y, request.x, request.y, entity.plane, collision = entity.collisionStrategy, srcSize = entity.size, maxTurns = maxTurns)
 }
 
 fun routeEntityTo(entity: Entity, target: Any, maxTurns: Int = DEFAULT_MAX_TURNS): Route {
@@ -1580,7 +1581,6 @@ fun walkRoute(entity: Entity, route: Route, forceSteps: Boolean): Boolean {
 fun addSteps(entity: Entity, route: Route, forceSteps: Boolean, maxSteps: Int = -1) {
     var lastStep: RouteCoordinates? = null
     for (coord in route.coords) {
-        World.sendSpotAnim(Tile.of(coord.x, coord.y, entity.plane), 2000)
         if (!entity.addWalkSteps(coord.x, coord.y, maxSteps, true, forceSteps)) break
         lastStep = coord
     }
