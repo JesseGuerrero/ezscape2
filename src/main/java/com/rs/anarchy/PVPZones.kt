@@ -1,10 +1,9 @@
 package com.rs.anarchy
 
-import com.rs.cache.loaders.NPCDefinitions
+import com.rs.engine.pathfinder.Direction
 import com.rs.game.World
 import com.rs.game.content.skills.magic.LodestoneAction.Lodestone
 import com.rs.game.model.entity.Entity
-import com.rs.game.model.entity.pathing.Direction
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.SpotAnim
 import com.rs.lib.game.Tile
