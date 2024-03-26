@@ -61881,7 +61881,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 1.0,
-    "examine": "<i>When empty:</i>"
+    "examine": "This orb apparently contains a cypher spell."
   },
   "5519": {
     "uidName": "scrying_orb_dupe2",
@@ -61892,7 +61892,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 1.0,
-    "examine": "<i>When empty:</i>"
+    "examine": "This orb apparently contains a cypher spell."
   },
   "5520": {
     "uidName": "abyssal_book",
