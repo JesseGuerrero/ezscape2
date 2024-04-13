@@ -8,7 +8,7 @@ import com.rs.game.World
 import com.rs.game.content.Effect
 import com.rs.game.content.ItemConstants
 import com.rs.game.content.ItemConstants.ItemDegrade
-import com.rs.game.content.Potions
+import com.rs.game.content.Potion
 import com.rs.game.content.Toolbelt
 import com.rs.game.content.Toolbelt.Tools
 import com.rs.game.content.achievements.Achievement
@@ -299,7 +299,7 @@ fun rollPvpDropTable(player: Player, killer: Player) {
         }
     }
 
-    val lostItems = droppedItems.filterNot { Foods.isConsumable(it) || Potions.Potion.POTS.containsKey(it.id) || it.id == 24444 }
+    val lostItems = droppedItems.filterNot { Foods.isConsumable(it) || Potion.POTS.containsKey(it.id) || it.id == 24444 }
 
     generatePKDrop(lostItems.sumOf { it.definitions.value }).forEach {
         World.addGroundItem(it, player.lastTile, killer, true, 60)
@@ -310,7 +310,7 @@ fun generatePKDrop(pkedPlayerDropValue: Int): List<Item> {
     val drops: MutableList<Item> = ArrayList()
 
     val g = Utils.clampD(sqrt(sqrt(pkedPlayerDropValue.toDouble())), 1.0, 50.0)
-    var r = 60000.0 / g
+    val r = 60000.0 / g
 
     Utils.add(
         drops, DropTable.calculateDrops(
