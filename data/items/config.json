@@ -2552,7 +2552,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.007,
     "examine": "Strange spiky grass."
   },
   "232": {
@@ -4676,7 +4676,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 2.0,
-    "examine": "(empty) It's empty... <br /> (full) It's full of pigeons."
+    "examine": "It's full of pigeons."
   },
   "425": {
     "uidName": "pigeon_cage_dupe2",
@@ -4686,8 +4686,8 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 2.0,
-    "examine": "(empty) It's empty... <br /> (full) It's full of pigeons."
+    "weight": 0.5,
+    "examine": "It's empty..."
   },
   "426": {
     "uidName": "priest_gown",
@@ -17354,7 +17354,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.01,
     "examine": "A search warrant for a house in West Ardougne."
   },
   "1504": {
@@ -17376,7 +17376,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.02,
     "examine": "Maybe I should read this..."
   },
   "1506": {
@@ -17398,7 +17398,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.01,
     "examine": "Quite a small key (Plague City)."
   },
   "1508": {
@@ -17409,7 +17409,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.01,
     "examine": "It seems to say \"hongorer lure\"..."
   },
   "1509": {
@@ -17420,7 +17420,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.1,
     "examine": "It's a Book."
   },
   "1510": {
@@ -22524,7 +22524,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.15,
     "examine": "Mmmmmmm chocolate."
   },
   "1974": {
@@ -22546,7 +22546,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.15,
     "examine": "It's ground-up chocolate."
   },
   "1976": {
@@ -24207,7 +24207,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.014,
     "examine": "Some rather pretty blue berries picked from a dwellberry bush."
   },
   "2127": {

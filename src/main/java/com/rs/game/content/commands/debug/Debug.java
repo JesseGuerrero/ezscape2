@@ -24,11 +24,13 @@ import com.rs.engine.quest.Quest;
 import com.rs.game.World;
 import com.rs.game.content.combat.CombatDefinitions.Spellbook;
 import com.rs.game.content.minigames.fightkiln.FightKilnController;
+import com.rs.game.content.quests.death_plateau.instances.PlayerVSTheMapController;
 import com.rs.game.content.quests.demonslayer.PlayerVSDelrithController;
 import com.rs.game.content.quests.demonslayer.WallyVSDelrithCutscene;
 import com.rs.game.content.quests.dragonslayer.DragonSlayer_BoatScene;
 import com.rs.game.content.quests.gunnarsground.cutscene.GunnarsGroundCutscenes;
 import com.rs.game.content.quests.merlinscrystal.MerlinsCrystalCrateScene;
+import com.rs.game.content.quests.plaguecity.cutscene.PlagueCityCutscene;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.lib.Constants;
@@ -73,6 +75,15 @@ public class Debug {
 
 		Commands.add(Rights.ADMIN, "shapemusic", "Starts showing music shape.", (p, args) -> musicMoveOn = !musicMoveOn);
 
+		Commands.add(Rights.ADMIN, "sshift", "Transforms into specified NPC.", (p, args) -> {
+			p.getAppearance().transformIntoNPC(Integer.valueOf(args[0]));
+		});
+
+		Commands.add(Rights.ADMIN, "cleartoolbelt", "Clears your toolbelt.", (p, args) -> {
+			p.clearToolbelt();
+			p.sendMessage("You have cleared your toolbelt.");
+		});
+
 		Commands.add(Rights.PLAYER, "coords,getpos,mypos,pos,loc", "Gets the coordinates for the tile.", (p, args) -> {
 			p.sendMessage("Coords: " + p.getX() + "," + p.getY() + "," + p.getPlane() + ", regionId: " + p.getRegionId() + ", chunkX: " + p.getChunkX() + ", chunkY: " + p.getChunkY());
 			p.sendMessage("JagCoords: " + p.getPlane() + "," + p.getRegionX() + "," + p.getRegionY() + "," + p.getXInScene(p.getSceneBaseChunkId()) + "," + p.getYInScene(p.getSceneBaseChunkId()));
@@ -100,8 +111,9 @@ public class Debug {
 				case 2 -> p.getControllerManager().startController(new DragonSlayer_BoatScene());
 				case 3 -> p.getControllerManager().startController(new MerlinsCrystalCrateScene());
 				case 4 -> new GunnarsGroundCutscenes(p);
+				case 5 -> new PlagueCityCutscene(p);
+				case 6 -> p.getControllerManager().startController(new PlayerVSTheMapController());
 			}
-
 		});
 
 		Commands.add(Rights.PLAYER, "getcontroller", "Shows current controller", (p, args) -> p.sendMessage("Controller -> " + (p.getControllerManager().getController() == null ? "does not exist..." : p.getControllerManager().getController().getClass().getName())));
