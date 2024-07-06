@@ -13460,7 +13460,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2852,
     "attackRange": 0,
     "weight": 5.4,
     "examine": "A large metal shield."
@@ -13482,7 +13482,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2856,
     "attackRange": 0,
     "weight": 5.4,
     "examine": "A large metal shield."
@@ -13504,7 +13504,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2574,
     "attackRange": 0,
     "weight": 5.4,
     "examine": "A large metal shield."
@@ -13526,7 +13526,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2955,
     "attackRange": 0,
     "weight": 5.4,
     "examine": "A large metal shield."
@@ -13548,7 +13548,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2862,
     "attackRange": 0,
     "weight": 4.5,
     "examine": "A large metal shield."
@@ -13570,7 +13570,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2949,
     "attackRange": 0,
     "weight": 5.8,
     "examine": "A large metal shield."
@@ -13592,7 +13592,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.4,
     "examine": "A large metal shield."
@@ -16398,6 +16398,12 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
+    "attackAnims": {
+      "0": 440,
+      "1": 440,
+      "2": 438,
+      "3": 440
+    },
     "weight": 3.0,
     "examine": "It's a Scythe."
   },
@@ -27889,7 +27895,7 @@
   "2460": {
     "uidName": "flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -27911,7 +27917,7 @@
   "2462": {
     "uidName": "red_flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -27933,7 +27939,7 @@
   "2464": {
     "uidName": "blue_flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -27955,7 +27961,7 @@
   "2466": {
     "uidName": "yellow_flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -27977,7 +27983,7 @@
   "2468": {
     "uidName": "purple_flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -27999,7 +28005,7 @@
   "2470": {
     "uidName": "orange_flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -28021,7 +28027,7 @@
   "2472": {
     "uidName": "flowers_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -28043,7 +28049,7 @@
   "2474": {
     "uidName": "white_flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -28065,7 +28071,7 @@
   "2476": {
     "uidName": "black_flowers",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -29311,7 +29317,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2955,
     "attackRange": 0,
     "weight": 5.0,
     "examine": "Black kiteshield with trim."
@@ -29399,7 +29405,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2955,
     "attackRange": 0,
     "weight": 5.0,
     "examine": "<a href=\"/wiki/Black_kiteshield\" title=\"Black kiteshield\">Black kiteshield</a> with gold trim."
@@ -29465,7 +29471,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2949,
     "attackRange": 0,
     "weight": 5.8,
     "examine": "A large metal shield."
@@ -29553,7 +29559,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound":2949,
     "attackRange": 0,
     "weight": 6.0,
     "examine": "Adamant kiteshield with gold trim."
@@ -29663,7 +29669,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.0,
     "examine": "Rune kiteshield with gold trim"
@@ -29751,7 +29757,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.0,
     "examine": "A large, metal shield with a nice trim."
@@ -51244,7 +51250,7 @@
   "4566": {
     "uidName": "rubber_chicken",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -69040,7 +69046,7 @@
   "6137": {
     "uidName": "skeletal_helm",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -69062,7 +69068,7 @@
   "6139": {
     "uidName": "skeletal_top",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -69084,7 +69090,7 @@
   "6141": {
     "uidName": "skeletal_bottoms",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -69106,7 +69112,7 @@
   "6143": {
     "uidName": "spined_boots",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -69216,7 +69222,7 @@
   "6153": {
     "uidName": "skeletal_gloves",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -85676,6 +85682,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85687,6 +85698,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85698,6 +85714,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85709,6 +85730,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85720,6 +85746,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85731,6 +85762,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85742,6 +85778,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85753,6 +85794,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85764,6 +85810,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -85775,6 +85826,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -88875,7 +88931,7 @@
   "7927": {
     "uidName": "easter_ring",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -100001,7 +100057,7 @@
   "8936": {
     "uidName": "blue_flowers_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -100012,7 +100068,7 @@
   "8937": {
     "uidName": "blue_flowers_cert_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -100023,7 +100079,7 @@
   "8938": {
     "uidName": "red_flowers_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -100034,7 +100090,7 @@
   "8939": {
     "uidName": "red_flowers_cert_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -110886,7 +110942,7 @@
   "9920": {
     "uidName": "jack_lantern_mask",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 3227,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -110897,7 +110953,7 @@
   "9921": {
     "uidName": "skeleton_boots",
     "dropSound": 2739,
-    "equipSound": 2237,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -110908,7 +110964,7 @@
   "9922": {
     "uidName": "skeleton_gloves",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -110919,7 +110975,7 @@
   "9923": {
     "uidName": "skeleton_leggings",
     "dropSound": 2739,
-    "equipSound": 2242,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -110941,7 +110997,7 @@
   "9925": {
     "uidName": "skeleton_mask",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -116644,6 +116700,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -116666,6 +116727,11 @@
     "dropSound": 2739,
     "equipSound": 2247,
     "attackDelay": 3,
+        "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
@@ -116689,6 +116755,11 @@
     "equipSound": 2247,
     "attackDelay": 3,
     "defendAnim": -1,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendSound": -1,
     "attackRange": 0,
     "weight": 2.0,
@@ -117383,7 +117454,7 @@
   "10507": {
     "uidName": "reindeer_hat",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -119759,7 +119830,7 @@
   "10723": {
     "uidName": "jack_lantern_mask_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 3227,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -119781,7 +119852,7 @@
   "10725": {
     "uidName": "skeleton_gloves_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -119792,7 +119863,7 @@
   "10726": {
     "uidName": "skeleton_leggings_dupe2",
     "dropSound": 2739,
-    "equipSound": 2242,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -119803,7 +119874,7 @@
   "10727": {
     "uidName": "skeleton_shirt_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -119814,7 +119885,7 @@
   "10728": {
     "uidName": "skeleton_mask_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -122984,7 +123055,7 @@
   "11015": {
     "uidName": "chicken_head",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -122995,7 +123066,7 @@
   "11016": {
     "uidName": "chicken_feet",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -123006,7 +123077,7 @@
   "11017": {
     "uidName": "chicken_wings",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -123017,7 +123088,7 @@
   "11018": {
     "uidName": "chicken_legs",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -123028,7 +123099,7 @@
   "11019": {
     "uidName": "chicken_feet_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -123039,7 +123110,7 @@
   "11020": {
     "uidName": "chicken_wings_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -123050,7 +123121,7 @@
   "11021": {
     "uidName": "chicken_head_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -123061,7 +123132,7 @@
   "11022": {
     "uidName": "chicken_legs_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -157388,7 +157459,7 @@
   "14076": {
     "uidName": "warlock_top",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -157399,7 +157470,7 @@
   "14077": {
     "uidName": "warlock_legs",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -157410,7 +157481,7 @@
   "14078": {
     "uidName": "witch_top",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -157421,7 +157492,7 @@
   "14079": {
     "uidName": "witch_skirt",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -157432,7 +157503,7 @@
   "14080": {
     "uidName": "witch_cloak",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -157443,7 +157514,7 @@
   "14081": {
     "uidName": "warlock_cloak",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -172397,7 +172468,7 @@
   "15422": {
     "uidName": "christmas_ghost_hood",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -172408,7 +172479,7 @@
   "15423": {
     "uidName": "christmas_ghost_top",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -172419,7 +172490,7 @@
   "15424": {
     "uidName": "christmas_ghost_top_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -172430,7 +172501,7 @@
   "15425": {
     "uidName": "christmas_ghost_bottoms",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -172441,7 +172512,7 @@
   "15426": {
     "uidName": "candy_cane",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -175198,7 +175269,7 @@
   "15673": {
     "uidName": "squirrel_ears",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -217850,6 +217921,11 @@
     "equipSound": 2247,
     "attackDelay": 3,
     "defendAnim": -1,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendSound": -1,
     "attackRange": 0,
     "weight": 2.0,
@@ -217872,6 +217948,11 @@
     "equipSound": 2247,
     "attackDelay": 3,
     "defendAnim": -1,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendSound": -1,
     "attackRange": 0,
     "weight": 2.0,
@@ -217894,6 +217975,11 @@
     "equipSound": 2247,
     "attackDelay": 3,
     "defendAnim": -1,
+    "attackAnims": {
+      "0": 393,
+      "1": 393,
+      "2": 393
+      },
     "defendSound": -1,
     "attackRange": 0,
     "weight": 2.0,
@@ -218378,7 +218464,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.0,
     "examine": "A rune kiteshield in the colours of a forgotten god."
@@ -218400,7 +218486,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.0,
     "examine": "A rune kiteshield in the colours of a forgotten god."
@@ -218543,7 +218629,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.4,
     "examine": "A rune kiteshield in the colours of Armadyl"
@@ -218565,7 +218651,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.4,
     "examine": "A rune kiteshield in the colours of Armadyl"
@@ -218708,7 +218794,7 @@
     "equipSound": 2245,
     "attackDelay": -1,
     "defendAnim": 1156,
-    "defendSound": -1,
+    "defendSound": 2750,
     "attackRange": 0,
     "weight": 5.0,
     "examine": "A rune kiteshield in the colours of Bandos."
@@ -225723,7 +225809,7 @@
   "20077": {
     "uidName": "salty_claws_hat",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -232844,7 +232930,7 @@
   "20714": {
     "uidName": "bouquet",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -232866,7 +232952,7 @@
   "20716": {
     "uidName": "bubble_maker",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -232877,7 +232963,7 @@
   "20717": {
     "uidName": "bubble_maker_cert",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -232888,7 +232974,7 @@
   "20718": {
     "uidName": "confetti",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -232965,7 +233051,7 @@
   "20725": {
     "uidName": "souvenir_mug",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -232976,7 +233062,7 @@
   "20726": {
     "uidName": "souvenir_mug_cert",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -250762,18 +250848,24 @@
   "22321": {
     "uidName": "golden_scythe",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2247,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
+        "attackAnims": {
+      "0": 440,
+      "1": 440,
+      "2": 438,
+      "3": 440
+    },
     "weight": 0.0,
     "examine": "Awarded only to the very fastest of 'Festers (2011)."
   },
   "22322": {
     "uidName": "sock_mask",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -250784,7 +250876,7 @@
   "22323": {
     "uidName": "buskin_mask",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -250795,7 +250887,7 @@
   "22324": {
     "uidName": "deathcon_lanyard",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -250839,7 +250931,7 @@
   "22328": {
     "uidName": "hourglass_dupe3",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -251797,7 +251889,7 @@
   "22412": {
     "uidName": "chrome_goggles",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273895,7 +273987,7 @@
   "24406": {
     "uidName": "diamond_jubilee_souvenir_hat",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273906,7 +273998,7 @@
   "24407": {
     "uidName": "diamond_jubilee_souvenir_hat_cert",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273917,7 +274009,7 @@
   "24408": {
     "uidName": "diamond_jubilee_souvenir_hat_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273928,7 +274020,7 @@
   "24409": {
     "uidName": "diamond_jubilee_souvenir_hat_cert_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273939,7 +274031,7 @@
   "24410": {
     "uidName": "diamond_jubilee_souvenir_hat_dupe3",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273950,7 +274042,7 @@
   "24411": {
     "uidName": "diamond_jubilee_souvenir_hat_cert_dupe3",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273961,7 +274053,7 @@
   "24412": {
     "uidName": "diamond_jubilee_souvenir_flag",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273972,7 +274064,7 @@
   "24413": {
     "uidName": "diamond_jubilee_souvenir_flag_cert",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273983,7 +274075,7 @@
   "24414": {
     "uidName": "diamond_jubilee_souvenir_flag_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -273994,7 +274086,7 @@
   "24415": {
     "uidName": "diamond_jubilee_souvenir_flag_cert_dupe2",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -274005,7 +274097,7 @@
   "24416": {
     "uidName": "diamond_jubilee_souvenir_flag_dupe3",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": 3,
     "defendAnim": -1,
     "defendSound": -1,
@@ -274016,7 +274108,7 @@
   "24417": {
     "uidName": "diamond_jubilee_souvenir_flag_cert_dupe3",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -274027,7 +274119,7 @@
   "24418": {
     "uidName": "diamond_sceptre",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
@@ -274038,7 +274130,7 @@
   "24419": {
     "uidName": "diamond_crown",
     "dropSound": 2739,
-    "equipSound": 2240,
+    "equipSound": 2238,
     "attackDelay": -1,
     "defendAnim": -1,
     "defendSound": -1,
