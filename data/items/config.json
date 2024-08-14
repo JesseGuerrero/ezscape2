@@ -7676,7 +7676,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.02,
     "examine": "The owner has passed Earth Sciences Level 1 exam."
   },
   "692": {
@@ -7687,7 +7687,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.02,
     "examine": "The owner has passed Earth Sciences Level 2 exam."
   },
   "693": {
@@ -7698,7 +7698,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.02,
     "examine": "The owner has passed Earth Sciences Level 3 exam."
   },
   "694": {
@@ -7709,7 +7709,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.056,
     "examine": "Smashing!"
   },
   "695": {
@@ -7731,7 +7731,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.02,
     "examine": "A letter inviting me to use the private digging shafts."
   },
   "697": {
@@ -7764,7 +7764,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.8,
     "examine": "An old stone slab with writing on it."
   },
   "700": {
@@ -7775,7 +7775,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.028,
     "examine": "An acrid chemical."
   },
   "701": {
@@ -7786,7 +7786,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.015,
     "examine": "An acrid chemical."
   },
   "702": {
@@ -7819,7 +7819,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.008,
     "examine": "Charcoal - crushed to small pieces!"
   },
   "705": {
@@ -7830,8 +7830,8 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
-    "examine": "It's a Mixed chemicals."
+    "weight": 0.03,
+    "examine": "A mixture of strong chemicals."
   },
   "706": {
     "uidName": "mixed_chemicals_dupe2",
@@ -7841,8 +7841,8 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
-    "examine": "It's a Mixed chemicals."
+    "weight": 0.03,
+    "examine": "A mixture of strong chemicals."
   },
   "707": {
     "uidName": "chemical_compound",
@@ -7863,7 +7863,7 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
+    "weight": 0.01,
     "examine": "The root of an arcenia plant."
   },
   "709": {
@@ -7874,8 +7874,8 @@
     "defendAnim": -1,
     "defendSound": -1,
     "attackRange": 0,
-    "weight": 0.0,
-    "examine": "It's a Chest key."
+    "weight": 0.01,
+    "examine": "This fits a chest."
   },
   "710": {
     "uidName": "vase",
