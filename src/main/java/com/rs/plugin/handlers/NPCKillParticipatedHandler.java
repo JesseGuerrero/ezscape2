@@ -14,17 +14,22 @@
 //  Copyright (C) 2021 Trenton Kress
 //  This file is part of project: Darkan
 //
-package com.rs.game.content.bosses.corp;
+package com.rs.plugin.handlers;
 
-import com.rs.engine.cutscene.Cutscene;
-import com.rs.engine.dialogue.Dialogue;
-import com.rs.game.model.entity.player.Player;
+import com.rs.plugin.events.NPCKillParticipatedEvent;
 
-public class CorporealBeastScene extends Cutscene {
-	@Override
-	public void construct(Player player) {
-		camPos(2993, 4378, 1000);
-		camLook(2984, 4383, 5000);
-		dialogue(new Dialogue().addSimple("You peek through the door."), true);
+import java.util.function.Consumer;
+
+public class NPCKillParticipatedHandler extends PluginHandler<NPCKillParticipatedEvent> {
+	public NPCKillParticipatedHandler(Object[] namesOrIds, Consumer<NPCKillParticipatedEvent> handler) {
+		super(namesOrIds, handler);
+	}
+
+	public NPCKillParticipatedHandler(int id, Consumer<NPCKillParticipatedEvent> handler) {
+		super(new Object[] { id }, handler);
+	}
+
+	public NPCKillParticipatedHandler(String name, Consumer<NPCKillParticipatedEvent> handler) {
+		super(new Object[] { name }, handler);
 	}
 }

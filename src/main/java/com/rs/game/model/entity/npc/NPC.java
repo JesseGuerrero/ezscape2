@@ -58,6 +58,7 @@ import com.rs.lib.util.Utils;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.NPCDeathEvent;
 import com.rs.plugin.events.NPCDropEvent;
+import com.rs.plugin.events.NPCKillParticipatedEvent;
 import com.rs.tools.old.CharmDrop;
 import com.rs.utils.DropSets;
 import com.rs.utils.EffigyDrop;
@@ -110,7 +111,6 @@ public class NPC extends Entity {
 	private transient boolean permName;
 	private int combatLevel;
 	private transient boolean changedCombatLevel;
-	private transient boolean locked;
 	private transient boolean skipWalkStep;
 	private transient boolean deleted = false;
 	private transient TaskInformation respawnTask;
@@ -264,7 +264,7 @@ public class NPC extends Entity {
 	}
 
 	public void processNPC() {
-		if (isDead() || locked)
+		if (isDead() || isLocked())
 			return;
 		//Restore combat stats
 		if (getTickCounter() % 100 == 0)
@@ -510,6 +510,7 @@ public class NPC extends Entity {
 		}
 		setNextAnimation(null);
 		PluginManager.handle(new NPCDeathEvent(this, source));
+		getRecievedDamageEntities().forEach(entity -> PluginManager.handle(new NPCKillParticipatedEvent(this, entity)));
 		WorldTasks.scheduleTimer(loop -> {
 			if (loop == 0) {
 				setNextAnimation(new Animation(defs.getDeathEmote()));
@@ -544,12 +545,6 @@ public class NPC extends Entity {
 
 			if (killer.getControllerManager().getController() != null && killer.getControllerManager().getController() instanceof GodwarsController)
 				killer.sendGodwarsKill(this);
-
-			if (killer.hasBossTask()) {
-				String taskName = killer.getBossTask().getName().toLowerCase();
-				if (this.getDefinitions().getName().equalsIgnoreCase(taskName))
-					killer.getBossTask().sendKill(killer, this);
-			}
 
 			if (killer.hasSlayerTask() && killer.getSlayer().isOnTaskAgainst(this))
 				killer.getSlayer().sendKill(killer, this);
@@ -1122,37 +1117,6 @@ public class NPC extends Entity {
 
 	public boolean withinDistance(Player tile, int distance) {
 		return !hidden && super.withinDistance(tile.getTile(), distance);
-	}
-
-	/**
-	 * Gets the locked.
-	 *
-	 * @return The locked.
-	 */
-	public boolean isLocked() {
-		return locked;
-	}
-
-	/**
-	 * Sets the locked.
-	 *
-	 * @param locked
-	 *            The locked to set.
-	 */
-	public void setLocked(boolean locked) {
-		this.locked = locked;
-	}
-
-	public void setLockedForTicks(int ticks) {
-		WorldTasks.scheduleTimer(i -> {
-			if(i==0)
-				this.locked = true;
-			if(i==ticks) {
-				this.locked = false;
-				return false;
-			}
-			return true;
-		});
 	}
 
 	@Override

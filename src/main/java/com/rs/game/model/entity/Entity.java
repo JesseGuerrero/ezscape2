@@ -612,6 +612,10 @@ public abstract class Entity {
 		return DumbRouteFinder.addDumbPathfinderSteps(this, target, getCollisionStrategy());
 	}
 
+	public Set<Entity> getRecievedDamageEntities() {
+		return receivedDamage.keySet();
+	}
+
 	public Player getMostDamageReceivedSourcePlayer() {
 		Player player = null;
 		int damage = -1;
@@ -1707,7 +1711,7 @@ public abstract class Entity {
 	}
 
 	public boolean inMeleeRange(Entity target) {
-		return WorldUtil.isInRange(getX(), getY(), getSize(), target.getX(), target.getY(), target.getSize(), 0);
+		return World.checkMeleeStep(this, getSize(), target, target.getSize());
 	}
 
 	public boolean isForceUpdateEntityRegion() {
@@ -1975,6 +1979,16 @@ public abstract class Entity {
 
 	public void sync(Animation anim, SpotAnim spotAnim) {
 		setNextAnimation(anim);
+		setNextSpotAnim(spotAnim);
+	}
+
+	public void sync(Animation anim, int spotAnim) {
+		setNextAnimation(anim);
+		spotAnim(spotAnim);
+	}
+
+	public void sync(int anim, SpotAnim spotAnim) {
+		anim(anim);
 		setNextSpotAnim(spotAnim);
 	}
 
