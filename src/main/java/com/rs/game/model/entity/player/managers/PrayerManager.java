@@ -684,7 +684,8 @@ public class PrayerManager {
 			double d = (5 + getStatMod(StatMod.MAGE));
 			value += d / 100;
 		}
-		return value;
+		double churchMultiplier = 1 + 0.001 * player.getCounterValue("ServicesAttended");
+		return value * churchMultiplier;
 	}
 
 	public double getRangeMultiplier() {
@@ -704,7 +705,8 @@ public class PrayerManager {
 			double d = (5 + getStatMod(StatMod.RANGE));
 			value += d / 100;
 		}
-		return value;
+		double churchMultiplier = 1 + 0.001 * player.getCounterValue("ServicesAttended");
+		return value * churchMultiplier;
 	}
 
 	public double getAttackMultiplier() {
@@ -729,7 +731,8 @@ public class PrayerManager {
 			double d = (15 + getStatMod(StatMod.ATTACK));
 			value += d / 100;
 		}
-		return value;
+		double churchMultiplier = 1 + 0.001 * player.getCounterValue("ServicesAttended");
+		return value * churchMultiplier;
 	}
 
 	public double getStrengthMultiplier() {
@@ -754,7 +757,8 @@ public class PrayerManager {
 			double d = (23 + getStatMod(StatMod.STRENGTH));
 			value += d / 100;
 		}
-		return value;
+		double churchMultiplier = 1 + 0.001 * player.getCounterValue("ServicesAttended");
+		return value * churchMultiplier;
 	}
 
 	public double getDefenceMultiplier() {
@@ -779,7 +783,8 @@ public class PrayerManager {
 			double d = (15 + getStatMod(StatMod.DEFENSE));
 			value += d / 100;
 		}
-		return value;
+		double churchMultiplier = 1 + 0.001 * player.getCounterValue("ServicesAttended");
+		return value * churchMultiplier;
 	}
 
 	public boolean isCurses() {

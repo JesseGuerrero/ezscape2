@@ -39,6 +39,7 @@ import com.rs.plugin.handlers.ButtonClickHandler;
 import com.rs.plugin.handlers.ItemOnNPCHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 import kotlin.Pair;
 
 @PluginEventHandler
@@ -559,6 +560,7 @@ public class RunespanController extends Controller {
 	}
 
 	public void addRunespanPoints(double value) {
+		value *= EZScape.multiplyRunespanPoints();
 		player.addRunespanPoints(value);
 		refreshPoints(player);
 	}

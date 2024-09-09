@@ -29,6 +29,7 @@ import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
 import com.rs.plugin.handlers.ItemOnNPCHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
+import com.rs.rsps.EZScape;
 import com.rs.utils.DropSets;
 import com.rs.utils.drop.DropTable;
 
@@ -116,6 +117,10 @@ public class CommendationExchange {
 	public static void buySkillXp(Player player, int skillId, int componentId) {
 		if (player.getSkills().getLevelForXp(skillId) < 25) {
 			player.sendMessage("You need 25 " + Skills.SKILL_NAME[skillId] + " to purchase experience.");
+			return;
+		}
+		if (EZScape.limit99PestControl(player, skillId)) {
+			player.sendMessage("Your " + Skills.SKILL_NAME[skillId] + " level has reached its limit of 99");
 			return;
 		}
 		double multiplier = switch(skillId) {

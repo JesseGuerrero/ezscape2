@@ -12,6 +12,7 @@ import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onButtonClick
 import com.rs.plugin.kts.onItemOnNpc
 import com.rs.plugin.kts.onNpcClick
+import com.rs.rsps.EZScape
 import com.rs.utils.DropSets
 import com.rs.utils.drop.DropTable
 import kotlin.math.floor
@@ -171,6 +172,8 @@ fun buyXp(player: Player, skillId: Int, packet: ClientPacket) {
         player.sendMessage("You don't have enough Zeal.")
         return
     }
+    if(EZScape.limitZealUse(player, skillId))
+        return;
     player.soulWarsZeal -= zealCost
     player.skills.addXp(skillId, getXpPerZeal(player.skills.getLevelForXp(skillId), skillId).toDouble() * zealCost)
 }

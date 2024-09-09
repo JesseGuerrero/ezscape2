@@ -20,6 +20,7 @@ import com.rs.engine.dialogue.Conversation;
 import com.rs.game.content.skills.dungeoneering.DungeonConstants;
 import com.rs.game.content.skills.dungeoneering.DungeonPartyManager;
 import com.rs.game.model.entity.player.Player;
+import com.rs.rsps.EZScape;
 
 public class DungeonSize extends Conversation {
 	public DungeonSize(Player player) {
@@ -39,12 +40,11 @@ public class DungeonSize extends Conversation {
 					player.getDungManager().enterDungeon(false);
 				}
 			});
-			ops.add("Large.", () -> {
-				if(party != null) {
+			if(party != null && party.getTeam().size() >= EZScape.getLargeDungPartSizeRequirement())
+				ops.add("Large.", () -> {
 					player.getDungManager().setSize(DungeonConstants.Size.Large);
 					player.getDungManager().enterDungeon(false);
-				}
-			});
+				});
 		});
 		create();
 	}

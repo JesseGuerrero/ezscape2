@@ -59,6 +59,7 @@ import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.NPCDeathEvent;
 import com.rs.plugin.events.NPCDropEvent;
 import com.rs.plugin.events.NPCKillParticipatedEvent;
+import com.rs.rsps.EZScape;
 import com.rs.tools.old.CharmDrop;
 import com.rs.utils.DropSets;
 import com.rs.utils.EffigyDrop;
@@ -554,7 +555,7 @@ public class NPC extends Entity {
 				killer.getVars().setVarBit(464, killer.getBarrowsKillCount()+killer.getKilledBarrowBrothersCount());
 			}
 
-			Item[] drops = DropTable.calculateDrops(killer, DropSets.getDropSet(id));
+			Item[] drops = EZScape.tripleNPCDrops(killer, id);
 
 			for (Item item : drops)
 				sendDrop(killer, item);

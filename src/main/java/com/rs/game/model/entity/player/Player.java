@@ -119,6 +119,7 @@ import com.rs.net.decoders.handlers.PacketHandlers;
 import com.rs.net.encoders.WorldEncoder;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.*;
+import com.rs.rsps.EZScape;
 import com.rs.utils.AccountLimiter;
 import com.rs.utils.MachineInformation;
 import com.rs.utils.Ticks;
@@ -972,13 +973,14 @@ public class Player extends Entity {
 
 	private void processTimePlayedTasks() {
 		if (timePlayed % 500 == 0) {
-			if (getDailyI("loyaltyTicks") < 12) {
-				loyaltyPoints += 175;
-				incDailyI("loyaltyTicks");
-			} else if (!getDailyB("loyaltyNotifiedCap")) {
-				sendMessage("<col=FF0000>You've reached your loyalty point cap for the day. You now have " + Utils.formatNumber(loyaltyPoints) + ".");
-				setDailyB("loyaltyNotifiedCap", true);
-			}
+			if(EZScape.updateLoyalty(this))
+				if (getDailyI("loyaltyTicks") < 12) {
+					loyaltyPoints += 175;
+					incDailyI("loyaltyTicks");
+				} else if (!getDailyB("loyaltyNotifiedCap")) {
+					sendMessage("<col=FF0000>You've reached your loyalty point cap for the day. You now have " + Utils.formatNumber(loyaltyPoints) + ".");
+					setDailyB("loyaltyNotifiedCap", true);
+				}
 		}
 	}
 

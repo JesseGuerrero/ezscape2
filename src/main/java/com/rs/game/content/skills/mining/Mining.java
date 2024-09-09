@@ -35,6 +35,7 @@ import com.rs.plugin.handlers.ItemClickHandler;
 import com.rs.plugin.handlers.LoginHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -181,6 +182,7 @@ public class Mining extends Action {
 			if (ore.checkRequirements(entity instanceof Player player ? player : null) && ore.rollSuccess(entity instanceof Player player ? player : null, level)) {
 				if (entity instanceof Player player) {
 					ore.giveOre(player);
+					EZScape.giveTwoExtraOre(player, ore);
 					int[] range = VARROCK_ARMOR_ORE_TIERS.get(ore);
 					if (range != null && Arrays.stream(SetReward.VARROCK_ARMOR.getItemIds(), range[0], range[1]).anyMatch(x -> x == player.getEquipment().getChestId()) && Utils.random(100) <= 10)
 						ore.giveOre(player);

@@ -21,6 +21,7 @@ import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.Constants;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 import com.rs.utils.shop.ShopsHandler;
 
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public class SlayerTaskManager {
 				else
 					amount = player.getSlayer().getMaster().getPoints();
 			} else
-				amount = player.getSlayer().getMaster().getPoints();
+				amount = EZScape.multiplySlayerPointsTimesFive(amount);
 			player.addSlayerPoints(amount);
 			player.sendMessage("You have completed " + player.consecutiveTasks + " tasks in a row and receive "+amount+" slayer points!");
 			player.sendMessage("You have finished your slayer task, talk to a slayer master for a new one.");
@@ -137,7 +138,7 @@ public class SlayerTaskManager {
 		Task chosenTask = possibleTasks.get(Utils.random(possibleTasks.size()-1));
 		setTask(chosenTask);
 		player.updateSlayerTask();
-		killsLeft = Utils.random(chosenTask.getMin(), chosenTask.getMax());
+		killsLeft = EZScape.reduceSlayerTaskAmount(chosenTask);
 	}
 
 	public void getTaskFrom(Player player, final Master master) {

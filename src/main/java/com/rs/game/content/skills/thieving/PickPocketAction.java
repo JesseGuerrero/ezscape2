@@ -30,6 +30,7 @@ import com.rs.lib.game.SpotAnim;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
+import com.rs.rsps.EZScape;
 import com.rs.utils.drop.DropTable;
 @PluginEventHandler
 public class PickPocketAction extends PlayerAction {
@@ -119,7 +120,7 @@ public class PickPocketAction extends PlayerAction {
 			player.incrementCount(npc.getDefinitions().getName()+" pickpocketed");
 			player.getSkills().addXp(Constants.THIEVING, totalXp);
 			for (int i = 0; i <= index; i++) {
-				Item[] items = DropTable.calculateDrops(player, npcData.getLoot());
+				Item[] items = EZScape.tenTimesPickPocket(player, npcData);
 				for (Item item : items)
 					player.getInventory().addItem(item.getId(), item.getAmount());
 			}

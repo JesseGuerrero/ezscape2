@@ -30,6 +30,7 @@ import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemClickHandler;
 import com.rs.plugin.handlers.ItemEquipHandler;
 import com.rs.plugin.handlers.XPGainHandler;
+import com.rs.rsps.EZScape;
 import com.rs.utils.Millis;
 
 import java.util.HashMap;
@@ -258,6 +259,8 @@ public class AuraManager {
 			return 0;
 		if (aura == Aura.JACK_OF_TRADES)
 			return player.getDailyB("usedJoT") ? Long.MAX_VALUE : 0;
+		if(EZScape.removeLoyaltyAuraCooldowns())
+			return 0;
 		if (aura == Aura.WISDOM)
 			return player.getDailyB("usedWisdom") ? Long.MAX_VALUE : 0;
 		return auraCds.get(aura) - System.currentTimeMillis();

@@ -154,7 +154,7 @@ public class ChurchService extends Controller {
 
 
     public boolean processObjectClick1(GameObject object) {
-        if(object.getId() == 36972 && serviceStarted == false /*&& !player.getDailyB("HasDoneSermon")*/) {
+        if(object.getId() == 36972 && serviceStarted == false && !player.getDailyB("HasDoneSermon")) {
             serviceStarted = true;
             WorldTasks.delay(Ticks.fromMinutes(2), () -> {
                 serviceStarted = false;

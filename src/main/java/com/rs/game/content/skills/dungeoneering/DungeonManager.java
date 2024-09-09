@@ -58,6 +58,7 @@ import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -248,7 +249,7 @@ public class DungeonManager {
 	}
 
 	public int getBossLevel() {
-		return (int) (party.getAverageCombatLevel() * 1.5);
+		return (int) (party.getAverageCombatLevel() * EZScape.getDungBossMultiplier());
 	}
 
 	public void openRoom(final Room room, final RoomReference reference, final VisibleRoom visibleRoom) {
@@ -1229,6 +1230,7 @@ public class DungeonManager {
 			multiplier = Math.max(0.1, multiplier);
 			double totalXp = averageXP * multiplier;
 			int tokens = (int) (totalXp / 10.0);
+			tokens*= EZScape.dungTokenMultiplier();
 			player.getPackets().sendVarc(1237, (int) (floorXP * 10));
 			player.getPackets().sendVarc(1238, (int) (prestigeXP * 10));
 			player.getPackets().sendVarc(1239, (int) (averageXP * 10));

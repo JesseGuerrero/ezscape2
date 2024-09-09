@@ -39,6 +39,7 @@ import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.LoginHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 import com.rs.utils.DropSets;
 import com.rs.utils.Ticks;
 import com.rs.utils.drop.DropTable;
@@ -210,6 +211,10 @@ public class Woodcutting extends Action {
 		entity.faceObject(treeObj);
 		if (type.rollSuccess(entity instanceof Player player ? player.getAuraManager().getWoodcuttingMul() : 1.0, level, hatchet)) {
 			giveLog(entity);
+			if(EZScape.giveTwoExtraLog() && entity instanceof Player) {
+				giveLog(entity);
+				giveLog(entity);
+			}
 			int fellChance = entity instanceof Player player && player.hasEffect(Effect.EVIL_TREE_WOODCUTTING_BUFF) ? 16 : 8;
 			if (!type.isPersistent() || (Utils.random(fellChance) == 0)) {
 				if (entity instanceof Player player && player.getAuraManager().isActivated(AuraManager.Aura.RESOURCEFUL) && Utils.random(10) == 0) {

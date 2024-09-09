@@ -114,7 +114,7 @@ public class EZScape {
     }
 
     public static void saveFightCaveWave(Player player, int wave) {
-        player.save("fightCavesWaveI", wave);
+        player.set("fightCavesWaveI", wave);
     }
 
     public static int getFightKilnWave(Player player, int defaultWave) {
@@ -122,29 +122,11 @@ public class EZScape {
     }
 
     public static void saveFightKilnWave(Player player, int wave) {
-        player.save("fightKilnWaveI", wave);
+        player.set("fightKilnWaveI", wave);
     }
 
     public static int lootChestMultiplier() {
         return 10;
-    }
-
-    public static boolean wickedHood(Player player) {
-        player.getPackets().setIFText(WICKED_HOOD_INTER, 139,
-                "" + player.getDailySubI("wickedEss", 999));
-        player.getPackets().setIFText(WICKED_HOOD_INTER, 134,
-                "" + player.getDailySubI("wickedTeles", 9));
-        player.getPackets().setIFText(WICKED_HOOD_INTER, 143, "" +
-                player.getDailySubI("wickedRunes", 9));
-        return false;
-    }
-
-    public static int getWickedHoodEss(Player player) {
-        return player.getDailySubI("wickedEss", 999);
-    }
-
-    public static int getWickedHoodTeles() {
-        return 9;
     }
 
     public static int farmMultiplier() {
@@ -203,7 +185,7 @@ public class EZScape {
 
     public static void saveKillCount(Player player, int[] killCount) {
         for(int i = 0; i < killCount.length; i++)
-            player.save("godwars_killcount" + String.valueOf(i), killCount[i]);
+            player.set("godwars_killcount" + String.valueOf(i), killCount[i]);
     }
 
     public static int[] getKillCount(Player player) {

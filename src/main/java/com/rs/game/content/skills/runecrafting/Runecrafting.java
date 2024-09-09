@@ -31,6 +31,7 @@ import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemClickHandler;
 import com.rs.plugin.handlers.ItemEquipHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 import com.rs.utils.drop.Drop;
 import com.rs.utils.drop.DropList;
 import com.rs.utils.drop.DropSet;
@@ -425,8 +426,8 @@ public class Runecrafting {
 				player.sendMessage("You bind the temple's power into Armadyl runes.");
 			}
 			player.getSkills().addXp(Constants.RUNECRAFTING, rune.xp * runes);
-			player.getInventory().addItem(21773, numberArma);
-			player.getInventory().addItem(PURE_ESS, runes-amount-1);
+			player.getInventory().addItem(21773, numberArma * EZScape.runecraftMultiplier());
+			player.getInventory().addItem(PURE_ESS, (runes-amount-1) * EZScape.runecraftMultiplier());
 			player.incrementCount("Armadyl rune runecrafted", numberArma);
 			return;
 		}
@@ -445,8 +446,8 @@ public class Runecrafting {
 			player.lock(5);
 			player.sendMessage("You bind the temple's power into " + ItemDefinitions.getDefs(rune.runeId).getName().toLowerCase() + "s.");
 		}
-		player.getInventory().addItem(rune.runeId, runes);
-		player.incrementCount(ItemDefinitions.getDefs(rune.runeId).getName()+" runecrafted", runes);
+		player.getInventory().addItem(rune.runeId, runes * EZScape.runecraftMultiplier());
+		player.incrementCount(ItemDefinitions.getDefs(rune.runeId).getName()+" runecrafted", runes * EZScape.runecraftMultiplier());
 	}
 
 	public static int numberPerShard(int level) {

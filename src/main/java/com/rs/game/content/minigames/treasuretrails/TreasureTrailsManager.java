@@ -34,6 +34,7 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
+import com.rs.rsps.EZScape;
 import com.rs.utils.DropSets;
 import com.rs.utils.drop.DropTable;
 
@@ -259,6 +260,8 @@ public class TreasureTrailsManager {
 		}
 		level = getScrollLevel(item.getId());
 		if (level != -1) {
+			if(EZScape.openClueReward(player, this, item, level))
+				return true;
 			if (currentClue == null)
 				setCurrentClue(level);
 			if (currentClue.details.type == SIMPLE || currentClue.details.type == ANAGRAM) {

@@ -22,6 +22,7 @@ import com.rs.game.content.skills.dungeoneering.rooms.puzzles.*;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -295,7 +296,7 @@ public class DungeonConstants {
 	 */
 	public enum Size {Small, Medium, Large}
 
-	public static final double[] NPC_COMBAT_LEVEL_COMPLEXITY_MUL = { 0.70, 0.75, 0.80, 0.85, 0.95, 1.0 };
+	public static final double[] NPC_COMBAT_LEVEL_COMPLEXITY_MUL = EZScape.dungCombatLevelsByComplexity();
 
 	// 4x4, 4x8 and 4x8, 2x1(just boss room for test)
 	public static final int[][] DUNGEON_RATIO = {

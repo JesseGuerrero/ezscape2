@@ -31,6 +31,7 @@ import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 import com.rs.utils.Ticks;
 import com.rs.utils.drop.DropSet;
 import com.rs.utils.drop.DropTable;
@@ -214,9 +215,10 @@ public class Thieving {
 		player.getSkills().addXp(Constants.THIEVING, xp);
 		player.incrementCount("Chests thieved");
 		object.setIdTemporary(openedId, Ticks.fromSeconds(respawnTime));
-		for (Item item : loot)
-			if (item != null)
-				player.getInventory().addItem(item);
+		for(int i = 0; i < EZScape.lootChestMultiplier(); i++)
+			for (Item item : loot)
+				if (item != null)
+					player.getInventory().addItem(item);
 	}
 
 	public static boolean pickDoor(Player player, GameObject object) {

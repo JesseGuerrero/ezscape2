@@ -32,6 +32,7 @@ import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 import kotlin.Pair;
 
 @PluginEventHandler
@@ -43,7 +44,7 @@ public class GodwarsController extends Controller {
 	public static int BANDOS = 3;
 	public static int ZAMORAK = 4;
 
-	private final int[] killcount = new int[5];
+	private int[] killcount = new int[5];
 	private long lastPrayerRecharge;
 
 	@Override
@@ -53,6 +54,7 @@ public class GodwarsController extends Controller {
 
 	@Override
 	public void start() {
+		killcount = EZScape.getKillCount(player);
 		sendInterfaces();
 	}
 
@@ -308,6 +310,7 @@ public class GodwarsController extends Controller {
 		player.getVars().setVarBit(8725, killcount[ZAROS]);
 		player.getVars().setVarBit(3941, killcount[BANDOS]);
 		player.getVars().setVarBit(3942, killcount[ZAMORAK]);
+		EZScape.saveKillCount(player, killcount);
 	}
 
 	public void sendKill(int index) {
@@ -317,7 +320,8 @@ public class GodwarsController extends Controller {
 
 	public void remove() {
 		player.getInterfaceManager().removeOverlay(true);
-		player.sendMessage("The souls of those you have slain leave you as you exit the dungeon.");
+		if(EZScape.showKillCountPrompt())
+			player.sendMessage("The souls of those you have slain leave you as you exit the dungeon.");
 	}
 
 	public static boolean isAtGodwars(Tile teleTile) {
