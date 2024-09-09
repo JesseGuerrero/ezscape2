@@ -33,7 +33,10 @@ public class Sermon extends Cutscene {
         delay(3);
         action(() -> { ChurchService.priest.forceTalk("Amen...");});
         delay(2);
-        action(() -> { ChurchService.npcs.forEach(npc -> npc.forceTalk("Amen.")); player.forceTalk("Amen.");});
+        action(() -> { ChurchService.npcs.forEach(npc -> {
+                npc.forceTalk("Amen."); player.forceTalk("Amen.");
+                npc.anim(3114); player.anim(3114);
+        }); } );
         delay(1);
         for(String sentence : sermon) {
             action(() -> { ChurchService.priest.forceTalk(sentence); });
@@ -63,7 +66,8 @@ public class Sermon extends Cutscene {
             World.getPlayers().forEach(congregate -> {
                 if(congregate.getControllerManager().getController() instanceof ChurchService) {
                     congregate.forceTalk("Amen.");
-                    congregate.sendMessage("You have increased in knowledge of prayer...");
+                    congregate.anim(3114);
+                    congregate.sendMessage("<col=00FFFF>You have increased in knowledge of prayer...");
                     congregate.incrementCount("ServicesAttended");
                 }
             });

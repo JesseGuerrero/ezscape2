@@ -13,6 +13,7 @@ import com.rs.lib.game.Item;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.LoginHandler;
+import com.rs.rsps.ChristianRSPS.ChurchService;
 import com.rs.utils.DropSets;
 import com.rs.utils.drop.DropTable;
 import java.util.Arrays;
@@ -74,6 +75,10 @@ public class EZScape {
             player.sendMessage("<col=FF0000>You have " + Utils.formatNumber(player.soulWarsZeal) + " soul wars zeal from play time...");
         }
         return false;
+    }
+
+    public static boolean isChurch(Player player) {
+        return player.getControllerManager().getController() instanceof ChurchService;
     }
 
     public static boolean limit99PestControl(Player player,int skillId) {

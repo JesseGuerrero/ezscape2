@@ -10,6 +10,8 @@ import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onChunkEnter
+import com.rs.rsps.ChristianRSPS.ChurchService
+import com.rs.rsps.EZScape
 import com.rs.tools.MapSearcher
 import com.rs.utils.spawns.NPCSpawns
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet
@@ -47,7 +49,7 @@ fun mapChunkChanges() {
 }
 
 fun checkZone(player: Player, chunkId: Int, login: Boolean = false) {
-    if (player.isHasNearbyInstancedChunks) {
+    if (player.isHasNearbyInstancedChunks || EZScape.isChurch(player)) {
         player.isCanPvp = false
         updateUI(player)
         return

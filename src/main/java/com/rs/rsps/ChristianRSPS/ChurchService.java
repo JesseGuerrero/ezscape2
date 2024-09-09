@@ -3,7 +3,11 @@ package com.rs.rsps.ChristianRSPS;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.rs.anarchy.PVPZonesKt;
 import com.rs.engine.cutscene.Cutscene;
+import com.rs.engine.dialogue.Conversation;
+import com.rs.engine.dialogue.Dialogue;
+import com.rs.engine.dialogue.HeadE;
 import com.rs.engine.pathfinder.Direction;
 import com.rs.game.content.skills.magic.TeleType;
 import com.rs.game.map.instance.Instance;
@@ -68,6 +72,10 @@ public class ChurchService extends Controller {
 
     public ChurchService() {
         super();
+    }
+
+    public boolean playAmbientMusic() {
+        return false;
     }
 
     @Override
@@ -154,7 +162,15 @@ public class ChurchService extends Controller {
 
 
     public boolean processObjectClick1(GameObject object) {
-        if(object.getId() == 36972 && serviceStarted == false && !player.getDailyB("HasDoneSermon")) {
+        if(object.getId() == 36972) {
+            if(player.getDailyB("HasDoneSermon")) {
+                player.startConversation(new Dialogue().addPlayer(HeadE.HAPPY_TALKING, "I have already done service for today. Maybe I can catch it with another player."));
+                return true;
+            }
+            if(serviceStarted == true) {
+                player.startConversation(new Dialogue().addPlayer(HeadE.HAPPY_TALKING, "There is a service right now. I will get my blessing at the end..."));
+                return true;
+            }
             serviceStarted = true;
             WorldTasks.delay(Ticks.fromMinutes(2), () -> {
                 serviceStarted = false;
