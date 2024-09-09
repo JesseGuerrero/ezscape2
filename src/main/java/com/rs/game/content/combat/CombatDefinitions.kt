@@ -286,7 +286,7 @@ class CombatDefinitions {
             if (item == null) continue
             for (bonus in Bonus.entries) {
                 if (bonus == Bonus.RANGE_STR && getBonus(Bonus.RANGE_STR) != 0) continue
-                bonuses[bonus.ordinal] += Power.defenceBonus(player, item.id, Equipment.getBonus(player, item, bonus))
+                bonuses[bonus.ordinal] += Power.defenceBonus(player, bonus.ordinal, item.id, Equipment.getBonus(player, item, bonus))
             }
         }
     }

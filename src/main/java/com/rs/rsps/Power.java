@@ -48,15 +48,19 @@ public class Power {
             return;
 
         int armourSlot = Arrays.asList(0, 1, 2, 4, 5, 7, 9, 10, 12).get(Utils.random(9));
-        String armourId = String.valueOf(player.getEquipment().get(armourSlot).getId());
-        player.incrementCount("DefenceAmourId_" + armourId);
-        double newPowerPercentage = (1.0 + ((double)player.getCounterValue("DefenceAmourId_" + armourId))/50_000.0) * 100.0;
+        int armourId = player.getEquipment().get(armourSlot).getId();
+        player.incrementCount(armourString(armourSlot, armourId));
+        double newPowerPercentage = (1.0 + ((double)player.getCounterValue(armourString(armourSlot, armourId)))/50_000.0) * 100.0;
         String formattedPower = String.format("%.2f", newPowerPercentage);
         player.sendMessage("<col=00FF00>Your defence with your " + getArmourFromNumber(armourSlot) + " has increased to " + formattedPower + "%...");
     }
 
-    public static int defenceBonus(Player player, int armourID, int bonus) {
-        return (int)powerEquation(bonus, player.getCounterValue("DefenceArmourId_" + armourID));
+    public static int defenceBonus(Player player, int armourSlot, int armourID, int bonus) {
+        return (int)powerEquation(bonus, player.getCounterValue(armourString(armourSlot, armourID)));
+    }
+
+    private static String armourString(int armourSlot, int armourId){
+        return "Defence"+ getArmourFromNumber(armourSlot) + "Id_" + armourId;
     }
 
 
