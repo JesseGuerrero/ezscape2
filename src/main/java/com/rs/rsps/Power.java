@@ -5,7 +5,10 @@ import com.rs.lib.util.GenericAttribMap;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.utils.Ticks;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @PluginEventHandler
 public class Power {
@@ -19,16 +22,18 @@ public class Power {
     }
 
     private static double powerEquation(double power, double count) {
-        return power * 1.0+(count/50_000.0);
+        return power * 1.0+(count/100_000.0);
     }
 
     public static void incrementPower(Player player) {
-        if(lock3Seconds(player, "IncrementedPower") && Utils.random(40) == 1) //1/40 chance every 3 seconds
+        if(lock3Seconds(player, "IncrementedPower")) //1/40 chance every 3 seconds
+            return;
+        if(Utils.random(40) != 1) //1/40 to continue
             return;
         String weaponId = String.valueOf(player.getEquipment().getWeaponId());
         player.incrementCount("PowerWeaponId_" + weaponId);
-        double newPowerPercentage = (1.0 + ((double)player.getCounterValue("PowerWeaponId_" + weaponId))/50_000.0) * 100.0;
-        String formattedPower = String.format("%.2f", newPowerPercentage);
+        double newPowerPercentage = (((double)player.getCounterValue("PowerWeaponId_" + weaponId))/100_000.0) * 100.0;
+        String formattedPower = String.format("%.3f", newPowerPercentage);
         player.sendMessage("<col=00FF00>Your power with this weapon has increased to " + formattedPower + "%...");
     }
 
@@ -44,18 +49,33 @@ public class Power {
     }
 
     public static void incrementDefence(Player player) {
-        if(lock3Seconds(player, "IncrementedDefence") && Utils.random(40) == 1) //1/40 chance every 3 seconds
+        if(lock3Seconds(player, "IncrementedDefence")) //1/40 chance every 3 seconds
             return;
-
-        int armourSlot = Arrays.asList(0, 1, 2, 4, 5, 7, 9, 10, 12).get(Utils.random(9));
-        int armourId = player.getEquipment().get(armourSlot).getId();
-        player.incrementCount(armourString(armourSlot, armourId));
-        double newPowerPercentage = (1.0 + ((double)player.getCounterValue(armourString(armourSlot, armourId)))/50_000.0) * 100.0;
-        String formattedPower = String.format("%.2f", newPowerPercentage);
-        player.sendMessage("<col=00FF00>Your defence with your " + getArmourFromNumber(armourSlot) + " has increased to " + formattedPower + "%...");
+        if(Utils.random(40) != 1) //1/40 to continue
+            return;
+        int armourId = -1;
+        int slot = -1;
+        ArrayList<Integer> armourSlots = new ArrayList<>(Arrays.asList(0, 1, 2, 4, 5, 7, 9, 10, 12));
+        for(int i = armourSlots.size(); i > 0; i--) {
+            slot = armourSlots.remove(Utils.random(armourSlots.size())).intValue();
+            if(player.getEquipment().get(slot) != null) {
+                armourId = player.getEquipment().get(slot).getId();
+                break;
+            }
+        }
+        if(armourId == -1) {
+            player.sendMessage("<col=FF0000>No defence was added to armour as there is no armour...");
+            return;
+        }
+        player.incrementCount(armourString(slot, armourId));
+        double newPowerPercentage = (((double)player.getCounterValue(armourString(slot, armourId)))/100_000.0) * 100.0;
+        String formattedPower = String.format("%.3f", newPowerPercentage);
+        player.sendMessage("<col=00FF00>Your defence with your " + getArmourFromNumber(slot).toLowerCase() + " armour has increased to " + formattedPower + "%...");
     }
 
     public static int defenceBonus(Player player, int armourSlot, int armourID, int bonus) {
+        if(bonus < 1)
+            return bonus;
         return (int)powerEquation(bonus, player.getCounterValue(armourString(armourSlot, armourID)));
     }
 

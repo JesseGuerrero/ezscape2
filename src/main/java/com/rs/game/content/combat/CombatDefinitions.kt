@@ -283,10 +283,10 @@ class CombatDefinitions {
     fun refreshBonuses() {
         bonuses = IntArray(18)
         for (item in player.equipment.itemsCopy) {
-            if (item == null) continue
+            if (item == null) continue;
             for (bonus in Bonus.entries) {
                 if (bonus == Bonus.RANGE_STR && getBonus(Bonus.RANGE_STR) != 0) continue
-                bonuses[bonus.ordinal] += Power.defenceBonus(player, bonus.ordinal, item.id, Equipment.getBonus(player, item, bonus))
+                bonuses[bonus.ordinal] += Equipment.getBonus(player, item, bonus)
             }
         }
     }

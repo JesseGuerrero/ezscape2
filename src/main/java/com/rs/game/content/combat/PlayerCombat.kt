@@ -652,7 +652,8 @@ fun getMagicMaxHit(player: Player, target: Entity, spellBaseDamage: Int, applyMa
         def = floor(defLvl * (defBonus + 64))
     }
 
-    val prob = if (atk > def) (1 - (def + 2) / (2 * (atk + 1))) else (atk / (2 * (def + 1)))
+    var prob = if (atk > def) (1 - (def + 2) / (2 * (atk + 1))) else (atk / (2 * (def + 1)))
+    prob *= Power.accuracyPower(player, prob)
     if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Your hit chance: " + Utils.formatDouble(prob * 100.0) + "%")
     if (prob <= Math.random()) return Hit(player, 0, HitLook.MAGIC_DAMAGE)
 
@@ -673,7 +674,8 @@ fun getMagicMaxHit(player: Player, target: Entity, spellBaseDamage: Int, applyMa
         }
     }
     if (player.hasSlayerTask()) if (target is NPC && player.slayer.isOnTaskAgainst(target as NPC?)) if (player.equipment.wearingHexcrest() || player.equipment.wearingSlayerHelmet()) maxHit = (maxHit * 1.15).toInt()
-    val finalMaxHit = maxHit.toDouble().toInt()
+    var finalMaxHit = maxHit.toDouble().toInt()
+    finalMaxHit = Power.maxPower(player, finalMaxHit);
     if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Your max hit: $finalMaxHit")
     return Hit(player, finalMaxHit, HitLook.MAGIC_DAMAGE).setMaxHit(finalMaxHit)
 }
@@ -825,11 +827,11 @@ fun calculateHit(player: Player, target: Entity, minHit: Int, maxHit: Int, weapo
             def = floor(defLvl * (defBonus + 64))
         }
         if (finalMaxHit != 0 && fullVeracsEquipped(player) && Utils.random(4) == 0) veracsProc = true
-        val prob = if (atk > def) (1 - (def + 2) / (2 * (atk + 1))) else (atk / (2 * (def + 1)))
+        var prob = if (atk > def) (1 - (def + 2) / (2 * (atk + 1))) else (atk / (2 * (def + 1)))
+        prob *= Power.accuracyPower(player, prob);
         if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Your hit chance: " + Utils.formatDouble(prob * 100.0) + "%")
-        if (prob * Power.accuracyPower(player, prob) <= Math.random() && !veracsProc) return hit.setDamage(0)
+        if (prob <= Math.random() && !veracsProc) return hit.setDamage(0)
     }
-    finalMaxHit = Power.maxPower(player, finalMaxHit);
     if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Modified max hit: $finalMaxHit")
     var finalHit = Utils.random(minHit, finalMaxHit)
     if (veracsProc) finalHit = (finalHit + 1.0).toInt()
@@ -863,7 +865,8 @@ fun getMaxHit(player: Player, target: Entity?, weaponId: Int, attackStyle: Attac
         if (attackStyle.attackType == AttackType.RAPID && player.dungManager.activePerk == KinshipPerk.DESPERADO && player.controllerManager.isIn(DungeonController::class.java)) lvl = floor(lvl * 1.1 + (player.dungManager.getKinshipTier(KinshipPerk.DESPERADO) * 0.01))
         val str = player.combatDefinitions.getBonus(Bonus.RANGE_STR).toDouble()
         val baseDamage = 5 + lvl * (str + 64) / 64
-        val maxHit = floor(baseDamage * damageMultiplier).toInt()
+        var maxHit = floor(baseDamage * damageMultiplier).toInt()
+        maxHit = Power.maxPower(player, maxHit);
         if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Your max hit: $maxHit")
         return maxHit
     }
@@ -891,7 +894,8 @@ fun getMaxHit(player: Player, target: Entity?, weaponId: Int, attackStyle: Attac
         else -> {}
     }
     //int multiplier = PluginManager.handle()
-    val maxHit = floor(baseDamage * damageMultiplier).toInt()
+    var maxHit = floor(baseDamage * damageMultiplier).toInt()
+    maxHit = Power.maxPower(player, maxHit);
     if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Your max hit: $maxHit")
     return maxHit
 }

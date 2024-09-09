@@ -39,6 +39,7 @@ import com.rs.plugin.events.ItemClickEvent;
 import com.rs.plugin.events.ItemEquipEvent;
 import com.rs.plugin.handlers.ButtonClickHandler;
 import com.rs.plugin.handlers.InterfaceOnInterfaceHandler;
+import com.rs.rsps.Power;
 import com.rs.utils.ItemConfig;
 
 import java.util.Arrays;
@@ -887,7 +888,7 @@ public final class Equipment {
 	}
 
 	public static int getBonus(Player player, Item item, Bonus bonus) {
-		int value = getBonus(item, bonus);
+		int value = Power.defenceBonus(player, player.getEquipment().items.getThisItemSlot(item), item.getId(), getBonus(item,bonus));
 		switch(item.getId()) {
 			case 19152, 19157, 19162 -> {
 				return switch(bonus) {
