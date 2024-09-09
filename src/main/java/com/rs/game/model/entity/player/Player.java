@@ -937,7 +937,7 @@ public class Player extends Entity {
 			cutsceneManager.process();
 			cutscenePresenter.tick();
 			super.processEntity();
-			if (hasStarted() && isIdle() && !hasRights(Rights.ADMIN) && !getNSV().getB("idleLogImmune")) {
+			if (hasStarted() && isIdle() && !hasRights(Rights.ADMIN) && !EZScape.isChurch(this) && !getNSV().getB("idleLogImmune")) {
 				if (getInteractionManager().getInteraction() instanceof PlayerCombatInteraction combat) {
 					if (!(combat.getAction().target instanceof Player))
 						idleLog();
