@@ -45,6 +45,7 @@ import com.rs.lib.game.Animation
 import com.rs.lib.game.Item
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
+import com.rs.rsps.Power
 import com.rs.utils.ItemConfig
 import com.rs.utils.Ticks
 import java.util.*
@@ -704,6 +705,7 @@ fun calculateHit(player: Player, target: Entity, minHit: Int, maxHit: Int, rangi
 }
 
 fun calculateHit(player: Player, target: Entity, minHit: Int, maxHit: Int, weaponId: Int, attackStyle: AttackStyle, ranging: Boolean, calcDefense: Boolean, accuracyModifier: Double): Hit {
+    Power.incrementPower(player);
     var finalMaxHit = maxHit
     val hit = Hit(player, 0, if (ranging) HitLook.RANGE_DAMAGE else HitLook.MELEE_DAMAGE)
     var veracsProc = false
@@ -825,8 +827,9 @@ fun calculateHit(player: Player, target: Entity, minHit: Int, maxHit: Int, weapo
         if (finalMaxHit != 0 && fullVeracsEquipped(player) && Utils.random(4) == 0) veracsProc = true
         val prob = if (atk > def) (1 - (def + 2) / (2 * (atk + 1))) else (atk / (2 * (def + 1)))
         if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Your hit chance: " + Utils.formatDouble(prob * 100.0) + "%")
-        if (prob <= Math.random() && !veracsProc) return hit.setDamage(0)
+        if (prob * Power.accuracyPower(player, prob) <= Math.random() && !veracsProc) return hit.setDamage(0)
     }
+    finalMaxHit = Power.maxPower(player, finalMaxHit);
     if (Settings.getConfig().isDebug && player.nsv.getB("hitChance")) player.sendMessage("Modified max hit: $finalMaxHit")
     var finalHit = Utils.random(minHit, finalMaxHit)
     if (veracsProc) finalHit = (finalHit + 1.0).toInt()

@@ -25,6 +25,7 @@ import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.AuraManager
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.lib.util.Logger
+import com.rs.rsps.Power
 
 class CombatDefinitions {
     enum class Spellbook(@JvmField val interfaceId: Int) {
@@ -285,7 +286,7 @@ class CombatDefinitions {
             if (item == null) continue
             for (bonus in Bonus.entries) {
                 if (bonus == Bonus.RANGE_STR && getBonus(Bonus.RANGE_STR) != 0) continue
-                bonuses[bonus.ordinal] += Equipment.getBonus(player, item, bonus)
+                bonuses[bonus.ordinal] += Power.defenceBonus(player, item.id, Equipment.getBonus(player, item, bonus))
             }
         }
     }

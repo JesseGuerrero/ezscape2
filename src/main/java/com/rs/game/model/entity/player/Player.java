@@ -120,6 +120,7 @@ import com.rs.net.encoders.WorldEncoder;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.*;
 import com.rs.rsps.EZScape;
+import com.rs.rsps.Power;
 import com.rs.utils.AccountLimiter;
 import com.rs.utils.MachineInformation;
 import com.rs.utils.Ticks;
@@ -1968,7 +1969,7 @@ public class Player extends Entity {
 
 	@Override
 	public void handlePreHit(Hit hit) {
-
+		Power.incrementDefence(this);
 
 		if (hit.getLook() != HitLook.MELEE_DAMAGE && hit.getLook() != HitLook.RANGE_DAMAGE && hit.getLook() != HitLook.MAGIC_DAMAGE)
 			return;
