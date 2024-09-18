@@ -25,6 +25,10 @@ public class Power {
         return 10;
     }
 
+    public static int skullTimer() {
+        return 3;
+    }
+
     private static double powerEquation(double power, double count) {
         return power * 1.0+(count/100_000.0);
     }

@@ -699,7 +699,7 @@ public class Player extends Entity {
 	}
 
 	public void setWildernessSkull() {
-		addEffect(Effect.SKULL, Ticks.fromMinutes(30));
+		addEffect(Effect.SKULL, Ticks.fromMinutes(Power.skullTimer()));
 		skullId = 0;
 		appearence.generateAppearanceData();
 	}
