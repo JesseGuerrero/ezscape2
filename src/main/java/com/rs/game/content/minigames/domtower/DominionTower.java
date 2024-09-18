@@ -28,6 +28,7 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
+import com.rs.rsps.Power;
 
 @PluginEventHandler
 public final class DominionTower {
@@ -331,7 +332,7 @@ public final class DominionTower {
 			if (progress > maxFloorEndurance)
 				maxFloorEndurance = progress;
 
-		killedBossesCount++;
+		killedBossesCount =+ 1* Power.multiplyBossKillsDomTower();
 		dominionFactor += factor;
 		totalScore += factor;
 		if (dominionFactor > MAX_FACTOR) {

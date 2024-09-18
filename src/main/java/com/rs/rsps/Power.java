@@ -21,6 +21,10 @@ public class Power {
         return false;
     }
 
+    public static int multiplyBossKillsDomTower() {
+        return 10;
+    }
+
     private static double powerEquation(double power, double count) {
         return power * 1.0+(count/100_000.0);
     }
