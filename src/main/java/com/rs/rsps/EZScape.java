@@ -52,6 +52,10 @@ public class EZScape {
         ore.giveOre(player);
     }
 
+    public static boolean canEmptyInventoryPickpocket() {
+        return true;
+    }
+
     public static void giveTwoExtraFish(Player player, FishingSpot spot, Fish f) {
         f.giveFish(player, spot);
         f.giveFish(player, spot);

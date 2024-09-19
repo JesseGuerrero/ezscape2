@@ -177,7 +177,7 @@ public class PickPocketAction extends PlayerAction {
 			player.simpleDialogue("You need a thieving level of " + npcData.getThievingLevels()[0] + " to steal from this npc.");
 			return false;
 		}
-		if (player.getInventory().getFreeSlots() < 1) {
+		if (!EZScape.canEmptyInventoryPickpocket() && player.getInventory().getFreeSlots() < 1) {
 			player.sendMessage("You don't have enough space in your inventory.");
 			return false;
 		}
