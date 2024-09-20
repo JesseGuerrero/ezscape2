@@ -30,7 +30,7 @@ public class Power {
     }
 
     private static double powerEquation(double power, double count) {
-        return power * 1.0+(count/100_000.0);
+        return power * 1.0+(count/33_000.0);
     }
 
     public static void incrementPower(Player player) {
@@ -40,8 +40,8 @@ public class Power {
             return;
         String weaponId = String.valueOf(player.getEquipment().getWeaponId());
         player.incrementCount("PowerWeaponId_" + weaponId);
-        double newPowerPercentage = (((double)player.getCounterValue("PowerWeaponId_" + weaponId))/100_000.0) * 100.0;
-        String formattedPower = String.format("%.3f", newPowerPercentage);
+        double newPowerPercentage = (((double)player.getCounterValue("PowerWeaponId_" + weaponId))/33_000.0) * 100.0;
+        String formattedPower = String.format("%.2f", newPowerPercentage);
         player.sendMessage("<col=00FF00>Your power with this weapon has increased to " + formattedPower + "%...");
     }
 
@@ -59,7 +59,7 @@ public class Power {
     public static void incrementDefence(Player player) {
         if(lock3Seconds(player, "IncrementedDefence")) //1/40 chance every 3 seconds
             return;
-        if(Utils.random(40) != 1) //1/40 to continue
+        if(Utils.random(40) == 1) //1/40 to continue
             return;
         int armourId = -1;
         int slot = -1;
@@ -76,15 +76,16 @@ public class Power {
             return;
         }
         player.incrementCount(armourString(slot, armourId));
-        double newPowerPercentage = (((double)player.getCounterValue(armourString(slot, armourId)))/100_000.0) * 100.0;
-        String formattedPower = String.format("%.3f", newPowerPercentage);
+        double newPowerPercentage = (((double)player.getCounterValue(armourString(slot, armourId)))/33_000.0) * 100.0;
+        String formattedPower = String.format("%.2f", newPowerPercentage);
         player.sendMessage("<col=00FF00>Your defence with your " + getArmourFromNumber(slot).toLowerCase() + " armour has increased to " + formattedPower + "%...");
     }
 
     public static int defenceBonus(Player player, int armourSlot, int armourID, int bonus) {
-        if(bonus < 1)
+        if (bonus < 1)
             return bonus;
-        return (int)powerEquation(bonus, player.getCounterValue(armourString(armourSlot, armourID)));
+        double powerResult = powerEquation(bonus, player.getCounterValue(armourString(armourSlot, armourID)));
+        return (int) Math.ceil(powerResult);
     }
 
     private static String armourString(int armourSlot, int armourId){
