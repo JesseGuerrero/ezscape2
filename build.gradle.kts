@@ -7,7 +7,7 @@ plugins {
 	kotlin("jvm") version("2.0.20")
 }
 
-val darkanVersion: String = "2.0.2"
+val darkanVersion: String = "2.0.3"
 val ktVer: String = "2.0.20"
 
 application {
@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-	implementation("rs.darkan:core:2.0.0")
+	implementation("rs.darkan:core:2.0.1")
 
 	implementation("org.jetbrains.kotlin:kotlin-stdlib:$ktVer")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-common:$ktVer")
