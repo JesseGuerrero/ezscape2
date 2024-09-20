@@ -59,7 +59,7 @@ public class Power {
     public static void incrementDefence(Player player) {
         if(lock3Seconds(player, "IncrementedDefence")) //1/40 chance every 3 seconds
             return;
-        if(Utils.random(40) == 1) //1/40 to continue
+        if(Utils.random(40) != 1) //1/40 to continue
             return;
         int armourId = -1;
         int slot = -1;
