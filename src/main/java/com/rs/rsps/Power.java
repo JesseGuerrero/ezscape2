@@ -30,7 +30,7 @@ public class Power {
     }
 
     private static double powerEquation(double power, double count) {
-        return power * 1.0+(count/33_000.0);
+        return power * 1.0 + (count/20_000.0);
     }
 
     public static void incrementPower(Player player) {
@@ -40,7 +40,7 @@ public class Power {
             return;
         String weaponId = String.valueOf(player.getEquipment().getWeaponId());
         player.incrementCount("PowerWeaponId_" + weaponId);
-        double newPowerPercentage = (((double)player.getCounterValue("PowerWeaponId_" + weaponId))/33_000.0) * 100.0;
+        double newPowerPercentage = (((double)player.getCounterValue("PowerWeaponId_" + weaponId))/20_000.0) * 100.0;
         String formattedPower = String.format("%.2f", newPowerPercentage);
         player.sendMessage("<col=00FF00>Your power with this weapon has increased to " + formattedPower + "%...");
     }
@@ -76,7 +76,7 @@ public class Power {
             return;
         }
         player.incrementCount(armourString(slot, armourId));
-        double newPowerPercentage = (((double)player.getCounterValue(armourString(slot, armourId)))/33_000.0) * 100.0;
+        double newPowerPercentage = (((double)player.getCounterValue(armourString(slot, armourId)))/20_000.0) * 100.0;
         String formattedPower = String.format("%.2f", newPowerPercentage);
         player.sendMessage("<col=00FF00>Your defence with your " + getArmourFromNumber(slot).toLowerCase() + " armour has increased to " + formattedPower + "%...");
     }
