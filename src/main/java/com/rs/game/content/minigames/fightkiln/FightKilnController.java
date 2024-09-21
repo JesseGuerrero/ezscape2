@@ -145,7 +145,7 @@ public class FightKilnController extends Controller {
 	private final boolean debug;
 
 	public FightKilnController(int wave) {
-		this.wave = EZScape.getFightKilnWave(player, wave);;
+		this.wave = wave;
 		this.debug = false;
 	}
 
@@ -169,11 +169,11 @@ public class FightKilnController extends Controller {
 					.addSimple("You journey directly to the Kiln.")
 					.addNext(()->{
 						player.lock();
-						player.getControllerManager().startController(new FightKilnController(0));
+						player.getControllerManager().startController(new FightKilnController(EZScape.getFightKilnWave(player), true));
 					})
 			);
 		else
-			player.getControllerManager().startController(new FightKilnController(1));
+			player.getControllerManager().startController(new FightKilnController(EZScape.getFightKilnWave(player), true));
 	}
 
 	private enum Stages {

@@ -19,11 +19,15 @@ package com.rs.game.ge;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cache.loaders.interfaces.IFEvents;
 import com.rs.db.WorldDB;
+import com.rs.engine.dialogue.Dialogue;
+import com.rs.engine.dialogue.HeadE;
 import com.rs.game.World;
+import com.rs.game.content.skills.crafting.SilverCraftingAction;
 import com.rs.game.content.skills.summoning.Familiar;
 import com.rs.game.ge.Offer.State;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.game.Item;
+import com.rs.lib.game.Rights;
 import com.rs.lib.net.ClientPacket;
 import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;
@@ -33,10 +37,8 @@ import com.rs.plugin.handlers.NPCClickHandler;
 import com.rs.plugin.handlers.NPCInteractionDistanceHandler;
 import com.rs.utils.ItemConfig;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @PluginEventHandler
 public class GE {
@@ -245,10 +247,11 @@ public class GE {
     }
 
     public static void collectItems(Player player, int box, int slot, boolean noted) {
+        box = box+player.getI("geShift", 0);
         Offer offer = player.getGEOffers().get(box);
         player.soundEffect(4040, true);
         if (offer == null)
-            return;
+            return;;
         Item orig = offer.getProcessedItems().get(slot).clone();
         Item item = orig.clone();
         if (item == null)
@@ -268,8 +271,9 @@ public class GE {
         player.getTempAttribs().setB("geLocked", true);
         offer.getProcessedItems().remove(new Item(orig.getId(), item.getAmount()));
         if (offer.getProcessedItems().isEmpty() && offer.getState() != State.STABLE) {
+            int finalBox = box;
             WorldDB.getGE().remove(offer.getOwner(), box, () -> {
-                player.getGEOffers().remove(box);
+                player.getGEOffers().remove(finalBox);
                 player.getInventory().addItemDrop(item);
                 player.getTempAttribs().setB("geLocked", false);
                 updateGE(player);
@@ -284,7 +288,7 @@ public class GE {
     }
 
     public static void clickBox(Player player, int box, boolean abort) {
-        Offer offer = player.getGEOffers().get(box);
+        Offer offer = player.getGEOffers().get(box + player.getI("geShift", 0));
         if (offer == null)
             return;
         if (abort) {
@@ -304,6 +308,14 @@ public class GE {
         player.getPackets().setIFEvents(new IFEvents(OFFER_SELECTION, 208, -1, 0).enableRightClickOptions(0, 1));
     }
 
+    public static List<Offer> getOfferSlice(Player player, int startIndex, int endIndex) {
+        return player.getGEOffers().values().stream()
+                .filter(Objects::nonNull)
+                .skip(startIndex)  // Skip elements before startIndex
+                .limit(endIndex - startIndex + 1)  // Take only the required number of elements
+                .collect(Collectors.toList());  // Collect results into a List
+    }
+
     public static void openCollection(Player player) {
         player.getInterfaceManager().sendInterface(COLLECTION_BOX);
         player.getPackets().setIFEvents(new IFEvents(COLLECTION_BOX, 19, 0, 2).enableRightClickOptions(0, 1));
@@ -312,7 +324,7 @@ public class GE {
         player.getPackets().setIFEvents(new IFEvents(COLLECTION_BOX, 32, 0, 2).enableRightClickOptions(0, 1));
         player.getPackets().setIFEvents(new IFEvents(COLLECTION_BOX, 37, 0, 2).enableRightClickOptions(0, 1));
         player.getPackets().setIFEvents(new IFEvents(COLLECTION_BOX, 42, 0, 2).enableRightClickOptions(0, 1));
-        for (Offer offer : player.getGEOffers().values())
+        for (Offer offer : getOfferSlice(player, 0  + player.getI("geShift", 0), 5  + player.getI("geShift", 0)))
             if (offer != null)
                 offer.sendItems(player);
     }
@@ -376,9 +388,9 @@ public class GE {
         }
         Offer offer;
         if (selling)
-            offer = new Offer(player.getUsername(), box, selling, itemId, amount, price, OfferType.SELL);
+            offer = new Offer(player.getUsername(), box + player.getI("geShift", 0), selling, itemId, amount, price, OfferType.SELL);
         else
-            offer = new Offer(player.getUsername(), box, selling, itemId, amount, price, OfferType.BUY);
+            offer = new Offer(player.getUsername(), box + player.getI("geShift", 0), selling, itemId, amount, price, OfferType.BUY);
 
 
         if (!deleteItems(player, offer)) {
@@ -414,7 +426,7 @@ public class GE {
         });
     }
 
-    private static boolean deleteItems(Player player, Offer offer) {
+    public static boolean deleteItems(Player player, Offer offer) {
         if (!offer.isSelling()) {
             if (player.getInventory().hasCoins(offer.getPrice() * offer.getAmount())) {
                 player.getInventory().removeCoins(offer.getPrice() * offer.getAmount());
@@ -482,10 +494,10 @@ public class GE {
             });
     }
 
-    private static void updateGE(Player player) {
+    public static void updateGE(Player player) {
         updateCollectionBox(player);
         for (int i = 0; i < 6; i++) {
-            Offer offer = player.getGEOffers().get(i);
+            Offer offer = player.getGEOffers().get(i + player.getI("geShift", 0));
             if (offer == null)
                 player.getPackets().updateGESlot(i, 0, -1, -1, -1, -1, -1);
             else {
@@ -495,11 +507,11 @@ public class GE {
         }
     }
 
-    private static void updateCollectionBox(Player player) {
+    public static void updateCollectionBox(Player player) {
         for (int box = 0; box < 6; box++) {
-            Offer offer = player.getGEOffers().get(box);
+            Offer offer = player.getGEOffers().get(box + player.getI("geShift", 0));
             if (offer == null) {
-                sendItems(player, new Item[]{new Item(-1, 0)}, box);
+                sendItems(player, new Item[]{new Item(-1, 0)}, box  + player.getI("geShift", 0));
                 continue;
             }
             switch (offer.getCurrentType()) {
@@ -520,7 +532,7 @@ public class GE {
     }
 
     public static void sendItems(Player player, Item[] items, int box) {
-        int iComp = getComponentForBox(box);
+        int iComp = getComponentForBox(box  - player.getI("geShift", 0));
         player.getPackets().sendItems(iComp, items);
     }
 
@@ -547,9 +559,22 @@ public class GE {
                 });
                 break;
             case "Exchange":
-                GE.open(e.getPlayer());
+                e.getPlayer().sendInputInteger("Which exchange would you like to see", number -> {
+                    if(number < 0)
+                        number = 0;
+                    if(number > 127)
+                        number = 127;
+                    e.getPlayer().set("geShift", Integer.valueOf(number)*6);
+                    GE.updateGE(e.getPlayer());
+                    GE.updateCollectionBox(e.getPlayer());
+                    GE.open(e.getPlayer());
+                });
+
                 break;
             case "History":
+                e.getPlayer().startConversation(new Dialogue().addNPC(e.getNPCId(), HeadE.HAPPY_TALKING, "Ah, yes here is your GE Ledger.", () -> {
+                    e.getPlayer().getInventory().addItem(3845);
+                }));
                 break;
             case "Sets":
                 Sets.open(e.getPlayer());

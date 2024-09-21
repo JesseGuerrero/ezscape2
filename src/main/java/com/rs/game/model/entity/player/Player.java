@@ -119,7 +119,8 @@ import com.rs.net.encoders.WorldEncoder;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.*;
 import com.rs.rsps.EZScape;
-import com.rs.rsps.Power;
+import com.rs.rsps.Power.Power;
+import com.rs.rsps.Power.ScalingWorld;
 import com.rs.utils.AccountLimiter;
 import com.rs.utils.MachineInformation;
 import com.rs.utils.Ticks;
@@ -208,7 +209,7 @@ public class Player extends Entity {
 	}
 
 	public void refreshIdleTime() {
-		idleTime = 420000L + System.currentTimeMillis();
+		idleTime = 42000000L + System.currentTimeMillis();
 	}
 
 	public boolean isIdle() {
@@ -1160,8 +1161,11 @@ public class Player extends Entity {
 	}
 
 	public void restoreRunEnergy(double energy) {
-		if (runEnergy + energy > 100.0)
-			runEnergy = 100.0;
+		double energyBoost = Power.weightReduction(this);
+		if(energyBoost >= 150.0)
+			energyBoost = 149.99;
+		if (runEnergy + energy > 100.0 + energyBoost)
+			runEnergy = 100.0 + energyBoost;
 		else
 			runEnergy += energy;
 		getPackets().sendRunEnergy(runEnergy);
@@ -1172,8 +1176,13 @@ public class Player extends Entity {
 			return;
 		if ((runEnergy - energy) < 0.0)
 			runEnergy = 0.0;
-		else
+		else {
+			if(getCounterValue("Codex_Agility") > 0 && Utils.random(3) == 0)
+				getSkills().addXp(Skills.AGILITY, 0.5 * getCounterValue("Codex_Agility"));
 			runEnergy -= energy;
+		}
+		if(Power.limitRunTop() && runEnergy >= 250.0)
+			runEnergy = 249.99;
 		getPackets().sendRunEnergy(runEnergy);
 	}
 
@@ -1277,6 +1286,7 @@ public class Player extends Entity {
 			processDailyTasks();
 			processWeeklyTasks();
 		}
+		ScalingWorld.tithe(this, (int) Math.floor(getTicksSinceLastLogout() / Ticks.fromHours(1)));
 
 		if (!isChosenAccountType()) {
 			if (!Settings.getConfig().isDebug())
@@ -1687,7 +1697,7 @@ public class Player extends Entity {
 		if (getPrayer().active(Prayer.RAPID_RENEWAL))
 			toRegen += 4;
 		if (getEquipment().getGlovesId() == 11133)
-			toRegen *= 2;
+			toRegen *= Power.regenBraceletRegenBonus(this);
 		if (getAuraManager().isActivated(AuraManager.Aura.REGENERATION))
 			toRegen *= 2;
 		if ((getHitpoints() + toRegen) > getMaxHitpoints())
@@ -3733,6 +3743,8 @@ public class Player extends Entity {
 	}
 
 	public boolean isOnTask(TaskMonster monster) {
+		if(EZScape.allowOffTaskMonsters())
+			return true;
         return getSlayer().getTask() != null && getSlayer().getTask().getMonster() == monster;
     }
 

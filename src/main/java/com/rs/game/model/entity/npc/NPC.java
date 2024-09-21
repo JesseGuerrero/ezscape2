@@ -59,6 +59,8 @@ import com.rs.plugin.events.NPCDeathEvent;
 import com.rs.plugin.events.NPCDropEvent;
 import com.rs.plugin.events.NPCKillParticipatedEvent;
 import com.rs.rsps.EZScape;
+import com.rs.rsps.Power.ScalingWorld;
+import com.rs.rsps.Power.SpecialItems;
 import com.rs.tools.old.CharmDrop;
 import com.rs.utils.DropSets;
 import com.rs.utils.EffigyDrop;
@@ -72,6 +74,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static com.rs.rsps.Power.ScalingWorld.extractScaleFromName;
 
 public class NPC extends Entity {
 
@@ -388,6 +392,7 @@ public class NPC extends Entity {
 		combat.reset();
 		combatLevels = getCombatDefinitions().getLevels(); // back to real bonuses
 		forceWalk = null;
+		ScalingWorld.resetNameAndCombatLevelOnDeath(this);
 	}
 
 	@Override
@@ -706,7 +711,9 @@ public class NPC extends Entity {
 	}
 
 	public int getMaxHit() {
-		return getCombatDefinitions().getMaxHit();
+		int scale = extractScaleFromName(getName());
+		double boost = 1.0 + (scale / 10.0);
+		return (int)(getCombatDefinitions().getMaxHit() * boost);
 	}
 
 	public int getLevelForStyle(CombatStyle style) {

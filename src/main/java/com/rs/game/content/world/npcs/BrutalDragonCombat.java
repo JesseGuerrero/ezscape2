@@ -28,6 +28,7 @@ import com.rs.game.model.entity.npc.combat.NPCCombatDefinitions;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.SpotAnim;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.Power.SpecialItems;
 import kotlin.Pair;
 
 public class BrutalDragonCombat extends CombatScript {
@@ -51,7 +52,7 @@ public class BrutalDragonCombat extends CombatScript {
 				damage = Utils.getRandomInclusive(500);
 				int protection = PlayerCombatKt.getAntifireLevel(target, true);
 				if (protection == 1)
-					damage = Utils.getRandomInclusive(50);
+					damage = SpecialItems.reduceDragonFire(target, Utils.getRandomInclusive(50));
 				else if (protection == 2)
 					damage = 0;
 				npc.setNextAnimation(new Animation(12259));
@@ -64,7 +65,7 @@ public class BrutalDragonCombat extends CombatScript {
 				damage = Utils.getRandomInclusive(650);
 				int protection = PlayerCombatKt.getAntifireLevel(target, true);
 				if (protection == 1)
-					damage = Utils.getRandomInclusive(300);
+					damage = SpecialItems.reduceDragonFire(target, Utils.getRandomInclusive(300));
 				else if (protection == 2)
 					damage = 0;
 				npc.setNextAnimation(new Animation(14245));
@@ -74,7 +75,7 @@ public class BrutalDragonCombat extends CombatScript {
 				damage = Utils.getRandomInclusive(650);
 				int protection = PlayerCombatKt.getAntifireLevel(target, true);
 				if (protection == 1)
-					damage = Utils.getRandomInclusive(40);
+					damage = SpecialItems.reduceDragonFire(target, Utils.getRandomInclusive(40));
 				else if (protection == 2)
 					damage = 0;
 				npc.setNextAnimation(new Animation(12259));

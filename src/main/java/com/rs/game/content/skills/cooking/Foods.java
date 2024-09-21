@@ -29,6 +29,7 @@ import com.rs.lib.game.Item;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemClickHandler;
+import com.rs.rsps.Power.Power;
 import com.rs.utils.Ticks;
 
 import java.util.HashMap;
@@ -66,12 +67,12 @@ public class Foods {
         player.getInventory().refresh(slot);
         int hp = player.getHitpoints();
         if (ItemConstants.isDungItem(item.getId())) {
-            int healed = food.heal;
+            int healed = Power.foodAmplification(player, food.heal, item.getId());
             if (givenFrom != null && givenFrom.getDungManager().getActivePerk() == KinshipPerk.MEDIC)
                 healed *= 1.2 + (givenFrom.getDungManager().getKinshipTier(KinshipPerk.MEDIC) * 0.03);
             player.applyHit(new Hit(player, healed, HitLook.HEALED_DAMAGE));
         } else
-            player.heal(food.heal);
+            player.heal(Power.foodAmplification(player, food.heal, item.getId()));
         if (player.getHitpoints() > hp)
             player.sendMessage("It heals some health.");
         player.getInventory().refresh();
@@ -338,7 +339,7 @@ public class Foods {
         ROAST_FROG(10967, 50),
         ROAST_POTATOES(15429, 100),
         ROAST_RABBIT(7223, 70),
-        ROCKTAIL(15272, 0, p -> p.heal(230, 100)),
+        ROCKTAIL(15272, 0, p -> p.heal(230, Power.foodAmplification(p, 100, 15272))),
         BANDAGE(4049, 0, p -> p.heal(230, 100)),
         ROE(11324, 30),
         ROLL(6963, 20),

@@ -846,7 +846,7 @@ public final class Skills {
 		if (!player.getControllerManager().gainXP(skill, exp))
 			return 0.0;
 
-		if (Settings.getConfig().getXpRate() > 1)
+		if (Settings.getConfig().getXpRate() > 1 && EZScape.shouldIAllowHighXPRate(skill, oldLevel))
 			exp *= Settings.getConfig().getXpRate();
 
 		xp[skill] += exp;
@@ -898,7 +898,7 @@ public final class Skills {
 		if (player.isXpLocked())
 			return;
 
-		if (Settings.getConfig().getXpRate() > 1)
+		if (Settings.getConfig().getXpRate() > 1 && EZScape.shouldIAllowHighXPRate(skill, getLevelForXp(skill)))
 			exp *= Settings.getConfig().getXpRate();
 
 		int oldLevel = getLevelForXp(skill);
@@ -955,7 +955,7 @@ public final class Skills {
 		if (player.isXpLocked())
 			return;
 
-		if (Settings.getConfig().getXpRate() > 1)
+		if (Settings.getConfig().getXpRate() > 1 && EZScape.shouldIAllowHighXPRate(skill, getLevelForXp(skill)))
 			exp *= Settings.getConfig().getXpRate();
 
 		double modifier = 1.0;

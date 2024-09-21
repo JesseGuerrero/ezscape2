@@ -39,7 +39,8 @@ import com.rs.plugin.events.ItemClickEvent;
 import com.rs.plugin.events.ItemEquipEvent;
 import com.rs.plugin.handlers.ButtonClickHandler;
 import com.rs.plugin.handlers.InterfaceOnInterfaceHandler;
-import com.rs.rsps.Power;
+import com.rs.rsps.Power.Power;
+import com.rs.rsps.Power.SpecialItems;
 import com.rs.utils.ItemConfig;
 
 import java.util.Arrays;
@@ -180,13 +181,9 @@ public final class Equipment {
 			Item item = items.get(index);
 			if (item == null)
 				continue;
-			switch(item.getId()) {
-				case 20135, 20137, 20147, 20149, 20159, 20161 -> hpIncrease += 66;
-				case 20139, 20141, 20151, 20153, 20163, 20165 -> hpIncrease += 200;
-				case 20143, 20145, 20155, 20157, 20167, 20169 -> hpIncrease += 134;
-				case 24974, 24975, 24977, 24978, 24980, 24981, 24983, 24984, 24986, 24987, 24989, 24990, 25058, 25060, 25062, 25064, 25066, 25068 -> hpIncrease += 25;
-			}
+			hpIncrease = Power.ampedHPByPower(player, item, hpIncrease);
 		}
+		hpIncrease += SpecialItems.hpCodex(player);
 		int maxHp = player.getSkills().getLevel(Constants.HITPOINTS) * 10;
 		if (player.hasEffect(Effect.BONFIRE))
 			hpIncrease += (maxHp + (int) hpIncrease) * Bonfire.getBonfireBoostMultiplier(player);
@@ -203,9 +200,9 @@ public final class Equipment {
 		for (Item item : items.array()) {
 			if (item == null)
 				continue;
-			w += ItemConfig.get(item.getId()).getWeight(true);
+			w += Power.ampedWeight(player, item.getId(), ItemConfig.get(item.getId()).getWeight(true));
 		}
-		equipmentWeight = w;
+		equipmentWeight = w - Power.weightReduction(player);
 		player.getPackets().refreshWeight(player.getInventory().getInventoryWeight() + equipmentWeight);
 	}
 
@@ -886,7 +883,9 @@ public final class Equipment {
 	}
 
 	public static int getBonus(Player player, Item item, Bonus bonus) {
-		int value = Power.defenceBonus(player, player.getEquipment().items.getThisItemSlot(item), item.getId(), getBonus(item,bonus));
+		int value = Power.itemBonus(player, player.getEquipment().items.getThisItemSlot(item), item.getId(), getBonus(item,bonus));
+		if(player.getEquipment().items.getThisItemSlot(item) == Power.AMMO && bonus == Bonus.RANGE_STR)
+			value = Power.rangedStr(player, player.getEquipment().getWeaponId(), value);
 		switch(item.getId()) {
 			case 19152, 19157, 19162 -> {
 				return switch(bonus) {

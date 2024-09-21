@@ -28,7 +28,7 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
-import com.rs.rsps.Power;
+import com.rs.rsps.Power.Power;
 import com.rs.plugin.handlers.ObjectClickHandler;
 
 @PluginEventHandler
@@ -121,7 +121,7 @@ public final class DominionTower {
 				e.getPlayer().getDominionTower().startEnduranceMode();
 	});
 
-	public static ObjectClickHandler handleDominionTowerInteractions = new ObjectClickHandler(new Object[] { 62675, 62678, 62679, 62688, 62677, 62680 }, e -> {
+	public static ObjectClickHandler handleDominionTowerInteractions = new ObjectClickHandler(new Object[] { 62674, 62678, 62679, 62688, 62677, 62680 }, e -> {
 		Player player = e.getPlayer();
 
 		switch (e.getObjectId()) {
@@ -130,7 +130,7 @@ public final class DominionTower {
 			case 62676 -> player.useStairs(-1, Tile.of(3374, 3093, 0), 0, 1);
 			case 62678, 62679 -> player.getDominionTower().openModes();
 			case 62688 -> player.startConversation(new Dialogue()
-				.addSimple("You have a Dominion Factor of " + player.getDominionTower().getDominionFactor() + ".")
+				.addSimple("You have a Dominion Factor of " + player.getDominionTower().getDominionFactor() + ". Also boss count: " + player.getDominionTower().killedBossesCount)
 				.addOptions("If you claim your rewards your progress will be reset.", ops -> {
 					ops.add("Claim rewards", () -> player.getDominionTower().openRewardsChest());
 					ops.add("Nevermind.");
@@ -141,11 +141,6 @@ public final class DominionTower {
 	});
 
 	public static ObjectClickHandler handleDominionTowerRewards = new ObjectClickHandler(new Object[] { 62677 }, e -> e.getPlayer().getDominionTower().openRewards());
-
-	public static ObjectClickHandler handleDominionFactor = new ObjectClickHandler(new Object[] { 62688 }, e -> {
-		String message = "You have a Dominion Factor of " + e.getPlayer().getDominionTower().getDominionFactor() + ".";
-		e.getPlayer().simpleDialogue(message);
-	});
 
 
 	private static final int[] MUSICS = { 1015, 1022, 1018, 1016, 1021 };
@@ -360,9 +355,9 @@ public final class DominionTower {
 			if (progress > maxFloorEndurance)
 				maxFloorEndurance = progress;
 
-		killedBossesCount =+ 1* Power.multiplyBossKillsDomTower();
-		dominionFactor += factor;
-		totalScore += factor;
+		killedBossesCount += 1* Power.multiplyBossKillsDomTower();
+		dominionFactor += factor * Power.multiplyBossKillsDomTower();
+		totalScore += factor* Power.multiplyBossKillsDomTower();
 		if (dominionFactor > MAX_FACTOR) {
 			dominionFactor = MAX_FACTOR;
 			player.sendMessage("You've reached the maximum Dominion Factor you can get so you should spend it!");

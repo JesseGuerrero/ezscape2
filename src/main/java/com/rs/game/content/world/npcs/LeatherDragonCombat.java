@@ -26,6 +26,7 @@ import com.rs.game.model.entity.npc.combat.NPCCombatDefinitions;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.SpotAnim;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.Power.SpecialItems;
 
 public class LeatherDragonCombat extends CombatScript {
 
@@ -54,7 +55,7 @@ public class LeatherDragonCombat extends CombatScript {
 			npc.setNextSpotAnim(new SpotAnim(1, 0, 100));
 			int protection = PlayerCombatKt.getAntifireLevel(target, true);
 			if (protection == 1)
-				damage = Utils.getRandomInclusive(50);
+				damage = SpecialItems.reduceDragonFire(target, Utils.getRandomInclusive(50));
 			else if (protection == 2)
 				damage = 0;
 			delayHit(npc, 1, target, Hit.flat(npc, damage));

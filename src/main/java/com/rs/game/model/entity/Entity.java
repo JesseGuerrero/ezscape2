@@ -64,6 +64,7 @@ import com.rs.lib.util.Utils;
 import com.rs.lib.util.Vec2;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.PlayerStepEvent;
+import com.rs.rsps.Power.Power;
 import com.rs.utils.TriFunction;
 import com.rs.utils.WorldUtil;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
@@ -779,7 +780,7 @@ public abstract class Entity {
 			}
 			if (player != null)
 				if (nextRunDirection != null) {
-					player.drainRunEnergy((Math.min(player.getWeight(), 64) / 100.0) + 0.64);
+					player.drainRunEnergy((Math.min(player.getWeight(), Power.noLimitOnRunDrain()) / 100.0) + 0.64);
 					if (player.getRunEnergy() == 0.0)
 						player.setRun(false);
 				}

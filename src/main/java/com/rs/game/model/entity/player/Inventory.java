@@ -40,12 +40,15 @@ import com.rs.plugin.events.ItemOnNPCEvent;
 import com.rs.plugin.events.ItemOnPlayerEvent;
 import com.rs.plugin.events.NPCInteractionDistanceEvent;
 import com.rs.plugin.handlers.*;
+import com.rs.rsps.Power.Power;
 import com.rs.utils.ItemConfig;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static com.rs.rsps.Power.Power.*;
 
 @PluginEventHandler
 public final class Inventory {
@@ -502,6 +505,9 @@ public final class Inventory {
 			player.sendMessage("<col=FF0000>It looks like it will last another " + Utils.ticksToTime(item.getMetaDataI("combatCharges")));
 		else if (item.getMetaData("brawlerCharges") != null)
 			player.sendMessage("These gloves have " + item.getMetaDataI("brawlerCharges") + " charges left.");
+		double percentage = Power.getCombatAmplificationPercentage(player, item.getId());
+		String formattedPower = String.format("%.2f", percentage);
+		player.sendMessage("<col=00FF00>Your bonuses with your " + getArmourFromNumber(def.getEquipSlot()).toLowerCase() + " item is " + formattedPower + "%...");
 	}
 
 	public void refresh() {

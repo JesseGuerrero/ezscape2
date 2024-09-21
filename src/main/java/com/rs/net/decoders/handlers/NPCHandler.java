@@ -38,6 +38,7 @@ import com.rs.lib.util.Logger;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.NPCClickEvent;
 import com.rs.plugin.events.NPCInteractionDistanceEvent;
+import com.rs.rsps.Power.ScalingWorld;
 import com.rs.utils.NPCExamines;
 import com.rs.utils.Ticks;
 
@@ -49,6 +50,7 @@ public class NPCHandler {
 			player.sendMessage("HP: " + npc.getMaxHitpoints() + " Crush Def: " + npc.getDefinitions().getCrushDef() + " Slash Def: " +
 					npc.getDefinitions().getSlashDef() + " Stab Def: " + npc.getDefinitions().getStabDef() + " Range Def: "+ npc.getDefinitions().getRangeDef() +
 					" Mage Def: " + npc.getDefinitions().getMagicDef());
+			ScalingWorld.printCombatLevelsOnExamine(player, npc);
 			if (npc.getDefinitions().transformTo != null)
 				player.sendMessage(npc.getDefinitions().getConfigInfoString());
 			player.sendMessage("Spawn tile [" + npc.getRespawnTile().getX() + ", " + npc.getRespawnTile().getY() + ", " + npc.getRespawnTile().getPlane() + "]]. ");

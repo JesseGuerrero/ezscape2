@@ -218,8 +218,8 @@ public class WorldUtil {
 					if (itemObj instanceof Item item)
 						container.add(item);
 					else if (itemObj instanceof LinkedTreeMap<?, ?> item) {
-						if (item.get("metadata") != null) {
-							Object rawMetadata = item.get("metadata");
+						if (item.get("metaData") != null) {
+							Object rawMetadata = item.get("metaData");
 							if (rawMetadata instanceof Map<?, ?> rawMap) {
                                 Map<String, Object> metadataMap = new HashMap<>();
 								boolean valid = true;

@@ -25,14 +25,14 @@ import com.rs.game.model.`object`.GameObject
 import com.rs.lib.Constants
 import com.rs.lib.game.Item
 import com.rs.lib.game.Tile
-import com.rs.lib.util.Utils.add
-import com.rs.lib.util.Utils.addArticle
-import com.rs.lib.util.Utils.clampI
-import com.rs.lib.util.Utils.random
+import com.rs.lib.util.Utils
+import com.rs.lib.util.Utils.*
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.instantiateNpc
 import com.rs.plugin.kts.npcCombat
 import com.rs.plugin.kts.onObjectClick
+import com.rs.rsps.Power.Power
+import com.rs.rsps.Power.SpecialItems
 import com.rs.utils.DropSets
 import com.rs.utils.WorldUtil.gsonTreeMapToItemContainer
 import com.rs.utils.drop.DropTable
@@ -152,7 +152,7 @@ class QBD(npcId: Int, tile: Tile) : NPC(npcId, tile, Direction.SOUTH, true) {
         isCantFollowUnderCombat = true
         isIgnoreDocile = true
         isCantInteract = true
-        capDamage = 1000
+        capDamage = Power.setInfCapDamage()
     }
 
     fun wake() {
@@ -163,7 +163,7 @@ class QBD(npcId: Int, tile: Tile) : NPC(npcId, tile, Direction.SOUTH, true) {
             wait(28)
             isCantInteract = false
             transformIntoNPC(15454)
-            capDamage = 1000
+            capDamage = Power.setInfCapDamage()
             hitpoints = maxHitpoints
         }
     }
@@ -221,7 +221,7 @@ class QBD(npcId: Int, tile: Tile) : NPC(npcId, tile, Direction.SOUTH, true) {
         transformIntoNPC(15454)
         World.spawnObject(GameObject(70822, ObjectType.SCENERY_INTERACT, 0, middleTile.transform(-12, -3, -1)))
         World.spawnObject(GameObject(70818, ObjectType.SCENERY_INTERACT, 0, middleTile.transform(6, -3, -1)))
-        capDamage = 1000
+        capDamage = Power.setInfCapDamage()
         isCantInteract = true
         val newArtefact = when(phase) {
             0 -> {
@@ -383,6 +383,14 @@ private fun genDrop(killer: Player): MutableList<Item> {
     val drops = mutableListOf<Item>()
     add(drops, DropTable.calculateDrops(killer, DropSets.getDropSet("QBDMain")))
     add(drops, DropTable.calculateDrops(killer, DropSets.getDropSet("QBDSupply")))
+    for (i in 0 until 3) {
+        if (Utils.random(64) == 0)
+            drops.add(SpecialItems.getQBDCodex("Agility"))
+        if (Utils.random(64) == 0)
+            drops.add(SpecialItems.getQBDCodex("Dragon Fire"))
+        if (Utils.random(64) == 0)
+            drops.add(SpecialItems.getQBDCodex("Health"))
+    }
     if (random(128) == 0)
         repeat(2) { add(drops, DropTable.calculateDrops(killer, DropSets.getDropSet("rdt_standard"))) }
     return drops
@@ -549,9 +557,9 @@ enum class QBDAttack(val func: (QBD, Player) -> Int) {
         qbd.schedule {
             wait(1)
             player.applyHit(Hit.flat(qbd, when(getAntifireLevel(player, false)) {
-                2 -> random(190, 210)
-                1 -> random(250, 300)
-                else -> random(750, 950)
+                2 -> SpecialItems.reduceDragonFire(player, random(190, 210))
+                1 -> SpecialItems.reduceDragonFire(player, random(250, 300))
+                else -> SpecialItems.reduceDragonFire(player, random(750, 950))
             }))
         }
         6
@@ -602,14 +610,14 @@ enum class QBDAttack(val func: (QBD, Player) -> Int) {
             qbd.transformIntoNPC(15506)
             World.spawnObject(GameObject(70823, ObjectType.SCENERY_INTERACT, 0, qbd.middleTile.transform(-12, -3, -1)))
             World.spawnObject(GameObject(70819, ObjectType.SCENERY_INTERACT, 0, qbd.middleTile.transform(6, -3, -1)))
-            qbd.capDamage = 1000
+            qbd.capDamage = com.rs.rsps.Power.Power.setInfCapDamage()
         } else {
             targets.forEach { it.sendMessage("<col=669900>The Queen Black Dragon hardens her carapace; she is more resistant to physical</col>") }
             targets.forEach { it.sendMessage("<col=669900>damage, but more vulnerable to magic.</col>") }
             qbd.transformIntoNPC(15507)
             World.spawnObject(GameObject(70824, ObjectType.SCENERY_INTERACT, 0, qbd.middleTile.transform(-12, -3, -1)))
             World.spawnObject(GameObject(70820, ObjectType.SCENERY_INTERACT, 0, qbd.middleTile.transform(6, -3, -1)))
-            qbd.capDamage = 1000
+            qbd.capDamage = com.rs.rsps.Power.Power.setInfCapDamage()
         }
         qbd.schedule {
             wait(40)
@@ -640,9 +648,9 @@ enum class QBDAttack(val func: (QBD, Player) -> Int) {
             repeat(3) { num ->
                 qbd.possibleTargets.filter { it is Player && !it.isDead }.forEach {
                     it.applyHit(Hit.flat(qbd, when (getAntifireLevel(it, false)) {
-                        1 -> qbd.baseDamage(it) / 2
-                        2 -> qbd.baseDamage(it) / 3
-                        else -> qbd.baseDamage(it)
+                        1 -> SpecialItems.reduceDragonFire(it, qbd.baseDamage(it) / 2)
+                        2 -> SpecialItems.reduceDragonFire(it, qbd.baseDamage(it) / 3)
+                        else -> SpecialItems.reduceDragonFire(it, qbd.baseDamage(it))
                     }))
                     if (num == 2) it.tempAttribs.removeB("canBrandish")
                 }
@@ -695,9 +703,9 @@ private fun QBD.sendFirewall(variant: Int) {
                         val danger2 = baseTile.transform(x, -1)
                         targets.filter { !it.isDead && (it.isAt(danger1.x, danger1.y) || it.isAt(danger2.x, danger2.y)) }.forEach {
                             it.applyHit(Hit.flat(this, when(getAntifireLevel(it, false)) {
-                                2 -> random(190, 210)
-                                1 -> random(250, 300)
-                                else -> random(450, 550)
+                                2 -> SpecialItems.reduceDragonFire(it, random(190, 210))
+                                1 -> SpecialItems.reduceDragonFire(it, random(250, 300))
+                                else -> SpecialItems.reduceDragonFire(it, random(450, 550))
                             }))
                         }
 //                        if (Settings.getConfig().isDebug) {

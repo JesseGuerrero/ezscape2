@@ -22,7 +22,11 @@ import com.rs.lib.util.MapUtils
 import com.rs.lib.util.MapUtils.Area
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
-import com.rs.plugin.kts.*
+import com.rs.plugin.kts.onChunkEnter
+import com.rs.plugin.kts.onItemClick
+import com.rs.plugin.kts.onItemEquip
+import com.rs.plugin.kts.onObjectClick
+import com.rs.rsps.Power.Power
 import com.rs.utils.Ticks
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet
 import it.unimi.dsi.fastutil.objects.ObjectSet
@@ -229,7 +233,7 @@ fun attemptStartGame() {
 
 class SoulAvatar(private val redTeam: Boolean, val game: SoulWars, var level: Int = 100) : NPC(if (redTeam) 8596 else 8597, if (redTeam) Tile.of(1965, 3249, 0) else Tile.of(1805, 3208, 0)) {
     init {
-        capDamage = 700
+        capDamage = Power.setInfCapDamage()
     }
 
     override fun sendDeath(source: Entity?) {

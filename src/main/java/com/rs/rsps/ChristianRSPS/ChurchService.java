@@ -8,7 +8,9 @@ import com.rs.engine.cutscene.Cutscene;
 import com.rs.engine.dialogue.Conversation;
 import com.rs.engine.dialogue.Dialogue;
 import com.rs.engine.dialogue.HeadE;
+import com.rs.engine.dialogue.Options;
 import com.rs.engine.pathfinder.Direction;
+import com.rs.engine.quest.Quest;
 import com.rs.game.content.skills.magic.TeleType;
 import com.rs.game.map.instance.Instance;
 import com.rs.game.model.entity.Entity;
@@ -18,11 +20,14 @@ import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.object.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
+import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.annotations.ServerStartupEvent;
+import com.rs.plugin.handlers.EnterChunkHandler;
 import com.rs.plugin.handlers.PlayerStepHandler;
+import com.rs.rsps.Power.ReleaseStrongholds;
 import com.rs.utils.Ticks;
 
 import java.io.File;
@@ -82,6 +87,7 @@ public class ChurchService extends Controller {
     public void start() {
         player.lock();
         Tile start = entranceTile;
+        player.getMusicsManager().forcePlayMusic(999);
         player.playCutscene(new Cutscene() {
             @Override
             public void construct(Player player) {
@@ -163,20 +169,44 @@ public class ChurchService extends Controller {
 
     public boolean processObjectClick1(GameObject object) {
         if(object.getId() == 36972) {
-            if(player.getDailyB("HasDoneSermon")) {
-                player.startConversation(new Dialogue().addPlayer(HeadE.HAPPY_TALKING, "I have already done service for today. Maybe I can catch it with another player."));
-                return true;
-            }
-            if(serviceStarted == true) {
-                player.startConversation(new Dialogue().addPlayer(HeadE.HAPPY_TALKING, "There is a service right now. I will get my blessing at the end..."));
-                return true;
-            }
-            serviceStarted = true;
-            WorldTasks.delay(Ticks.fromMinutes(2), () -> {
-                serviceStarted = false;
-            });
-            player.playCutscene(new Sermon());
-            return false;
+            player.startConversation(new Dialogue().addOptions("Pray", options -> {
+                if(player.getDailyB("HasDoneSermon"))
+                    ;
+                else
+                    options.add("Service").addNext(()-> {
+                        if(serviceStarted == true) {
+                            player.startConversation(new Dialogue().addPlayer(HeadE.HAPPY_TALKING, "There is a service right now. I will get my blessing at the end..."));
+                            return;
+                        }
+                        serviceStarted = true;
+                        WorldTasks.delay(Ticks.fromMinutes(2), () -> {
+                            serviceStarted = false;
+                        });
+                        player.playCutscene(new Sermon());
+                    });
+                options.add("Tithe")
+                        .addNPC(456, HeadE.CALM_TALK, "How much will you give to the Lord?")
+                        .addNPC(456, HeadE.CALM_TALK, "We only accept 10k at a time")
+                        .addNext(() -> {
+                            player.sendInputInteger("How many 10k coins would you like to give?", (tithe) -> {
+                                if(tithe > 200_000) {
+                                    player.startConversation(new Dialogue()
+                                            .addNPC(456, HeadE.ANGRY, "Are you trying to bribe Christ?", ()->{
+                                                player.sendMessage("The priest rejects too high an amount");
+                                            })
+                                    );
+                                }else if(tithe*10_000 > player.getInventory().getCoins()) {
+                                    player.sendMessage("You don't have " + tithe*10_000 + " coins");
+                                } else {
+                                    player.getInventory().removeCoins(tithe*10_000);
+                                    player.incrementCount("10kputin", tithe);
+                                    player.sendMessage("You now have put in " + player.getCounterValue("10kputin") + " tithes of 10k coins.");
+                                }
+                            });
+                        });
+                }
+            ));
+            return true;
         }
         return true;
     }
@@ -259,5 +289,10 @@ public class ChurchService extends Controller {
         // Convert the list to a 2D array
         return sermonsList.toArray(new String[0][]);
     }
+
+    public static EnterChunkHandler handleBreakRum = new EnterChunkHandler(e -> {
+        if(e.getChunkId() == 827793 && e.getPlayer() != null)
+            e.getPlayer().getMusicsManager().forcePlayMusic(999);
+    });
 
 }

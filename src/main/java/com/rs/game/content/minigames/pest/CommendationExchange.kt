@@ -31,6 +31,7 @@ import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onButtonClick
 import com.rs.plugin.kts.onItemOnNpc
 import com.rs.plugin.kts.onNpcClick
+import com.rs.rsps.EZScape
 import com.rs.utils.DropSets
 import com.rs.utils.drop.DropTable
 import kotlin.math.floor
@@ -263,6 +264,10 @@ private fun Player.buy(reward: String, cost: Int, give: Runnable) {
 private fun Player.buySkillXp(skillId: Int, componentId: Int) {
     if (skills.getLevelForXp(skillId) < 25) {
         sendMessage("You need 25 " + Skills.SKILL_NAME[skillId] + " to purchase experience.")
+        return
+    }
+    if(EZScape.limit99PestControl(this, skillId)) {
+        sendMessage("You have the maximum " + Skills.SKILL_NAME[skillId] + " level.")
         return
     }
     val multiplier = when (skillId) {

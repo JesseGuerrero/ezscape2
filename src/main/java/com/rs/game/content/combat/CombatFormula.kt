@@ -229,6 +229,6 @@ fun getMaxHit(entity: Entity, target: Entity, combatStyle: CombatStyle, attackBo
         maxHit = (maxHit * getMagicBonusBoost(entity))
     }
 
-    if (Settings.getConfig().isDebug && (entity as? Player)?.nsv?.getB("hitChance") == true) entity.sendMessage("Your max hit: ${maxHit.toInt()}")
+    if (Settings.getConfig().isDebug && (entity as? Player)?.nsv?.getB("hitChance") == true) entity.sendMessage("Your max hit: ${maxHit}")
     return maxHit.toInt()
 }

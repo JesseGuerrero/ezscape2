@@ -1,5 +1,7 @@
 package com.rs.rsps;
 
+import com.rs.Settings;
+import com.rs.engine.pathfinder.RouteEvent;
 import com.rs.engine.quest.Quest;
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager;
 import com.rs.game.content.quests.shieldofarrav.ShieldOfArrav;
@@ -9,21 +11,38 @@ import com.rs.game.content.skills.mining.Ore;
 import com.rs.game.content.skills.slayer.Task;
 import com.rs.game.content.skills.thieving.PickPocketableNPC;
 import com.rs.game.model.entity.player.Player;
+import com.rs.game.model.entity.player.Skills;
 import com.rs.lib.game.Item;
+import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.LoginHandler;
+import com.rs.plugin.handlers.ObjectClickHandler;
 import com.rs.rsps.ChristianRSPS.ChurchService;
 import com.rs.utils.DropSets;
+import com.rs.utils.WorldUtil;
 import com.rs.utils.drop.DropTable;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static com.rs.game.content.skills.runecrafting.RunecraftingAltar.WICKED_HOOD_INTER;
-
 @PluginEventHandler
 public class EZScape {
     public static LoginHandler onLogin = new LoginHandler(e -> {
+        if(!e.getPlayer().getBool("XPNormalized")) {
+            for(int skill = 0; skill < Skills.SIZE; skill++) {
+                int max = 99;
+                if(skill == 24)
+                    max = 120;
+                double xp = e.getPlayer().getSkills().getXp(skill);
+                if(xp > Skills.getXPForLevel(max)) {
+                    double diff = xp - Skills.getXPForLevel(max);
+                    diff /= Settings.getConfig().getXpRate();
+                    xp = Skills.getXPForLevel(max) + diff;
+                }
+                e.getPlayer().getSkills().setXp(skill, xp);
+            }
+            e.getPlayer().set("XPNormalized", true);
+        }
         for (Quest quest : Quest.values())
             if (quest.isImplemented())
                 if (!e.getPlayer().getQuestManager().isComplete(quest)) {
@@ -33,6 +52,18 @@ public class EZScape {
                 }
         ShieldOfArrav.setGang(e.getPlayer(), "Phoenix");
     });
+
+    public static boolean shouldIAllowHighXPRate(int skill, int level) {
+        if(skill == 24 && level >= 120)
+            return false;
+        if(skill != 24 && level >= 99)
+            return false;
+        return true;
+    }
+
+    public static boolean corpReset() {
+        return false;
+    }
 
     public static boolean removeIronMan() {
         return true;
@@ -98,8 +129,36 @@ public class EZScape {
         return false;
     }
 
+    public static ObjectClickHandler handleEdge = new ObjectClickHandler(false, new Object[] { 26933, 26934 }, (e) -> {
+        e.getPlayer().move(Tile.of(3096, 9868, 0));
+    });
+    public static ObjectClickHandler handleTower = new ObjectClickHandler(false, new Object[] { 4490,4487 }, (e) -> {
+        if(e.getPlayer().getY() < 3536)
+            e.getPlayer().move(Tile.of(3429, 3536, 0));
+        else
+            e.getPlayer().move(Tile.of(3429, 3534, 0));
+    });
+
+    public static ObjectClickHandler handleNezzyGate = new ObjectClickHandler(false, new Object[] { 21505, 21506, 21507, 21508 }, (e) -> {
+        if(e.getPlayer().getX() <= 2328)
+            e.getPlayer().move(Tile.of(2330, 3805, 0));
+        else
+            e.getPlayer().move(Tile.of(2328, 3805, 0));
+    });
+
+    public static ObjectClickHandler handleYakGate = new ObjectClickHandler(false, new Object[] { 21600, 21601 }, (e) -> {
+        if(e.getPlayer().getY() >= 3802)
+            e.getPlayer().move(Tile.of(2326, 3801, 0));
+        else
+            e.getPlayer().move(Tile.of(2326, 3802, 0));
+    });
+
     public static boolean removeLoyaltyAuraCooldowns() {
         return true;
+    }
+
+    public static int hpBoostLengthMultiplier() {
+        return 9999;
     }
 
     public static Item[] tenTimesPickPocket(Player player, PickPocketableNPC npcData) {
@@ -126,8 +185,8 @@ public class EZScape {
         player.set("fightCavesWaveI", wave);
     }
 
-    public static int getFightKilnWave(Player player, int defaultWave) {
-        return Math.max(player.getI("fightKilnWaveI", 0), defaultWave);
+    public static int getFightKilnWave(Player player) {
+        return player.getI("fightKilnWaveI", 0);
     }
 
     public static void saveFightKilnWave(Player player, int wave) {
@@ -146,9 +205,16 @@ public class EZScape {
         return 17;
     }
 
-    public static int multiplySlayerPointsTimesFive(int amount) {
-        return amount * 5;
+    public static int multiplySlayerPointsTimesTen(int amount) {
+        return amount * 10;
     }
+
+    public static LoginHandler updateSlayerPoints = new LoginHandler(e -> {
+        if(!e.getPlayer().getBool("slayerTimesTen")) {
+            e.getPlayer().setSlayerPoints(e.getPlayer().getSlayerPoints()*10);
+            e.getPlayer().set("slayerTimesTen", true);
+        }
+    });
 
     public static int totalXPCap() {
         return 2_000_000_000;
@@ -173,6 +239,10 @@ public class EZScape {
     public static boolean openClueReward(Player player, TreasureTrailsManager manager, Item item, int level) {
         manager.openReward(level);
         player.getInventory().deleteItem(item.getId(), 1);
+        return true;
+    }
+
+    public static boolean allowOffTaskMonsters() {
         return true;
     }
 
@@ -211,4 +281,5 @@ public class EZScape {
     public static int farmingTick() {
         return 250;
     }
+
 }

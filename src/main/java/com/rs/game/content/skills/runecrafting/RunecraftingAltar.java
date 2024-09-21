@@ -477,7 +477,10 @@ public class RunecraftingAltar {
 		WorldTasks.scheduleTimer(0, 0, tick -> {
 			switch(tick) {
 				case 0 -> World.sendProjectile(npc, player, 109, new Pair<>(5, 5), 5, 5, 5);
-				case 1 -> player.spotAnim(110, 35, 96);
+				case 1 -> {
+					player.spotAnim(110, 35, 96);
+					player.lastEssTele = Tile.of(player.getTile());
+				}
 				case 3 -> {
 					if (player.getMiniquestStage(Miniquest.ENTER_THE_ABYSS) == EnterTheAbyss.SCRYING_ORB) {
 						if (player.getInventory().containsItem(5519, 1)) {
@@ -501,7 +504,6 @@ public class RunecraftingAltar {
 						}
 					}
 					player.unlock();
-					player.lastEssTele = Tile.of(player.getTile());
 					player.tele(Tile.of(2911, 4832, 0));
 					return false;
 				}

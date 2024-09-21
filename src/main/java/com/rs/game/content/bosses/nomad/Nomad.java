@@ -32,6 +32,7 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.NPCInstanceHandler;
+import com.rs.rsps.Power.Power;
 
 import java.util.ArrayList;
 
@@ -50,7 +51,7 @@ public class Nomad extends NPC {
 		super(id, tile, spawned);
 		setForceMultiArea(true);
 		setRun(true);
-		setCapDamage(750);
+		setCapDamage(Power.setInfCapDamage());
 		setForceAggroDistance(5);
 		setNextMovePerform();
 		setRandomWalk(true);

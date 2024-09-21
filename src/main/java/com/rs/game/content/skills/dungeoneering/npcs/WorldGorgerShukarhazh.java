@@ -24,6 +24,7 @@ import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.Hit;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.Power.Power;
 
 public class WorldGorgerShukarhazh extends DungeonBoss {
 
@@ -61,7 +62,7 @@ public class WorldGorgerShukarhazh extends DungeonBoss {
 			if (inactive)
 				inactiveCounter++;
 		}
-		setCapDamage(inactiveCounter == 0 ? 500 : inactiveCounter == 1 ? 1500 : -1);
+		setCapDamage(inactiveCounter == 0 ? Power.setInfCapDamage() : inactiveCounter == 1 ? Power.setInfCapDamage() : -1);
 	}
 
 	@Override

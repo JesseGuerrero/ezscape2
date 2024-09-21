@@ -15,6 +15,7 @@ public class Sermon extends Cutscene {
     @Override
     public void construct(Player player) {
         setEndTile(start);
+        music(999);
         action(() -> {
             ChurchService.priest.forceTalk("Let us pray.");
             player.setDailyB("HasDoneSermon", true);
@@ -22,7 +23,7 @@ public class Sermon extends Cutscene {
         delay(1);
         playerMove(start.x(), start.y(), start.plane(), Entity.MoveType.WALK);
         delay(2);
-        action(() -> { ChurchService.priest.forceTalk("Father in heaven...");});
+        action(() -> { ChurchService.priest.forceTalk("Father in heaven..."); ChurchService.priest.faceDir(Direction.NORTH);});
         delay(3);
         action(() -> { ChurchService.priest.forceTalk("Grant me the wisdom to preach...");});
         delay(4);
@@ -36,6 +37,12 @@ public class Sermon extends Cutscene {
         action(() -> { ChurchService.npcs.forEach(npc -> {
                 npc.forceTalk("Amen."); player.forceTalk("Amen.");
                 npc.anim(3114); player.anim(3114);
+                if(npc.getName().toLowerCase().contains("mike"))
+                    npc.faceDir(Direction.SOUTHEAST);
+                else if(npc.getName().toLowerCase().contains("hans"))
+                    npc.faceDir(Direction.SOUTHWEST);
+                else
+                    npc.faceDir(Direction.SOUTH);
         }); } );
         delay(1);
         for(String sentence : sermon) {

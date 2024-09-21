@@ -33,6 +33,7 @@ import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemOnObjectHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +57,7 @@ public class Bonfire extends PlayerAction {
 		MAHOGANY(6332, 3098, 50, 180, 36),
 		EUCALYPTUS(12581, 3112, 58, 241, 48),
 		YEWS(1515, 3111, 60, 252, 54),
-		MAGIC(1513, 3135, 75, 378, 60),
+		MAGIC(1513, 3135, 75, 378, 60 * EZScape.hpBoostLengthMultiplier()),
 		BLISTERWOOD(21600, 3113, 76, 378, 60),
 		CURSED_MAGIC(13567, 3116, 82, 378, 60);
 

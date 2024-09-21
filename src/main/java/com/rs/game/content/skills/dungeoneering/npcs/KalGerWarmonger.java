@@ -38,6 +38,7 @@ import com.rs.lib.game.Animation;
 import com.rs.lib.game.SpotAnim;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.Power.Power;
 
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class KalGerWarmonger extends DungeonBoss {
 
 	public KalGerWarmonger(Tile tile, final DungeonManager manager, final RoomReference reference) {
 		super(DungeonUtils.getClosestToCombatLevel(Utils.range(12752, 12766), manager.getBossLevel()), tile, manager, reference);
-		setCapDamage(5000);
+		setCapDamage(Power.setInfCapDamage());
 		setCantInteract(true);
 		typeTicks = -1;
 		WorldTasks.scheduleTimer(3, (ticks) -> {

@@ -13,6 +13,7 @@ import com.rs.plugin.annotations.ServerStartupEvent
 @ServerStartupEvent
 fun addTrentCommands() {
     Commands.add(Rights.OWNER, "qbdloot", "add qbd kill loot to chest") { p, _ ->
+        p.sendMessage("added loot")
         rollQbdKillAndAddToChest(p)
     }
 

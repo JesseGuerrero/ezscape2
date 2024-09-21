@@ -9,6 +9,7 @@ import com.rs.lib.Constants
 import com.rs.lib.game.Item
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onNpcDrop
+import com.rs.rsps.Power.ScalingWorld
 import java.util.*
 
 @ServerStartupEvent
@@ -29,6 +30,7 @@ fun mapDrops() {
     }
 
     onNpcDrop(null, arrayOf(12158, 12159, 12160, 12161, 12162, 12163, 12168)) { e ->
+        e.item.amount = ScalingWorld.scaleCharms(e.player, e.npc, e.item)
         if ((e.player.equipment.containsOneItem(25350) || e.player.inventory.containsItem(25350, 1)) && e.player.inventory.hasRoomFor(e.item)) {
             e.player.inventory.addItem(Item(e.item))
             e.deleteItem()
@@ -36,6 +38,7 @@ fun mapDrops() {
     }
 
     onNpcDrop(null, arrayOf(995)) { e ->
+        e.item.amount = ScalingWorld.scaleCoins(e.player, e.npc, e.item.amount)
         if (e.player.equipment.containsOneItem(25351) || e.player.inventory.containsItem(25351, 1)) {
             e.player.inventory.addCoins(e.item.amount)
             e.deleteItem()
