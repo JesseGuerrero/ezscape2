@@ -5,11 +5,10 @@ import com.rs.db.WorldDB
 import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
-import com.rs.game.World
 import com.rs.game.content.dnds.penguins.PenguinServices.penguinHideAndSeekManager
 import com.rs.game.content.dnds.penguins.PenguinServices.penguinSpawnService
-import com.rs.game.content.dnds.penguins.PenguinServices.penguinWeeklyScheduler
 import com.rs.game.content.dnds.penguins.PenguinServices.polarBearManager
+import com.rs.game.tasks.WorldTasks
 import com.rs.lib.util.Logger
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.annotations.ServerStartupEvent.Priority
@@ -19,8 +18,13 @@ import com.rs.plugin.kts.onItemClick
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onNpcClick
 import com.rs.plugin.kts.onObjectClick
+import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.Month
+import java.time.ZoneOffset
+import java.time.ZonedDateTime
 import java.time.temporal.WeekFields
+import java.util.Date
 import java.util.Locale
 
 var DND_ENABLED: Boolean = true
@@ -32,9 +36,13 @@ const val UNLOCKED_PENGUIN_HAS = "Unlocked_PenguinHAS"
 object PenguinServices {
     val penguinHideAndSeekManager = PenguinManager()
     val penguinSpawnService = PenguinSpawnService()
-    val penguinWeeklyScheduler = PenguinWeeklyScheduler()
     val polarBearManager = PolarBearManager()
     var penguinTaskName = ""
+
+    var RESET_DAY = DayOfWeek.WEDNESDAY
+    var RESET_HOUR = 0
+    var RESET_MIN = 0
+    var RESET_SEC = 0
 }
 
 @ServerStartupEvent
@@ -165,14 +173,7 @@ fun initializePenguinHideAndSeek() {
     polarBearManager.setLocation()
 
     // Weekly reset task
-    scheduleWeeklyReset()
-}
-
-fun scheduleWeeklyReset() {
-    penguinWeeklyScheduler.scheduleWeeklyReset {
-        for (player in World.players) { // Reset Quickchat varbit to 0 for all logged in players
-            player.vars.saveVarBit(5276, 0)
-        }
+    WorldTasks.scheduleHourly {
         penguinHideAndSeekManager.checkAndSpawn()
         polarBearManager.setLocation()
     }
@@ -187,9 +188,9 @@ class PenguinManager() {
         val currentWeek = today.get(WeekFields.of(Locale.getDefault()).weekOfYear())
         val currentWeekSpawns = penguinSpawnService.getSpawnsForWeek(currentWeek)
 
-        val isResetDay = today.dayOfWeek >= penguinWeeklyScheduler.getResetDay()
+        val isResetDay = today.dayOfWeek >= getResetDay()
 
-        if (currentWeekSpawns.isEmpty()) {
+        if (currentWeekSpawns.size < 10) {
             if (penguinSpawnService.isSpawnEmpty()) {
                 Logger.debug(PenguinManager::class.java, "checkAndSpawn", "Spawning new penguins")
                 penguinSpawnService.prepareNew(currentWeek)
@@ -204,5 +205,44 @@ class PenguinManager() {
             penguinSpawnService.prepareExisting(currentWeek)
             Logger.debug(PenguinManager::class.java, "checkAndSpawn", "Current week penguins are already populated. Spawn existing penguins.")
         }
+    }
+
+    fun getNextWeeklyReset(): ZonedDateTime {
+        var nextReset = ZonedDateTime.now(ZoneOffset.UTC)
+            .with(getResetDay())
+            .withHour(getResetHour())
+            .withMinute(getResetMin())
+            .withSecond(getResetSec())
+            .withNano(0)
+
+        if (nextReset.isBefore(ZonedDateTime.now(ZoneOffset.UTC))) {
+            nextReset = nextReset.plusWeeks(1)
+        }
+
+        Logger.debug(PenguinManager::class.java, "getNextWeeklyReset", "Next weekly reset: ${Date.from(nextReset.toInstant())}.")
+        return nextReset
+    }
+
+    fun getResetDay() : DayOfWeek {
+        return PenguinServices.RESET_DAY;
+    }
+    fun getResetHour() : Int {
+        return PenguinServices.RESET_HOUR;
+    }
+    fun getResetMin() : Int {
+        return PenguinServices.RESET_MIN;
+    }
+    fun getResetSec() : Int {
+        return PenguinServices.RESET_SEC;
+    }
+
+    fun getCurrentDayAndTime(): ZonedDateTime {
+        return ZonedDateTime.now(ZoneOffset.UTC)
+    }
+    fun getCurrentWeek(): Int {
+        return ZonedDateTime.now(ZoneOffset.UTC).get(WeekFields.ISO.weekOfWeekBasedYear())
+    }
+    fun getCurrentMonth(): Month {
+        return ZonedDateTime.now(ZoneOffset.UTC).month
     }
 }

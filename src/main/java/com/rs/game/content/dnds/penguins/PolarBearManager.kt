@@ -19,8 +19,8 @@ class PolarBearManager() {
     private var currentWeekNumber: Int? = null
 
     fun setLocation() {
-        val currentDateTime = PenguinServices.penguinWeeklyScheduler.getCurrentDayAndTime()
-        val isResetDay = currentDateTime.dayOfWeek >= PenguinServices.penguinWeeklyScheduler.getResetDay()
+        val currentDateTime = PenguinServices.penguinHideAndSeekManager.getCurrentDayAndTime()
+        val isResetDay = currentDateTime.dayOfWeek >= PenguinServices.penguinHideAndSeekManager.getResetDay()
         val weekNumber = currentDateTime.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear())
 
         val latestPolarBear = WorldDB.getPenguinHAS().getPolarBear()
@@ -71,7 +71,7 @@ class PolarBearManager() {
                 previousLocations.removeAt(0)
             }
 
-            val weekNumber = PenguinServices.penguinWeeklyScheduler.getCurrentDayAndTime().get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear())
+            val weekNumber = PenguinServices.penguinHideAndSeekManager.getCurrentDayAndTime().get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear())
             val locationWithWeek = LocationAndWeek(location = newLocation, weekNumber = weekNumber)
             val newState = PolarBearState(location = locationWithWeek, previousLocations = previousLocations)
 

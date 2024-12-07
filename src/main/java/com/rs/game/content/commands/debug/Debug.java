@@ -509,46 +509,6 @@ public class Debug {
 		// return true;
 
 		// Start Penguin Hide And Seek debug commands
-		Commands.add(Rights.ADMIN, "penguin_task_set", "Resets and schedules the penguin task.", (p, args) -> {
-
-			if (args.length < 4) {
-				p.getPackets().sendDevConsoleMessage("Usage: penguin_task_set [DayOfWeek] [Hour] [Minute] [Second]");
-				return;
-			}
-
-			try {
-				DayOfWeek day = DayOfWeek.valueOf(args[0].toUpperCase());
-				int hour = Integer.parseInt(args[1]);
-				int min = Integer.parseInt(args[2]);
-				int sec = Integer.parseInt(args[3]);
-
-				PenguinWeeklyScheduler scheduler = PenguinServices.INSTANCE.getPenguinWeeklyScheduler();
-				scheduler.setResetDay(day);
-				scheduler.setResetHour(hour);
-				scheduler.setResetMin(min);
-				scheduler.setResetSec(sec);
-
-				p.getPackets().sendDevConsoleMessage("Penguin task scheduled for " + day + " at " + hour + ":" + min + ":" + sec + ".");
-
-				WorldTasks.remove(PenguinServices.INSTANCE.getPenguinTaskName());
-				PenguinHASControllerKt.scheduleWeeklyReset();
-
-			} catch (Exception e) {
-				p.getPackets().sendDevConsoleMessage("Invalid arguments. Usage: penguin_task <DayOfWeek> <Hour> <Minute> <Second>");
-			}
-		});
-
-		Commands.add(Rights.ADMIN, "penguin_task_query", "Returns the penguin task time remaining (in ticks).", (p, args) -> {
-
-			p.getPackets().sendDevConsoleMessage("Remaining Ticks: " + WorldTasks.getRemainingTicks(PenguinServices.INSTANCE.getPenguinTaskName()));
-
-			Map<String, Integer> tasks = WorldTasks.listAllMappedTasks();
-			tasks.forEach((mapping, remainingTicks) -> {
-				p.getPackets().sendDevConsoleMessage("Task Mapping: " + mapping + ", Remaining Ticks: " + remainingTicks);
-			});
-
-		});
-
 		Commands.add(Rights.ADMIN, "penguin_points [set/add/remove]", "Manipulates the player's Penguin Points by the action chosen (Set/Add/Remove).", (p, args) -> {
 			if (args.length < 3) {
 				p.getPackets().sendDevConsoleMessage("Usage: ::penguin_points [set/add/remove] [username] [points]");

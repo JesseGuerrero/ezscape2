@@ -98,12 +98,10 @@ import kotlin.Pair;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.temporal.IsoFields;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @PluginEventHandler
 public class MiscTest {
@@ -215,7 +213,7 @@ public class MiscTest {
 					}
 
 					p.getPackets().sendDevConsoleMessage("Penguin Hide and Seek participants:\n" + participantsInfo);
-					p.getPackets().sendDevConsoleMessage("Total participants for week " + PenguinServices.INSTANCE.getPenguinWeeklyScheduler().getCurrentWeek() + ": " + spotters.size());
+					p.getPackets().sendDevConsoleMessage("Total participants for week " + PenguinServices.INSTANCE.getPenguinHideAndSeekManager().getCurrentWeek() + ": " + spotters.size());
 				}
 			} catch (Exception e) {
 				p.getPackets().sendDevConsoleMessage("Couldn't retrieve participants from Database.");
@@ -223,7 +221,7 @@ public class MiscTest {
 		});
 
 		Commands.add(Rights.ADMIN, "penguin_next_reset", "Returns the date/time of the next reset.", (p, args) -> {
-			PenguinWeeklyScheduler scheduler = PenguinServices.INSTANCE.getPenguinWeeklyScheduler();
+			PenguinManager scheduler = PenguinServices.INSTANCE.getPenguinHideAndSeekManager();
 
 			ZonedDateTime nextResetTime = scheduler.getNextWeeklyReset();
 			long millisUntilReset = Duration.between(scheduler.getCurrentDayAndTime(), nextResetTime).toMillis();
@@ -234,6 +232,8 @@ public class MiscTest {
 
 			p.getPackets().sendDevConsoleMessage("Next reset is scheduled for: " + formattedResetTime + ", or in " + Ticks.breakDownOfTicks((int) (millisUntilReset / 600)) + ".");
 		});
+
+
 
 		Commands.add(Rights.ADMIN, "penguin_reset [type] [weekNumber]", "Resets penguins or polar bear and spawns a new set. Type can be 'penguins' or 'polarbear'. Week number parameter is optional.", (p, args) -> {
 			if (args.length < 1 || (!args[0].equalsIgnoreCase("penguins") && !args[0].equalsIgnoreCase("polarbear"))) {
@@ -247,7 +247,7 @@ public class MiscTest {
 				PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
 				int week = (args.length > 1 && args[1].matches("\\b([1-9]|[1-4][0-9]|5[0-2])\\b"))
 						? Integer.parseInt(args[1])
-						: PenguinServices.INSTANCE.getPenguinWeeklyScheduler().getCurrentDayAndTime().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+						: PenguinServices.INSTANCE.getPenguinHideAndSeekManager().getCurrentDayAndTime().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
 
 				if (penguinSpawnService.removeAllSpawns()) {
 					penguinSpawnService.prepareNew(week);

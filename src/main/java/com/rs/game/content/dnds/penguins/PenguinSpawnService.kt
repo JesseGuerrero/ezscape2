@@ -15,26 +15,48 @@ const val PUMPKIN_ID = 14415
 const val SNOWMAN_ID = 14766
 
 class PenguinSpawnService () {
-    val repository = PenguinSpawnRepository()
     val spawnedNPCs: MutableMap<String, NPC> = mutableMapOf()
     var regionIds: HashSet<Int> = hashSetOf()
+    private val allSpawns = mutableMapOf<NPCSpawn, Int>()
 
-    fun loadSpawns() = repository.loadSpawns()
-
-    fun getSpawnsForWeek(week: Int): List<NPCSpawn> {
-        return repository.getAllSpawns().filter { (_, spawnWeek) -> spawnWeek == week }.map { (spawn, _) -> spawn }
+    fun loadSpawns() {
+        allSpawns.clear()
+        val penguins = WorldDB.getPenguinHAS().getAllPenguins()
+        penguins.forEach { penguin ->
+            val spawn = NPCSpawn(penguin.npcId, penguin.location, penguin.wikiLocation)
+            allSpawns[spawn] = penguin.week
+            regionIds.add(penguin.location.regionId)
+        }
+        Logger.debug(PenguinSpawnService::class.java, "loadSpawns", "Loaded ${allSpawns.size} spawns from database.")
     }
 
-    fun isSpawnEmpty(): Boolean = repository.getAllSpawns().isEmpty()
+    fun addSpawn(id: Int, tile: Tile, comment: String, week: Int): NPCSpawn {
+        val spawn = NPCSpawn(id, tile, comment)
+        allSpawns[spawn] = week
+        regionIds.add(tile.regionId)
+        return spawn
+    }
+
+    fun getAllSpawns(): Map<NPCSpawn, Int> = allSpawns
+
+    fun getSpawnsForWeek(week: Int): List<NPCSpawn> {
+        return getAllSpawns().filter { (_, spawnWeek) -> spawnWeek == week }.map { (spawn, _) -> spawn }
+    }
+
+    fun isSpawnEmpty(): Boolean = getAllSpawns().isEmpty()
 
     fun prepareNew(week: Int) {
-        var previouslySpawnedPenguins = repository.getAllSpawns()
+        var previouslySpawnedPenguins = getAllSpawns()
             .filter { (_, spawnWeek) -> spawnWeek == (week - 1) }
             .map { (spawn, _) -> spawn }
 
         removeAllSpawns()
 
-        val currentMonth = PenguinServices.penguinWeeklyScheduler.getCurrentMonth()
+        for (player in World.players) { // Reset Quickchat varbit to 0 for all logged in players
+            player.vars.saveVarBit(5276, 0)
+        }
+
+        val currentMonth = PenguinServices.penguinHideAndSeekManager.getCurrentMonth()
         val usedLocationHints = mutableSetOf<String>()
 
         val onePointPenguins = Penguins.getPenguinsByPoints(1)
@@ -76,14 +98,14 @@ class PenguinSpawnService () {
                 else -> penguin.npcId
             }
             val newPenguin = WorldDB.getPenguinHAS().createPenguin(idToUse, penguin.name, null, week, penguin.points, penguin.tile, penguin.wikiLocation, penguin.locationHint)
-            val spawn = repository.addSpawn(idToUse, newPenguin.location, penguin.wikiLocation, week)
+            val spawn = addSpawn(idToUse, newPenguin.location, penguin.wikiLocation, week)
             spawnPenguins(week, spawn)
         }
         Logger.debug(PenguinSpawnService::class.java, "prepareNew", "New penguins spawned for week $week. Current tracked size: ${spawnedNPCs.size}")
     }
 
     fun prepareExisting(currentWeek: Int) {
-        val nonCurrentWeekSpawns = repository.getAllSpawns()
+        val nonCurrentWeekSpawns = getAllSpawns()
         val alreadySpawnedTiles = spawnedNPCs.values.map { it.respawnTile }.toSet()
 
         nonCurrentWeekSpawns.forEach { spawn ->
@@ -109,7 +131,7 @@ class PenguinSpawnService () {
     }
 
     fun removeAllSpawns(): Boolean {
-        val allSpawns = repository.getAllSpawns() as? MutableMap<NPCSpawn, Int>
+        val allSpawns = getAllSpawns() as? MutableMap<NPCSpawn, Int>
 
         val removed = allSpawns?.isNotEmpty() == true
         allSpawns?.clear()
