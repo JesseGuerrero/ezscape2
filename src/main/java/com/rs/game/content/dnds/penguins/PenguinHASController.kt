@@ -1,15 +1,15 @@
 package com.rs.game.content.dnds.penguins
 
+import com.google.gson.Gson
 import com.rs.Settings
-import com.rs.db.WorldDB
 import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
+import com.rs.game.World
 import com.rs.game.content.dnds.penguins.PenguinServices.penguinHideAndSeekManager
 import com.rs.game.content.dnds.penguins.PenguinServices.penguinSpawnService
 import com.rs.game.content.dnds.penguins.PenguinServices.polarBearManager
 import com.rs.game.tasks.WorldTasks
-import com.rs.lib.util.Logger
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.annotations.ServerStartupEvent.Priority
 import com.rs.plugin.kts.getInteractionDistance
@@ -18,31 +18,32 @@ import com.rs.plugin.kts.onItemClick
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onNpcClick
 import com.rs.plugin.kts.onObjectClick
-import java.time.DayOfWeek
+import java.io.File
+import java.io.IOException
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.Month
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.time.temporal.WeekFields
-import java.util.Date
-import java.util.Locale
 
 var DND_ENABLED: Boolean = true
 
 const val PENGUIN_POINTS = "PenguinPoints"
 const val MAX_PENGUIN_POINTS = 50
 const val UNLOCKED_PENGUIN_HAS = "Unlocked_PenguinHAS"
+const val PENGUINHAS_LAST_RESET_WORLD_ATTR = "penguinHAS_LastReset"
+const val PENGUINS_WORLD_ATTR = "penguinHAS_Penguins"
+const val POLAR_BEAR_WORLD_ATTR = "penguinHAS_PolarBear"
+const val PENGUIN_COUNT_WEEKLY_ATTR = "penguinsSpotted"
+const val POLAR_BEAR_WEEKLY_ATTR = "polarBearSpotted"
 
 object PenguinServices {
     val penguinHideAndSeekManager = PenguinManager()
     val penguinSpawnService = PenguinSpawnService()
     val polarBearManager = PolarBearManager()
-    var penguinTaskName = ""
-
-    var RESET_DAY = DayOfWeek.WEDNESDAY
-    var RESET_HOUR = 0
-    var RESET_MIN = 0
-    var RESET_SEC = 0
 }
 
 @ServerStartupEvent
@@ -54,34 +55,45 @@ fun mapPenguinHideAndSeekInteractions() {
     getInteractionDistance(8104, 8105, 8107, 8108, 8109, 8110, 14415, 14766) { _, _ -> 3 }
     onNpcClick(8104, 8105, 8107, 8108, 8109, 8110, 14415, 14766) { (player, npc) ->
         if (player.get(UNLOCKED_PENGUIN_HAS) as Boolean) {
-            val penguinsEnum = Penguins.getPenguinByTile(npc.respawnTile)
 
-            if (penguinsEnum != null) {
-                val penguin = WorldDB.getPenguinHAS().getPenguinByIdAndLocation(npc.id, npc.respawnTile)
+            if (player.getWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR) == 10) {
+                player.sendMessage("You've already spotted all the penguin spies this week!")
+                return@onNpcClick
+            }
+
+            val penguins = penguinSpawnService.getPenguins()
+            val penguin = penguins.find { it.location == npc.respawnTile }
+
+            if (penguin != null) {
                 synchronized(penguin) {
                     if (penguin.spotters.contains(player.username)) {
                         player.sendMessage("You've already spotted this penguin spy.")
                         return@onNpcClick
                     }
+
                     penguin.addSpotter(player.username)
-                    WorldDB.getPenguinHAS().savePenguinSpotters(penguin)
+                    World.data.attribs.setO<String>(PENGUINS_WORLD_ATTR, Gson().toJson(penguins))
+                    player.incWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR, 1)
+
                     player.lock(3)
                     player.anim(10355)
                     player.jingle(345)
                     player.incrementCount("Penguin Agents spied", 1)
-                    player.vars.saveVarBit(5276, WorldDB.getPenguinHAS().getPenguinsSpottedByPlayer(player.username)) // Set varbit for QuickChat
+
+                    player.vars.saveVarBit(5276, player.getWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR))
+
                     player.sendMessage("You spy on the penguin.")
 
                     val currentPoints = player.getI(PENGUIN_POINTS).coerceAtLeast(0)
-                    val pointsToAdd = if (player.isQuestComplete(Quest.COLD_WAR)) penguinsEnum.points else 1
+                    val pointsToAdd = if (player.isQuestComplete(Quest.COLD_WAR)) penguin.points else 1
                     val newPoints = (currentPoints + pointsToAdd).coerceAtMost(MAX_PENGUIN_POINTS)
 
                     player.set(PENGUIN_POINTS, newPoints)
                     if (newPoints == MAX_PENGUIN_POINTS) {
                         player.sendMessage("<col=FF0000>You have reached a maximum of $MAX_PENGUIN_POINTS Penguin Points. You should spend them with Larry to continue earning more.</col>")
                     }
-                    val spottedPenguins = WorldDB.getPenguinHAS().getPenguinsSpottedByPlayer(player.username)
-                    if (spottedPenguins == 10) {
+
+                    if (player.getWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR) == 10) {
                         player.sendMessage("You've spotted all the penguin spies this week!")
                     }
                 }
@@ -99,35 +111,48 @@ fun mapPenguinHideAndSeekInteractions() {
     // Polar bear interactions
     onLogin { (player) ->
         player.vars.setVarBit(2045, polarBearManager.getCurrentLocationId())
-        player.vars.saveVarBit(5276, WorldDB.getPenguinHAS().getPenguinsSpottedByPlayer(player.username))
+        player.vars.saveVarBit(5276, player.getWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR))
     }
     onObjectClick(43094, 43095, 43096, 43097, 43098, 43099) { (player) ->
         if (player.get(UNLOCKED_PENGUIN_HAS) as Boolean) {
             if (player.isQuestComplete(Quest.HUNT_FOR_RED_RAKTUBER)) {
+
+                if (player.getWeeklyI(POLAR_BEAR_WEEKLY_ATTR) == 1) {
+                    player.sendMessage("You've already spotted the polar bear agent!")
+                    return@onObjectClick
+                }
+
                 val polarBearEnum = PolarBearLocation.entries.find { it.id == polarBearManager.getCurrentLocationId() }
 
                 if (polarBearEnum != null) {
-                    val polarBear = WorldDB.getPenguinHAS().polarBear
-                    synchronized(polarBear) {
-                        if (polarBear.spotters.contains(player.username)) {
-                            player.sendMessage("You've already spotted the polar bear agent!")
-                            return@onObjectClick
-                        }
-                        polarBear.addSpotter(player.username)
-                        WorldDB.getPenguinHAS().savePolarBearSpotters(polarBear)
-                        player.lock(5)
-                        player.anim(10355)
-                        player.jingle(345)
-                        player.incrementCount("Polar Bear Agents found", 1)
-                        player.sendMessage("You found the polar bear agent.")
+                    val polarBear = getPolarBear()
+                    if (polarBear != null) {
+                        synchronized(polarBear) {
+                            if (polarBear.spotters.contains(player.username)) {
+                                player.sendMessage("You've already spotted the polar bear agent!")
+                                return@onObjectClick
+                            }
 
-                        val currentPoints = player.getI(PENGUIN_POINTS).coerceAtLeast(0)
-                        val newPoints = (currentPoints + polarBear.points).coerceAtMost(MAX_PENGUIN_POINTS)
+                            polarBear.addSpotter(player.username)
+                            World.data.attribs.setO<String>(POLAR_BEAR_WORLD_ATTR, Gson().toJson(polarBear))
+                            player.incWeeklyI(POLAR_BEAR_WEEKLY_ATTR, 1)
 
-                        player.set(PENGUIN_POINTS, newPoints)
-                        if (newPoints == MAX_PENGUIN_POINTS) {
-                            player.sendMessage("<col=FF0000>You have reached a maximum of $MAX_PENGUIN_POINTS Penguin Points. You should spend them with Larry to continue earning more.</col>")
+                            player.lock(5)
+                            player.anim(10355)
+                            player.jingle(345)
+                            player.incrementCount("Polar Bear Agents found", 1)
+                            player.sendMessage("You found the polar bear agent.")
+
+                            val currentPoints = player.getI(PENGUIN_POINTS).coerceAtLeast(0)
+                            val newPoints = (currentPoints + polarBear.points).coerceAtMost(MAX_PENGUIN_POINTS)
+
+                            player.set(PENGUIN_POINTS, newPoints)
+                            if (newPoints == MAX_PENGUIN_POINTS) {
+                                player.sendMessage("<col=FF0000>You have reached a maximum of $MAX_PENGUIN_POINTS Penguin Points. You should spend them with Larry to continue earning more.</col>")
+                            }
                         }
+                    } else {
+                        player.simpleDialogue("You don't recognise this polar bear.")
                     }
                 } else {
                     player.simpleDialogue("You don't recognise this polar bear.")
@@ -145,12 +170,12 @@ fun mapPenguinHideAndSeekInteractions() {
 
     // Spy Notebook
     onItemClick(13732, options = arrayOf("Read")) { (player) ->
-        val penguinsSpottedCount = WorldDB.getPenguinHAS().getPenguinsSpottedByPlayer(player.username)
+        val penguinsSpottedCount = player.getWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR)
 
         var dialogueMessage = "You have spotted $penguinsSpottedCount ${if (penguinsSpottedCount == 1) "penguin" else "penguins"} this week."
 
         if (player.isQuestComplete(Quest.HUNT_FOR_RED_RAKTUBER)) {
-            val polarBear = WorldDB.getPenguinHAS().polarBear
+            val polarBear = getPolarBear()
             val spotted = polarBear?.spotters?.contains(player.username) == true
             dialogueMessage += "<br><br>You have ${if (spotted) "spotted the polar bear" else "not yet spotted the polar bear"} this week."
         }
@@ -166,74 +191,101 @@ fun mapPenguinHideAndSeekInteractions() {
 fun initializePenguinHideAndSeek() {
     if (!DND_ENABLED) return
 
-    // Penguin spawning
-    penguinHideAndSeekManager.checkAndSpawn()
+    penguinHideAndSeekManager.checkAndSpawn() // Penguin & Polar Bear spawning on server startup
 
-    // Polar Bear spawning
-    polarBearManager.setLocation()
-
-    // Weekly reset task
-    WorldTasks.scheduleHourly {
+    // Reset task
+    WorldTasks.scheduleNthHourly(1) {
+        val logFile = File("/root/Darkan/world-server/data/task_log.txt")
+        try {
+            val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
+            logFile.appendText("ScheduleNthHourly(1): $currentTime\n")
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
         penguinHideAndSeekManager.checkAndSpawn()
-        polarBearManager.setLocation()
     }
 }
 
 class PenguinManager() {
     fun checkAndSpawn() {
+        val logFile = File("/root/Darkan/world-server/data/task_log.txt")
+
+        fun logDebug(message: String) {
+            try {
+                val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
+                logFile.appendText("[$currentTime] $message\n")
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
 
         penguinSpawnService.loadSpawns()
+        logDebug("Loaded spawns from penguinSpawnService.")
 
-        val today = LocalDate.now()
-        val currentWeek = today.get(WeekFields.of(Locale.getDefault()).weekOfYear())
-        val currentWeekSpawns = penguinSpawnService.getSpawnsForWeek(currentWeek)
+        val lastResetDateString: String? = World.data.attribs.getO<String>(PENGUINHAS_LAST_RESET_WORLD_ATTR)
+        logDebug("Last reset date string: $lastResetDateString")
+        println("Last reset date string: $lastResetDateString")
 
-        val isResetDay = today.dayOfWeek >= getResetDay()
+        val lastResetDate: ZonedDateTime? = lastResetDateString?.let {
+            ZonedDateTime.parse(it, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+        }
+        logDebug("Parsed last reset date: $lastResetDate")
+        println("Parsed last reset date: $lastResetDate")
 
-        if (currentWeekSpawns.size < 10) {
-            if (penguinSpawnService.isSpawnEmpty()) {
-                Logger.debug(PenguinManager::class.java, "checkAndSpawn", "Spawning new penguins")
-                penguinSpawnService.prepareNew(currentWeek)
-            } else if (isResetDay) {
-                Logger.debug(PenguinManager::class.java, "checkAndSpawn", "Refreshing penguin spawns.")
-                penguinSpawnService.prepareNew(currentWeek)
-            } else {
-                penguinSpawnService.prepareExisting(currentWeek)
-                Logger.debug(PenguinManager::class.java, "checkAndSpawn", "Spawn existing penguins.")
+        val currentDateTime = ZonedDateTime.now(ZoneOffset.UTC)
+
+        logDebug("Current date: $currentDateTime")
+        println("Current date: $currentDateTime")
+
+        val shouldPerformWeeklyReset = when {
+            lastResetDate == null -> true.also { logDebug("No last reset date, performing reset.") }
+            hasResetTimePassed(lastResetDate, currentDateTime) -> true.also { logDebug("One week has passed since last reset, performing reset.") }
+            else -> false.also { logDebug("Conditions not met for reset.") }
+        }
+
+        if (shouldPerformWeeklyReset) {
+            logDebug("Resetting penguins.")
+            penguinSpawnService.prepareNew()
+            polarBearManager.setLocation(true)
+
+            val lastReset = getLastReset()
+            println("Calculated last reset: $lastReset")
+            logDebug("Calculated last reset: $lastReset")
+
+            if (lastResetDate == null || hasResetTimePassed(lastResetDate, currentDateTime)) {
+                World.data.attribs.setO<String>(PENGUINHAS_LAST_RESET_WORLD_ATTR, lastReset.format(DateTimeFormatter.ISO_INSTANT))
+                logDebug("Set last reset date to: $lastReset")
+                println("Set last reset date to: $lastReset")
             }
         } else {
-            penguinSpawnService.prepareExisting(currentWeek)
-            Logger.debug(PenguinManager::class.java, "checkAndSpawn", "Current week penguins are already populated. Spawn existing penguins.")
+            logDebug("Using existing penguins for the current week.")
+            println("Using existing penguins for the current week.")
+            penguinSpawnService.prepareExisting()
+            polarBearManager.setLocation(false)
         }
     }
 
-    fun getNextWeeklyReset(): ZonedDateTime {
-        var nextReset = ZonedDateTime.now(ZoneOffset.UTC)
-            .with(getResetDay())
-            .withHour(getResetHour())
-            .withMinute(getResetMin())
-            .withSecond(getResetSec())
-            .withNano(0)
+    fun hasResetTimePassed(lastResetDate: ZonedDateTime, currentDateTime: ZonedDateTime): Boolean {
+        val weeksBetween = ChronoUnit.WEEKS.between(lastResetDate, currentDateTime)
+        return weeksBetween >= 1
+    }
 
-        if (nextReset.isBefore(ZonedDateTime.now(ZoneOffset.UTC))) {
-            nextReset = nextReset.plusWeeks(1)
+    fun getLastReset(): ZonedDateTime {
+        val today = LocalDate.now()
+        val lastReset = today.minusDays(((today.dayOfWeek.value - 3 + 7) % 7).toLong())
+        return lastReset.atStartOfDay(ZoneOffset.UTC)
+    }
+
+    fun getPenguinLocationHint(playerUsername: String): String? {
+        val penguins = penguinSpawnService.getPenguins()
+
+        val unspottedHints = penguins.filter { penguin ->
+            !penguin.spotters.contains(playerUsername)
+        }.mapNotNull { penguin ->
+            Penguins.entries.find { it.tile == penguin.location }?.locationHint
         }
 
-        Logger.debug(PenguinManager::class.java, "getNextWeeklyReset", "Next weekly reset: ${Date.from(nextReset.toInstant())}.")
-        return nextReset
-    }
-
-    fun getResetDay() : DayOfWeek {
-        return PenguinServices.RESET_DAY;
-    }
-    fun getResetHour() : Int {
-        return PenguinServices.RESET_HOUR;
-    }
-    fun getResetMin() : Int {
-        return PenguinServices.RESET_MIN;
-    }
-    fun getResetSec() : Int {
-        return PenguinServices.RESET_SEC;
+        return if (unspottedHints.isNotEmpty()) unspottedHints.random() else null
     }
 
     fun getCurrentDayAndTime(): ZonedDateTime {
@@ -245,4 +297,5 @@ class PenguinManager() {
     fun getCurrentMonth(): Month {
         return ZonedDateTime.now(ZoneOffset.UTC).month
     }
+
 }

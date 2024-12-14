@@ -1,6 +1,7 @@
 package com.rs.game.content.dnds.penguins
 
-import com.rs.db.WorldDB
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.rs.engine.pathfinder.Direction
 import com.rs.game.World
 import com.rs.game.content.dnds.penguins.PenguinServices.penguinSpawnService
@@ -9,7 +10,11 @@ import com.rs.game.model.entity.npc.NPC
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Logger
 import com.rs.utils.spawns.NPCSpawn
+import java.io.File
+import java.io.IOException
+import java.time.LocalDateTime
 import java.time.Month
+import java.time.format.DateTimeFormatter
 
 const val PUMPKIN_ID = 14415
 const val SNOWMAN_ID = 14766
@@ -17,37 +22,34 @@ const val SNOWMAN_ID = 14766
 class PenguinSpawnService () {
     val spawnedNPCs: MutableMap<String, NPC> = mutableMapOf()
     var regionIds: HashSet<Int> = hashSetOf()
-    private val allSpawns = mutableMapOf<NPCSpawn, Int>()
+    private val allSpawns = mutableMapOf<NPCSpawn, Tile>()
 
     fun loadSpawns() {
-        allSpawns.clear()
-        val penguins = WorldDB.getPenguinHAS().getAllPenguins()
-        penguins.forEach { penguin ->
-            val spawn = NPCSpawn(penguin.npcId, penguin.location, penguin.wikiLocation)
-            allSpawns[spawn] = penguin.week
-            regionIds.add(penguin.location.regionId)
+
+        val penguins: List<Penguin> = getPenguins()
+        if (penguins.isNotEmpty()) {
+            penguins.forEach { penguin ->
+                val spawn = NPCSpawn(penguin.npcId, penguin.location, "")
+                allSpawns[spawn] = penguin.location
+                regionIds.add(penguin.location.regionId)
+            }
+            Logger.debug(PenguinSpawnService::class.java, "loadSpawns", "Loaded ${allSpawns.size} spawns from penguin data.")
+        } else {
+            Logger.warn(PenguinSpawnService::class.java, "loadSpawns", "No penguins found.")
         }
-        Logger.debug(PenguinSpawnService::class.java, "loadSpawns", "Loaded ${allSpawns.size} spawns from database.")
     }
 
-    fun addSpawn(id: Int, tile: Tile, comment: String, week: Int): NPCSpawn {
+    fun addSpawn(id: Int, tile: Tile, comment: String): NPCSpawn {
         val spawn = NPCSpawn(id, tile, comment)
-        allSpawns[spawn] = week
+        allSpawns[spawn] = tile
         regionIds.add(tile.regionId)
         return spawn
     }
 
-    fun getAllSpawns(): Map<NPCSpawn, Int> = allSpawns
+    fun getAllSpawns(): MutableMap<NPCSpawn, Tile> = allSpawns
 
-    fun getSpawnsForWeek(week: Int): List<NPCSpawn> {
-        return getAllSpawns().filter { (_, spawnWeek) -> spawnWeek == week }.map { (spawn, _) -> spawn }
-    }
-
-    fun isSpawnEmpty(): Boolean = getAllSpawns().isEmpty()
-
-    fun prepareNew(week: Int) {
-        var previouslySpawnedPenguins = getAllSpawns()
-            .filter { (_, spawnWeek) -> spawnWeek == (week - 1) }
+    fun prepareNew() {
+        val previouslySpawnedPenguins = getAllSpawns()
             .map { (spawn, _) -> spawn }
 
         removeAllSpawns()
@@ -97,45 +99,53 @@ class PenguinSpawnService () {
                 Month.DECEMBER -> SNOWMAN_ID
                 else -> penguin.npcId
             }
-            val newPenguin = WorldDB.getPenguinHAS().createPenguin(idToUse, penguin.name, null, week, penguin.points, penguin.tile, penguin.wikiLocation, penguin.locationHint)
-            val spawn = addSpawn(idToUse, newPenguin.location, penguin.wikiLocation, week)
-            spawnPenguins(week, spawn)
+            val newPenguin = createPenguin(idToUse, penguin.name, penguin.tile, penguin.points)
+            val spawn = addSpawn(idToUse, newPenguin.location, penguin.wikiLocation)
+            spawnPenguins(spawn)
         }
-        Logger.debug(PenguinSpawnService::class.java, "prepareNew", "New penguins spawned for week $week. Current tracked size: ${spawnedNPCs.size}")
+        val logFile = File("/root/Darkan/world-server/data/task_log.txt")
+        try {
+            val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
+            logFile.appendText("Reset penguins at: $currentTime\n")
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        Logger.debug(PenguinSpawnService::class.java, "prepareNew", "New penguins spawned. Current tracked size: ${spawnedNPCs.size}")
     }
 
-    fun prepareExisting(currentWeek: Int) {
-        val nonCurrentWeekSpawns = getAllSpawns()
+    fun prepareExisting() {
+        val existingSpawns = getAllSpawns()
         val alreadySpawnedTiles = spawnedNPCs.values.map { it.respawnTile }.toSet()
 
-        nonCurrentWeekSpawns.forEach { spawn ->
+        existingSpawns.forEach { spawn ->
             if (spawn.key.tile in alreadySpawnedTiles) {
                 return@forEach
             }
-            spawnPenguins(currentWeek, spawn.key)
+            spawnPenguins(spawn.key)
         }
     }
 
-    fun spawnPenguins(week: Int, spawn: NPCSpawn) {
+    fun spawnPenguins(spawn: NPCSpawn) {
         if (!regionIds.contains(spawn.tile.regionId))
             regionIds.add(spawn.tile.regionId)
         ChunkManager.permanentlyPreloadRegions(penguinSpawnService.regionIds)
         val npc = spawn.spawnAtCoords(spawn.tile, Direction.random())
-        trackSpawnedNPC(week, npc.respawnTile, npc)
+        npc.setLoadsUpdateZones()
+        trackSpawnedNPC(npc.respawnTile, npc)
     }
 
-    fun trackSpawnedNPC(week: Int, tile: Tile, npc: NPC) {
-        val key = "$week:${tile.x}:${tile.y}:${tile.plane}"
+    fun trackSpawnedNPC(tile: Tile, npc: NPC) {
+        val key = "${tile.x}:${tile.y}:${tile.plane}"
         spawnedNPCs[key] = npc
         playSoundAndAnim(86, npc)
     }
 
     fun removeAllSpawns(): Boolean {
-        val allSpawns = getAllSpawns() as? MutableMap<NPCSpawn, Int>
+        val allSpawns = getAllSpawns()
 
-        val removed = allSpawns?.isNotEmpty() == true
-        allSpawns?.clear()
-        WorldDB.getPenguinHAS().clearAllPenguins()
+        val removed = allSpawns.isNotEmpty() == true
+        allSpawns.clear()
+        World.data.attribs.setO<String>(PENGUINS_WORLD_ATTR, "")
 
         if (removed) {
             spawnedNPCs.values.forEach { npc ->
@@ -157,4 +167,55 @@ class PenguinSpawnService () {
         npc.soundEffect(npc, soundId, true)
         World.sendSpotAnim(npc.tile, actualSpotAnimId)
     }
+
+    fun createPenguin(
+        npcId: Int,
+        name: String,
+        location: Tile?,
+        points: Int
+    ): Penguin {
+        val newPenguin = Penguin(
+            npcId = npcId,
+            name = name,
+            location = location ?: Tile(0, 0, 0),
+            points = points
+        )
+
+        val penguinsJson: String? = World.data.attribs.getO(PENGUINS_WORLD_ATTR)
+        val penguins: MutableList<Penguin> = if (penguinsJson.isNullOrEmpty()) {
+            mutableListOf()
+        } else {
+            val type = object : TypeToken<List<Penguin>>() {}.type
+            Gson().fromJson(penguinsJson, type) ?: mutableListOf()
+        }
+        penguins.add(newPenguin)
+        World.data.attribs.setO<String>(PENGUINS_WORLD_ATTR, Gson().toJson(penguins))
+        return newPenguin
+    }
+
+    fun getPenguins(): MutableList<Penguin> {
+        val penguinsJson: String? = World.data.attribs.getO(PENGUINS_WORLD_ATTR)
+        return if (penguinsJson != null) {
+            val type = object : TypeToken<List<Penguin>>() {}.type
+            Gson().fromJson(penguinsJson, type)
+        } else {
+            mutableListOf()
+        }
+    }
+
 }
+
+data class Penguin(
+    val npcId: Int,
+    val name: String,
+    val location: Tile,
+    val points: Int,
+    val spotters: MutableList<String> = mutableListOf()
+) {
+    fun addSpotter(username: String) {
+        if (!spotters.contains(username)) {
+            spotters.add(username)
+        }
+    }
+}
+

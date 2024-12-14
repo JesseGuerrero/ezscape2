@@ -26,7 +26,6 @@ import com.rs.cache.loaders.NPCDefinitions;
 import com.rs.cache.loaders.ObjectDefinitions;
 import com.rs.cache.loaders.ObjectType;
 import com.rs.cache.loaders.map.ClipFlag;
-import com.rs.db.WorldDB;
 import com.rs.engine.command.Commands;
 import com.rs.engine.cutscene.ExampleCutscene;
 import com.rs.engine.miniquest.Miniquest;
@@ -98,9 +97,7 @@ import kotlin.Pair;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.Instant;
 import java.time.ZonedDateTime;
-import java.time.temporal.IsoFields;
 import java.util.*;
 
 @PluginEventHandler
@@ -181,50 +178,53 @@ public class MiscTest {
 
 		Commands.add(Rights.ADMIN, "penguin_respawn", "Respawns both penguins and polar bear.", (p, args) -> {
 			PolarBearManager polarBearManager = PenguinServices.INSTANCE.getPolarBearManager();
-			polarBearManager.setLocation();
+			polarBearManager.setLocation(false);
 			if (p != null) p.getPackets().sendDevConsoleMessage("Polar Bear respawned at: " + polarBearManager.getLocationName(polarBearManager.getCurrentLocationId()));
 			PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
 			PenguinManager penguinManager = PenguinServices.INSTANCE.getPenguinHideAndSeekManager();
 			penguinSpawnService.getSpawnedNPCs().values().forEach(NPC::finish);
 			penguinSpawnService.getSpawnedNPCs().clear();
 			penguinManager.checkAndSpawn();
-			if (p != null)p.getPackets().sendDevConsoleMessage("Penguins respawned.");
+			if (p != null) p.getPackets().sendDevConsoleMessage("Penguins respawned.");
 			if (p != null) Commands.processCommand(p, "penguin_status", true, false);
 		});
 
 		Commands.add(Rights.ADMIN, "penguin_participants", "Returns a list of all Penguin Hide and Seek participants for the current Penguin/Polar Bear spawns.", (p, args) -> {
 			try {
-				List<String> spotters = WorldDB.getPenguinHAS().getAllParticipants();
+				List<Penguin> allPenguins = PenguinServices.INSTANCE.getPenguinSpawnService().getPenguins();
 
-				if (spotters.isEmpty()) {
-					p.getPackets().sendDevConsoleMessage("No participants found.");
+				if (allPenguins.isEmpty()) {
+					p.getPackets().sendDevConsoleMessage("No penguins found.");
 				} else {
+					Set<String> uniqueSpotters = new HashSet<>();
 					StringBuilder participantsInfo = new StringBuilder();
-					for (int i = 0; i < spotters.size(); i++) {
-						String username = spotters.get(i);
-						List<String> foundEntities = WorldDB.getPenguinHAS().getFoundEntitiesByUsername(username);
-						String foundList = foundEntities.isEmpty() ? "None" : String.join(", ", foundEntities);
 
-						participantsInfo.append(username).append(" - Found ").append(foundEntities.size()).append(": ").append(foundList);
-
-						if (i < spotters.size() - 1) {
-							participantsInfo.append("\n");
-						}
+					for (Penguin penguin : allPenguins) {
+						uniqueSpotters.addAll(penguin.getSpotters());
 					}
 
-					p.getPackets().sendDevConsoleMessage("Penguin Hide and Seek participants:\n" + participantsInfo);
-					p.getPackets().sendDevConsoleMessage("Total participants for week " + PenguinServices.INSTANCE.getPenguinHideAndSeekManager().getCurrentWeek() + ": " + spotters.size());
+					if (!uniqueSpotters.isEmpty()) {
+						participantsInfo.append("Penguin Hide and Seek Participants (Spotters):\n");
+						for (String spotter : uniqueSpotters) {
+							participantsInfo.append(spotter).append("\n");
+						}
+						p.getPackets().sendDevConsoleMessage(participantsInfo.toString());
+					} else {
+						p.getPackets().sendDevConsoleMessage("No participants found.");
+					}
+
+					p.getPackets().sendDevConsoleMessage("Total spotters for week " + PenguinServices.INSTANCE.getPenguinHideAndSeekManager().getCurrentWeek() + ": " + uniqueSpotters.size());
 				}
 			} catch (Exception e) {
-				p.getPackets().sendDevConsoleMessage("Couldn't retrieve participants from Database.");
+				p.getPackets().sendDevConsoleMessage("Couldn't retrieve participants.");
 			}
 		});
 
 		Commands.add(Rights.ADMIN, "penguin_next_reset", "Returns the date/time of the next reset.", (p, args) -> {
-			PenguinManager scheduler = PenguinServices.INSTANCE.getPenguinHideAndSeekManager();
+			PenguinManager penguinManager = PenguinServices.INSTANCE.getPenguinHideAndSeekManager();
 
-			ZonedDateTime nextResetTime = scheduler.getNextWeeklyReset();
-			long millisUntilReset = Duration.between(scheduler.getCurrentDayAndTime(), nextResetTime).toMillis();
+			ZonedDateTime nextResetTime = penguinManager.getLastReset().plusWeeks(1);
+			long millisUntilReset = Duration.between(penguinManager.getCurrentDayAndTime(), nextResetTime).toMillis();
 
 			Date resetDate = Date.from(nextResetTime.toInstant());
 			SimpleDateFormat formatter = new SimpleDateFormat("EEE, MMM d, yyyy 'at' HH:mm:ss z");
@@ -233,11 +233,9 @@ public class MiscTest {
 			p.getPackets().sendDevConsoleMessage("Next reset is scheduled for: " + formattedResetTime + ", or in " + Ticks.breakDownOfTicks((int) (millisUntilReset / 600)) + ".");
 		});
 
-
-
-		Commands.add(Rights.ADMIN, "penguin_reset [type] [weekNumber]", "Resets penguins or polar bear and spawns a new set. Type can be 'penguins' or 'polarbear'. Week number parameter is optional.", (p, args) -> {
+		Commands.add(Rights.ADMIN, "penguin_reset [type]", "Resets penguins or polar bear and spawns a new set. Type can be 'penguins' or 'polarbear'.", (p, args) -> {
 			if (args.length < 1 || (!args[0].equalsIgnoreCase("penguins") && !args[0].equalsIgnoreCase("polarbear"))) {
-				p.getPackets().sendDevConsoleMessage("Usage: ::penguin_reset [penguins|polarbear] [weekNumber]");
+				p.getPackets().sendDevConsoleMessage("Usage: ::penguin_reset [penguins|polarbear]");
 				return;
 			}
 
@@ -245,19 +243,15 @@ public class MiscTest {
 
 			if (type.equals("penguins")) {
 				PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
-				int week = (args.length > 1 && args[1].matches("\\b([1-9]|[1-4][0-9]|5[0-2])\\b"))
-						? Integer.parseInt(args[1])
-						: PenguinServices.INSTANCE.getPenguinHideAndSeekManager().getCurrentDayAndTime().get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
-
 				if (penguinSpawnService.removeAllSpawns()) {
-					penguinSpawnService.prepareNew(week);
+					penguinSpawnService.prepareNew();
 					World.getPlayers().forEach(player -> player.getVars().saveVarBit(5276, 0));
 				}
 				Commands.processCommand(p, "penguin_status", true, true);
 
 			} else if (type.equals("polarbear")) {
 				PolarBearManager polarBearManager = PenguinServices.INSTANCE.getPolarBearManager();
-				polarBearManager.setNewLocation();
+				polarBearManager.setLocation(true);
 				p.getPackets().sendDevConsoleMessage("Polar Bear manually changed to: " + polarBearManager.getLocationName(polarBearManager.getCurrentLocationId()));
 			}
 		});
