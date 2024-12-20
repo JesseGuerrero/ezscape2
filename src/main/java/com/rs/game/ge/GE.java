@@ -252,7 +252,10 @@ public class GE {
         player.soundEffect(4040, true);
         if (offer == null)
             return;
-        Item orig = offer.getProcessedItems().get(slot).clone();
+        Item o = offer.getProcessedItems().get(slot);
+        if (o == null)
+            return;
+        Item orig = o.clone();
         Item item = orig.clone();
         if (item == null)
             return;

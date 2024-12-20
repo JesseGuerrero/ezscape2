@@ -34646,15 +34646,6 @@
   {
     "tile": {
       "plane": 0,
-      "x": 3045,
-      "y": 3497
-    },
-    "comment": "Rock",
-    "npcId": 8109
-  },
-  {
-    "tile": {
-      "plane": 0,
       "x": 3057,
       "y": 3472
     },
@@ -113883,15 +113874,6 @@
     },
     "comment": "Port Sarim guard",
     "npcId": 2705
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 2446,
-      "y": 3097
-    },
-    "comment": "Postie Pete",
-    "npcId": 3805
   },
   {
     "tile": {

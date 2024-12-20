@@ -75,7 +75,7 @@ fun openSmithingInterfaceForHighestBar(player: Player, obj: GameObject) {
 fun sendSmithingInterface(player: Player, obj: GameObject, barId: Int) {
     player.tempAttribs.setI("SmithingBar", barId)
     player.tempAttribs.setO<Any>("SmithingAnvil", obj)
-    val items: Map<Slot, Smithing.Smithable> = Smithing.Smithable.forBar(barId)
+    val items: Map<Slot, Smithing.Smithable> = Smithing.Smithable.forBar(barId) ?: return
     for (slot in Slot.entries) {
         val item = items[slot]
         val componentDef = IComponentDefinitions.getInterface(300)[slot.componentId]
