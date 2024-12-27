@@ -176,19 +176,6 @@ public class MiscTest {
 			Commands.processCommand(p, "penguin_next_reset", true, false);
 		});
 
-		Commands.add(Rights.ADMIN, "penguin_respawn", "Respawns both penguins and polar bear.", (p, args) -> {
-			PolarBearManager polarBearManager = PenguinServices.INSTANCE.getPolarBearManager();
-			polarBearManager.setLocation(false);
-			if (p != null) p.getPackets().sendDevConsoleMessage("Polar Bear respawned at: " + polarBearManager.getLocationName(polarBearManager.getCurrentLocationId()));
-			PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
-			PenguinManager penguinManager = PenguinServices.INSTANCE.getPenguinHideAndSeekManager();
-			penguinSpawnService.getSpawnedNPCs().values().forEach(NPC::finish);
-			penguinSpawnService.getSpawnedNPCs().clear();
-			penguinManager.checkAndSpawn();
-			if (p != null) p.getPackets().sendDevConsoleMessage("Penguins respawned.");
-			if (p != null) Commands.processCommand(p, "penguin_status", true, false);
-		});
-
 		Commands.add(Rights.ADMIN, "penguin_participants", "Returns a list of all Penguin Hide and Seek participants for the current Penguin/Polar Bear spawns.", (p, args) -> {
 			try {
 				List<Penguin> allPenguins = PenguinServices.INSTANCE.getPenguinSpawnService().getPenguins();
@@ -231,29 +218,6 @@ public class MiscTest {
 			String formattedResetTime = formatter.format(resetDate);
 
 			p.getPackets().sendDevConsoleMessage("Next reset is scheduled for: " + formattedResetTime + ", or in " + Ticks.breakDownOfTicks((int) (millisUntilReset / 600)) + ".");
-		});
-
-		Commands.add(Rights.ADMIN, "penguin_reset [type]", "Resets penguins or polar bear and spawns a new set. Type can be 'penguins' or 'polarbear'.", (p, args) -> {
-			if (args.length < 1 || (!args[0].equalsIgnoreCase("penguins") && !args[0].equalsIgnoreCase("polarbear"))) {
-				p.getPackets().sendDevConsoleMessage("Usage: ::penguin_reset [penguins|polarbear]");
-				return;
-			}
-
-			String type = args[0].toLowerCase();
-
-			if (type.equals("penguins")) {
-				PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
-				if (penguinSpawnService.removeAllSpawns()) {
-					penguinSpawnService.prepareNew();
-					World.getPlayers().forEach(player -> player.getVars().saveVarBit(5276, 0));
-				}
-				Commands.processCommand(p, "penguin_status", true, true);
-
-			} else if (type.equals("polarbear")) {
-				PolarBearManager polarBearManager = PenguinServices.INSTANCE.getPolarBearManager();
-				polarBearManager.setLocation(true);
-				p.getPackets().sendDevConsoleMessage("Polar Bear manually changed to: " + polarBearManager.getLocationName(polarBearManager.getCurrentLocationId()));
-			}
 		});
 
 		Commands.add(Rights.DEVELOPER, "dumpdrops [npcId]", "exports a drop dump file for the specified NPC", (p, args) -> NPCDropDumper.dumpNPC(args[0]));
