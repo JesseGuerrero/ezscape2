@@ -18,6 +18,7 @@ import com.rs.plugin.kts.onItemClick
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onNpcClick
 import com.rs.plugin.kts.onObjectClick
+import com.rs.utils.Ticks
 import java.io.File
 import java.io.IOException
 import java.time.LocalDate
@@ -28,8 +29,6 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.time.temporal.WeekFields
-
-var DND_ENABLED: Boolean = true
 
 const val PENGUIN_POINTS = "PenguinPoints"
 const val MAX_PENGUIN_POINTS = 50
@@ -48,7 +47,6 @@ object PenguinServices {
 
 @ServerStartupEvent
 fun mapPenguinHideAndSeekInteractions() {
-    if (!DND_ENABLED) return
 
     // Penguin interactions
     instantiateNpc(8104, 8105, 8107, 8108, 8109, 8110, 14415, 14766) { id, tile -> PenguinNPC(id, tile) }
@@ -187,14 +185,12 @@ fun mapPenguinHideAndSeekInteractions() {
 
 }
 
-@ServerStartupEvent(Priority.POST_PROCESS)
+@ServerStartupEvent
 fun initializePenguinHideAndSeek() {
-    if (!DND_ENABLED) return
-
     penguinHideAndSeekManager.checkAndSpawn() // Penguin & Polar Bear spawning on server startup
 
     // Reset task
-    WorldTasks.scheduleNthHourly(1) {
+    WorldTasks.scheduleHourly {
         val logFile = File("/root/Darkan/world-server/data/task_log.txt")
         try {
             val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))

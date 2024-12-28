@@ -25,7 +25,7 @@ class PenguinSpawnService () {
     private val allSpawns = mutableMapOf<NPCSpawn, Tile>()
 
     fun loadSpawns() {
-
+        allSpawns.clear()
         val penguins: List<Penguin> = getPenguins()
         if (penguins.isNotEmpty()) {
             penguins.forEach { penguin ->
