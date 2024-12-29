@@ -11,18 +11,13 @@ import com.rs.game.content.dnds.penguins.PenguinServices.penguinSpawnService
 import com.rs.game.content.dnds.penguins.PenguinServices.polarBearManager
 import com.rs.game.tasks.WorldTasks
 import com.rs.plugin.annotations.ServerStartupEvent
-import com.rs.plugin.annotations.ServerStartupEvent.Priority
 import com.rs.plugin.kts.getInteractionDistance
 import com.rs.plugin.kts.instantiateNpc
 import com.rs.plugin.kts.onItemClick
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onNpcClick
 import com.rs.plugin.kts.onObjectClick
-import com.rs.utils.Ticks
-import java.io.File
-import java.io.IOException
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.Month
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
@@ -191,71 +186,37 @@ fun initializePenguinHideAndSeek() {
 
     // Reset task
     WorldTasks.scheduleHourly {
-        val logFile = File("/root/Darkan/world-server/data/task_log.txt")
-        try {
-            val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
-            logFile.appendText("ScheduleNthHourly(1): $currentTime\n")
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
         penguinHideAndSeekManager.checkAndSpawn()
     }
 }
 
 class PenguinManager() {
     fun checkAndSpawn() {
-        val logFile = File("/root/Darkan/world-server/data/task_log.txt")
-
-        fun logDebug(message: String) {
-            try {
-                val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
-                logFile.appendText("[$currentTime] $message\n")
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
 
         penguinSpawnService.loadSpawns()
-        logDebug("Loaded spawns from penguinSpawnService.")
 
         val lastResetDateString: String? = World.data.attribs.getO<String>(PENGUINHAS_LAST_RESET_WORLD_ATTR)
-        logDebug("Last reset date string: $lastResetDateString")
-        println("Last reset date string: $lastResetDateString")
-
         val lastResetDate: ZonedDateTime? = lastResetDateString?.let {
             ZonedDateTime.parse(it, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
         }
-        logDebug("Parsed last reset date: $lastResetDate")
-        println("Parsed last reset date: $lastResetDate")
-
         val currentDateTime = ZonedDateTime.now(ZoneOffset.UTC)
 
-        logDebug("Current date: $currentDateTime")
-        println("Current date: $currentDateTime")
-
         val shouldPerformWeeklyReset = when {
-            lastResetDate == null -> true.also { logDebug("No last reset date, performing reset.") }
-            hasResetTimePassed(lastResetDate, currentDateTime) -> true.also { logDebug("One week has passed since last reset, performing reset.") }
-            else -> false.also { logDebug("Conditions not met for reset.") }
+            lastResetDate == null -> true
+            hasResetTimePassed(lastResetDate, currentDateTime) -> true
+            else -> false
         }
 
         if (shouldPerformWeeklyReset) {
-            logDebug("Resetting penguins.")
             penguinSpawnService.prepareNew()
             polarBearManager.setLocation(true)
 
             val lastReset = getLastReset()
-            println("Calculated last reset: $lastReset")
-            logDebug("Calculated last reset: $lastReset")
 
             if (lastResetDate == null || hasResetTimePassed(lastResetDate, currentDateTime)) {
                 World.data.attribs.setO<String>(PENGUINHAS_LAST_RESET_WORLD_ATTR, lastReset.format(DateTimeFormatter.ISO_INSTANT))
-                logDebug("Set last reset date to: $lastReset")
-                println("Set last reset date to: $lastReset")
             }
         } else {
-            logDebug("Using existing penguins for the current week.")
-            println("Using existing penguins for the current week.")
             penguinSpawnService.prepareExisting()
             polarBearManager.setLocation(false)
         }

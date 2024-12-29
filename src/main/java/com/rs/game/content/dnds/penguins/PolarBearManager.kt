@@ -3,10 +3,6 @@ package com.rs.game.content.dnds.penguins
 import com.google.gson.Gson
 import com.rs.game.World
 import com.rs.lib.util.Logger
-import java.io.File
-import java.io.IOException
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 enum class PolarBearLocation(val id: Int) { RELLEKKA(0), VARROCK(1), RIMMINGTON(2), MUSA_POINT(3), ARDOUGNE(4), FALADOR(5) }
 
@@ -30,14 +26,6 @@ class PolarBearManager() {
 
                 World.players.forEach { player ->
                     player.vars.setVarBit(2045, polarBearLocationId)
-                }
-
-                val logFile = File("/root/Darkan/world-server/data/task_log.txt")
-                try {
-                    val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
-                    logFile.appendText("Reset polar bear at: $currentTime\n")
-                } catch (e: IOException) {
-                    e.printStackTrace()
                 }
 
                 Logger.debug(PolarBearManager::class.java, "setLocation", "Polar bear location changed to $newLocation for ${World.players.size()} logged-in player(s).")

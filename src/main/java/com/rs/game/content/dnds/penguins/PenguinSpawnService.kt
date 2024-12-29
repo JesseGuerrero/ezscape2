@@ -10,11 +10,7 @@ import com.rs.game.model.entity.npc.NPC
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Logger
 import com.rs.utils.spawns.NPCSpawn
-import java.io.File
-import java.io.IOException
-import java.time.LocalDateTime
 import java.time.Month
-import java.time.format.DateTimeFormatter
 
 const val PUMPKIN_ID = 14415
 const val SNOWMAN_ID = 14766
@@ -102,13 +98,6 @@ class PenguinSpawnService () {
             val newPenguin = createPenguin(idToUse, penguin.name, penguin.tile, penguin.points)
             val spawn = addSpawn(idToUse, newPenguin.location, penguin.wikiLocation)
             spawnPenguins(spawn)
-        }
-        val logFile = File("/root/Darkan/world-server/data/task_log.txt")
-        try {
-            val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
-            logFile.appendText("Reset penguins at: $currentTime\n")
-        } catch (e: IOException) {
-            e.printStackTrace()
         }
         Logger.debug(PenguinSpawnService::class.java, "prepareNew", "New penguins spawned. Current tracked size: ${spawnedNPCs.size}")
     }
