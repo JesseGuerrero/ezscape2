@@ -156,7 +156,7 @@ public class NPCHandler {
 					return;
 				}
 				if (!player.getPoison().isPoisoned()) {
-					player.sendMessage("Your arent poisoned or diseased.");
+					player.sendMessage("Your aren't poisoned or diseased.");
 					return;
 				}
 				player.getFamiliar().drainSpec(2);

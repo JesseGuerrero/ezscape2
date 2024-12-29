@@ -674,8 +674,12 @@ public abstract class Entity {
 			receivedDamage.put(source, damage);
 	}
 
-	public void heal(int ammount) {
-		heal(ammount, 0);
+	public void heal(int amount) {
+		heal(amount, 0);
+	}
+
+	public void healHit(int amount) {
+		applyHit(Hit.heal(null, amount));
 	}
 
 	public void heal(int ammount, int extra) {

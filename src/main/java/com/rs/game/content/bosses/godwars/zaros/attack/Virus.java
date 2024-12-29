@@ -21,6 +21,7 @@ import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.ForceTalk;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.Hit.HitLook;
+import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.util.Utils;
 
@@ -45,6 +46,11 @@ public class Virus implements NexAttack {
 			if (Utils.getDistance(t.getX(), t.getY(), infected.getX(), infected.getY()) <= 1) {
 				t.setNextForceTalk(new ForceTalk("*Cough*"));
 				t.applyHit(new Hit(nex, Utils.getRandomInclusive(100), HitLook.TRUE_DAMAGE));
+				t.lowerStat(Constants.MAGIC, 0.05, 0.0);
+				t.lowerStat(Constants.RANGE, 0.05, 0.0);
+				t.lowerStat(Constants.ATTACK, 0.05, 0.0);
+				t.lowerStat(Constants.STRENGTH, 0.05, 0.0);
+				t.lowerStat(Constants.DEFENSE, 0.05, 0.0);
 				hitedEntitys.add(t);
 				sendVirus(nex, hitedEntitys, possibleTargets, infected);
 			}

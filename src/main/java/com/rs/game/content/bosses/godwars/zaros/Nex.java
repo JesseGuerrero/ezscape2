@@ -67,7 +67,7 @@ public final class Nex extends NPC {
 		setLureDelay(3000);
 		setIntelligentRouteFinder(true);
 		setRun(true);
-		bloodReavers = new NPC[3];
+		bloodReavers = new NPC[2];
 		setIgnoreDocile(true);
 		phase = Phase.SMOKE;
 		attackCount = 1;
@@ -220,7 +220,6 @@ public final class Nex extends NPC {
 			voiceEffect(3306, true);
 		} else if (phase == Phase.BLOOD && minionStage == 3) {
 			setCapDamage(500);
-			killBloodReavers();
 			setNextForceTalk(new ForceTalk("Infuse me with the power of ice!"));
 			World.sendProjectile(arena.glacies, this, 2244, new Pair<>(18, 18), 60, 5, 0);
 			getCombat().addCombatDelay(1);
@@ -316,6 +315,14 @@ public final class Nex extends NPC {
 		return arena.getPossibleTargets();
 	}
 
+	@Override
+	public void handlePreHitOut(Entity target, Hit hit) {
+		if (getId() == 13448 && hit.getDamage() > 0 && (hit.getLook() == HitLook.MELEE_DAMAGE || hit.getLook() == HitLook.MAGIC_DAMAGE || hit.getLook() == HitLook.RANGE_DAMAGE))
+			target.sendSoulSplit(hit, this);
+		if (phase == Phase.BLOOD && hit.getDamage() > 15 && (hit.getLook() == HitLook.MELEE_DAMAGE || hit.getLook() == HitLook.MAGIC_DAMAGE))
+			healHit((int) (hit.getDamage() * 0.15));
+	}
+
 	public boolean isFollowTarget() {
 		return followTarget;
 	}
@@ -339,9 +346,9 @@ public final class Nex extends NPC {
 				continue;
 			NPC npc = bloodReavers[index];
 			bloodReavers[index] = null;
-			if (npc.isDead())
+			if (npc.isDead() || npc.hasFinished())
 				return;
-			heal(npc.getHitpoints());
+			healHit(npc.getHitpoints());
 			npc.sendDeath(this);
 		}
 	}

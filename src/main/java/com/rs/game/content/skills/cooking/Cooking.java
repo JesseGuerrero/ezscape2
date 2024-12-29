@@ -99,6 +99,7 @@ public class Cooking extends PlayerAction {
 		RAW_MANTA_RAY(389, 393, new int[] {391}, 91, 100, 216),
 		RAW_ROCKTAIL(15270, 15274, new int[] {15272}, 93, 100, 225),
 		RAW_SUMMER_PIE(7216, 2329, new int[] {7218}, 95, 100, 260),
+		UNCOOKED_PIZZA(2287, 2305, new int[] {2289}, 35, 68, 143),
 
 		// Dungeoneering
 		CAVE_POTATO(17817, -1, new int[] {18093}, 1, 1, 9),

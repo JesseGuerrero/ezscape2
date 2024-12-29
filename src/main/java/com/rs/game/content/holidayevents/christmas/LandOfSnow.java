@@ -36,8 +36,8 @@ import com.rs.utils.spawns.ObjectSpawns;
 @PluginEventHandler
 public class LandOfSnow {
 
-    private static final boolean ACTIVE = true;
-	private static final int TRADEABLE_REWARD = 962;
+    private static final boolean ACTIVE = false;
+	private static final int TRADEABLE_REWARD = 1050;
 
 	@ServerStartupEvent
 	public static void initObjects() {

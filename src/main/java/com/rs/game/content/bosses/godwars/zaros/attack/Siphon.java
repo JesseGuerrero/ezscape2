@@ -38,7 +38,7 @@ public class Siphon implements NexAttack {
 		nex.getTempAttribs().setB("siphoning", true);
 		int reaverSize = NPCDefinitions.getDefs(13458).size;
 		int respawnedBloodReaverCount = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 2; i++) {
 			Tile tile = nex.getNearestTeleTile(reaverSize);
 			if (tile != null)
 				nex.getBloodReavers()[respawnedBloodReaverCount++] = new NPC(13458, tile, true);

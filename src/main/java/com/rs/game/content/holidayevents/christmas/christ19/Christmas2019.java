@@ -37,9 +37,9 @@ import java.util.Map;
 @PluginEventHandler
 public class Christmas2019 {
 
-	public static final String STAGE_KEY = "christ2024";
+	public static final String STAGE_KEY = "christ2026";
 
-	private static final boolean ACTIVE = true;
+	private static final boolean ACTIVE = false;
 
 	public enum Imp {
 		WINE(9372, 6928, Location.VARROCK_CASTLE, Location.CAMELOT_CASTLE, Location.ARDOUGNE_CASTLE),

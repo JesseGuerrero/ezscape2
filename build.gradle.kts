@@ -7,7 +7,7 @@ plugins {
 	kotlin("jvm") version("2.0.20")
 }
 
-val darkanVersion: String = "2.0.5"
+val darkanVersion: String = "2.0.6"
 val ktVer: String = "2.0.20"
 
 application {

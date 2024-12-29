@@ -29,7 +29,13 @@ public class FruitCutting extends PlayerAction {
 	int amount;
 
 	public enum CuttableFruit {
-		BANANA(1963, 3162), RED_BANANA(7572, 7574), LEMON(2102, 2104, 2106), ORANGE(2108, 2110, 2112), PINEAPPLE(2114, 2116, 2118), LIME(2120, 2122, 2124), WATERMELON(5982, 5984);
+		BANANA(1963, 3162),
+		RED_BANANA(7572, 7574),
+		LEMON(2102, 2104, 2106),
+		ORANGE(2108, 2110, 2112),
+		PINEAPPLE(2114, 2116, 2118),
+		LIME(2120, 2122, 2124),
+		WATERMELON(5982, 5984);
 
 		final int fruitId;
 		final int[] productIds;

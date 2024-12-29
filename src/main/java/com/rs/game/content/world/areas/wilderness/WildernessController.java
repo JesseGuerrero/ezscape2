@@ -239,7 +239,8 @@ public class WildernessController extends Controller {
 			{3078, 3139, 9923, 10002},
 			{3158, 3181, 3679, 3697},
 			{3264, 3279, 3279, 3672},
-			{3280, 3283, 3885, 3888}
+			{3280, 3283, 3885, 3888},
+			{2988, 3009, 10337, 10366} // Wildy Agility Course Spikes
 	};
 
 	public static boolean isAtWild(Tile tile) {

@@ -43,12 +43,12 @@ public class BloodSacrifice implements NexAttack {
 		WorldTasks.schedule(new Task() {
 			@Override
 			public void run() {
-				if (Utils.getDistance(nex.getTile(), player.getTile()) < 7) {
+				if (Utils.getDistance(nex.getTile(), player.getTile()) < 5) {
 					player.sendMessage("You didn't make it far enough in time - Nex fires a punishing attack!");
 					nex.setNextAnimation(new Animation(6987));
 					for (final Entity t : nex.getPossibleTargets())
 						World.sendProjectile(nex, t, 374, new Pair<>(41, 16), 41, 5, 16, 0, p -> {
-							nex.heal(t.getHitpoints());
+							nex.healHit(t.getHitpoints());
 							t.applyHit(new Hit(nex, (int) (t.getHitpoints() * 0.1), HitLook.TRUE_DAMAGE));
 						});
 				}

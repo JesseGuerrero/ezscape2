@@ -34,6 +34,7 @@ import com.rs.game.model.entity.player.Skills
 import com.rs.lib.game.Animation
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
+import com.rs.lib.util.Utils.getDistance
 import com.rs.lib.util.Utils.getRandomInclusive
 import com.rs.lib.util.Utils.random
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -41,6 +42,7 @@ import com.rs.plugin.kts.instantiateNpc
 import com.rs.plugin.kts.npcCombat
 import com.rs.plugin.kts.onNpcClick
 import com.rs.utils.Ticks
+import kotlinx.coroutines.delay
 
 private val STRYKEWYRM_REQUIREMENTS = mapOf(
     9462 to StrykewyrmType(93, TaskMonster.ICE_STRYKEWYRMS),
@@ -76,11 +78,10 @@ private fun handleStrykewyrmCombat(npc: Strykewyrm, target: Entity): Int {
             npc.performMagicAttack(target)
             npc.attackSpeed
         }
-        attackStyle == 20 -> {
+        else -> {
             npc.performBurrowAttack(target)
             npc.attackSpeed
         }
-        else -> npc.attackSpeed
     }
 }
 
@@ -122,7 +123,7 @@ class Strykewyrm(id: Int, tile: Tile?) : NPC(id, tile, false) {
             return
         }
 
-        if (!player.equipment.hasFireCape() && !player.iceStrykeNoCape()) {
+        if (id in listOf(9462, 9463) && !player.equipment.hasFireCape() && !player.iceStrykeNoCape()) {
             player.sendMessage("The strykewyrm numbs your hands and freezes your attack.")
             hit.setDamage(0)
             capDamage = 0
@@ -217,9 +218,11 @@ class Strykewyrm(id: Int, tile: Tile?) : NPC(id, tile, false) {
         lock()
 
         schedule {
+            wait(3)
             transformIntoNPC(stompId)
-            setForceWalk(tile)
-            wait { !hasForceWalk() }
+            val delay = getDistance(tile, this@Strykewyrm.tile).toInt() + 1
+            forceMove(tile, 12789, 0, delay * 30)
+            wait(delay+1)
 
             transformIntoNPC(stompId + 1)
             anim(12795)
