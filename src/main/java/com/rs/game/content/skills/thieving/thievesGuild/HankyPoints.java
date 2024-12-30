@@ -129,35 +129,65 @@ public class HankyPoints {
         return xp;
     }
 
-    public static void claimHankyPoints(Player player, NPC npc){
-        int availablePoints = player.getWeeklyI("HankyPoints") - player.getWeeklyI("ClaimedHankyPoints");
-        double xp = (calculateXP(player) / maxPoints(player)) * availablePoints;
-        if(availablePoints == 0) {
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have no hanky points to claim! Try some of the guild's training exercises.");
+    public static void claimHankyPoints(Player player, NPC npc) {
+        int hankyPoints = player.getWeeklyI("HankyPoints");
+        int claimedPoints = player.getWeeklyI("ClaimedHankyPoints");
+        int maxPoints = maxPoints(player);
+        int remainingPoints = maxPoints - claimedPoints;
+        int claimablePoints = Math.max(0, Math.min(hankyPoints, remainingPoints));
+
+        if (remainingPoints <= 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have claimed the maximum amount of hanky points this week. Come back next week to claim more rewards!");
+            return;
         }
-        else {
-            player.getSkills().addXp(Skills.THIEVING, xp);
-            player.sendMessage("You gain " + (int) xp + " Thieving XP. ");
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You may turn in up to " + (maxPoints(player) - player.getWeeklyI("ClaimedHankyPoints")) + " more points this week.");
-            player.incWeeklyI("ClaimedHankyPoints", availablePoints);
+
+        if (claimablePoints == 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have no hanky points to claim! Try some of the guild's training exercises to earn more.");
+            return;
         }
+
+        player.startConversation(new Dialogue().addNPC(npc.getId(), HeadE.CALM_TALK, "Sure thing! Let's see now..."));
+
+        double xp = (calculateXP(player) / maxPoints) * claimablePoints;
+        player.getSkills().addXp(Skills.THIEVING, xp);
+
+        player.sendMessage("You gain " + Utils.getFormattedNumber((int) xp, ',') + " Thieving XP.");
+
+        player.incWeeklyI("ClaimedHankyPoints", claimablePoints);
+        player.setWeeklyI("HankyPoints", hankyPoints - claimablePoints);
     }
 
     public static void checkPoints(Player player, NPC npc) {
-        int availablePoints = player.getWeeklyI("HankyPoints") - player.getWeeklyI("ClaimedHankyPoints");
-        if(player.getWeeklyI("HankyPoints") == 0) {
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have no hanky points! Try some of the guild's training exercises.");
-            return;
-        }
-        if(player.getWeeklyI("ClaimedHankyPoints") == maxPoints(player)) {
+        int hankyPoints = player.getWeeklyI("HankyPoints");
+        int claimedPoints = player.getWeeklyI("ClaimedHankyPoints");
+        int maxPoints = maxPoints(player);
+        int remainingClaimablePoints = Math.max(0, maxPoints - claimedPoints);
+        int availablePoints = Math.min(hankyPoints, remainingClaimablePoints);
+
+        if (remainingClaimablePoints == 0) {
             player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have collected all your hanky points this week.");
             return;
         }
-        if(player.getWeeklyI("ClaimedHankyPoints") > 0) {
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have " + availablePoints + " hanky points ready to turn in. You have collected " + player.getWeeklyI("ClaimedHankyPoints") + " hanky points. You may claim the reward for up to " + (maxPoints(player) - player.getWeeklyI("ClaimedHankyPoints")) + " more hanky points this week.");
+
+        if (hankyPoints == 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have no hanky points! Try some of the guild's training exercises.");
+            return;
         }
-        else
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,"You have " + availablePoints + " ready to turn in. You may claim the reward for up to " + (maxPoints(player) - player.getWeeklyI("ClaimedHankyPoints")) + " more hanky points this week.");
+
+        if (claimedPoints > 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have " + availablePoints + " " + (availablePoints == 1 ? "hanky point" : "hanky points") + " ready to turn in. " +
+                            "You have collected " + claimedPoints + " " + (claimedPoints == 1 ? "hanky point" : "hanky points") + ". " +
+                            "You may claim the reward for up to " + remainingClaimablePoints + " more " + (remainingClaimablePoints == 1 ? "hanky point" : "hanky points") + " this week."
+            );
+        } else {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have " + availablePoints + " " + (availablePoints == 1 ? "hanky point" : "hanky points") + " ready to turn in. " +
+                            "You may claim the reward for up to " + remainingClaimablePoints + " more " + (remainingClaimablePoints == 1 ? "hanky point" : "hanky points") + " this week."
+            );
+        }
     }
 
     public static NPCClickHandler checkPoints = new NPCClickHandler(new Object[] { 11281, 11294, 11282, 11284, 11286 }, new String[] {"Check-points"}, e -> checkPoints(e.getPlayer(), e.getNPC()));
@@ -291,8 +321,8 @@ public class HankyPoints {
             return;
         }
         player.sendMessage("You attempt to pick the lock.");
-        player.setNextAnimation(new Animation(536));
-        player.lock(2);
+        player.anim(536);
+        player.lock(1);
         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
             player.getSkills().addXp(Constants.THIEVING, 30);
             object.setIdTemporary(e.getObjectId() + 1, Ticks.fromMinutes(1));
@@ -314,8 +344,8 @@ public class HankyPoints {
             return;
         }
         player.sendMessage("You attempt to pick the lock.");
-        player.setNextAnimation(new Animation(536));
-        player.lock(2);
+        player.anim(536);
+        player.lock(1);
         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
             player.getSkills().addXp(Constants.THIEVING, 180);
             player.sendMessage("You find a red hankerchief.");
