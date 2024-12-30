@@ -27,6 +27,7 @@ import com.rs.game.content.Effect;
 import com.rs.game.content.bosses.godwars.GodwarsController;
 import com.rs.game.content.combat.CombatStyle;
 import com.rs.game.content.combat.PolyporeStaffKt;
+import com.rs.game.content.minigames.barrows.BarrowsController;
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager;
 import com.rs.game.content.quests.elderkiln.TokkulZoKt;
 import com.rs.game.content.skills.hunter.BoxHunterType;
@@ -66,10 +67,7 @@ import com.rs.utils.WorldUtil;
 import com.rs.utils.drop.Drop;
 import com.rs.utils.drop.DropTable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class NPC extends Entity {
@@ -551,9 +549,9 @@ public class NPC extends Entity {
 			if (killer.hasSlayerTask() && killer.getSlayer().isOnTaskAgainst(this))
 				killer.getSlayer().sendKill(killer, this);
 
-			if (getId() >= 2031 && getId() <= 2037) {
-				killer.setBarrowsKillCount(killer.getBarrowsKillCount()+1);
-				killer.getVars().setVarBit(464, killer.getBarrowsKillCount()+killer.getKilledBarrowBrothersCount());
+			if (BarrowsController.barrowsKCNPCs.contains(getId())) {
+				killer.setBarrowsKillCount(killer.getBarrowsKillCount() + 1);
+				killer.getVars().setVarBit(464, killer.getBarrowsKillCount() + killer.getKilledBarrowBrothersCount());
 			}
 
 			Item[] drops = DropTable.calculateDrops(killer, DropSets.getDropSet(id));
