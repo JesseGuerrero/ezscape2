@@ -79,23 +79,24 @@ class Barlak(val player: Player, val npc: NPC) {
 
         player.startConversation {
             npc(npc, CALM_TALK, "Those bones! Those are exactly the sort of thing I need! Will you sell them?")
-            npc(npc, CALM_TALK, "I'll give you ${Utils.formatNumber(totalPrice)}gp for the bone${if (totalQuantity > 1) "s" else ""} you're carrying. I'll try to teach you something about Construction as well, but it's highly technical so you won't understand if you don't already have level 30 Construction.")
+            npc(npc, CALM_TALK, "I'll give you ${totalPrice}gp for the bone${if (totalQuantity > 1) "s" else ""} you're carrying. I'll try to teach you something about Construction as well, but it's highly technical so you won't understand if you don't already have level 30 Construction.")
             label("initialOPs")
             options {
                 op("Okay.") {
                     player(CALM_TALK, "Okay.")
-                    if (player.skills.getLevelForXp(Constants.CONSTRUCTION) >= 30) {
-                        npc(npc, CALM_TALK, "Thanks! Now let me explain...") {
-                            inventoryItems.forEach { item ->
-                                player.inventory.deleteItem(item.id, totalQuantity)
+                    npc(npc, CALM_TALK, "Thanks! Now let me explain...") {
+                        inventoryItems.forEach { item ->
+                            player.inventory.deleteItem(item.id, totalQuantity)
+                            if (player.skills.getLevelForXp(Constants.CONSTRUCTION) >= 30) {
                                 item.xp?.let { player.skills.addXp(Constants.CONSTRUCTION, it) }
+                            } else {
+                                player.sendMessage("You need a Construction level of at least 30 to understand what Barlak told you about Construction.")
                             }
-                            player.inventory.addCoins(totalPrice)
                         }
+                        player.inventory.addCoins(totalPrice)
+                    }
+                    if (player.skills.getLevelForXp(Constants.CONSTRUCTION) >= 30) {
                         simple("Barlak gives you a short lecture and you learn more about Construction.")
-                    } else {
-                        simple("You need a Construction level of at least 30 to understand what Barlak will teach you.")
-                        player.sendMessage("You need a Construction level of at least 30 to understand what Barlak will teach you.")
                     }
                 }
                 op("No, I'll keep the bones.") {
