@@ -2,7 +2,6 @@ package com.rs.game.content.world.areas.goblin_maze.npcs
 
 import com.rs.engine.dialogue.HeadE.*
 import com.rs.engine.dialogue.startConversation
-import com.rs.game.content.world.areas.gu_tanoth.npcs.Bogrog
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.plugin.annotations.ServerStartupEvent
