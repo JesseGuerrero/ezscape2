@@ -46,13 +46,7 @@ public class AdvPickpocketingTrainer {
                         ops.add("How many hanky points do I have?", () -> HankyPoints.checkPoints(player, e.getNPC()));
 
                         ops.add("I'd like to claim a reward for my hanky points.", () -> {
-                            int availablePoints = player.getWeeklyI("HankyPoints") - player.getWeeklyI("ClaimedHankyPoints");
-                            if (availablePoints == 0)
                                 HankyPoints.claimHankyPoints(player, e.getNPC());
-                            else
-                                player.startConversation(new Dialogue()
-                                        .addNPC(npcid, HeadE.CALM_TALK, "Sure things! Let's see now...", () -> HankyPoints.claimHankyPoints(player, e.getNPC())
-                                        ));
                         });
 
                         ops.add("I've had some experience, yes.")
