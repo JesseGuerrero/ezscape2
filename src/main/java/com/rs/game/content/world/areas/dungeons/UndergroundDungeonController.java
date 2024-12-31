@@ -91,7 +91,7 @@ public class UndergroundDungeonController extends Controller {
 		ticks++;
 		if (hasStench)
 			if (ticks % 12 == 0) {
-				player.sendMessage("The strench of the monsters burns your innards.");
+				player.sendMessage("The stench of the monsters burns your innards.");
 				player.applyHit(new Hit(player, 200, HitLook.TRUE_DAMAGE));
 			}
 		if (requiresLightSource)
