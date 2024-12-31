@@ -1,5 +1,6 @@
 package com.rs.game.content.skills.thieving;
 
+import com.rs.game.content.items.GlovesOfSilenceKt;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
 import com.rs.game.tasks.WorldTasks;
@@ -35,6 +36,7 @@ public class LootThug extends PlayerAction {
 
 	@Override
 	public int processWithDelay(Player player) {
+		GlovesOfSilenceKt.degradeGlovesOfSilence(player, 1);
 		if (!success) {
 			player.sendMessage("You find nothing in the Menaphite Thug's pocket.");
 		}

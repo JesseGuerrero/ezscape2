@@ -16,6 +16,7 @@
 //
 package com.rs.game.content.skills.thieving;
 
+import com.rs.game.content.items.GlovesOfSilenceKt;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
@@ -278,7 +279,9 @@ public enum PickPocketableNPC {
 	}
 
 	public boolean rollSuccess(Player player) {
-		return Utils.skillSuccess(player.getSkills().getLevel(Constants.THIEVING), player.getAuraManager().getThievingMul() + (hasArdyCloak(player) ? 0.1 : 0.0), rate1, rate99);
+		double thievingMul = player.getAuraManager().getThievingMul() + (hasArdyCloak(player) ? 0.1 : 0.0);
+		double adjustedThievingMul = thievingMul + (player.getEquipment().getGlovesId() == GlovesOfSilenceKt.GLOVES_OF_SILENCE ? 0.05 : 0.0);
+		return Utils.skillSuccess(player.getSkills().getLevel(Constants.THIEVING), adjustedThievingMul, rate1, rate99);
 	}
 
 	public static boolean hasArdyCloak(Player player) {
