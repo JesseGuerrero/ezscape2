@@ -1299,7 +1299,6 @@ class House {
      * Teleports an [Entity] to the specified [RoomReference] plus offsets for positioning.
      */
     fun teleportEntity(entity: Entity, room: RoomReference?) {
-        if (entity == null) return
         if (room == null) {
             if (entity is Player) {
                 entity.sendMessage("Error, tried teleporting to a room that doesn't exist.")

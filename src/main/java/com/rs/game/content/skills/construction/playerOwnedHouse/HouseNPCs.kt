@@ -101,9 +101,7 @@ class HouseNPCs(private val house: House) {
         npcs.add(npc)
         npc.setRandomWalk(false)
         npc.setForceMultiArea(true)
-        if (obj != null) {
-            World.removeObject(obj)
-        }
+        World.removeObject(obj)
     }
 
     fun spawnPets() {
