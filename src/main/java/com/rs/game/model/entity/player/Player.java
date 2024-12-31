@@ -1319,10 +1319,12 @@ public class Player extends Entity {
     }
 
 	public void processWeeklyTasks() {
-		if (Utils.getTodayDate() >= weeklyDate) {
+		int todayDate = Utils.getTodayDate();
+		int currentYear = Calendar.getInstance(TimeZone.getTimeZone("UTC")).get(Calendar.YEAR);
+		int fullTodayDate = currentYear * 10000 + todayDate;
+		if (fullTodayDate >= weeklyDate) {
 			sendMessage("<col=FF0000>Your weekly tasks have been reset.</col>");
 			weeklyAttributes = new ConcurrentHashMap<>();
-			getVars().saveVarBit(5276, 0); // Penguin spotted count
 			weeklyDate = setLastDateToNextWednesday();
 		}
 	}
@@ -1335,9 +1337,10 @@ public class Player extends Entity {
 			daysUntilNextWednesday = 7;
 		}
 		cal.add(Calendar.DAY_OF_MONTH, daysUntilNextWednesday);
-		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH);
-		return (month * 100 + day);
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		return year * 10000 + month * 100 + day;
 	}
 
 	private void sendUnlockedObjectConfigs() {
