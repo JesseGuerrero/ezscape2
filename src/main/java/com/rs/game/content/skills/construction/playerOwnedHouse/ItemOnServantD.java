@@ -14,13 +14,13 @@
 //  Copyright (C) 2021 Trenton Kress
 //  This file is part of project: Darkan
 //
-package com.rs.game.content.skills.construction;
+package com.rs.game.content.skills.construction.playerOwnedHouse;
 
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.engine.dialogue.Conversation;
 import com.rs.engine.dialogue.HeadE;
-import com.rs.game.content.skills.construction.HouseConstants.Servant;
-import com.rs.game.content.skills.construction.ServantNPC.RequestType;
+import com.rs.game.content.skills.construction.SawmillOperator;
+import com.rs.game.content.skills.construction.playerOwnedHouse.ServantNPC.RequestType;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 
@@ -45,7 +45,7 @@ public class ItemOnServantD extends Conversation {
 			return;
 		int paymentStage = player.getHouse().getPaymentStage();
 		if (paymentStage >= 10) {
-			addNPC(servant.getId(), servant.getServantData() == Servant.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "Excuse me, but before I can continue working you must pay my fee.");
+			addNPC(servant.getId(), servant.getServantData() == HouseServants.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "Excuse me, but before I can continue working you must pay my fee.");
 			return;
 		}
 		String name = definition.getName().toLowerCase();

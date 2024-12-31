@@ -14,15 +14,12 @@
 //  Copyright (C) 2021 Trenton Kress
 //  This file is part of project: Darkan
 //
-package com.rs.game.content.skills.construction;
+package com.rs.game.content.skills.construction.playerOwnedHouse;
 
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.engine.dialogue.HeadE;
 import com.rs.game.World;
-import com.rs.game.content.skills.construction.House.RoomReference;
-import com.rs.game.content.skills.construction.HouseConstants.Builds;
-import com.rs.game.content.skills.construction.HouseConstants.Room;
-import com.rs.game.content.skills.construction.HouseConstants.Servant;
+import com.rs.game.content.skills.construction.SawmillOperator;
 import com.rs.game.model.entity.ForceTalk;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Bank;
@@ -38,7 +35,7 @@ import com.rs.utils.WorldUtil;
 
 public class ServantNPC extends NPC {
 
-	private final Servant servant;
+	private final HouseServants houseServants;
 	private final Player owner;
 	private final House house;
 	private boolean follow, greetGuests;
@@ -46,11 +43,11 @@ public class ServantNPC extends NPC {
 	private Item lastSawmillSend;
 
 	public ServantNPC(House house) {
-		super(house.getServant().getId(), house.getPlayer().getTile().transform(0, 0, 0), true);
-		servant = house.getServant();
+		super(house.getHouseServants().getId(), house.getPlayer().getTile().transform(0, 0, 0), true);
+		houseServants = house.getHouseServants();
 		owner = house.getPlayer();
 		this.house = house;
-		if (owner.getSkills().getLevel(Constants.CONSTRUCTION) < servant.getLevel()) {
+		if (owner.getSkills().getLevel(Constants.CONSTRUCTION) < houseServants.getLevel()) {
 			house.setServantOrdinal((byte) -1);
 		}
 	}
@@ -60,7 +57,7 @@ public class ServantNPC extends NPC {
 	}
 
 	public long getBankDelay() {
-		return servant.getBankDelay();
+		return houseServants.getBankDelay();
 	}
 
 	public boolean isFollowing() {
@@ -73,7 +70,7 @@ public class ServantNPC extends NPC {
 			setNextFaceEntity(null);
 	}
 
-	public void makeFood(final Builds[] builds) {
+	public void makeFood(final HouseBuilds[] builds) {
 		if (house == null)
 			return;
 		setFollowing(false);
@@ -82,7 +79,7 @@ public class ServantNPC extends NPC {
 			return;
 		}
 		String basicResponse = "I apologise, but I cannot serve " + (owner.getAppearance().isMale() ? "Sir" : "Madam") + " without";
-		final RoomReference kitchen = house.getRoom(Room.KITCHEN), diningRoom = house.getRoom(Room.DINING_ROOM);
+		final RoomReference kitchen = house.getRoom(HouseRooms.KITCHEN), diningRoom = house.getRoom(HouseRooms.DINING_ROOM);
 		if (kitchen == null) {
 			owner.npcDialogue(getId(), HeadE.CALM_TALK, basicResponse + " a proper kitchen.");
 			return;
@@ -91,13 +88,13 @@ public class ServantNPC extends NPC {
 			owner.npcDialogue(getId(), HeadE.CALM_TALK, basicResponse + " a proper dining room.");
 			return;
 		}
-		for (Builds build : builds)
+		for (HouseBuilds build : builds)
 			if (!kitchen.containsBuild(build)) {
 				owner.npcDialogue(getId(), HeadE.CALM_TALK, basicResponse + " a " + build.toString().toLowerCase() + ".");
 				return;
 			}
 
-		if (!diningRoom.containsBuild(HouseConstants.Builds.DINING_TABLE)) {
+		if (!diningRoom.containsBuild(HouseBuilds.DINING_TABLE)) {
 			owner.npcDialogue(getId(), HeadE.CALM_TALK, basicResponse + " a dining table");
 			return;
 		}
@@ -127,16 +124,16 @@ public class ServantNPC extends NPC {
 					tele(Tile.of(World.getFreeTile(kitchenTile, 2)));
 				else if (totalCount > 0 && index < builds.length) {
 					int calculatedCount = totalCount - count;
-					Builds build = builds[index];
+					HouseBuilds build = builds[index];
 					if (calculatedCount % 3 == 0) {
-						setNextAnimation(new Animation(build == Builds.STOVE ? 897 : 3659));
+						setNextAnimation(new Animation(build == HouseBuilds.STOVE ? 897 : 3659));
 						index++;
 					} else if (0 == 0)
 						calcFollow(house.getWorldObjectForBuild(kitchen, build), true);
 				} else if (count == totalCount + 3)
 					tele(World.getFreeTile(diningRoomTile, 2));
 				else if (count == totalCount + 4 || count == totalCount + 5) {
-					GameObject diningTable = house.getWorldObjectForBuild(diningRoom, Builds.DINING_TABLE);
+					GameObject diningTable = house.getWorldObjectForBuild(diningRoom, HouseBuilds.DINING_TABLE);
 					if (count == totalCount + 4)
 						calcFollow(diningTable, true);
 					else {
@@ -144,7 +141,7 @@ public class ServantNPC extends NPC {
 						int rotation = kitchen.getRotation();
 						for (int x = 0; x < (rotation == 1 || rotation == 3 ? 2 : 4); x++)
 							for (int y = 0; y < (rotation == 1 || rotation == 3 ? 4 : 2); y++)
-								World.addGroundItem(new Item(builds.length == 6 ? 7736 : builds.length == 5 ? house.getServant().getFoodId() : HouseConstants.BEERS[kitchen.getBuildSlot(Builds.BARRELS)]), diningTable.getTile().transform(x, y, 0), null, false, 300);
+								World.addGroundItem(new Item(builds.length == 6 ? 7736 : builds.length == 5 ? house.getHouseServants().getFoodId() : HouseConstants.BEERS[kitchen.getBuildSlot(HouseBuilds.BARRELS)]), diningTable.getTile().transform(x, y, 0), null, false, 300);
 						setCantInteract(false);
 						stop();
 					}
@@ -160,13 +157,13 @@ public class ServantNPC extends NPC {
 	public void requestType(int item, int quantity, final RequestType type) {
 		final Bank bank = owner.getBank();
 		final ItemDefinitions defs = ItemDefinitions.getDefs(item);
-		int inventorySize = servant.getInventorySize();
+		int inventorySize = houseServants.getInventorySize();
 		if (!bank.containsItem(defs.isNoted() ? defs.getCertId() : item, 1) && type == RequestType.WITHDRAW) {
-			owner.npcDialogue(getId(), servant == Servant.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "It appears you do not have this item in your bank.");
+			owner.npcDialogue(getId(), houseServants == HouseServants.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "It appears you do not have this item in your bank.");
 			return;
 		}
 		if (quantity > inventorySize) {
-			owner.npcDialogue(getId(), servant == Servant.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "I'm sorry. I can only hold " + inventorySize + " items during a trip.");
+			owner.npcDialogue(getId(), houseServants == HouseServants.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "I'm sorry. I can only hold " + inventorySize + " items during a trip.");
 			return;
 		}
 		transformIntoNPC(1957);
@@ -184,7 +181,7 @@ public class ServantNPC extends NPC {
 		if (plank != null && type == RequestType.SAWMILL) {
 			final int cost = (int) ((plank[1] * 0.7) * quantity);
 			if (!owner.getInventory().hasCoins(cost)) {
-				owner.npcDialogue(getId(), servant == Servant.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "You do not have enough coins to cover the costs of the sawmill.");
+				owner.npcDialogue(getId(), houseServants == HouseServants.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, "You do not have enough coins to cover the costs of the sawmill.");
 				return;
 			}
 		}
@@ -209,7 +206,7 @@ public class ServantNPC extends NPC {
 		WorldTasks.schedule(new Task() {
 			@Override
 			public void run() {
-				transformIntoNPC(servant.getId());
+				transformIntoNPC(houseServants.getId());
 				setCantInteract(false);
 				if (!owner.isRunning() || !house.isLoaded() || !house.getPlayers().contains(owner)) {
 					if (type == RequestType.SAWMILL)
@@ -231,9 +228,9 @@ public class ServantNPC extends NPC {
 				else
 					for (int i = 0; i < completeQuantity; i++)
 						bank.depositItem(owner.getInventory().getItems().getThisItemSlot(finalItem), completeQuantity, false);
-				owner.npcDialogue(getId(), servant == Servant.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, type == RequestType.DEPOSIT ? "I have successfully deposited your items into your bank. No longer will the items be at risk from thieves." : "I have returned with the items you asked me to retrieve.");
+				owner.npcDialogue(getId(), houseServants == HouseServants.DEMON_BUTLER ? HeadE.CAT_CALM_TALK2 : HeadE.CALM_TALK, type == RequestType.DEPOSIT ? "I have successfully deposited your items into your bank. No longer will the items be at risk from thieves." : "I have returned with the items you asked me to retrieve.");
 			}
-		}, (int) servant.getBankDelay());
+		}, (int) houseServants.getBankDelay());
 	}
 
 	public void call() {
@@ -290,8 +287,8 @@ public class ServantNPC extends NPC {
 		this.greetGuests = greetGuests;
 	}
 
-	public Servant getServantData() {
-		return servant;
+	public HouseServants getServantData() {
+		return houseServants;
 	}
 
 	public Item getLastSawmillSend() {
