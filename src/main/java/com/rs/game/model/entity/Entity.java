@@ -861,7 +861,7 @@ public abstract class Entity {
 	}
 
 	public boolean lineOfSightTo(Object target, boolean melee) {
-		Tile tile = WorldUtil.targetToTile(target);
+		Tile targTile = WorldUtil.targetToTile(target);
 		int targSize = target instanceof Entity ? ((Entity) target).getSize() : 1;
 		if (target instanceof NPC npc) {
 			if (LOS_NPC_OVERRIDES.contains(npc.getId()) || LOS_NPC_OVERRIDES.contains(npc.getName()))
@@ -871,8 +871,8 @@ public abstract class Entity {
 			if (func.apply(this, target, melee))
 				return true;
 		if (melee && !(target instanceof Entity e && e.ignoreWallsWhenMeleeing()))
-			return World.checkMeleeStep(this, this.getSize(), target, targSize) && World.hasLineOfSight(getMiddleTile(), getSize(), target instanceof Entity e ? e.getMiddleTile() : tile, targSize);
-		return World.hasLineOfSight(getMiddleTile(), getSize(), target instanceof Entity e ? e.getMiddleTile() : tile, targSize);
+			return World.checkMeleeStep(this, this.getSize(), target, targSize) && World.hasLineOfSight(tile, getSize(), targTile, targSize);
+		return World.hasLineOfSight(tile, getSize(), targTile, targSize);
 	}
 
 	public boolean addWalkSteps(final int destX, final int destY, int maxStepsCount) {

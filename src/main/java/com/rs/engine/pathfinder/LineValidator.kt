@@ -120,6 +120,7 @@ public class LineValidator(
 
         val startX = coordinate(localSrcX, localDestX, srcSize)
         val startY = coordinate(localSrcY, localDestY, srcSize)
+//        World.sendSpotAnim(Tile.of((baseX+startX), (baseY+startY), z), 2000)
 
         if (los && flags.isFlagged(baseX, baseY, startX, startY, z, CollisionFlag.OBJECT)) {
             return FAILED_ROUTE
@@ -152,6 +153,7 @@ public class LineValidator(
                 val currY = scaleDown(scaledY)
 
                 if (los && currX == endX && currY == endY) xFlags = xFlags and LAST_TILE_EXCLUDED_FLAGS.inv()
+//                World.sendSpotAnim(Tile.of((baseX+currX), (baseY+currY), z), 502)
                 if (flags.isFlagged(baseX, baseY, currX, currY, z, xFlags)) {
                     return FAILED_ROUTE
                 }
