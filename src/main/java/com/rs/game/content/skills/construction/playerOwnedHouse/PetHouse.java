@@ -14,7 +14,7 @@
 //  Copyright (C) 2021 Trenton Kress
 //  This file is part of project: Darkan
 //
-package com.rs.game.content.skills.construction;
+package com.rs.game.content.skills.construction.playerOwnedHouse;
 
 import com.rs.game.content.pets.Pets;
 import com.rs.game.model.entity.player.Player;
@@ -41,16 +41,20 @@ public class PetHouse {
 
 	public static ButtonClickHandler handleInvInterface = new ButtonClickHandler(INV_INTERFACE_ID, e -> {
 		if (e.getComponentId() == 0)
-			if (e.getPacket() == ClientPacket.IF_OP1)
-				e.getPlayer().getHouse().getPetHouse().addItem(e.getSlotId());
+			if (e.getPacket() == ClientPacket.IF_OP1) {
+                assert e.getPlayer().getHouse().petHouse != null;
+                e.getPlayer().getHouse().petHouse.addItem(e.getSlotId());
+            }
 			else if (e.getPacket() == ClientPacket.IF_OP2)
 				e.getPlayer().getInventory().sendExamine(e.getSlotId());
 	});
 
 	public static ButtonClickHandler handleInterfaceButtons = new ButtonClickHandler(INTERFACE_ID, e -> {
 		if (e.getComponentId() == 13)
-			if (e.getPacket() == ClientPacket.IF_OP1)
-				e.getPlayer().getHouse().getPetHouse().removeItem(e.getSlotId());
+			if (e.getPacket() == ClientPacket.IF_OP1) {
+                assert e.getPlayer().getHouse().petHouse != null;
+                e.getPlayer().getHouse().petHouse.removeItem(e.getSlotId());
+            }
 	});
 
 	public void open() {

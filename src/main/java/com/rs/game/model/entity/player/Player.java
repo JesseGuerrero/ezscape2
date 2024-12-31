@@ -54,7 +54,7 @@ import com.rs.game.content.minigames.herblorehabitat.HabitatFeature;
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager;
 import com.rs.game.content.pets.Pet;
 import com.rs.game.content.pets.PetManager;
-import com.rs.game.content.skills.construction.House;
+import com.rs.game.content.skills.construction.playerOwnedHouse.House;
 import com.rs.game.content.skills.cooking.Brewery;
 import com.rs.game.content.skills.cooking.Foods;
 import com.rs.game.content.skills.dungeoneering.DungManager;

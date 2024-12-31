@@ -14,12 +14,11 @@
 //  Copyright (C) 2021 Trenton Kress
 //  This file is part of project: Darkan
 //
-package com.rs.game.content.skills.construction;
+package com.rs.game.content.skills.construction.playerOwnedHouse;
 
 import com.rs.engine.dialogue.Conversation;
 import com.rs.engine.dialogue.Dialogue;
 import com.rs.engine.dialogue.HeadE;
-import com.rs.game.content.skills.construction.HouseConstants.Servant;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
@@ -56,7 +55,7 @@ public class ServantDialogue extends Conversation {
 		super(player);
 		
 		int slot = getSlot(npc.getId());
-		Servant servant = Servant.values()[slot];
+		HouseServants houseServants = HouseServants.values()[slot];
 		
 		addNPC(npc.getId(), HeadE.CALM_TALK, BEGINNING_MESSAGE[slot]);
 		addOptions(ops -> {
@@ -66,7 +65,7 @@ public class ServantDialogue extends Conversation {
 			ops.add("Tell me about your previous jobs.")
 				.addPlayer(HeadE.CONFUSED, "Tell me about your previous jobs.")
 				.addNPC(npc.getId(), HeadE.CALM_TALK, JOB_HISTORY[slot]);
-			ops.add("You're hired!", getHireDialogue(servant));
+			ops.add("You're hired!", getHireDialogue(houseServants));
 		});
 	}
 
@@ -74,21 +73,21 @@ public class ServantDialogue extends Conversation {
 		return (npcId - 4236) / 2;
 	}
 	
-	private Dialogue getHireDialogue(Servant servant) {
+	private Dialogue getHireDialogue(HouseServants houseServants) {
 		if (player.getHouse().hasServant())
 			return new Dialogue().addSimple("You already have a servant!");
-		if (player.getSkills().getLevelForXp(Skills.CONSTRUCTION) < servant.getLevel())
-			return new Dialogue().addSimple("You need a Construction level of at least " + servant.getLevel() + ".");
-		if (player.getInventory().getCoins() < servant.getHirePrice())
+		if (player.getSkills().getLevelForXp(Skills.CONSTRUCTION) < houseServants.getLevel())
+			return new Dialogue().addSimple("You need a Construction level of at least " + houseServants.getLevel() + ".");
+		if (player.getInventory().getCoins() < houseServants.getHirePrice())
 			return new Dialogue().addSimple("You do not have enough coins to hire this butler!");
 
 		return new Dialogue()
 				.addPlayer(HeadE.CHEERFUL, "You're hired!")
 				.addNext(() -> {
-					player.getHouse().setServantOrdinal((byte) servant.ordinal());
-					player.getInventory().removeCoins(servant.getHirePrice());
+					player.getHouse().setServantOrdinal((byte) houseServants.ordinal());
+					player.getInventory().removeCoins(houseServants.getHirePrice());
 				})
-				.addNPC(servant.getId(), HeadE.CHEERFUL, "Thank you master.")
+				.addNPC(houseServants.getId(), HeadE.CHEERFUL, "Thank you master.")
 				.getHead();
 	}
 }
