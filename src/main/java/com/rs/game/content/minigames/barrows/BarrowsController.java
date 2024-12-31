@@ -49,6 +49,7 @@ import com.rs.utils.drop.DropTable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public final class BarrowsController extends Controller {
 
@@ -58,6 +59,11 @@ public final class BarrowsController extends Controller {
 	private boolean solvedPuzzle;
 	public int removeDarkness;
 	public int[] varBits = new int[20];
+
+	public static final Set<Integer> barrowsKCNPCs = Set.of(
+			2031, 2032, 2033, 2034, 2035, 2036, 2037,
+			4920, 4921, 5422, 5381
+	);
 
 	private static enum Hills {
 		AHRIM_HILL(Tile.of(3564, 3287, 0), Tile.of(3557, 9703, 3)),

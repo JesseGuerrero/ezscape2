@@ -21,6 +21,7 @@ import com.rs.engine.dialogue.Dialogue;
 import com.rs.engine.dialogue.Options;
 import com.rs.engine.quest.Quest;
 import com.rs.game.content.Skillcapes;
+import com.rs.game.content.skills.construction.playerOwnedHouse.EntranceLocations;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.lib.Constants;
@@ -44,7 +45,7 @@ public class EstateAgentDialogue extends Conversation {
 				option("Can I move my house?", new Dialogue().addOptions("Which town would you like your house moved to?", new Options() {
 					@Override
 					public void create() {
-						for (HouseConstants.POHLocation loc : HouseConstants.POHLocation.values()) {
+						for (EntranceLocations loc : EntranceLocations.getEntries()) {
 							if (player.getSkills().getLevelForXp(Skills.CONSTRUCTION) >= loc.getLevelRequired())
 								option(Utils.formatPlayerNameForDisplay(loc.name()), new Dialogue().addNext(() -> promptHouseLocation(Utils.formatPlayerNameForDisplay(loc.name()), loc, loc.getLevelRequired(), loc.getCost())));
 						}
@@ -73,7 +74,7 @@ public class EstateAgentDialogue extends Conversation {
 		});
 	}
 
-	public void promptHouseLocation(final String name, final HouseConstants.POHLocation loc, int level, final int cost) {
+	public void promptHouseLocation(final String name, final EntranceLocations loc, int level, final int cost) {
 		if (player.getSkills().getLevelForXp(Constants.CONSTRUCTION) >= level) {
 			if (player.getInventory().hasCoins(cost))
 				player.sendOptionDialogue("Are you sure?", ops -> {

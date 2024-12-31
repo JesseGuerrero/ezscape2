@@ -24,7 +24,10 @@ import com.rs.engine.miniquest.Miniquest;
 import com.rs.engine.quest.Quest;
 import com.rs.game.World;
 import com.rs.game.content.combat.CombatDefinitions.Spellbook;
-import com.rs.game.content.dnds.penguins.*;
+import com.rs.game.content.dnds.penguins.PenguinManager;
+import com.rs.game.content.dnds.penguins.PenguinServices;
+import com.rs.game.content.dnds.penguins.PenguinSpawnService;
+import com.rs.game.content.dnds.penguins.PolarBearManager;
 import com.rs.game.content.minigames.fightkiln.FightKilnController;
 import com.rs.game.content.minigames.shadesofmortton.TempleWall;
 import com.rs.game.content.quests.death_plateau.instances.PlayerVSTheMapController;
@@ -39,7 +42,6 @@ import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
-import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Rights;
@@ -49,15 +51,9 @@ import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.annotations.ServerStartupEvent;
 import com.rs.plugin.handlers.EnterChunkHandler;
-import com.rs.utils.Ticks;
 import com.rs.utils.music.Music;
 import com.rs.game.content.minigames.shadesofmortton.ShadesOfMortton;
 
-import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.time.Duration;
-import java.time.ZonedDateTime;
-import java.time.temporal.IsoFields;
 import java.util.*;
 
 import static com.rs.game.content.dnds.penguins.PenguinHASControllerKt.PENGUIN_POINTS;
@@ -509,46 +505,6 @@ public class Debug {
 		// return true;
 
 		// Start Penguin Hide And Seek debug commands
-		Commands.add(Rights.ADMIN, "penguin_task_set", "Resets and schedules the penguin task.", (p, args) -> {
-
-			if (args.length < 4) {
-				p.getPackets().sendDevConsoleMessage("Usage: penguin_task_set [DayOfWeek] [Hour] [Minute] [Second]");
-				return;
-			}
-
-			try {
-				DayOfWeek day = DayOfWeek.valueOf(args[0].toUpperCase());
-				int hour = Integer.parseInt(args[1]);
-				int min = Integer.parseInt(args[2]);
-				int sec = Integer.parseInt(args[3]);
-
-				PenguinWeeklyScheduler scheduler = PenguinServices.INSTANCE.getPenguinWeeklyScheduler();
-				scheduler.setResetDay(day);
-				scheduler.setResetHour(hour);
-				scheduler.setResetMin(min);
-				scheduler.setResetSec(sec);
-
-				p.getPackets().sendDevConsoleMessage("Penguin task scheduled for " + day + " at " + hour + ":" + min + ":" + sec + ".");
-
-				WorldTasks.remove(PenguinServices.INSTANCE.getPenguinTaskName());
-				PenguinHASControllerKt.scheduleWeeklyReset();
-
-			} catch (Exception e) {
-				p.getPackets().sendDevConsoleMessage("Invalid arguments. Usage: penguin_task <DayOfWeek> <Hour> <Minute> <Second>");
-			}
-		});
-
-		Commands.add(Rights.ADMIN, "penguin_task_query", "Returns the penguin task time remaining (in ticks).", (p, args) -> {
-
-			p.getPackets().sendDevConsoleMessage("Remaining Ticks: " + WorldTasks.getRemainingTicks(PenguinServices.INSTANCE.getPenguinTaskName()));
-
-			Map<String, Integer> tasks = WorldTasks.listAllMappedTasks();
-			tasks.forEach((mapping, remainingTicks) -> {
-				p.getPackets().sendDevConsoleMessage("Task Mapping: " + mapping + ", Remaining Ticks: " + remainingTicks);
-			});
-
-		});
-
 		Commands.add(Rights.ADMIN, "penguin_points [set/add/remove]", "Manipulates the player's Penguin Points by the action chosen (Set/Add/Remove).", (p, args) -> {
 			if (args.length < 3) {
 				p.getPackets().sendDevConsoleMessage("Usage: ::penguin_points [set/add/remove] [username] [points]");

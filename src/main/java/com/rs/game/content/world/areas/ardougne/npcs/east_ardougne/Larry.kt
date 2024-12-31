@@ -48,7 +48,7 @@ class Larry(val player: Player, val npc: NPC) {
             }
         } else {
             player.startConversation {
-                val penguinsSpottedCount = WorldDB.getPenguinHAS().getPenguinsSpottedByPlayer(player.username)
+                val penguinsSpottedCount = player.getWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR)
                 val penguinPoints = player.getI(PENGUIN_POINTS)
                 npc(npc, SECRETIVE, "Do you have news? Have you found more?")
                 label("initialOps")
@@ -117,7 +117,7 @@ class Larry(val player: Player, val npc: NPC) {
         }
     }
     fun getHint() {
-        val hint = WorldDB.getPenguinHAS().getHintForPenguin(player.username)
+        val hint = PenguinServices.penguinHideAndSeekManager.getPenguinLocationHint(player.username)
         player.startConversation {
             if (hint != null) npc(npc, SECRETIVE, "I've heard there's a penguin $hint")
             else npc(npc, HAPPY_TALKING, "You've found them all this week. Well done!")

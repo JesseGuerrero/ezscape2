@@ -63,7 +63,7 @@ enum class Penguins(val points: Int, val npcId: Int, val locationHint: String, v
 
     BARREL_1(1, 8104, "located where no weapons may go.", Tile(2810, 3383, 0), "Entrana - North-west corner of Entrana, south-east of the Submerged statue", 5..45),
     BARREL_2(1, 8104, "located south of Ardougne.", Tile(2662, 3152, 0), "Port Khazard - East of the store nearest the dock", 5..30),
-    //BARREL_3(1, 8104, "located where the big-eyed goblins dwell.", Tile(2732, 5326, 0), "Dorgesh-Kaan - East of the large white fern north of the lamp stall", 5..55),
+    BARREL_3(1, 8104, "located where the big-eyed goblins dwell.", Tile(2732, 5326, 0), "Dorgesh-Kaan - East of the large white fern north of the lamp stall", 5..55),
     BARREL_4(2, 8104, "located where monkeys rule.", Tile(2751, 2700, 0), "Ape Atoll - Outside the walls of Marim. West from the dungeon", 5..55),
     BARREL_5(2, 8104, "located where pirates feel mostly harmless.", Tile(3738, 3001, 0), "Mos Le'Harmless - East of the town's east wall, near first tropical tree", 5..55),
     BARREL_6(2, 8104, "located near the city of ghosts.", Tile(3654, 3491, 0), "Port Phasmatys - South-west of the southern most market stall", 5..30),

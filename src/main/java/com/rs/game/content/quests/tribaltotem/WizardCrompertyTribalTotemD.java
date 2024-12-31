@@ -43,7 +43,7 @@ public class WizardCrompertyTribalTotemD extends Conversation {
 			});
 		}
 		default -> {
-			addNPC(NPC, HeadE.CALM_TALK, "Hello Player, I'm Cromperty. Sedridor has told me about you. As a wizard and an inventor, he has aided me in" +
+			addNPC(NPC, HeadE.CALM_TALK, "Hello "+p.getDisplayName()+", I'm Cromperty. Sedridor has told me about you. As a wizard and an inventor, he has aided me in" +
 					" my great invention!");
 			addOptions("Choose an option:", new Options() {
 				@Override
