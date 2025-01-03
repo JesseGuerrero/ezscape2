@@ -109,10 +109,10 @@ public class IkovDungeon {
 		if(e.getOption().equals("Search for traps")) {
 			if(e.getPlayer().getSkills().getLevel(Skills.THIEVING) >= 42) {
 				e.getPlayer().getTempAttribs().setB("IkovLeverTrapDisabled", true);
-				e.getPlayer().sendMessage("You disable to trap...");
+				e.getPlayer().sendMessage("You disable the trap...");
 				return;
 			}
-			e.getPlayer().sendMessage("This trap requires 42 thieving...");
+			e.getPlayer().sendMessage("This trap requires 42 thieving to disarm.");
 		}
 		if(e.getOption().equals("Pull")) {
 			if(e.getPlayer().getTempAttribs().getB("IkovLeverTrapDisabled")) {
