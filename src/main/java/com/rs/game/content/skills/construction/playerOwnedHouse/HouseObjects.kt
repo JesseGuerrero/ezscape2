@@ -70,15 +70,7 @@ enum class HouseObjects(
     MARBLE_FIREPLACE(8327, 13613, 63, 500, Item(HouseConstants.MARBLE_BLOCK, 1)),
 
     // CURTAINS
-    TORN_CURTAINS(
-        8322,
-        13603,
-        2,
-        132,
-        Item(HouseConstants.PLANK, 3),
-        Item(HouseConstants.BOLT_OF_CLOTH, 3),
-        Item(HouseConstants.NAILS, 3)
-    ),
+    TORN_CURTAINS(8322,13603,2,132, Item(HouseConstants.PLANK, 3), Item(HouseConstants.BOLT_OF_CLOTH, 3), Item(HouseConstants.NAILS, 3)),
     CURTAINS(8323, 13604, 18, 225, Item(HouseConstants.OAK_PLANK, 3), Item(HouseConstants.BOLT_OF_CLOTH, 3)),
     OPULENT_CURTAINS(8324, 13605, 40, 315, Item(HouseConstants.TEAK_PLANK, 3), Item(HouseConstants.BOLT_OF_CLOTH, 3)),
 
@@ -90,14 +82,7 @@ enum class HouseObjects(
     // RUGS
     BROWN_RUG(8316, intArrayOf(13588, 13589, 13590), 2, 30, Item(HouseConstants.BOLT_OF_CLOTH, 2)),
     RUG(8317, intArrayOf(13591, 13592, 13593), 13, 60, Item(HouseConstants.BOLT_OF_CLOTH, 4)),
-    OPULENT_RUG(
-        8318,
-        intArrayOf(13594, 13595, 13596),
-        65,
-        360,
-        Item(HouseConstants.BOLT_OF_CLOTH, 4),
-        Item(HouseConstants.GOLD_LEAF, 1)
-    ),
+    OPULENT_RUG(8318, intArrayOf(13594, 13595, 13596), 65, 360, Item(HouseConstants.BOLT_OF_CLOTH, 4), Item(HouseConstants.GOLD_LEAF, 1)),
 
     // TROHPY_ROOM
     // STAIRCASE
@@ -105,30 +90,9 @@ enum class HouseObjects(
     OAK_STAIRCASE_DOWN(8249, 13498, 27, 680, Item(HouseConstants.OAK_PLANK, 10), Item(HouseConstants.STEEL_BAR, 4)),
     TEAK_STAIRCASE(8252, 13499, 48, 980, Item(HouseConstants.TEAK_PLANK, 10), Item(HouseConstants.STEEL_BAR, 4)),
     TEAK_STAIRCASE_DOWN(8258, 13500, 48, 980, Item(HouseConstants.TEAK_PLANK, 10), Item(HouseConstants.STEEL_BAR, 4)),
-    SPIRAL_STAIRCASE(
-        8258,
-        13503,
-        67,
-        1040,
-        Item(HouseConstants.TEAK_PLANK, 10),
-        Item(HouseConstants.LIMESTONE_BRICKS, 7)
-    ),
-    MARBLE_STAIRCASE(
-        8255,
-        13501,
-        82,
-        3200,
-        Item(HouseConstants.MAHOGANY_PLANK, 5),
-        Item(HouseConstants.MARBLE_BLOCK, 5)
-    ),
-    MARBLE_STAIRCASE_DOWN(
-        8255,
-        13502,
-        82,
-        3200,
-        Item(HouseConstants.MAHOGANY_PLANK, 5),
-        Item(HouseConstants.MARBLE_BLOCK, 5)
-    ),
+    SPIRAL_STAIRCASE(8258, 13503, 67, 1040, Item(HouseConstants.TEAK_PLANK, 10), Item(HouseConstants.LIMESTONE_BRICKS, 7)),
+    MARBLE_STAIRCASE(8255, 13501, 82, 3200, Item(HouseConstants.MAHOGANY_PLANK, 5), Item(HouseConstants.MARBLE_BLOCK, 5)),
+    MARBLE_STAIRCASE_DOWN(8255, 13502, 82, 3200, Item(HouseConstants.MAHOGANY_PLANK, 5), Item(HouseConstants.MARBLE_BLOCK, 5)),
     MARBLE_SPIRAL(8259, 13505, 97, 4400, Item(HouseConstants.TEAK_PLANK, 10), Item(HouseConstants.MARBLE_BLOCK, 7)),
 
     // HEAD_TROPHY
@@ -137,24 +101,8 @@ enum class HouseObjects(
     BASALISK_HEAD(8262, 13483, 38, 243, Item(HouseConstants.TEAK_PLANK, 2), Item(7984)),
     KURASK(8263, 13484, 58, 357, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(7985)),
     ABBYSAL_DEMON(8264, 13485, 58, 389, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(7986)),
-    KING_BLACK_DRAGON(
-        8265,
-        13486,
-        78,
-        1103,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(7987, 1),
-        Item(HouseConstants.GOLD_LEAF, 2)
-    ),
-    KALPHITE_QUEEN(
-        8266,
-        13487,
-        78,
-        1103,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(7988, 1),
-        Item(HouseConstants.GOLD_LEAF, 2)
-    ),
+    KING_BLACK_DRAGON(8265, 13486, 78, 1103, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(7987, 1), Item(HouseConstants.GOLD_LEAF, 2)),
+    KALPHITE_QUEEN(8266, 13487, 78, 1103, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(7988, 1), Item(HouseConstants.GOLD_LEAF, 2)),
 
     // FISH_MANTEL
     MOUNTED_BASS(8267, 13488, 36, 151, Item(HouseConstants.OAK_PLANK, 2), Item(7990)),
@@ -162,45 +110,14 @@ enum class HouseObjects(
     MOUNTED_SHARK(8269, 13490, 76, 350, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(7994)),
 
     // RUNE CASES
-    RUNE_CASE_1(
-        8276,
-        13507,
-        41,
-        190,
-        Item(HouseConstants.TEAK_PLANK, 2),
-        Item(HouseConstants.MOLTEN_GLASS, 2),
-        Item(554),
-        Item(555),
-        Item(556),
-        Item(557)
-    ),
-    RUNE_CASE_2(
-        8277,
-        13508,
-        41,
-        212,
-        Item(HouseConstants.TEAK_PLANK, 2),
-        Item(HouseConstants.MOLTEN_GLASS, 2),
-        Item(559),
-        Item(560),
-        Item(561),
-        Item(562)
-    ),
+    RUNE_CASE_1(8276, 13507, 41, 190, Item(HouseConstants.TEAK_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 2), Item(554), Item(555), Item(556), Item(557)),
+    RUNE_CASE_2(8277, 13508, 41, 212, Item(HouseConstants.TEAK_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 2), Item(559), Item(560), Item(561), Item(562)),
 
     // DECORATIVE ARMOR
     BASIC_DECORATIVE(8273, 34256, 28, 135, Item(HouseConstants.OAK_PLANK, 2), Item(4069), Item(4071), Item(4072)),
     DETAILED_DECORATIVE(8274, 34263, 28, 150, Item(HouseConstants.OAK_PLANK, 2), Item(4504), Item(4506), Item(4507)),
     INTRICATE_DECORATIVE(8275, 34280, 28, 165, Item(HouseConstants.OAK_PLANK, 2), Item(4509), Item(4511), Item(4512)),
-    PROFOUND_DECORATIVE(
-        18755,
-        34281,
-        28,
-        180,
-        Item(HouseConstants.OAK_PLANK, 2),
-        Item(18708),
-        Item(18707),
-        Item(18709)
-    ),
+    PROFOUND_DECORATIVE(18755, 34281, 28, 180, Item(HouseConstants.OAK_PLANK, 2), Item(18708), Item(18707), Item(18709)),
 
     // BASIC ARMOR
     MITHRIL_ARMOUR(8270, 13491, 28, 135, Item(HouseConstants.OAK_PLANK, 2), Item(1159), Item(1085), Item(1121)),
@@ -230,41 +147,13 @@ enum class HouseObjects(
     PITBLACKDEMON(18795, 39264, 89, 547, Item(995, 300000)),
     PITIRONDRAGON(18796, 39265, 97, 2738, Item(995, 1500000)),
 
-    SPIKES(
-        8302,
-        intArrayOf(13334, 13335, 13336, -1, -1),
-        65,
-        623,
-        Item(995, 50000),
-        Item(HouseConstants.STEEL_BAR, 20)
-    ),
-    TENTACLES(
-        8303,
-        intArrayOf(13331, 13332, 13333, -1, -1),
-        71,
-        326,
-        Item(995, 100000),
-        Item(HouseConstants.STEEL_BAR, 20)
-    ),
+    SPIKES(8302, intArrayOf(13334, 13335, 13336, -1, -1), 65, 623, Item(995, 50000), Item(HouseConstants.STEEL_BAR, 20)),
+    TENTACLES(8303, intArrayOf(13331, 13332, 13333, -1, -1), 71, 326, Item(995, 100000), Item(HouseConstants.STEEL_BAR, 20)),
     FLAMES(8304, intArrayOf(-1, -1, -1, 13337, 13337), 77, 357, Item(995, 125000), Item(HouseConstants.STEEL_BAR, 20)),
     ROCNAR(8305, intArrayOf(-1, -1, -1, -1, 13373), 93, 387, Item(995, 150000), Item(HouseConstants.STEEL_BAR, 20)),
 
-    OAK_CAGE(
-        8297,
-        intArrayOf(13313, 13314),
-        65,
-        640,
-        Item(HouseConstants.OAK_PLANK, 10),
-        Item(HouseConstants.STEEL_BAR, 2)
-    ),
-    OAK_ST_CAGE(
-        8298,
-        intArrayOf(13316, 13317),
-        70,
-        800,
-        Item(HouseConstants.OAK_PLANK, 10),
-        Item(HouseConstants.STEEL_BAR, 10)
-    ),
+    OAK_CAGE(8297, intArrayOf(13313, 13314), 65, 640, Item(HouseConstants.OAK_PLANK, 10), Item(HouseConstants.STEEL_BAR, 2)),
+    OAK_ST_CAGE(8298, intArrayOf(13316, 13317), 70, 800, Item(HouseConstants.OAK_PLANK, 10), Item(HouseConstants.STEEL_BAR, 10)),
     STEEL_CAGE(8299, intArrayOf(13319, 13320), 75, 400, Item(HouseConstants.STEEL_BAR, 20)),
     SPIKED_CAGE(8300, intArrayOf(13322, 13323), 80, 500, Item(HouseConstants.STEEL_BAR, 25)),
     BONE_CAGE(8301, intArrayOf(13325, 13326), 85, 603, Item(HouseConstants.OAK_PLANK, 10), Item(526, 10)),
@@ -312,18 +201,7 @@ enum class HouseObjects(
     MAHOGANYCOSTUMEBOX(9825, 18776, 80, 280, Item(8782, 2)),
 
     //MENAGERIE
-    SMALLOBELISK(
-        15236,
-        44837,
-        41,
-        676,
-        Item(8786, 1),
-        Item(12158, 10),
-        Item(12163, 10),
-        Item(12160, 10),
-        Item(12159, 10),
-        Item(12183, 1000)
-    ),
+    SMALLOBELISK(15236, 44837, 41, 676, Item(8786, 1), Item(12158, 10), Item(12163, 10), Item(12160, 10), Item(12159, 10), Item(12183, 1000)),
     OAKPETFEEDER(15233, 44834, 37, 240, Item(8778, 4)),
     TEAKPETFEEDER(15234, 44835, 52, 380, Item(8780, 4)),
     MAHOGANYPETFEEDER(15235, 44836, 67, 880, Item(8782, 4), Item(8784, 1)),
@@ -334,56 +212,11 @@ enum class HouseObjects(
     DESECRATEDPETHOUSE(15231, 44832, 92, 1580, Item(8782, 4), Item(8788, 1)),
     NATURALPETHOUSE(15232, 44833, 92, 1580, Item(8782, 4), Item(8788, 1)),
 
-    GARDEN_HABITAT(
-        15222, intArrayOf(
-            44561, 44501, 44500, 44501, 44502, 44503, 44504, 44505, 44506, 44507, 44508,
-            44509, 44510, 44511, 44512, 44513, 44514, 44515, 44516, 44517, 44518, 44519,
-            44520, 44521, 44522, 44523, 44524, 44525, 44526, 44527, 44528, 44529, 44530,
-            44531, 44532, 44533, 44534, 44535, 44536, 44537, 44538, 44539, 44540, 44541,
-            44542, 44543, 44544, 44545, 44546, 44547, 44548, 44549, 44550, 44551, 44552,
-            44553, 44554, 44555, 44556, 44557, 44558, 44559, 44560, 44561, 44562, 44563
-        ), 37, 201, Item(8431, 1), Item(8433, 1), Item(8435, 1)
-    ),
-    JUNGLE_HABITAT(
-        15223, intArrayOf(
-            44564, 44565, 44566, 44567, 44568, 44569, 44570, 44571, 44572, 44573, 44574,
-            44575, 44576, 44577, 44578, 44579, 44580, 44581, 44582, 44583, 44584, 44585,
-            44586, 44587, 44588, 44589, 44590, 44591, 44592, 44593, 44594, 44595, 44596,
-            44597, 44598, 44599, 44600, 44601, 44602, 44603, 44604, 44605, 44606, 44607,
-            44608, 44609, 44610, 44611, 44612, 44613, 44614, 44615, 44616, 44617, 44618,
-            44619, 44620, 44621, 44622, 44623, 44624, 44625, 44626, 44627, 44628, 44629
-        ), 47, 278, Item(1929, 5), Item(8435, 3), Item(8423, 1)
-    ),
-    DESERT_HABITAT(
-        15224, intArrayOf(
-            44630, 44631, 44632, 44633, 44634, 44635, 44636, 44637, 44638, 44639, 44640,
-            44641, 44642, 44643, 44644, 44645, 44646, 44647, 44648, 44649, 44650, 44651,
-            44652, 44653, 44654, 44655, 44656, 44657, 44658, 44659, 44660, 44661, 44662,
-            44663, 44664, 44665, 44666, 44667, 44668, 44669, 44670, 44671, 44672, 44673,
-            44674, 44675, 44676, 44677, 44678, 44679, 44680, 44681, 44682, 44683, 44684,
-            44685, 44686, 44687, 44688, 44689, 44690, 44691, 44692, 44693, 44694, 44695
-        ), 57, 238, Item(1783, 10), Item(HouseConstants.LIMESTONE_BRICKS, 5), Item(15237, 1)
-    ),
-    POLAR_HABITAT(
-        15225, intArrayOf(
-            44696, 44697, 44698, 44699, 44700, 44701, 44702, 44703, 44704, 44705, 44706,
-            44707, 44708, 44709, 44710, 44711, 44712, 44713, 44714, 44715, 44716, 44717,
-            44718, 44719, 44720, 44721, 44722, 44723, 44724, 44725, 44726, 44727, 44728,
-            44729, 44730, 44731, 44732, 44733, 44734, 44735, 44736, 44737, 44738, 44739,
-            44740, 44741, 44742, 44743, 44744, 44745, 44746, 44747, 44748, 44749, 44750,
-            44751, 44752, 44753, 44754, 44755, 44756, 44757, 44758, 44759, 44760, 44761
-        ), 67, 373, Item(556, 1000), Item(555, 1000), Item(15239, 1)
-    ),
-    VOLCANIC_HABITAT(
-        15226, intArrayOf(
-            44762, 44763, 44764, 44765, 44766, 44767, 44768, 44769, 44770, 44771, 44772,
-            44773, 44774, 44775, 44776, 44777, 44778, 44779, 44780, 44781, 44782, 44783,
-            44784, 44785, 44786, 44787, 44788, 44789, 44790, 44791, 44792, 44793, 44794,
-            44795, 44796, 44797, 44798, 44799, 44800, 44801, 44802, 44803, 44804, 44805,
-            44806, 44807, 44808, 44809, 44810, 44811, 44812, 44813, 44814, 44815, 44816,
-            44817, 44818, 44819, 44820, 44821, 44822, 44823, 44824, 44825, 44826, 44827
-        ), 77, 1000, Item(6570, 1)
-    ),
+    GARDEN_HABITAT(15222, intArrayOf(44561, 44501, 44500, 44501, 44502, 44503, 44504, 44505, 44506, 44507, 44508, 44509, 44510, 44511, 44512, 44513, 44514, 44515, 44516, 44517, 44518, 44519, 44520, 44521, 44522, 44523, 44524, 44525, 44526, 44527, 44528, 44529, 44530, 44531, 44532, 44533, 44534, 44535, 44536, 44537, 44538, 44539, 44540, 44541, 44542, 44543, 44544, 44545, 44546, 44547, 44548, 44549, 44550, 44551, 44552, 44553, 44554, 44555, 44556, 44557, 44558, 44559, 44560, 44561, 44562, 44563), 37, 201, Item(8431, 1), Item(8433, 1), Item(8435, 1)),
+    JUNGLE_HABITAT(15223, intArrayOf(44564, 44565, 44566, 44567, 44568, 44569, 44570, 44571, 44572, 44573, 44574, 44575, 44576, 44577, 44578, 44579, 44580, 44581, 44582, 44583, 44584, 44585, 44586, 44587, 44588, 44589, 44590, 44591, 44592, 44593, 44594, 44595, 44596, 44597, 44598, 44599, 44600, 44601, 44602, 44603, 44604, 44605, 44606, 44607, 44608, 44609, 44610, 44611, 44612, 44613, 44614, 44615, 44616, 44617, 44618, 44619, 44620, 44621, 44622, 44623, 44624, 44625, 44626, 44627, 44628, 44629), 47, 278, Item(1929, 5), Item(8435, 3), Item(8423, 1)),
+    DESERT_HABITAT(15224, intArrayOf(44630, 44631, 44632, 44633, 44634, 44635, 44636, 44637, 44638, 44639, 44640, 44641, 44642, 44643, 44644, 44645, 44646, 44647, 44648, 44649, 44650, 44651, 44652, 44653, 44654, 44655, 44656, 44657, 44658, 44659, 44660, 44661, 44662, 44663, 44664, 44665, 44666, 44667, 44668, 44669, 44670, 44671, 44672, 44673, 44674, 44675, 44676, 44677, 44678, 44679, 44680, 44681, 44682, 44683, 44684, 44685, 44686, 44687, 44688, 44689, 44690, 44691, 44692, 44693, 44694, 44695), 57, 238, Item(1783, 10), Item(HouseConstants.LIMESTONE_BRICKS, 5), Item(15237, 1)),
+    POLAR_HABITAT(15225, intArrayOf(44696, 44697, 44698, 44699, 44700, 44701, 44702, 44703, 44704, 44705, 44706, 44707, 44708, 44709, 44710, 44711, 44712, 44713, 44714, 44715, 44716, 44717, 44718, 44719, 44720, 44721, 44722, 44723, 44724, 44725, 44726, 44727, 44728, 44729, 44730, 44731, 44732, 44733, 44734, 44735, 44736, 44737, 44738, 44739, 44740, 44741, 44742, 44743, 44744, 44745, 44746, 44747, 44748, 44749, 44750, 44751, 44752, 44753, 44754, 44755, 44756, 44757, 44758, 44759, 44760, 44761), 67, 373, Item(556, 1000), Item(555, 1000), Item(15239, 1)),
+    VOLCANIC_HABITAT(15226, intArrayOf(44762, 44763, 44764, 44765, 44766, 44767, 44768, 44769, 44770, 44771, 44772, 44773, 44774, 44775, 44776, 44777, 44778, 44779, 44780, 44781, 44782, 44783, 44784, 44785, 44786, 44787, 44788, 44789, 44790, 44791, 44792, 44793, 44794, 44795, 44796, 44797, 44798, 44799, 44800, 44801, 44802, 44803, 44804, 44805, 44806, 44807, 44808, 44809, 44810, 44811, 44812, 44813, 44814, 44815, 44816, 44817, 44818, 44819, 44820, 44821, 44822, 44823, 44824, 44825, 44826, 44827), 77, 1000, Item(6570, 1)),
 
     //THRONE ROOM
     OAKTHRONE(8357, 13665, 60, 800, Item(8778, 5), Item(8786, 1)),
@@ -396,31 +229,11 @@ enum class HouseObjects(
     OAKLEVER(8364, 13672, 68, 300, Item(8778, 5)),
     TEAKLEVER(8365, 13673, 78, 450, Item(8780, 5)),
     MAHOGANYLEVER(8366, 13674, 88, 700, Item(8782, 5)),
-    FLOORDECORATION(
-        8370,
-        intArrayOf(13689, 13689, 13689, 13689, 13689, 13689),
-        61,
-        700,
-        Item(8782, 5)
-    ),  // Needs to be looked over
+    FLOORDECORATION(8370, intArrayOf(13689, 13689, 13689, 13689, 13689, 13689), 61, 700, Item(8782, 5)),  // Needs to be looked over
     STEELCAGE(8371, intArrayOf(13688, 13688, 13688, 13688, 13688, 13688), 68, 1100, Item(8782, 5), Item(2353, 20)),
-    TRAPDOOR(
-        8369,
-        intArrayOf(13687, 13687, 13687, 13687, 13687, 13687),
-        74,
-        770,
-        Item(8782, 5),
-        Item(8792, 10)
-    ),  // Needs to be looked over
+    TRAPDOOR(8369, intArrayOf(13687, 13687, 13687, 13687, 13687, 13687), 74, 770, Item(8782, 5), Item(8792, 10)),  // Needs to be looked over
     LESSERMAGICCAGE(8373, intArrayOf(13686, 13686, 13686, 13686, 13686, 13686), 82, 2700, Item(8782, 5), Item(8788, 2)),
-    GREATERMAGICCAGE(
-        8374,
-        intArrayOf(13685, 13685, 13685, 13685, 13685, 13685),
-        89,
-        4700,
-        Item(8782, 5),
-        Item(8788, 4)
-    ),
+    GREATERMAGICCAGE(8374, intArrayOf(13685, 13685, 13685, 13685, 13685, 13685), 89, 4700, Item(8782, 5), Item(8788, 4)),
     CARVEDTEAKBENCH(8112, intArrayOf(13694, 13694), 44, 360, Item(8780, 4)),
     MAHOGANYBENCH(8113, intArrayOf(13695, 13695), 52, 560, Item(8782, 4)),
     GILDEDBENCH(8114, intArrayOf(13696, 13696), 61, 1760, Item(8782, 4), Item(8784, 4)),
@@ -430,74 +243,27 @@ enum class HouseObjects(
 
     // BEDROOM SEX TIME
     // BEDS
-    WOODEN_BED(
-        8031,
-        13148,
-        20,
-        117,
-        Item(HouseConstants.PLANK, 3),
-        Item(HouseConstants.NAILS, 3),
-        Item(HouseConstants.BOLT_OF_CLOTH, 2)
-    ),
+    WOODEN_BED(8031, 13148, 20, 117, Item(HouseConstants.PLANK, 3), Item(HouseConstants.NAILS, 3), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
     OAK_BED(8032, 13149, 30, 210, Item(HouseConstants.OAK_PLANK, 3), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
     LARGE_OAK_BED(8033, 13150, 34, 330, Item(HouseConstants.OAK_PLANK, 5), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
     TEAK_BED(8034, 13151, 40, 300, Item(HouseConstants.TEAK_PLANK, 3), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
     LARGE_TEAK_BED(8035, 13152, 45, 480, Item(HouseConstants.TEAK_PLANK, 5), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
     MAHOGANY_BED(8036, 13153, 53, 450, Item(HouseConstants.MAHOGANY_PLANK, 3), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
-    LARGE_MAHOGANY_BED(
-        8037,
-        13154,
-        60,
-        1330,
-        Item(HouseConstants.MAHOGANY_PLANK, 5),
-        Item(HouseConstants.BOLT_OF_CLOTH, 2),
-        Item(HouseConstants.GOLD_LEAF, 2)
-    ),
+    LARGE_MAHOGANY_BED(8037, 13154, 60, 1330, Item(HouseConstants.MAHOGANY_PLANK, 5), Item(HouseConstants.BOLT_OF_CLOTH, 2), Item(HouseConstants.GOLD_LEAF, 2)),
 
     // DRESSERS
-    SHAVING_STAND(
-        8045,
-        13162,
-        21,
-        30,
-        Item(HouseConstants.PLANK, 1),
-        Item(HouseConstants.NAILS, 1),
-        Item(HouseConstants.MOLTEN_GLASS, 1)
-    ),
+    SHAVING_STAND(8045, 13162, 21, 30, Item(HouseConstants.PLANK, 1), Item(HouseConstants.NAILS, 1), Item(HouseConstants.MOLTEN_GLASS, 1)),
     OAK_SHAVING_STAND(8046, 13163, 29, 61, Item(HouseConstants.OAK_PLANK, 1), Item(HouseConstants.MOLTEN_GLASS, 1)),
     OAK_DRESSER(8047, 13164, 37, 121, Item(HouseConstants.OAK_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 1)),
     TEAK_DRESSER(8048, 13165, 46, 181, Item(HouseConstants.TEAK_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 1)),
     FANCY_TEAK_DRESSER(8049, 13166, 56, 182, Item(HouseConstants.TEAK_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 2)),
-    MAHOGANY_DRESSER(
-        8050,
-        13167,
-        64,
-        261,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(HouseConstants.MOLTEN_GLASS, 1)
-    ),
-    GILDED_DRESSER(
-        8051,
-        13168,
-        74,
-        582,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(HouseConstants.MOLTEN_GLASS, 2),
-        Item(HouseConstants.GOLD_LEAF, 1)
-    ),
+    MAHOGANY_DRESSER(8050, 13167, 64, 261, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 1)),
+    GILDED_DRESSER(8051, 13168, 74, 582, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 2), Item(HouseConstants.GOLD_LEAF, 1)),
 
     // CLOCKS
     OAK_CLOCK(8052, 13169, 25, 142, Item(HouseConstants.OAK_PLANK, 2), Item(8792)),
     TEAK_CLOCK(8053, 13170, 25, 142, Item(HouseConstants.TEAK_PLANK, 2), Item(8792)),
-    GILDED_CLOCK(
-        8054,
-        13171,
-        25,
-        142,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(8792, 1),
-        Item(HouseConstants.GOLD_LEAF, 1)
-    ),
+    GILDED_CLOCK(8054, 13171, 25, 142, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(8792, 1), Item(HouseConstants.GOLD_LEAF, 1)),
 
     // WARDROBE
     SHOE_BOX(8038, 13155, 20, 58, Item(HouseConstants.PLANK, 2), Item(HouseConstants.NAILS, 2)),
@@ -561,15 +327,7 @@ enum class HouseObjects(
     // CAT BASKET
     CAT_BLANKET(8236, 13574, 5, 15, Item(HouseConstants.BOLT_OF_CLOTH, 1)),
     CAT_BASKET(8237, 13575, 19, 58, Item(HouseConstants.PLANK, 2), Item(HouseConstants.NAILS, 2)),
-    CUSHIONED_CAT_BASKET(
-        8238,
-        13576,
-        33,
-        58,
-        Item(HouseConstants.PLANK, 2),
-        Item(HouseConstants.NAILS, 2),
-        Item(1737, 2)
-    ),
+    CUSHIONED_CAT_BASKET(8238, 13576, 33, 58, Item(HouseConstants.PLANK, 2), Item(HouseConstants.NAILS, 2), Item(1737, 2)),
 
     // STOVE
     FIREPIT(8216, 13528, 5, 40, Item(HouseConstants.STEEL_BAR, 1), Item(HouseConstants.SOFT_CLAY, 2)),
@@ -581,89 +339,21 @@ enum class HouseObjects(
     FANCY_RANGE(8222, 13542, 42, 160, Item(HouseConstants.STEEL_BAR, 8)),
 
     // SHELVES
-    WOODEN_SHELVES_1(
-        8223,
-        intArrayOf(13545, 13545),
-        6,
-        87,
-        Item(HouseConstants.PLANK, 3),
-        Item(HouseConstants.NAILS, 3)
-    ),
-    WOODEN_SHELVES_2(
-        8224,
-        intArrayOf(13546, 13546),
-        12,
-        147,
-        Item(HouseConstants.PLANK, 3),
-        Item(HouseConstants.NAILS, 3),
-        Item(HouseConstants.SOFT_CLAY, 3)
-    ),
-    WOODEN_SHELVES_3(
-        8225,
-        intArrayOf(13547, 13547),
-        23,
-        147,
-        Item(HouseConstants.PLANK, 3),
-        Item(HouseConstants.NAILS, 3),
-        Item(HouseConstants.SOFT_CLAY, 6)
-    ),
-    OAK_SHELVES_1(
-        8226,
-        intArrayOf(13548, 13548),
-        34,
-        240,
-        Item(HouseConstants.OAK_PLANK, 3),
-        Item(HouseConstants.SOFT_CLAY, 6)
-    ),
-    OAK_SHELVES_2(
-        8227,
-        intArrayOf(13549, 13549),
-        45,
-        240,
-        Item(HouseConstants.OAK_PLANK, 3),
-        Item(HouseConstants.SOFT_CLAY, 6)
-    ),
-    TEAK_SHELVES_1(
-        8228,
-        intArrayOf(13550, 13550),
-        56,
-        330,
-        Item(HouseConstants.TEAK_PLANK, 3),
-        Item(HouseConstants.SOFT_CLAY, 6)
-    ),
-    TEAK_SHELVES_2(
-        8229,
-        intArrayOf(13551, 13551),
-        67,
-        930,
-        Item(HouseConstants.TEAK_PLANK, 3),
-        Item(HouseConstants.SOFT_CLAY, 6),
-        Item(HouseConstants.GOLD_LEAF, 2)
-    ),
+    WOODEN_SHELVES_1(8223, intArrayOf(13545, 13545), 6, 87, Item(HouseConstants.PLANK, 3), Item(HouseConstants.NAILS, 3)),
+    WOODEN_SHELVES_2(8224, intArrayOf(13546, 13546), 12, 147, Item(HouseConstants.PLANK, 3), Item(HouseConstants.NAILS, 3), Item(HouseConstants.SOFT_CLAY, 3)),
+    WOODEN_SHELVES_3(8225, intArrayOf(13547, 13547), 23, 147, Item(HouseConstants.PLANK, 3), Item(HouseConstants.NAILS, 3), Item(HouseConstants.SOFT_CLAY, 6)),
+    OAK_SHELVES_1(8226, intArrayOf(13548, 13548), 34, 240, Item(HouseConstants.OAK_PLANK, 3), Item(HouseConstants.SOFT_CLAY, 6)),
+    OAK_SHELVES_2(8227, intArrayOf(13549, 13549), 45, 240, Item(HouseConstants.OAK_PLANK, 3), Item(HouseConstants.SOFT_CLAY, 6)),
+    TEAK_SHELVES_1(8228, intArrayOf(13550, 13550), 56, 330, Item(HouseConstants.TEAK_PLANK, 3), Item(HouseConstants.SOFT_CLAY, 6)),
+    TEAK_SHELVES_2(8229, intArrayOf(13551, 13551), 67, 930, Item(HouseConstants.TEAK_PLANK, 3), Item(HouseConstants.SOFT_CLAY, 6), Item(HouseConstants.GOLD_LEAF, 2)),
 
     // BARRELS
     BEER_BARREL(8239, 13568, 7, 87, Item(HouseConstants.PLANK, 3), Item(HouseConstants.NAILS, 3)),
     CIDER_BARREL(8240, 13569, 12, 91, Item(HouseConstants.PLANK, 3), Item(HouseConstants.NAILS, 3), Item(5763, 8)),
-    ASGARNIAN_ALE(8241, 13570, 18, 184, Item(HouseConstants.OAK_PLANK, 3), Item(5763, 8)),
+    ASGARNIAN_ALE(8241, 13570, 18, 184, Item(HouseConstants.OAK_PLANK, 3), Item(1905, 8)),
     GREENMAN_ALE(8242, 13571, 26, 184, Item(HouseConstants.OAK_PLANK, 3), Item(1909, 8)),
-    DRAGON_BITTER_ALE(
-        8243,
-        13572,
-        36,
-        224,
-        Item(HouseConstants.OAK_PLANK, 3),
-        Item(1911, 8),
-        Item(HouseConstants.STEEL_BAR, 2)
-    ),
-    CHEFS_DELIGHT(
-        8243,
-        13572,
-        36,
-        224,
-        Item(HouseConstants.OAK_PLANK, 3),
-        Item(5755, 8),
-        Item(HouseConstants.STEEL_BAR, 2)
-    ),
+    DRAGON_BITTER_ALE(8243, 13572, 36, 224, Item(HouseConstants.OAK_PLANK, 3), Item(1911, 8), Item(HouseConstants.STEEL_BAR, 2)),
+    CHEFS_DELIGHT(8243, 13572, 36, 224, Item(HouseConstants.OAK_PLANK, 3), Item(5755, 8), Item(HouseConstants.STEEL_BAR, 2)),
 
     // DINING ROOM
     // DINING TABLES
@@ -673,16 +363,7 @@ enum class HouseObjects(
     TEAK_DINING(8118, 13296, 38, 360, Item(HouseConstants.TEAK_PLANK, 4)),
     CARVED_TEAK_DINING(8119, 13297, 45, 600, Item(HouseConstants.TEAK_PLANK, 6), Item(HouseConstants.BOLT_OF_CLOTH, 4)),
     MAHOGANY_DINING(8120, 13298, 52, 840, Item(HouseConstants.MAHOGANY_PLANK, 6)),
-    OPULENT_TABLE(
-        8121,
-        13299,
-        72,
-        3100,
-        Item(HouseConstants.MAHOGANY_PLANK, 6),
-        Item(HouseConstants.BOLT_OF_CLOTH, 4),
-        Item(HouseConstants.GOLD_LEAF, 2),
-        Item(HouseConstants.MARBLE_BLOCK, 2)
-    ),
+    OPULENT_TABLE(8121, 13299, 72, 3100, Item(HouseConstants.MAHOGANY_PLANK, 6), Item(HouseConstants.BOLT_OF_CLOTH, 4), Item(HouseConstants.GOLD_LEAF, 2), Item(HouseConstants.MARBLE_BLOCK, 2)),
 
     // DINING BENCHES
     WOOD_BENCH(8108, intArrayOf(13300, 13300), 10, 115, Item(HouseConstants.PLANK, 4), Item(HouseConstants.NAILS, 4)),
@@ -691,27 +372,12 @@ enum class HouseObjects(
     TEAK_BENCH(8111, intArrayOf(13303, 13303), 38, 360, Item(HouseConstants.TEAK_PLANK, 4)),
     CARVED_TEAK_BENCH(8112, intArrayOf(13304, 13304), 44, 360, Item(HouseConstants.TEAK_PLANK, 4)),
     MAHOGANY_BENCH(8113, intArrayOf(13305, 13305), 52, 560, Item(HouseConstants.MAHOGANY_PLANK, 4)),
-    GILDED_BENCH(
-        8114,
-        intArrayOf(13306, 13306),
-        61,
-        1760,
-        Item(HouseConstants.MAHOGANY_PLANK, 4),
-        Item(HouseConstants.GOLD_LEAF, 4)
-    ),
+    GILDED_BENCH(8114, intArrayOf(13306, 13306), 61, 1760, Item(HouseConstants.MAHOGANY_PLANK, 4), Item(HouseConstants.GOLD_LEAF, 4)),
 
     // ROPE PULL
     ROPE_BELL_PULL(8099, 13307, 26, 64, Item(HouseConstants.OAK_PLANK, 1), Item(954, 1)),
     BELL_PULL(8100, 13308, 37, 120, Item(HouseConstants.TEAK_PLANK, 1), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
-    POSH_BELL_PULL(
-        8101,
-        13309,
-        60,
-        420,
-        Item(HouseConstants.TEAK_PLANK, 1),
-        Item(HouseConstants.BOLT_OF_CLOTH, 2),
-        Item(HouseConstants.GOLD_LEAF, 1)
-    ),
+    POSH_BELL_PULL(8101, 13309, 60, 420, Item(HouseConstants.TEAK_PLANK, 1), Item(HouseConstants.BOLT_OF_CLOTH, 2), Item(HouseConstants.GOLD_LEAF, 1)),
 
     // DECORATION
     OAK_DECORATION(8102, 16, 120, Item(HouseConstants.OAK_PLANK, 2)),
@@ -783,81 +449,9 @@ enum class HouseObjects(
     GLOVE_RACK(8028, 13381, 34, 120, Item(HouseConstants.OAK_PLANK, 2)),
     WEAPON_RACK(8029, 13382, 44, 180, Item(HouseConstants.TEAK_PLANK, 2)),
     EXTRA_WEAPON_RACK(8030, 13383, 54, 440, Item(HouseConstants.TEAK_PLANK, 4), Item(HouseConstants.STEEL_BAR, 4)),
-    BOXING_RING(
-        8023,
-        intArrayOf(
-            13129,
-            13129,
-            13129,
-            13129,
-            13129,
-            13129,
-            13129,
-            13129,
-            13126,
-            13126,
-            13126,
-            13126,
-            13128,
-            13128,
-            13128,
-            13127
-        ),
-        32,
-        570,
-        Item(HouseConstants.OAK_PLANK, 6),
-        Item(HouseConstants.BOLT_OF_CLOTH, 4)
-    ),
-    FENCING_RING(
-        8024,
-        intArrayOf(
-            13133,
-            13133,
-            13133,
-            13133,
-            13133,
-            13133,
-            13133,
-            13133,
-            13135,
-            13135,
-            13135,
-            13135,
-            13134,
-            13134,
-            13134,
-            13136
-        ),
-        31,
-        570,
-        Item(HouseConstants.OAK_PLANK, 6),
-        Item(HouseConstants.BOLT_OF_CLOTH, 6)
-    ),
-    COMBAT_RING(
-        8025,
-        intArrayOf(
-            13137,
-            13137,
-            13137,
-            13137,
-            13137,
-            13137,
-            13137,
-            13137,
-            13138,
-            13138,
-            13138,
-            13138,
-            13139,
-            13139,
-            13139,
-            13140
-        ),
-        51,
-        630,
-        Item(HouseConstants.TEAK_PLANK, 6),
-        Item(HouseConstants.BOLT_OF_CLOTH, 6)
-    ),
+    BOXING_RING(8023, intArrayOf(13129, 13129, 13129, 13129, 13129, 13129, 13129, 13129, 13126, 13126, 13126, 13126, 13128, 13128, 13128, 13127), 32, 570, Item(HouseConstants.OAK_PLANK, 6), Item(HouseConstants.BOLT_OF_CLOTH, 4)),
+    FENCING_RING(8024, intArrayOf(13133, 13133, 13133, 13133, 13133, 13133, 13133, 13133, 13135, 13135, 13135, 13135, 13134, 13134, 13134, 13136), 31, 570, Item(HouseConstants.OAK_PLANK, 6), Item(HouseConstants.BOLT_OF_CLOTH, 6)),
+    COMBAT_RING(8025, intArrayOf(13137, 13137, 13137, 13137, 13137, 13137, 13137, 13137, 13138, 13138, 13138, 13138, 13139, 13139, 13139, 13140),51, 630, Item(HouseConstants.TEAK_PLANK, 6), Item(HouseConstants.BOLT_OF_CLOTH, 6)),
 
     // MAP SPACE
     MAP_SMALL(8294, 13525, 38, 211, Item(HouseConstants.TEAK_PLANK, 3), Item(8004, 1)),
@@ -917,50 +511,19 @@ enum class HouseObjects(
     // TELESCOPE
     WOODEN_TELESCOPE(8348, 13656, 44, 121, Item(HouseConstants.OAK_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 1)),
     TEAK_TELESCOPE(8349, 13657, 64, 181, Item(HouseConstants.TEAK_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 1)),
-    MAHOGANY_TELESCOPE(
-        8350,
-        13658,
-        84,
-        580,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(HouseConstants.MOLTEN_GLASS, 1)
-    ),
+    MAHOGANY_TELESCOPE(8350, 13658, 84, 580, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(HouseConstants.MOLTEN_GLASS, 1)),
 
     // CRYSTAL BALL
     CRYSTAL_BALL(8351, 13659, 42, 280, Item(HouseConstants.TEAK_PLANK, 3), Item(567, 1)),
-    ELEMENTAL_SPHERE(
-        8352,
-        13660,
-        54,
-        580,
-        Item(HouseConstants.TEAK_PLANK, 3),
-        Item(567, 1),
-        Item(HouseConstants.GOLD_LEAF, 1)
-    ),
-    CRYSTAL_OF_POWER(
-        8353,
-        13661,
-        66,
-        890,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(567, 1),
-        Item(HouseConstants.GOLD_LEAF, 2)
-    ),
+    ELEMENTAL_SPHERE(8352, 13660, 54, 580, Item(HouseConstants.TEAK_PLANK, 3), Item(567, 1), Item(HouseConstants.GOLD_LEAF, 1)),
+    CRYSTAL_OF_POWER(8353, 13661, 66, 890, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(567, 1), Item(HouseConstants.GOLD_LEAF, 2)),
 
     // GLOBE
     GLOBE(8341, 13649, 41, 180, Item(HouseConstants.OAK_PLANK, 3)),
     ORNAMENTAL_GLOBE(8342, 13650, 50, 270, Item(HouseConstants.TEAK_PLANK, 3)),
     LUNAR_GLOBE(8343, 13651, 59, 570, Item(HouseConstants.TEAK_PLANK, 3), Item(HouseConstants.GOLD_LEAF, 1)),
     CELESTIAL_GLOBE(8344, 13652, 68, 570, Item(HouseConstants.TEAK_PLANK, 3), Item(HouseConstants.GOLD_LEAF, 1)),
-    ARMILLARY_SPHERE(
-        8345,
-        13653,
-        77,
-        960,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(HouseConstants.GOLD_LEAF, 2),
-        Item(HouseConstants.STEEL_BAR, 4)
-    ),
+    ARMILLARY_SPHERE(8345, 13653, 77, 960, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(HouseConstants.GOLD_LEAF, 2), Item(HouseConstants.STEEL_BAR, 4)),
     SMALL_ORRERY(8346, 13654, 86, 1320, Item(HouseConstants.MAHOGANY_PLANK, 3), Item(HouseConstants.GOLD_LEAF, 3)),
     LARGE_ORRERY(8347, 13655, 95, 1420, Item(HouseConstants.MAHOGANY_PLANK, 3), Item(HouseConstants.GOLD_LEAF, 5)),
 
@@ -970,22 +533,8 @@ enum class HouseObjects(
     DEMON_LECTURN(8336, 13644, 47, 120, Item(HouseConstants.OAK_PLANK, 2)),
     TEAK_EAGLE_LECTURN(8337, 13645, 57, 180, Item(HouseConstants.TEAK_PLANK, 2)),
     TEAK_DEMON_LECTURN(8338, 13646, 57, 180, Item(HouseConstants.TEAK_PLANK, 2)),
-    MAHOGANY_EAGLE_LECTURN(
-        8339,
-        13647,
-        67,
-        580,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(HouseConstants.GOLD_LEAF, 1)
-    ),
-    MAHOGANY_DEMON_LECTURN(
-        8340,
-        13648,
-        67,
-        580,
-        Item(HouseConstants.MAHOGANY_PLANK, 2),
-        Item(HouseConstants.GOLD_LEAF, 1)
-    ),
+    MAHOGANY_EAGLE_LECTURN(8339, 13647, 67, 580, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(HouseConstants.GOLD_LEAF, 1)),
+    MAHOGANY_DEMON_LECTURN(8340, 13648, 67, 580, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(HouseConstants.GOLD_LEAF, 1)),
 
     // STATUE I'ma just make it auto-completed
     LECTURN_STATUE(15521, 48642, 1, 1, Item(HouseConstants.MAHOGANY_PLANK, 2), Item(HouseConstants.STEEL_BAR, 10)),
@@ -1054,25 +603,9 @@ enum class HouseObjects(
     TEAK_ALTAR(8063, 13182, 50, 360, Item(HouseConstants.TEAK_PLANK, 4)),
     CLOTH_ALTAR(8064, 13185, 56, 390, Item(HouseConstants.TEAK_PLANK, 4), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
     MAHOGANY_ALTAR(8065, 13188, 60, 590, Item(HouseConstants.MAHOGANY_PLANK, 4), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
-    LIMESTONE_ALTAR(
-        8066,
-        13191,
-        64,
-        910,
-        Item(HouseConstants.MAHOGANY_PLANK, 6),
-        Item(HouseConstants.BOLT_OF_CLOTH, 2),
-        Item(HouseConstants.LIMESTONE_BRICKS, 2)
-    ),
+    LIMESTONE_ALTAR(8066, 13191, 64, 910, Item(HouseConstants.MAHOGANY_PLANK, 6), Item(HouseConstants.BOLT_OF_CLOTH, 2), Item(HouseConstants.LIMESTONE_BRICKS, 2)),
     MARBLE_ALTAR(8067, 13194, 70, 1030, Item(HouseConstants.MARBLE_BLOCK, 2), Item(HouseConstants.BOLT_OF_CLOTH, 2)),
-    GUILDED_ALTAR(
-        8068,
-        13197,
-        75,
-        2230,
-        Item(HouseConstants.MARBLE_BLOCK, 2),
-        Item(HouseConstants.BOLT_OF_CLOTH, 2),
-        Item(HouseConstants.GOLD_LEAF, 4)
-    ),
+    GUILDED_ALTAR(8068, 13197, 75, 2230, Item(HouseConstants.MARBLE_BLOCK, 2), Item(HouseConstants.BOLT_OF_CLOTH, 2), Item(HouseConstants.GOLD_LEAF, 4)),
 
     // LAMPS
     WOODEN_TORCHES(8069, 13200, 49, 58, Item(HouseConstants.OAK_PLANK, 2), Item(HouseConstants.NAILS, 5)),
@@ -1093,15 +626,7 @@ enum class HouseObjects(
     ICON_OF_BOB(8061, 13178, 71, 1160, Item(HouseConstants.MAHOGANY_PLANK, 4), Item(HouseConstants.GOLD_LEAF, 2)),
 
     // MUSIC
-    WINCHIMES(
-        8079,
-        13214,
-        49,
-        323,
-        Item(HouseConstants.OAK_PLANK, 4),
-        Item(HouseConstants.NAILS, 4),
-        Item(HouseConstants.STEEL_BAR, 4)
-    ),
+    WINCHIMES(8079, 13214, 49, 323, Item(HouseConstants.OAK_PLANK, 4), Item(HouseConstants.NAILS, 4), Item(HouseConstants.STEEL_BAR, 4)),
     BELLS(8080, 13215, 58, 480, Item(HouseConstants.TEAK_PLANK, 4), Item(HouseConstants.STEEL_BAR, 6)),
     ORGAN(8081, 13216, 69, 680, Item(HouseConstants.MAHOGANY_PLANK, 4), Item(HouseConstants.STEEL_BAR, 6)),
 
@@ -1111,28 +636,9 @@ enum class HouseObjects(
     LARGE_STATUE(8084, 13279, 89, 1500, Item(HouseConstants.MARBLE_BLOCK, 3)),
 
     // WINDOWS
-    SHUTTERED_WINDOW(
-        8076,
-        intArrayOf(13253, 13226, 13235, 13244, 13217, 13262, 39232),
-        49,
-        228,
-        Item(HouseConstants.PLANK, 8),
-        Item(HouseConstants.NAILS, 8)
-    ),
-    DECORATIVE_WINDOW(
-        8077,
-        intArrayOf(13254, 13227, 13236, 13245, 13218, 13263, 39253),
-        69,
-        4,
-        Item(HouseConstants.MOLTEN_GLASS, 8)
-    ),
-    STAINED_GLASS(
-        8078,
-        intArrayOf(13255, 13228, 13237, 13246, 13219, 13264, 39254),
-        89,
-        5,
-        Item(HouseConstants.MOLTEN_GLASS, 16)
-    );
+    SHUTTERED_WINDOW(8076, intArrayOf(13253, 13226, 13235, 13244, 13217, 13262, 39232), 49, 228, Item(HouseConstants.PLANK, 8), Item(HouseConstants.NAILS, 8)),
+    DECORATIVE_WINDOW(8077, intArrayOf(13254, 13227, 13236, 13245, 13218, 13263, 39253), 69, 4, Item(HouseConstants.MOLTEN_GLASS, 8)),
+    STAINED_GLASS(8078, intArrayOf(13255, 13228, 13237, 13246, 13219, 13264, 39254), 89, 5, Item(HouseConstants.MOLTEN_GLASS, 16));
     companion object {
         fun getDynamicObjectId(player: Player?, objectType: HouseObjects): Int {
             return when (objectType) {
