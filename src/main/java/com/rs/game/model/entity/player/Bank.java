@@ -128,7 +128,6 @@ public class Bank {
 			e.getPlayer().closeInterfaces();
 			e.getPlayer().getInterfaceManager().sendInterface(767);
 			e.getPlayer().setCloseInterfacesEvent(() -> {
-				e.getPlayer().getBank().open();
 				e.getPlayer().abortDialogue();
 				e.getPlayer().getPackets().sendRunScript(571);
 			});
