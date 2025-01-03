@@ -2,7 +2,6 @@ package com.rs.game.content.skills.construction.playerOwnedHouse
 
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.`object`.GameObject
-import java.util.ArrayList
 
 class RoomReference(val room: HouseRooms, x: Int, y: Int, plane: Int, rotation: Int) {
     val trapObject: Int
@@ -54,24 +53,15 @@ class RoomReference(val room: HouseRooms, x: Int, y: Int, plane: Int, rotation: 
         objects.add(ref)
         return ref
     }
-
-    fun getObject(`object`: GameObject, player: Player?): ObjectReference? {
+    fun getObject(obj: GameObject, player: Player?): ObjectReference? {
         for (o in objects) {
+            val normalIds = o.piece.getIds()
             val dynamicId = HouseObjects.getDynamicObjectId(player, o.piece)
-            if (`object`.id == dynamicId) {
+            if (normalIds.contains(obj.id) || obj.id == dynamicId) {
                 return o
             }
         }
         return null
-    }
-
-    private fun getHObjectSlot(houseObjects: HouseObjects): Int {
-        for (o in objects) {
-            @Suppress("SENSELESS_COMPARISON")
-            if (o == null) continue
-            if (houseObjects.getId() == o.piece.getId()) return o.slot
-        }
-        return -1
     }
 
     fun containsBuild(build: HouseBuilds): Boolean {

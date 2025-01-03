@@ -18,6 +18,7 @@ package com.rs.game.content.skills.construction;
 
 import com.rs.engine.dialogue.Conversation;
 import com.rs.engine.dialogue.Dialogue;
+import com.rs.engine.dialogue.HeadE;
 import com.rs.engine.dialogue.Options;
 import com.rs.engine.quest.Quest;
 import com.rs.game.content.Skillcapes;
@@ -70,6 +71,7 @@ public class EstateAgentDialogue extends Conversation {
 					}
 				}));
 				option("What's that cape you are wearing?", () -> Skillcapes.Construction.getOffer99CapeDialogue(player, npcId));
+				option("Can you reset my house?", () -> promptHouseReset(player, npcId));
 			}
 		});
 	}
@@ -111,4 +113,15 @@ public class EstateAgentDialogue extends Conversation {
 			player.sendMessage("You don't have the construction level required.");
 		}
 	}
+	public void promptHouseReset(Player player, int npcID) {
+		player.startConversation(new Dialogue()
+				.addNPC(npcID, HeadE.CALM_TALK, "I can reset your house back to a starter house. But this can't be undone.")
+				.addNPC(npcID, HeadE.CALM_TALK, "You WILL lose any Castle Wars decorative armour stands if they have been built.")
+				.addOptions(ops -> {
+					ops.add("Reset my house", () -> player.getHouse().reset());
+					ops.add("No thanks")
+					.addNPC(npcID, HeadE.CALM_TALK, "Ok. Have a nice day.");
+				})
+		);
+	};
 }
