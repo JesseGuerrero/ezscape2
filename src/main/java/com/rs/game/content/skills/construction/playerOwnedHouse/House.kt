@@ -7,6 +7,7 @@ import com.rs.engine.dialogue.Dialogue
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.dialogue.statements.Statement
 import com.rs.game.World
+import com.rs.game.content.skills.construction.playerOwnedHouse.HouseObjects.Companion.getDynamicObjectId
 import com.rs.game.map.Chunk
 import com.rs.game.map.ChunkManager
 import com.rs.game.map.instance.Instance
@@ -29,7 +30,6 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.math.pow
-
 
 @PluginEventHandler
 class House {
@@ -421,6 +421,8 @@ class House {
             if ((build in listOf(HouseBuilds.PORTALS1, HouseBuilds.PORTALS2, HouseBuilds.PORTALS3)) && index > 2) null
             else Item(piece.itemId, 1)
         }.toTypedArray()
+        if(build.isWater && !hasWaterCan() || !hasTools())
+            player?.sendMessage(if (build.isWater) "You will need a watering can with some water in it instead of hammer and saw to build plants." else "You will need a hammer and saw to build furniture.")
         val requirementsValue = build.pieces.indices.sumOf { index ->
             if ((build in listOf(HouseBuilds.PORTALS1, HouseBuilds.PORTALS2, HouseBuilds.PORTALS3)) && index > 2) 0
             else if (hasRequirementsToBuild(false, build, build.pieces[index])) (2.0.pow(index + 1)).toInt()
@@ -476,14 +478,15 @@ class House {
                 if (warn) player?.sendMessage("You don't have the right materials.")
                 return false
             }
-            if (if (build.isWater) !hasWaterCan() else (!player?.inventory!!.containsItem(
-                    HouseConstants.HAMMER,
-                    1
-                ) || (!player?.inventory!!.containsItem(HouseConstants.SAW, 1) && !player?.inventory!!.containsOneItem(
-                    9625
-                )))
-            ) {
-                if (warn) player?.sendMessage(if (build.isWater) "You will need a watering can with some water in it instead of hammer and saw to build plants." else "You will need a hammer and saw to build furniture.")
+            if (if (build.isWater) !hasWaterCan() else !hasTools()) {
+                if (warn) {
+                    val message = if (build.isWater) {
+                        "You will need a watering can with some water in it instead of hammer and saw to build plants."
+                    } else {
+                        "You will need a hammer and saw to build furniture."
+                    }
+                    player?.sendMessage(message)
+                }
                 return false
             }
         }
@@ -503,7 +506,9 @@ class House {
         val piece = build.pieces[slot]
         if (!hasRequirementsToBuild(true, build, piece)) return
         val oref: ObjectReference = room.addObject(build, slot)
-        oref.finalId = HouseObjects.getDynamicObjectId(player, oref.piece)
+        if (isRelevantForDynamicId(oref.piece)) {
+            oref.finalId = HouseObjects.getDynamicObjectId(player, oref.piece)
+        }
         player?.closeInterfaces()
         player?.lock()
         player?.anim(Animation(if (build.isWater) 2293 else 3683))
@@ -544,12 +549,18 @@ class House {
                         } else {
                             val objectR = GameObject(obj)
                             val targetId = oref.getId(slot)
+                            val houseObject = HouseObjects.values().find { it.ordinal == oref.piece.ordinal }
                             if (targetId == -1) {
                                 World.spawnObject(GameObject(-1, obj.type, obj.rotation, obj.tile))
                             } else {
-                                val dynamicId = oref.finalId
-                                val actualId = if (dynamicId > 0 && dynamicId != targetId) dynamicId else targetId
-                                objectR.setId(actualId)
+                                if (houseObject != null && isRelevantForDynamicId(houseObject)) {
+                                    val dynamicId = oref.finalId
+                                    val actualId = if (dynamicId > 0 && dynamicId != targetId) dynamicId else targetId
+                                    objectR.setId(actualId)
+                                }
+                                else {
+                                    objectR.setId(oref.getId(slot))
+                                }
                                 World.spawnObject(objectR)
                             }
                         }
@@ -671,12 +682,12 @@ class House {
         val room = getRoomFromObject(`object`) ?: return
         @Suppress("SENSELESS_COMPARISON")
         if (room == null) {
-            player?.sendMessage("Room is null for coordinates: roomX=${room.x()}., roomY=${room.y()}, plane=${room.plane}")
+            player?.sendMessage("Room is null for coordinates: roomX=${room.x()}, roomY=${room.y()}, plane=${room.plane}")
             return
         }
         val ref = room.getObject(`object`, player)
         if (ref != null) {
-            if (ref.build.toString().contains("STAIRCASE")) {
+            if (ref.build.name.contains("STAIRCASE", ignoreCase = true)) {
                 if (`object`.plane != 1) {
                     val above = getRoom(room.x(), room.y(), 2)
                     val below = getRoom(room.x(), room.y(), 0)
@@ -689,7 +700,7 @@ class House {
             }
             player?.startConversation {
                 options("Really remove it?") {
-                    ops("Yes."){
+                    ops("Yes.") {
                         exec {
                             player?.house?.removeBuild(`object`)
                         }
@@ -702,6 +713,7 @@ class House {
         }
     }
 
+
     /****
      * Removes the specified build from the GameObject.
      ****/
@@ -712,17 +724,19 @@ class House {
         }
         val room = getLocalRoomReference(`object`) ?: return
         val oref = room.removeObject(`object`, player) ?: return
-        val dynamicId = HouseObjects.getDynamicObjectId(player, oref.piece)
-
-        if (`object`.id != dynamicId)
-            return
-
+        if (isRelevantForDynamicId(oref.piece)) {
+            val dynamicId = HouseObjects.getDynamicObjectId(player, oref.piece)
+            if (`object`.id != dynamicId) {
+                player?.sendMessage("Object ID: ${`object`.id} did not match $dynamicId ${ObjectDefinitions.getDefs(dynamicId)}")
+                return
+            }
+        }
         player?.lock()
         player?.anim(Animation(3685))
-        player?.tasks!!.schedule(object : Task() {
+        player?.tasks?.schedule(object : Task() {
             override fun run() {
                 World.removeObject(`object`)
-                refreshObject(room, oref, true)
+                refreshObject(room, oref, remove = true)
                 player?.unlock()
             }
         })
@@ -1232,19 +1246,22 @@ class House {
         for (o in reference.objects) {
             val slot: Int = o.build.getIdSlot(obj.id)
             if (slot == -1) continue
+            val houseObject = HouseObjects.valueOf(o.piece.name)
             val objectR = GameObject(obj)
             if (o.getId(slot) == -1) {
-                World.spawnObject(
-                    GameObject(-1, obj.type, obj.rotation, obj.tile)
-                )
-            }
-            if (houseNPCs?.spawnGuardNPCs(slot, o, obj) == true)
-                return
-            else {
-                objectR.setId(HouseObjects.getDynamicObjectId(player, o.piece))
+                World.spawnObject(GameObject(-1, obj.type, obj.rotation, obj.tile))
+            } else {
+                if (isRelevantForDynamicId(houseObject)) {
+                    val dynamicId = getDynamicObjectId(player, houseObject)
+                    objectR.setId(dynamicId)
+                } else {
+                    objectR.setId(o.getId(slot))
+                }
                 World.spawnObject(objectR)
+                if (houseNPCs?.spawnGuardNPCs(slot, o, obj) == true) {
+                    return
+                }
             }
-            return
         }
     }
 
@@ -1389,6 +1406,13 @@ class House {
         for (id in 5333..5340) if (player?.inventory!!.containsOneItem(id)) return true
         return false
     }
+    private fun hasTools(): Boolean {
+        val inventory = player?.inventory ?: return false
+        val hasHammer = inventory.containsItem(HouseConstants.HAMMER, 1)
+        val hasSaw = inventory.containsItem(HouseConstants.SAW, 1)
+        val hasCrystalSaw = inventory.containsOneItem(9625)
+        return hasHammer && (hasSaw || hasCrystalSaw)
+    }
     fun isSky(x: Int, y: Int, plane: Int): Boolean {
         return buildMode && plane == 2 && getRoom(
             (x / 8) - instance!!.baseChunkX,
@@ -1429,6 +1453,18 @@ class House {
             if (`object` != null) return `object`
         }
         return null
+    }
+
+    fun isRelevantForDynamicId(objectType: HouseObjects): Boolean {
+        return when (objectType) {
+            HouseObjects.OAK_DECORATION,
+            HouseObjects.TEAK_DECORATION,
+            HouseObjects.GILDED_DECORATION,
+            HouseObjects.ROUND_SHIELD,
+            HouseObjects.SQUARE_SHIELD,
+            HouseObjects.KITE_SHIELD -> true
+            else -> false
+        }
     }
 
     // ========================================================================
