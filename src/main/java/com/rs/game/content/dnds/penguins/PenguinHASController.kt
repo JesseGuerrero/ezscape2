@@ -128,7 +128,7 @@ fun mapPenguinHideAndSeekInteractions() {
 
                             polarBear.addSpotter(player.username)
                             World.data.attribs.setO<String>(POLAR_BEAR_WORLD_ATTR, Gson().toJson(polarBear))
-                            player.incWeeklyI(POLAR_BEAR_WEEKLY_ATTR, 1)
+                            player.setWeeklyI(POLAR_BEAR_WEEKLY_ATTR, 1)
 
                             player.lock(5)
                             player.anim(10355)
@@ -164,13 +164,12 @@ fun mapPenguinHideAndSeekInteractions() {
     // Spy Notebook
     onItemClick(13732, options = arrayOf("Read")) { (player) ->
         val penguinsSpottedCount = player.getWeeklyI(PENGUIN_COUNT_WEEKLY_ATTR)
+        val polarBearSpottedCount = player.getWeeklyI(POLAR_BEAR_WEEKLY_ATTR)
 
         var dialogueMessage = "You have spotted $penguinsSpottedCount ${if (penguinsSpottedCount == 1) "penguin" else "penguins"} this week."
 
         if (player.isQuestComplete(Quest.HUNT_FOR_RED_RAKTUBER)) {
-            val polarBear = getPolarBear()
-            val spotted = polarBear?.spotters?.contains(player.username) == true
-            dialogueMessage += "<br><br>You have ${if (spotted) "spotted the polar bear" else "not yet spotted the polar bear"} this week."
+            dialogueMessage += "<br><br>You have ${if (polarBearSpottedCount == 1) "spotted the polar bear" else "not yet spotted the polar bear"} this week."
         }
 
         dialogueMessage += "<br><br>You have ${player.getI(PENGUIN_POINTS).coerceAtLeast(0)} Penguin ${if (player.getI(PENGUIN_POINTS) == 1) "Point" else "Points"} to spend with Larry."

@@ -103,6 +103,11 @@ class PenguinSpawnService () {
     }
 
     fun prepareExisting() {
+        if (spawnedNPCs.isNotEmpty()) {
+            Logger.debug(PenguinSpawnService::class.java, "prepareExisting", "Spawns already exist. No action taken.")
+            return
+        }
+
         val existingSpawns = getAllSpawns()
         val alreadySpawnedTiles = spawnedNPCs.values.map { it.respawnTile }.toSet()
 
