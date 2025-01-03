@@ -36,7 +36,7 @@ public class LootThug extends PlayerAction {
 
 	@Override
 	public int processWithDelay(Player player) {
-		GlovesOfSilenceKt.degradeGlovesOfSilence(player, 1);
+		GlovesOfSilenceKt.degradeGlovesOfSilence(player);
 		if (!success) {
 			player.sendMessage("You find nothing in the Menaphite Thug's pocket.");
 		}

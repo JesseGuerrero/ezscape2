@@ -102,7 +102,7 @@ public class PickPocketAction extends PlayerAction {
 			player.setNextAnimation(new Animation(424));
 			player.setNextSpotAnim(new SpotAnim(80, 5, 60));
 			player.sendMessage("You've been stunned.");
-			GlovesOfSilenceKt.degradeGlovesOfSilence(player, 1);
+			GlovesOfSilenceKt.degradeGlovesOfSilence(player);
 			player.applyHit(new Hit(player, npcData.getStunDamage(), HitLook.TRUE_DAMAGE));
 			if (npcData.equals(PickPocketableNPC.MASTER_FARMER) || npcData.equals(PickPocketableNPC.FARMER))
 				npc.setNextForceTalk(new ForceTalk("Cor blimey mate, what are ye doing in me pockets?"));

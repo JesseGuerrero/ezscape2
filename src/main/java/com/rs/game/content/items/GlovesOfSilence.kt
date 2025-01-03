@@ -74,10 +74,10 @@ fun mapGlovesOfSilence() {
  * Degrade gloves method.
  * If charges = 0, delete item and let player know.
  */
-fun degradeGlovesOfSilence(player: Player, amount: Int) {
+fun degradeGlovesOfSilence(player: Player) {
     if (player.equipment.glovesId == GLOVES_OF_SILENCE) {
         var charges = player.getI("glovesOfSilenceCharges").takeIf { it > 0 } ?: MAX_GLOVES_OF_SILENCE_CHARGES
-        charges -= amount
+        charges -= 1
 
         if (charges <= 0) {
             player.set("glovesOfSilenceCharges", MAX_GLOVES_OF_SILENCE_CHARGES)
