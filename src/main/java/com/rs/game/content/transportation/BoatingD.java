@@ -82,7 +82,7 @@ public class BoatingD extends Conversation {
             case 381 -> new Object[]{Carrier.BRIMHAVEN_FARE, true};
             case 744 -> new Object[]{Carrier.CRANDOR_FARE, false};
             case 2728, 2729, 657 -> new Object[]{Carrier.ENTRANA_FARE, false};
-            case 2730 -> new Object[]{Carrier.ENTRANA_FARE, true};
+            case 2730, 2731 -> new Object[]{Carrier.ENTRANA_FARE, true};
             case 3801 -> new Object[]{Carrier.VOID_OUTPOST_FARE, false};
             case 3800 -> new Object[]{Carrier.VOID_OUTPOST_FARE, true};
             case 4962 -> new Object[]{Carrier.BRIMHAVEN_FARE, false};
