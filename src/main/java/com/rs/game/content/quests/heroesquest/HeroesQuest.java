@@ -67,18 +67,18 @@ public class HeroesQuest extends QuestOutline {
 			}
 			case GET_ITEMS -> {
 				if (!player.getInventory().containsItem(2149, 1)) { //Lava Eel
-					lines.add("You need a cooked Lava Eel. Maybe Garrent in");
+					lines.add("You need a cooked Lava eel. Maybe Gerrant in");
 					lines.add("Port Sarim can help?");
 					lines.add("");
 				} else {
-					lines.add("You got the cooked Lava Eeel, finally!");
+					lines.add("You got the cooked Lava eel, finally!");
 					lines.add("");
 				}
 
 				if (!player.getInventory().containsItem(1583, 1)) {
 					lines.add("You need a fire feather. They can be found");
-					lines.add("by killing a fire bird in Entrana. Rumor is");
-					lines.add("you need ice gloves from the ice queen under");
+					lines.add("by killing a fire bird in Entrana. Rumour is");
+					lines.add("you need ice gloves from the Ice Queen under");
 					lines.add("White Wolf Mountain.");
 					lines.add("");
 				} else {
