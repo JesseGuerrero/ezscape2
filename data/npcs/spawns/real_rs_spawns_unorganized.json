@@ -65078,6 +65078,7 @@
       "x": 2583,
       "y": 3422
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65087,6 +65088,7 @@
       "x": 2583,
       "y": 3423
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 495
   },
