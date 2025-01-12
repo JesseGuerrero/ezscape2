@@ -30,6 +30,7 @@ import com.rs.plugin.handlers.ItemOnObjectHandler;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @PluginEventHandler
 public class Cooking extends PlayerAction {
@@ -226,6 +227,10 @@ public class Cooking extends PlayerAction {
 
 	@Override
 	public int processWithDelay(Player player) {
+
+		Set<Player> participants = gameObject.getAttribs().getO("participants");
+		boolean isBonfire = participants != null && !participants.isEmpty();
+
 		quantity--;
 		player.anim(gameObject.getDefinitions(player).getName().equals("Fire") ? 897 : 896);
 		if (rollIsBurnt(cookable, player)) {
@@ -235,10 +240,14 @@ public class Cooking extends PlayerAction {
 		} else {
 			player.getInventory().deleteItem(cookable.getRawItem().getId(), 1);
 			player.getInventory().addItem(new Item(cookable.getProductItem()[option]).getId(), new Item(cookable.getProductItem()[option]).getAmount());
+
+			double xp = cookable.getXp();
+			if (isBonfire) xp += xp * 0.10; // Add 10% extra XP when cooking on bonfire
+
 			if (new Item(cookable.getProductItem()[option]).getId() == 9436) {
 				player.getSkills().addXp(Constants.COOKING, 3); // Sinew only awards 3xp
 			} else {
-				player.getSkills().addXp(Constants.COOKING, cookable.getXp());
+				player.getSkills().addXp(Constants.COOKING, xp);
 			}
 			player.sendMessage("You successfully cook " + (cookable == Cookables.RAW_SHRIMP || cookable == Cookables.RAW_ANCHOVIES ? "some" : "a") + " " + productName.toLowerCase() + ".", true);
 		}
