@@ -17,6 +17,7 @@ import com.rs.plugin.kts.onItemClick
 import com.rs.plugin.kts.onLogin
 import com.rs.plugin.kts.onNpcClick
 import com.rs.plugin.kts.onObjectClick
+import com.rs.utils.WorldPersistentData
 import java.time.LocalDate
 import java.time.Month
 import java.time.ZoneOffset
@@ -211,10 +212,8 @@ class PenguinManager() {
             polarBearManager.setLocation(true)
 
             val lastReset = getLastReset()
-
-            if (lastResetDate == null || hasResetTimePassed(lastResetDate, currentDateTime)) {
-                World.data.attribs.setO<String>(PENGUINHAS_LAST_RESET_WORLD_ATTR, lastReset.format(DateTimeFormatter.ISO_INSTANT))
-            }
+            World.data.attribs.setO<String>(PENGUINHAS_LAST_RESET_WORLD_ATTR, lastReset.format(DateTimeFormatter.ISO_INSTANT))
+            WorldPersistentData.save()
         } else {
             penguinSpawnService.prepareExisting()
             polarBearManager.setLocation(false)
