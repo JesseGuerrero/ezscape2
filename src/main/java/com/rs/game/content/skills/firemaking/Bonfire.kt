@@ -17,7 +17,6 @@ import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemOnObject
 import com.rs.plugin.kts.onObjectClick
-import com.rs.utils.Ticks
 
 class Bonfire(private val log: Log, private val obj: GameObject) : PlayerAction() {
 

@@ -23,7 +23,13 @@ class FireSpirit(tile: Tile, target: Player) : OwnedNPC(target, 15451, tile, tru
 
     override fun processNPC() {
         super.processNPC()
-        if (life-- <= 0) finish()
+        if (life-- <= 0) {
+            schedule {
+                anim(15627)
+                wait(2)
+                finish()
+            }
+        }
     }
 
     override fun sendDrop(player: Player, item: Item) {
