@@ -228,8 +228,8 @@ public class Cooking extends PlayerAction {
 	@Override
 	public int processWithDelay(Player player) {
 
-		Set<Player> participants = gameObject.getAttribs().getO("participants");
-		boolean isBonfire = participants != null && !participants.isEmpty();
+		int bonfireParticipants = gameObject.getAttribs().getI("bonfire_participants");
+		boolean isBonfire = bonfireParticipants > 0;
 
 		quantity--;
 		player.anim(gameObject.getDefinitions(player).getName().equals("Fire") ? 897 : 896);

@@ -51,7 +51,15 @@ class Bonfire(private val log: Log, private val obj: GameObject) : PlayerAction(
 
     override fun start(player: Player): Boolean {
         return if (checkAll(player)) {
-            addParticipant(player)
+            val participants: MutableSet<String> = synchronized(obj) {
+                obj.attribs.getO("bonfire_participants_set") as? MutableSet<String>
+                    ?: mutableSetOf<String>().also { obj.attribs.setO("bonfire_participants_set", it) }
+            }
+            synchronized(participants) {
+                if (participants.add(player.username)) {
+                    obj.attribs.incI("bonfire_participants")
+                }
+            }
             player.appearance.setBAS(2498)
             true
         } else {
@@ -83,8 +91,8 @@ class Bonfire(private val log: Log, private val obj: GameObject) : PlayerAction(
         val baseXp = if (log == Log.MAPLE) calculateXpBasedOnLevel(player, log, log.xp.start, log.xp.endInclusive) else log.xp.start
         val finalXp = Firemaking.increasedExperience(player, baseXp, true)
         val boostedXp = synchronized(obj) {
-            val participants: MutableSet<Player> = obj.attribs.getO("participants") ?: mutableSetOf()
-            finalXp * (1 + when (participants.size) {
+            val bonfireParticipants = obj.attribs.getI("bonfire_participants")
+            finalXp * (1 + when (bonfireParticipants) {
                 1 -> 0.00
                 2 -> 0.01
                 3 -> 0.02
@@ -112,14 +120,6 @@ class Bonfire(private val log: Log, private val obj: GameObject) : PlayerAction(
                 player.appearance.setBAS(-1)
             }
         }, 3)
-    }
-
-    private fun addParticipant(player: Player) {
-        synchronized(obj) {
-            val participants: MutableSet<Player> = obj.attribs.getO("participants") ?: mutableSetOf()
-            participants.add(player)
-            obj.attribs.setO<MutableSet<Player>>("participants", participants)
-        }
     }
 
     companion object {

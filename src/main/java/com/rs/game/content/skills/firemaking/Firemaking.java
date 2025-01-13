@@ -213,9 +213,7 @@ public class Firemaking extends Action {
 					if ((item == null) || !World.removeGroundItem(player, item, false))
 						return;
 				}
-				GameObject obj = new GameObject(fire.getFireId(), ObjectType.SCENERY_INTERACT, 0, tile.getX(), tile.getY(), tile.getPlane());
-				World.spawnTempGroundObject(obj, 592, fire.getLife());
-				obj.getAttribs().setO("owner", player);
+				World.spawnTempGroundObject(new GameObject(fire.getFireId(), ObjectType.SCENERY_INTERACT, 0, tile.getX(), tile.getY(), tile.getPlane()), 592, fire.getLife());
 				if (player != null)
 					player.getSkills().addXp(Constants.FIREMAKING, increasedExperience(player, fire.getExperience(), false));
 				entity.setNextFaceTile(tile);
