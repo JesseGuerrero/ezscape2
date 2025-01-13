@@ -49256,6 +49256,7 @@
       "x": 3267,
       "y": 3164
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 496
   },
@@ -49265,6 +49266,7 @@
       "x": 3267,
       "y": 3167
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 496
   },
@@ -49274,6 +49276,7 @@
       "x": 3267,
       "y": 3169
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 496
   },
@@ -49283,6 +49286,7 @@
       "x": 3267,
       "y": 3166
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 497
   },
@@ -49292,6 +49296,7 @@
       "x": 3267,
       "y": 3168
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 497
   },
@@ -65024,6 +65029,7 @@
       "x": 2615,
       "y": 3091
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65033,6 +65039,7 @@
       "x": 2615,
       "y": 3092
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65042,6 +65049,7 @@
       "x": 2615,
       "y": 3094
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65051,6 +65059,7 @@
       "x": 2614,
       "y": 3330
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65060,6 +65069,7 @@
       "x": 2616,
       "y": 3330
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65069,6 +65079,7 @@
       "x": 2619,
       "y": 3330
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65098,6 +65109,7 @@
       "x": 2621,
       "y": 3895
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 1360
   },
@@ -65107,6 +65119,7 @@
       "x": 2657,
       "y": 3280
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65116,6 +65129,7 @@
       "x": 2657,
       "y": 3283
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65125,6 +65139,7 @@
       "x": 2657,
       "y": 3286
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65224,6 +65239,7 @@
       "x": 2851,
       "y": 2954
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 499
   },
@@ -65233,6 +65249,7 @@
       "x": 2853,
       "y": 2955
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 499
   },
@@ -65627,6 +65644,7 @@
       "x": 3514,
       "y": 3479
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 1036
   },
@@ -65636,6 +65654,7 @@
       "x": 3514,
       "y": 3481
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 1036
   },
@@ -65645,6 +65664,7 @@
       "x": 3682,
       "y": 2981
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 3198
   },
@@ -65654,6 +65674,7 @@
       "x": 3682,
       "y": 2982
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 3199
   },
@@ -65663,6 +65684,7 @@
       "x": 3682,
       "y": 2983
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 3198
   },
@@ -98031,6 +98053,7 @@
       "x": 2841,
       "y": 3538
     },
+	"dir": "EAST",
     "comment": "Jade",
     "npcId": 4296
   },
