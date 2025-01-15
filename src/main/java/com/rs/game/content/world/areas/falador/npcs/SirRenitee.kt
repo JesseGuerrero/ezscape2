@@ -87,7 +87,7 @@ fun mapSirRenitee() {
                                                 npc(npcId, HeadE.CALM_TALK, "The ${crest.description}? Excellent choice!")
                                                 exec {
                                                     HouseHeraldry.setCurrentCrest(player, crest)
-                                                    player.inventory.removeCoins(5000)
+                                                    player.inventory.removeCoins(crest.cost)
                                                 }
                                             }
                                         }
