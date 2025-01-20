@@ -24,7 +24,7 @@ import com.rs.game.content.Effect;
 import com.rs.game.content.ItemConstants;
 import com.rs.game.content.combat.special_attacks.SpecialAttacksKt;
 import com.rs.game.content.interfacehandlers.ItemsKeptOnDeath;
-import com.rs.game.content.skills.firemaking.Bonfire;
+import com.rs.game.content.skills.firemaking.BonfireKt;
 import com.rs.game.content.transportation.ItemTeleports;
 import com.rs.game.model.entity.player.managers.PriceChecker;
 import com.rs.game.model.item.ItemsContainer;
@@ -188,7 +188,7 @@ public final class Equipment {
 		}
 		int maxHp = player.getSkills().getLevel(Constants.HITPOINTS) * 10;
 		if (player.hasEffect(Effect.BONFIRE))
-			hpIncrease += (maxHp + (int) hpIncrease) * Bonfire.getBonfireBoostMultiplier(player);
+			hpIncrease += (maxHp + (int) hpIncrease) * BonfireKt.getBonfireBoostMultiplier(player);
 		if (player.hasEffect(Effect.OOG_THERMAL_POOL))
 			hpIncrease += (maxHp + (int) hpIncrease) * 0.03;
 		if (player.getHpBoostMultiplier() != 0)
