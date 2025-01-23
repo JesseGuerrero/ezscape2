@@ -164,6 +164,18 @@
           "max": 2
         }
       ]
+    },
+	{
+      "chance": 1.0,
+      "outOf": 156.0,
+      "dropOne": false,
+      "drops": [
+        {
+          "id": 9185,
+          "min": 1,
+          "max": 1
+        }
+      ]
     }
   ]
 }
