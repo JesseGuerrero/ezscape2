@@ -25,7 +25,7 @@ import com.rs.plugin.handlers.NPCClickHandler;
 @PluginEventHandler
 public class GenericSkillcapeOwnerD extends Conversation {
 
-	public static NPCClickHandler skillcapeSkill = new NPCClickHandler(new Object[]{8269, 705, 961, 1685, 682, 802, 847, 4906, 575, 308, 4946, 805, 3295, 437, 2270, 3299, 13632, 5113, 9713}, new String[]{"Talk-to"}, e -> {
+	public static NPCClickHandler skillcapeSkill = new NPCClickHandler(new Object[]{8269, 705, 961, 1685, 682, 802, 847, 4906, 575, 308, 4946, 805, 3295, 437, 2270, 3299, 13632, 5113, 9713}, new String[]{"Talk-to", "Talk to"}, e -> {
 				String skill = null;
 				switch (e.getNPCId()) {
 					case 8269 -> skill = "Strength";
