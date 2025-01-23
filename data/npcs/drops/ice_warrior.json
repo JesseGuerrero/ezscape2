@@ -167,7 +167,7 @@
     },
 	{
       "chance": 1.0,
-      "outOf": 156.0,
+      "outOf": 256.0,
       "dropOne": false,
       "drops": [
         {
