@@ -36,7 +36,6 @@ abstract class RandomEventNPC(
             finish()
             return
         }
-        if (!claimed && (owner.interfaceManager.containsChatBoxInter() || owner.interfaceManager.containsScreenInter())) return
         ticks++
         entityFollow(owner, false, 0)
         duration--

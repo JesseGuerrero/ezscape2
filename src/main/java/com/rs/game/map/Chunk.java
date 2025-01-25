@@ -336,6 +336,7 @@ public class Chunk {
             unflagForProcess(toRemove);
             WorldCollision.unclip(toRemove);
             addRemovedObject(baseObject);
+            ChunkManager.markChunkActive(id);
         } else
             return;
         if (replace && baseObject != null)
@@ -625,7 +626,7 @@ public class Chunk {
         updates.clear();
         processGroundItems();
         processSpawnedObjects();
-        if (groundItems.isEmpty() && spawnedObjects.isEmpty() && flaggedObjectsForTickProcessing.isEmpty())
+        if (groundItems.isEmpty() && removedBaseObjects.isEmpty() && spawnedObjects.isEmpty() && flaggedObjectsForTickProcessing.isEmpty())
             ChunkManager.markChunkInactive(id);
     }
 

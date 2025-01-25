@@ -22,30 +22,28 @@ class AchievementSystemD(p: Player, npcId: Int, reward: SetReward) {
                     if (reward.hasRequirements(p, reward.itemIds[0], false)) {
                         options("Which item would you like to claim?") {
                             for (itemId in reward.itemIds) {
-                                op(ItemDefinitions.getDefs(itemId).name) {
-                                    if (reward.hasRequirements(p, itemId, false)) {
-                                        player(HeadE.CONFUSED, "Could I claim ${Utils.addArticle(ItemDefinitions.getDefs(itemId).name)}?")
+                                val itemName = ItemDefinitions.getDefs(itemId).name
+                                if (reward.hasRequirements(p, itemId, false)) {
+                                    op(itemName) {
+                                        player(HeadE.CONFUSED, "Could I claim $itemName?")
                                         npc(npcId, HeadE.CHEERFUL, "Of course, you've earned it!")
-                                        item(itemId, "You've been handed ${Utils.addArticle(ItemDefinitions.getDefs(itemId).name)}.") {
+                                        item(itemId, "You've been handed $itemName.") {
                                             p.inventory.addItem(itemId)
                                         }
-                                    } else {
-                                        options {
-                                            op("What requirements do I need?") {
-                                                if (!reward.hasRequirements(p, itemId)) {
-                                                    npc(npcId, HeadE.SAD, "You do not yet meet the requirements for ${Utils.addArticle(ItemDefinitions.getDefs(itemId).name)}. They have been listed in your chat box.")
-                                                }
-                                            }
-                                        }
                                     }
-                                    options {
-                                        op("Farewell.")
+                                } else {
+                                    op("What requirements do I need for $itemName?") {
+                                        npc(npcId, HeadE.SAD, "I have listed them in your chat box.") {
+                                            reward.hasRequirements(p, itemId)
+                                        }
                                     }
                                 }
                             }
                         }
                     } else {
-                        npc(npcId, HeadE.SHAKING_HEAD, "Unfortunately not. The requirements for claiming the first tier will be listed in your chat box.") { reward.hasRequirements(p, reward.itemIds[0]) }
+                        npc(npcId, HeadE.SHAKING_HEAD, "Unfortunately not. The requirements for claiming the first tier will be listed in your chat box.") {
+                            reward.hasRequirements(p, reward.itemIds[0])
+                        }
                     }
                 }
                 op("Sorry, I was just leaving.") { player(HeadE.CALM, "Sorry, I was just leaving.") }
