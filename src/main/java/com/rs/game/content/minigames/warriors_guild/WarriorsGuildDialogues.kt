@@ -11,7 +11,7 @@ const val SHANOMI = 4290
 fun mapWarriorsGuildDialogue() {
     onNpcClick(SHANOMI) { (player) ->
         player.startConversation {
-            npc(SHANOMI, HeadE.HAPPY_TALKING, "Greetings ${player.displayName} Welcome you are in the test of combat.")
+            npc(SHANOMI, HeadE.HAPPY_TALKING, "Greetings ${player.displayName}. Welcome you are in the test of combat.")
             label("startOps")
             options {
                 op("What do I do here?") {
