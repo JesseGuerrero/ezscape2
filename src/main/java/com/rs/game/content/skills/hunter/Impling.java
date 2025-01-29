@@ -3,6 +3,7 @@ package com.rs.game.content.skills.hunter;
 import com.rs.engine.pathfinder.collision.CollisionStrategyType;
 import com.rs.game.content.skills.hunter.FlyingEntityHunter.FlyingEntities;
 import com.rs.game.content.skills.hunter.puropuro.ImpDefender;
+import com.rs.game.map.ChunkManager;
 import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.ForceTalk;
 import com.rs.game.model.entity.npc.NPC;
@@ -22,6 +23,7 @@ public class Impling extends NPC {
 
     public Impling(int id, Tile tile, boolean dynamic) {
         super(id, tile);
+        ChunkManager.permanentlyPreloadRegions(tile.getRegionId());
         this.dynamic = dynamic;
         this.respawnTile = tile;
         this.puropuro = isPuroPuroImpling(id);
@@ -30,6 +32,7 @@ public class Impling extends NPC {
         setRandomWalk(true);
         setCollisionStrategyType(CollisionStrategyType.FLY);
         addLOSOverrides(id);
+        setLoadsUpdateZones();
     }
 
     public void processNPC() {
