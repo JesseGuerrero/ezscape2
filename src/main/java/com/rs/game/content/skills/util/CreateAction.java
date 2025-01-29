@@ -88,7 +88,7 @@ public class CreateAction extends PlayerAction {
 		for (int i = 0; i < materials[choice].length; i++)
 			player.getInventory().deleteItem(materials[choice][i]);
 		for (int i = 0; i < products[choice].length; i++)
-			player.getInventory().addItemDrop(products[choice][i]);
+			player.getInventory().addItemDrop(products[choice][i].clone());
 		if (xp != null && skill != -1)
 			player.getSkills().addXp(skill, xp[choice]);
 		return delay;
