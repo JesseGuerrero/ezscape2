@@ -45,9 +45,9 @@ public class Edgeville  {
 	public static ObjectClickHandler handleEdgevilleWildernessDungeonGate = new ObjectClickHandler(new Object[] { 29319, 29320 }, e -> {
 		if (e.getPlayer().getY() <= 9917) {
 			e.getPlayer().getControllerManager().startController(new WildernessController());
-			e.getPlayer().handleOneWayDoor(e.getObject());
+			Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
 		} else
-			e.getPlayer().handleOneWayDoor(e.getObject());
+			Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
 	});
 
 	public static ObjectClickHandler handleBlackKnightWall = new ObjectClickHandler(new Object[] { 2341 }, e -> Doors.handleDoor(e.getPlayer(), e.getObject(), -1));
