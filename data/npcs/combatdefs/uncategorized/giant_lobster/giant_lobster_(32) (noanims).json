@@ -2,11 +2,11 @@
   "ids": [
     1693
   ],
-  "attackAnim": -1,
+  "attackAnim": 6265,
   "attackSound": -1,
-  "defenceAnim": -1,
+  "defenceAnim": 6255,
   "defendSound": -1,
-  "deathAnim": -1,
+  "deathAnim": 6260,
   "deathDelay": 6,
   "deathSound": -1,
   "respawnDelay": 39,

@@ -2,12 +2,14 @@ package com.rs.game.content.world.areas.varrock.npcs
 
 import com.rs.engine.dialogue.HeadE.*
 import com.rs.engine.dialogue.startConversation
+import com.rs.engine.quest.Quest
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.Bars.BLUE_MOON_INN
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisited
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.Companion.hasCard
 import com.rs.game.content.utils.BartenderUtils.buyBarcrawlDrink
 import com.rs.game.content.utils.BartenderUtils.buyDrinkOrIngredients
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
@@ -57,6 +59,11 @@ class BartenderBlueMoonInn(p: Player, npc: NPC) {
                 op("Do you know where I can get some good equipment?") {
                     player(HAPPY_TALKING, "Do you know where I can get some good equipment?")
                     npc(npc, HAPPY_TALKING, "Well, there's the sword shop across the road, or there's also all sorts of shops up around the market.")
+                }
+                if (p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
+                    }
                 }
             }
         }

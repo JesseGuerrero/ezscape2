@@ -128,7 +128,7 @@ public class KlarenseDragonSlayerD extends Conversation {
 	private void whyIsSheDamaged(Player p) {
 		addPlayer(HeadE.HAPPY_TALKING, "Why is she damaged?");
 		addNPC(KLARENSE, HeadE.CALM_TALK, "Oh, there was not particular accident. It's just years of wear and tear. The Lady Lumbridge is an old crandorian " +
-				"fishing ship – the last one of her kind, as far as I know. That kind of ship was always mightily manoeuvrable, but not too tough.");
+				"fishing ship - the last one of her kind, as far as I know. That kind of ship was always mightily manoeuvrable, but not too tough.");
 		addNPC(KLARENSE, HeadE.CALM_TALK, "She happened to be somewhere else when Crandor was destroyed, and she's had several owners since then. Not all of them " +
 				"looked after her too well, but once she's patched up, she'll be good as new!");
 		addNext(()-> p.startConversation(new KlarenseDragonSlayerD(p, MAIN_OPTIONS, WHY_IS_SHE_DAMAGED).getStart()));

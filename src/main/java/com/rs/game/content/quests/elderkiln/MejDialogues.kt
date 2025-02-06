@@ -64,7 +64,7 @@ private fun mejDialogueCenterRing(player: Player, npc: NPC) {
 
 private fun wrapUpFightPits(player: Player, npc: NPC) {
     val instructKiln = dialogue {
-        npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "This Ga'al that survived the Fight Pit – it can go with you. It will meet you at entrance.")
+        npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "This Ga'al that survived the Fight Pit - it can go with you. It will meet you at entrance.")
         player(CONFUSED, "Shouldn't you ask the Ga'al if he wants to go?")
         npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "It only Ga'al.")
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "No, ${player.displayName} is right. Ga'al must have its say.")
@@ -94,14 +94,14 @@ private fun wrapUpFightPits(player: Player, npc: NPC) {
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "Our memories make it valuable, so TzHaar trade it with each other as currency.")
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "It has never been possible to get memories from TokKul. And TzHaar who have not laid eggs before they turn to TokKul... their memories are lost forever.")
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "What would you say if I told you there was a way of recovering these memories?")
-        npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "It – it is not possible.")
+        npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "It - it is not possible.")
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "It is! Our Kiln has that power, TzHaar-Mej-Ak. The power to forge TokKul, fusing them with the body of another. The Ga'al are empty bodies that we can use.")
         player(CONFUSED, "Hold on - your Kiln?")
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "The Kiln is where TzHaar were first made. Its lava is able to give life and melt down even the hardest of metals.")
         npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "And we are not permitted to visit it! Kiln is sacred to TzHaar. It is out of bounds!")
-        npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "But it has the power to join TokKul with Ga'al! To bring back lost memories! The JalYt – it would not have to break our rules – it could go.")
+        npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "But it has the power to join TokKul with Ga'al! To bring back lost memories! The JalYt - it would not have to break our rules - it could go.")
         npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "This is too drastic, TzHaar-Mej-Jeh, we must think on this.")
-        npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "Think of all the TzHaar born without eggs – all the Ket-Champions, the Mej-Elders whose memories we have in TokKul. We can bring them back.")
+        npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "Think of all the TzHaar born without eggs - all the Ket-Champions, the Mej-Elders whose memories we have in TokKul. We can bring them back.")
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "What else can we do? More and more Ga'al keep being born. If we cannot pass on our memories then it is the end of the TzHaar.")
         npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "You are... right, TzHaar-Mej-Jeh, we must take action, but only if the JalYt will help. TzHaar will not step foot in there.")
         options {
@@ -117,7 +117,7 @@ private fun wrapUpFightPits(player: Player, npc: NPC) {
                 jump(instructKiln)
             }
 
-            op("The kiln sounds powerful – I'm there.") {
+            op("The kiln sounds powerful - I'm there.") {
                 npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "Be careful - Kiln is sacred. Do not think you can use it for your own means, JalYt. Do just what we say or regret it.")
                 jump(instructKiln)
             }
@@ -131,7 +131,7 @@ private fun wrapUpFightPits(player: Player, npc: NPC) {
 
 private fun escortGaalThroughKiln(player: Player, npc: NPC) {
     player.startConversation {
-        npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "This Ga'al that survived the Fight Pit – it can go with you. It will meet you at entrance.")
+        npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "This Ga'al that survived the Fight Pit - it can go with you. It will meet you at entrance.")
         player(CONFUSED, "Shouldn't you ask the Ga'al if he wants to go?")
         npc(TZHAAR_MEJ_JEH_AK_PLAZA, T_CALM_TALK, "It only Ga'al.")
         npc(TZHAAR_MEJ_JEH_PLAZA, T_CALM_TALK, "No, ${player.displayName} is right. Ga'al must have its say.")

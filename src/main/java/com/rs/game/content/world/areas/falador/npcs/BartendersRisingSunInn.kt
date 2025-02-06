@@ -1,6 +1,7 @@
 package com.rs.game.content.world.areas.falador.npcs
 
 import com.rs.engine.dialogue.*
+import com.rs.engine.quest.Quest
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.Bars.RISING_SUN
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisited
@@ -8,6 +9,7 @@ import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.utils.BartenderUtils.buyBarcrawlDrink
 import com.rs.game.content.utils.BartenderUtils.buyDrinkOrIngredients
 import com.rs.game.content.utils.BartenderUtils.sellBeerGlass
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
@@ -55,6 +57,11 @@ class BartendersRisingSunInn(p: Player, npc: NPC) {
                     exec { buyDrinkOrIngredients(p, npc, 3, Item(1913), false) }
                 }
                 op("I don't feel like any of those.") { player(HeadE.HAPPY_TALKING, "I don't feel like any of those.") }
+                if (p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
+                    }
+                }
                 if (p.inventory.containsItem(1919)) {
                     op("I've got this beer glass...") {
                         exec { sellBeerGlass(p, npc) }

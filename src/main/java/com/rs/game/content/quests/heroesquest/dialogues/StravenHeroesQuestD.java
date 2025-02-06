@@ -47,7 +47,7 @@ public class StravenHeroesQuestD extends Conversation {
 				}
 				addPlayer(HeadE.HAPPY_TALKING, "How would I go about getting a Master Thief armband?");
 				addNPC(NPC, HeadE.CALM_TALK, "Ooh... tricky stuff. Took me YEARS to get that rank. Well, what some of the more aspiring thieves in our gang are " +
-						"working on right now is to steal some very valuable candlesticks from Scarface Pete – the pirate leader on Karamja.");
+						"working on right now is to steal some very valuable candlesticks from Scarface Pete - the pirate leader on Karamja.");
 				addNPC(NPC, HeadE.CALM_TALK, "His security is excellent, and the target very valuable, so that might be enough to get you the rank. Go talk to our" +
 						" man Alfonse, the waiter at the Shrimp and Parrot. Use the secret key word 'gherkin' to show you're one of us.");
 			}

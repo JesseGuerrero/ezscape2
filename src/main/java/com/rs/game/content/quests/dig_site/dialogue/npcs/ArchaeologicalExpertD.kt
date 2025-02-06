@@ -161,17 +161,17 @@ class ArchaeologicalExpertD(val player: Player, val npc: NPC) {
                         npc(npc, CALM_TALK, "I can't do much with these nuggets yet. Come back when you have 3 and I will exchange them for you.")
                     } else if (player.inventory.getAmountOf(NUGGETS) > 3) {
                         if (player.inventory.hasFreeSlots()) {
-                            npc(npc, CALM_TALK, "Good – that's three; I can exchange them for normal gold now. You can get this refined and make a profit!") {
+                            npc(npc, CALM_TALK, "Good - that's three; I can exchange them for normal gold now. You can get this refined and make a profit!") {
                                 player.inventory.deleteItem(NUGGETS, 3)
                                 player.inventory.addItem(GOLD_ORE)
                             }
                             player(CALM_TALK, "Excellent!")
                         } else {
-                            npc(npc, CALM_TALK, "Good – that's three; I can exchange them for normal gold now but you'll need a spare inventory slot first.")
+                            npc(npc, CALM_TALK, "Good - that's three; I can exchange them for normal gold now but you'll need a spare inventory slot first.")
                             player(CALM_TALK, "Excellent - I'll go empty my backpack first!")
                         }
                     } else if (player.inventory.getAmountOf(NUGGETS) == 3) {
-                        npc(npc, CALM_TALK, "Good – that's three; I can exchange them for normal gold now. You can get this refined and make a profit!") {
+                        npc(npc, CALM_TALK, "Good - that's three; I can exchange them for normal gold now. You can get this refined and make a profit!") {
                             player.inventory.deleteItem(NUGGETS, 3)
                             player.inventory.addItem(GOLD_ORE)
                         }
@@ -196,7 +196,7 @@ class ArchaeologicalExpertD(val player: Player, val npc: NPC) {
 
                 BROKEN_ARROW -> {
                     player(CALM_TALK, "Have a look at this arrow.")
-                    npc(npc, CALM_TALK, "No doubt this arrow was shot by a strong warrior – it's split in half! It is not a valuable object though.")
+                    npc(npc, CALM_TALK, "No doubt this arrow was shot by a strong warrior - it's split in half! It is not a valuable object though.")
                 }
 
                 EMPTY_PANNING_TRAY -> npc(npc, CALM_TALK, "I have no need for panning trays!")
@@ -210,7 +210,7 @@ class ArchaeologicalExpertD(val player: Player, val npc: NPC) {
 
                 BONES -> {
                     player(CALM_TALK, "Have a look at these bones.")
-                    npc(npc, CALM_TALK, "Ah, yes – a fine bone example... no noticeable fractures... and in good condition. These are common cow bones, however; they have no archaeological value.")
+                    npc(npc, CALM_TALK, "Ah, yes - a fine bone example... no noticeable fractures... and in good condition. These are common cow bones, however; they have no archaeological value.")
                 }
 
                 BUTTONS -> {

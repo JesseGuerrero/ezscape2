@@ -16,6 +16,7 @@
 //
 package com.rs.game.model.entity.player;
 
+import com.rs.Launcher;
 import com.rs.cache.loaders.Bonus;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cache.loaders.interfaces.IFEvents;
@@ -32,6 +33,7 @@ import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Item;
 import com.rs.lib.net.ClientPacket;
+import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.annotations.PluginEventHandler;
@@ -735,19 +737,24 @@ public final class Equipment {
 	}
 
 	public static boolean sendWear(Player player, int slotId, int itemId, boolean overrideWear) {
+		var targetSlot = Equipment.getItemSlot(itemId);
 		if (player.hasFinished() || player.isDead())
 			return false;
 		player.stopAll(false, false);
 		Item item = player.getInventory().getItem(slotId);
 		if (item == null || item.getId() != itemId)
 			return false;
-		if (!overrideWear && (!item.getDefinitions().containsOption("Wear") && !item.getDefinitions().containsOption("Wield") && !item.getDefinitions().containsOption("Equip")))
+
+		if(!overrideWear){
+		if ((!item.getDefinitions().containsOption("Wear") && !item.getDefinitions().containsOption("Wield") && !item.getDefinitions().containsOption("Equip")))
 			return false;
+
 		if (item.getDefinitions().isNoted() || !item.getDefinitions().isWearItem(player.getAppearance().isMale())) {
 			player.sendMessage("You can't wear that.");
 			return true;
 		}
-		int targetSlot = Equipment.getItemSlot(itemId);
+		}
+
 		if (targetSlot <= -1 || targetSlot >= Equipment.SIZE) {
 			player.sendMessage("You can't wear that.");
 			return true;

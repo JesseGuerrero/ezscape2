@@ -1,12 +1,14 @@
 package com.rs.game.content.world.areas.seers_village.npcs
 
 import com.rs.engine.dialogue.*
+import com.rs.engine.quest.Quest
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.Bars.FORESTERS_ARMS
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisited
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.utils.BartenderUtils.buyBarcrawlDrink
 import com.rs.game.content.utils.BartenderUtils.buyDrinkOrIngredients
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
@@ -55,6 +57,11 @@ class BartenderForestersArms(p: Player, npc: NPC) {
                     exec {
                         buyDrinkOrIngredients(p, npc, 2, Item(1917), true)
                         p.sendMessage("You buy a pint of beer.")
+                    }
+                }
+                if (p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
                     }
                 }
                 if (!isBarVisited(p, FORESTERS_ARMS) && BarCrawl.hasCard(p) && onBarCrawl(p)) {

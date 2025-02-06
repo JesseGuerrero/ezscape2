@@ -8,6 +8,7 @@ import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisit
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.utils.BartenderUtils.buyBarcrawlDrink
 import com.rs.game.content.utils.BartenderUtils.buyDrinkOrIngredients
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
@@ -44,6 +45,11 @@ class BartenderRustyAnchor(p: Player, npc: NPC) {
                         } else {
                             npc(npc, HeadE.SHAKING_HEAD, "No, it hasn't been very busy lately.")
                         }
+                    }
+                }
+                if (p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
                     }
                 }
                 op("Bye, then.") {

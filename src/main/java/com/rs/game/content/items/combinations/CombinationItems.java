@@ -50,26 +50,44 @@ public class CombinationItems {
         SKULL_SCEPTRE_SKULL(9007, 9008, 9009),
         SKULL_SCEPTRE_SCEPTRE(9010, 9011, 9012),
         SKULL_SCEPTRE_SKULL_SCEPTRE(9012, 9009, 9013),
-        CRYSTAL_KEY(985, 987, 989);
+        CRYSTAL_KEY(985, 987, 989),
+        TEA_BOWL_TO_MILKY_TEA_BOWL(4239, 1927, 4240, 1925),         // Tea bowl + milk bucket -> Milky tea bowl + empty bucket
+        TEA_BOWL_TO_CUP(4239, 1981, 4242, 1923),                    // Tea bowl + empty cup -> Tea cup + empty bowl
+        TEA_BOWL_TO_PORCELAIN_CUP(4239, 4244, 4245, 1923),          // Tea bowl + empty porcelain cup -> Porcelain cup + empty bowl
+        TEA_BOWL_MILKY_TO_CUP(4240, 1981, 4243, 1923),              // Milky tea bowl + empty cup -> Milky tea cup + empty bowl
+        TEA_BOWL_MILKY_TO_PORCELAIN_CUP(4240, 4244, 4246, 1923),    // Milky tea bowl + empty porcelain cup -> Milky porcelain cup + empty bowl
+        TEA_CUP_TO_MILKY_TEA_CUP(4242, 1927, 4243, 1925),           // Tea cup + milk bucket -> Milky tea cup + empty bucket
+        TEA_CUP_TO_PORCELAIN_CUP(4242, 4244, 4245, 1981),           // Tea cup + empty porcelain cup -> Porcelain tea cup + empty cup
+        TEA_CUP_MILKY_TO_PORCELAIN_CUP(4243, 4244, 4246, 1981),     // Milky tea cup + empty porcelain cup -> Milky porcelain cup + empty cup
+        TEA_PORCELAIN_TO_MILKY_PORCELAIN(4245, 1927, 4246, 1925);   // Porcelain cup + milk bucket -> Milky porcelain cup + empty bucket
+
 
         private static final Map<Integer, Combineable> BY_PRODUCT = new HashMap<>();
         private static final Map<Integer, Combineable> BY_COMPONENT = new HashMap<>();
 
         static {
             for (Combineable c : Combineable.values()) {
-                BY_PRODUCT.put(c.resultId, c);
+                BY_PRODUCT.put(c.resultId1, c);
+                if (c.resultId2 != -1) {
+                    BY_PRODUCT.put(c.resultId2, c);
+                }
                 BY_COMPONENT.put((c.item1 << 16) + c.item2, c);
             }
         }
-
         private final int item1;
         private final int item2;
-        private final int resultId;
+        private final int resultId1;
+        private final int resultId2;
 
-        Combineable(int item1, int item2, int resultId) {
+        Combineable(int item1, int item2, int resultId1) {
+            this(item1, item2, resultId1, -1);
+        }
+
+        Combineable(int item1, int item2, int resultId1, int resultId2) {
             this.item1 = item1;
             this.item2 = item2;
-            this.resultId = resultId;
+            this.resultId1 = resultId1;
+            this.resultId2 = resultId2;
         }
     }
 
@@ -81,7 +99,10 @@ public class CombinationItems {
             return;
         e.getPlayer().getInventory().deleteItem(e.getItem1());
         e.getPlayer().getInventory().deleteItem(e.getItem2());
-        e.getPlayer().getInventory().addItem(combineable.resultId, 1);
+        e.getPlayer().getInventory().addItem(combineable.resultId1, 1);
+        if (combineable.resultId2 != -1) {
+            e.getPlayer().getInventory().addItem(combineable.resultId2, 1);
+        }
     });
 
     public static ItemClickHandler split = new ItemClickHandler(Combineable.BY_PRODUCT.keySet().stream().filter(prod -> ItemDefinitions.getDefs(prod).containsOption("Split") || ItemDefinitions.getDefs(prod).containsOption("Dismantle")).toArray(), new String[] { "Split", "Dismantle" }, e -> {
@@ -96,6 +117,7 @@ public class CombinationItems {
         e.getPlayer().getInventory().addItem(combineable.item1, 1);
         e.getPlayer().getInventory().addItem(combineable.item2, 1);
     });
+}
 
     /**
      * if (itemUsed == 21358 && usedWith == 21359 || usedWith == 21358 && itemUsed == 21359) {
@@ -109,4 +131,4 @@ public class CombinationItems {
      * 			return true;* 		}
      * 		//spotanim 450 sagie
      */
-}
+
