@@ -43,25 +43,25 @@ public class ShanomiWorld extends NPC {
 				if (tick >= 10 * 13)
 					return false;
 				if (tick == 0) {
-					setNextForceTalk(new ForceTalk("Think not dishonestly."));
+					forceTalk("Think not dishonestly.");
 				} else if (tick == 13) {
-					setNextForceTalk(new ForceTalk("The Way in training is."));
+					forceTalk("The Way in training is.");
 				} else if (tick == 2 * 13) {
-					setNextForceTalk(new ForceTalk("Acquainted with every art become."));
+					forceTalk("Acquainted with every art become.");
 				} else if (tick == 3 * 13) {
-					setNextForceTalk(new ForceTalk("Ways of all professions know you."));
+					forceTalk("Ways of all professions know you.");
 				} else if (tick == 4 * 13) {
-					setNextForceTalk(new ForceTalk("Gain and loss between you must distinguish."));
+					forceTalk("Gain and loss between you must distinguish.");
 				} else if (tick == 5 * 13) {
-					setNextForceTalk(new ForceTalk("Judgment and understanding for everything develop you must."));
+					forceTalk("Judgment and understanding for everything develop you must.");
 				} else if (tick == 6 * 13) {
-					setNextForceTalk(new ForceTalk("Those things which cannot be seen, perceive them."));
+					forceTalk("Those things which cannot be seen, perceive them.");
 				} else if (tick == 7 * 13) {
-					setNextForceTalk(new ForceTalk("Trifles pay attention even to."));
+					forceTalk("Trifles pay attention even to.");
 				} else if (tick == 8 * 13) {
-					setNextForceTalk(new ForceTalk("Do nothing which is of no use."));
+					forceTalk("Do nothing which is of no use.");
 				} else if (tick == 9 * 13) {
-					setNextForceTalk(new ForceTalk("Way of the Warrior this is."));
+					forceTalk("Way of the Warrior this is.");
 				}
 				return true;
 			});
