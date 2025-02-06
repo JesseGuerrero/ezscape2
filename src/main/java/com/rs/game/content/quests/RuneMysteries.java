@@ -158,7 +158,7 @@ public class RuneMysteries extends QuestOutline {
                                     .addNPC(SEDRIDOR, HeadE.CALM_TALK, "That's me, but why would you be doing that?")
                                     .addPlayer(HeadE.CALM_TALK, "The Duke of Lumbridge sent me to find him...er, you. I have a weird talisman that the " +
                                             "Duke found. He said the head wizard would be interested in it.")
-                                    .addNPC(SEDRIDOR, HeadE.CALM_TALK, "Did he now? Well, that IS interesting, Hand it over, then, adventurer – let me see what " +
+                                    .addNPC(SEDRIDOR, HeadE.CALM_TALK, "Did he now? Well, that IS interesting, Hand it over, then, adventurer - let me see what " +
                                             "all the hubbub is about. Just some crude amulet, I'll wager.")
                                     .addPlayer(HeadE.CALM_TALK, "Okay, here you go.")
                                     .addSimple("You give the talisman to the wizard.")
@@ -189,7 +189,7 @@ public class RuneMysteries extends QuestOutline {
                                     .addNPC(SEDRIDOR, HeadE.CALM_TALK, "That's me, but why would you be doing that?")
                                     .addPlayer(HeadE.CALM_TALK, "The Duke of Lumbridge sent me to find him...er, you. I have a weird talisman that the " +
                                             "Duke found. He said the head wizard would be interested in it.")
-                                    .addNPC(SEDRIDOR, HeadE.CALM_TALK, "Did he now? Well, that IS interesting, Hand it over, then, adventurer – let me see what " +
+                                    .addNPC(SEDRIDOR, HeadE.CALM_TALK, "Did he now? Well, that IS interesting, Hand it over, then, adventurer - let me see what " +
                                             "all the hubbub is about. Just some crude amulet, I'll wager.")
                                     .addPlayer(HeadE.CALM_TALK, "Darn, I don't have it")
                                     .addNPC(SEDRIDOR, HeadE.SKEPTICAL_THINKING, "...")

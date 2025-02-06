@@ -23,6 +23,7 @@ import com.rs.engine.dialogue.Options;
 import com.rs.engine.quest.Quest;
 import com.rs.engine.quest.QuestHandler;
 import com.rs.engine.quest.QuestOutline;
+import com.rs.game.content.items.Dye;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.lib.game.Item;
@@ -51,11 +52,7 @@ public class GoblinDiplomacy extends QuestOutline {
 	static final int ORANGE_GOBLIN_MAIL = 286;
 	static final int BLUE_GOBLIN_MAIL = 287;
 	static final int GOBLIN_MAIL = 288;
-	static final int RED_DYE = 1763;
-	static final int YELLOW_DYE = 1765;
-	static final int BLUE_DYE = 1767;
-	static final int ORANGE_DYE = 1769;
-
+	
 	@Override
 	public List<String> getJournalLines(Player player, int stage) {
 		ArrayList<String> lines = new ArrayList<>();
@@ -227,22 +224,14 @@ public class GoblinDiplomacy extends QuestOutline {
 		e.getPlayer().sendMessage("You search the crate but find nothing.");
 	});
 
-	public static ItemOnItemHandler handleColorGoblinMail = new ItemOnItemHandler(GOBLIN_MAIL, new int[] { ORANGE_DYE, BLUE_DYE }, e -> {
-		if (e.usedWith(ORANGE_DYE, GOBLIN_MAIL)) {
-			e.getPlayer().getInventory().replace(e.getUsedWith(ORANGE_DYE), new Item(ORANGE_GOBLIN_MAIL, 1));
-			e.getPlayer().getInventory().deleteItem(ORANGE_DYE, 1);
+	public static ItemOnItemHandler handleColorGoblinMail = new ItemOnItemHandler(GOBLIN_MAIL, new int[] {Dye.ORANGE.getId(), Dye.BLUE.getId() }, e -> {
+		if (e.usedWith(Dye.ORANGE.getId(), GOBLIN_MAIL)) {
+			e.getPlayer().getInventory().replace(e.getUsedWith(Dye.ORANGE.getId()), new Item(ORANGE_GOBLIN_MAIL, 1));
+			e.getPlayer().getInventory().deleteItem(Dye.ORANGE.getId(), 1);
 		}
-		if (e.usedWith(BLUE_DYE, GOBLIN_MAIL)) {
-			e.getPlayer().getInventory().replace(e.getUsedWith(BLUE_DYE), new Item(BLUE_GOBLIN_MAIL, 1));
-			e.getPlayer().getInventory().deleteItem(BLUE_DYE, 1);
-		}
-	});
-
-	public static ItemOnItemHandler handleRedYellowDyes = new ItemOnItemHandler(RED_DYE, new int[] { YELLOW_DYE }, e -> {
-		if (e.usedWith(RED_DYE, YELLOW_DYE)) {
-			e.getPlayer().getInventory().replace(e.getItem2(), new Item(ORANGE_DYE, 1));
-			e.getPlayer().getInventory().deleteItem(e.getItem1().getSlot(), e.getItem1());
+		if (e.usedWith(Dye.BLUE.getId(), GOBLIN_MAIL)) {
+			e.getPlayer().getInventory().replace(e.getUsedWith(Dye.BLUE.getId()), new Item(BLUE_GOBLIN_MAIL, 1));
+			e.getPlayer().getInventory().deleteItem(Dye.BLUE.getId(), 1);
 		}
 	});
-
 }

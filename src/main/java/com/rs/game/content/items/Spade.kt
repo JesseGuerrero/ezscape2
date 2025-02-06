@@ -3,6 +3,7 @@ package com.rs.game.content.items
 import com.rs.engine.quest.Quest
 import com.rs.game.content.items.Spade.dig
 import com.rs.game.content.minigames.barrows.BarrowsController
+import com.rs.game.content.quests.ghosts_ahoy.HARICANTO_TILE
 import com.rs.game.content.quests.piratestreasure.PiratesTreasure
 import com.rs.game.content.quests.plague_city.utils.*
 import com.rs.game.model.entity.async.schedule
@@ -50,6 +51,16 @@ object Spade {
             if (player.tile == MUD_PATCH_DIG_TILE) {
                 if (player.questManager.getStage(Quest.PLAGUE_CITY) >= STAGE_UNCOVERED_SEWER_ENTRANCE) player.simpleDialogue("You've already uncovered the entrance to the Ardougne Sewers.")
                 else PlagueCityUtils().digAtMudPatch(player)
+                return@schedule
+            }
+
+            //Ghosts Ahoy
+            if (player.tile == HARICANTO_TILE && player.isQuestStarted(Quest.GHOSTS_AHOY) && !player.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                if(player.inventory.containsItem(4248))
+                    player.sendMessage("You find nothing.")
+                else
+                    player.inventory.addItem(4248)
+                    player.itemDialogue(4248, "You unearth the Book of Haricanto")
                 return@schedule
             }
 

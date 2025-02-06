@@ -16,6 +16,7 @@
 //
 package com.rs.game.model.entity.player;
 
+import com.rs.Settings;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cache.loaders.interfaces.IFEvents;
 import com.rs.cache.loaders.interfaces.IFEvents.UseFlag;
@@ -496,6 +497,8 @@ public final class Inventory {
 		Item item = items.get(slotId);
 		if (item == null)
 			return;
+		if(Settings.getConfig().isDebug())
+			player.sendMessage("ID: " + item.getId());
 		ItemDefinitions def = ItemDefinitions.getDefs(item.getId());
 		player.getPackets().sendInventoryMessage(0, slotId, ItemConfig.get(item.getId()).getExamine(item) + (ItemConstants.isTradeable(item) ? (" General store: " + Utils.formatTypicalInteger(item.getDefinitions().getSellPrice()) + " High Alchemy: " + Utils.formatTypicalInteger(def.getHighAlchPrice())) : ""));
 		if (item.getMetaData("combatCharges") != null)
