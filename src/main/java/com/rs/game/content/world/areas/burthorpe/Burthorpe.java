@@ -26,6 +26,7 @@ import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemClickHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.game.model.entity.player.Player;
 
 import static com.rs.game.content.world.doors.Doors.handleDoubleDoor;
 
@@ -70,6 +71,13 @@ public class Burthorpe {
     };
 
     public static NPCClickHandler talkToBabyTroll = new NPCClickHandler(new Object[] { 14846 }, new String[] { "Talk-to" }, e -> e.getPlayer().startConversation(trollDialogues[Utils.random(trollDialogues.length)]));
+
+    public static ObjectClickHandler handlePrayAltarOfGuthix = new ObjectClickHandler(new Object[] { 67369 }, e -> {
+		Player p = e.getPlayer();
+		if(e.getOption().equalsIgnoreCase("Pray"))
+			p.getPrayer().worshipAltar();
+	});
+
 
     public static ObjectClickHandler handleCaveEntrance = new ObjectClickHandler(new Object[]{66876}, e -> e.getPlayer().tele(Tile.of(2292, 4516, 0)));
 
