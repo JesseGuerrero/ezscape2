@@ -236,10 +236,7 @@ fun mapTrollheim() {
     onObjectClick(35391, 3748, 34877, 34889, 34878, 9306, 9305, 3803, 9304, 9303) { e ->
         if (e.player.isQuestStarted(Quest.TROLL_STRONGHOLD)) {
             when (e.objectId) {
-                3803, 9303, 9305, 9306, 34877, 34878, 34889 -> {
-                    handleObstacleInteractions(e)
-                }
-                else -> {
+                3748 -> {
                     if (e.player.equipment.getId(Equipment.FEET) == CLIMBING_BOOTS || e.player.equipment.getId(Equipment.FEET) == ROCK_CLIMBING_BOOTS) {
                         handleObstacleInteractions(e)
                     } else {
@@ -247,6 +244,7 @@ fun mapTrollheim() {
                         return@onObjectClick
                     }
                 }
+            else -> handleObstacleInteractions(e)
             }
         } else {
             e.player.sendMessage("That looks dangerous. I'll need a good reason before I venture that way.")

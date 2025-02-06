@@ -212,7 +212,7 @@ fun mapWarriorsGuild() {
             wait(4)
             val npc = AnimatedArmor(player, 4278 + realIndex, obj.tile)
             npc.run = false
-            npc.forceTalk("IM ALIVE!")
+            npc.forceTalk("I'M ALIVE!")
             npc.anim(4166)
             npc.addWalkSteps(player.x, player.y + 2)
             player.tempAttribs.setB("animator_spawned", true)
@@ -232,7 +232,6 @@ class WarriorsGuildController: Controller() {
     override fun start() {
         sendInterfaces()
         amountOfPlayers++
-        player.sendMessage(inCyclopsRoom.toString())
     }
 
     override fun canAttack(target: Entity): Boolean {
@@ -256,7 +255,7 @@ class WarriorsGuildController: Controller() {
                 return false
             }
         } else if (interfaceId == 271 || interfaceId == 749 && componentId == 4) if (player.prayer.isCurses) {
-            player.sendMessage("Harllaak frowns upon using curses in the Warrior's Guild.")
+            player.sendMessage("Harrallak frowns upon using curses in the Warrior's Guild.")
             return false
         }
         return true

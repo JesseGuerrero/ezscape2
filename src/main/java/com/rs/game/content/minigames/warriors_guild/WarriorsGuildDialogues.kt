@@ -11,14 +11,14 @@ const val SHANOMI = 4290
 fun mapWarriorsGuildDialogue() {
     onNpcClick(SHANOMI) { (player) ->
         player.startConversation {
-            npc(SHANOMI, HeadE.HAPPY_TALKING, "Greetings ${player.displayName} Welcome you are in the test of combat.")
+            npc(SHANOMI, HeadE.HAPPY_TALKING, "Greetings ${player.displayName}. Welcome you are in the test of combat.")
             label("startOps")
             options {
                 op("What do I do here?") {
                     npc(SHANOMI, HeadE.HAPPY_TALKING, "A spare suit of plate armour need you will. Full helm, plate leggings and platebody yes? Placing it in the centre of the magical machines you will be doing. KA-POOF! The armour, it attacks most furiously as if alive! Kill it you must, yes.")
                     player(HeadE.CONFUSED, "So I use a full set of plate armour on the centre plate of the machines and it will animate it? Then I have to kill my own armour... how bizarre!")
                     npc(SHANOMI, HeadE.HAPPY_TALKING, "Yes. It is as you are saying. For this earn tokens you will. Also gain experience in combat you will. Trained long and hard here have I.")
-                    player(HeadE.CHUCKLE, "Your not from around here are you?")
+                    player(HeadE.CHUCKLE, "You're not from around here are you...?")
                     npc(SHANOMI, HeadE.HAPPY_TALKING, "It is as you say.")
                     player(HeadE.CONFUSED, "So will I lose my armour?")
                     npc(SHANOMI, HeadE.HAPPY_TALKING, "Lose armour you will if damaged too much it becomes. Rare this is, but still possible. If kill you the armour does, also lose armour you will.")

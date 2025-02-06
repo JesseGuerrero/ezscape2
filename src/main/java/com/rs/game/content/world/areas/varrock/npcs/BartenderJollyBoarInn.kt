@@ -1,12 +1,14 @@
 package com.rs.game.content.world.areas.varrock.npcs
 
 import com.rs.engine.dialogue.*
+import com.rs.engine.quest.Quest
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.Bars.JOLLY_BOAR_INN
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisited
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.Companion.hasCard
 import com.rs.game.content.utils.BartenderUtils.buyBarcrawlDrink
 import com.rs.game.content.utils.BartenderUtils.buyDrinkOrIngredients
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
@@ -34,6 +36,11 @@ class BartenderJollyBoarInn(p: Player, npc: NPC) {
                     player(HeadE.SECRETIVE, "Heard any gossip?")
                     npc(npc, HeadE.LAUGH, "I'm not that well up on the gossip out here. I've heard that the bartender in the Blue Moon Inn has gone a little crazy, he keeps claiming he is part of something called a computer game.")
                     npc(npc, HeadE.LAUGH, "What that means, I don't know. That's probably old news by now though.")
+                }
+                if (!p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
+                    }
                 }
                 if (!isBarVisited(p, JOLLY_BOAR_INN) && hasCard(p) && onBarCrawl(p)) {
                     op("I'm doing Alfred Grimhand's Barcrawl.") {
