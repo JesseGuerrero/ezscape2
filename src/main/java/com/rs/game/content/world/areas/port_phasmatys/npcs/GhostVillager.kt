@@ -47,6 +47,7 @@ fun petitionDialogue(player: Player, npc: NPC) {
     if (player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("Signatures") == 10) {
         player.startConversation {
             player(HeadE.CALM_TALK, "Thank you for your support.")
+            player.sendMessage("I have all the signatures needed, I should go and see Gravingas.")
         }
         return
     }

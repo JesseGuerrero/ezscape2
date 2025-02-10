@@ -17,7 +17,9 @@ class GhostGuard(p: Player) {
         if(p.isQuestComplete(Quest.GHOSTS_AHOY)) {
             p.startConversation {
                 npc(npc, HeadE.CALM_TALK, "All visitors to Port Phasmatys must pay a toll charge of 2 Ectotokens. However, you have done the ghosts of our town a service that surpasses all value, so you may pass without charge.")
-                exec { PortPhasmatys.handleOutsideTownMovement(p) }
+                exec {
+                    passBarrier(p)
+                }
             }
         }
         else
@@ -66,6 +68,8 @@ class GhostGuard(p: Player) {
     }
 
     private fun playerCharged(p: Player): Boolean {
+        if(p.isQuestComplete(Quest.GHOSTS_AHOY))
+            return true
         if (p.inventory.containsItem(4278, 2)) {
             p.inventory.deleteItem(4278, 2);
             return true
