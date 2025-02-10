@@ -4,6 +4,7 @@ import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
 import com.rs.game.content.minigames.ectofuntus.Ectofuntus
+import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player;
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -303,9 +304,9 @@ private fun dialogueStage8(p: Player, npc: NPC) {
         player(HeadE.CALM_TALK, "Only happy to help out.")
         npc(npc, HeadE.CALM_TALK, "Here, take this as a thank you for the service that you have given us.")
         item(Ectofuntus.FULL_ECTOPHIAL, "Velorina gives you a vial of bright green ectoplasm.")
-        npc(npc, HeadE.CALM_TALK, "This is an Ectophial. If you ever want to come back to Port Phasmatys, empty this on the floor beneath your feet, and you will be instantly teleported to the temple - the source of its power. Remember that once the Ectophial has been used you need to refill it from the Ectofuntus.")
+        npc(npc, HeadE.CALM_TALK, "This is an Ectophial. If you ever want to come back to Port Phasmatys, empty this on the floor beneath your feet, and you will be instantly teleported to the temple - the source of its power.")
+                npc(npc, HeadE.CALM_TALK, "Remember that once the Ectophial has been used you need to refill it from the Ectofuntus.")
         exec {
-            p.setQuestStage(Quest.GHOSTS_AHOY, 10)
             p.completeQuest(Quest.GHOSTS_AHOY)
         }
     }
