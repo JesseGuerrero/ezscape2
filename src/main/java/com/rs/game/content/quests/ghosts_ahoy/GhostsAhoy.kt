@@ -6,6 +6,7 @@ import com.rs.engine.quest.QuestOutline
 import com.rs.game.content.items.Dye
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
+import com.rs.lib.Constants
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -17,7 +18,7 @@ val HARICANTO_TILE = Tile.of(3803, 3530, 0)
 @QuestHandler(
     quest = Quest.GHOSTS_AHOY,
     startText = "Speak to Velorina in Port Phasmatys.",
-    itemsText = "Approximately 1000 coins, thread, silk, spade, oak shieldbow, nettle tea, bucket of milk, ghostspeak amulet, 3 colours of dye, ectotokens or charter ships to enter Port Phasmatys three times.",
+    itemsText = "Approximately 1000 coins, thread, silk, spade, oak longbow, nettle tea, bucket of milk, ghostspeak amulet, 3 colours of dye, ectotokens or charter ships to enter Port Phasmatys three times.",
     combatText = "You will need to defeat a level 42 giant lobster.",
     rewardsText = "2,400 Prayer XP<br>" +
             "Free passage into Port Phasmatys<br>" +
@@ -42,9 +43,10 @@ class GhostsAhoy : QuestOutline() {
     }
 
     override fun complete(player: Player) {
-        sendQuestCompleteInterface(player, Ectophial)
+        player.setQuestStage(Quest.GHOSTS_AHOY, 10)
         player.skills.addXp(Skills.PRAYER, 2400.0)
         player.vars.saveVar(217, 5)
+        sendQuestCompleteInterface(player, Ectophial)
     }
 
     override fun updateStage(player: Player, stage: Int) {
@@ -94,9 +96,4 @@ object SailColorManager {
             "sailColour3Player" to getSailColor(player, "sailColour3Player")
         )
     }
-}
-
-fun completeGhostsAhoy(player: Player) {
-    player.packets.setIFGraphic(1244, 18, Ectophial)
-    player.questManager.completeQuest(Quest.GHOSTS_AHOY)
 }

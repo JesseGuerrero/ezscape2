@@ -42,9 +42,8 @@ class Necrovarus(p: Player, npc: NPC) {
         else
             when (p.getQuestStage(Quest.GHOSTS_AHOY)) {
                 1 -> dialogueStage1(p, npc)
-                in 2..4 -> dialogueStage2(p, npc)
-                5 -> dialogueStage5(p, npc)
-                6 -> dialogueStage6(p, npc)
+                in 2..3 -> dialogueStage2(p, npc)
+                in 5..6 -> dialogueStage5(p, npc)
                 7 -> dialogueStage7(p, npc)
                 else -> dialogueStage8(p, npc)
             }
@@ -84,14 +83,14 @@ private fun dialogueStage2(p: Player, npc: NPC) {
     }
 }
 
-private fun dialogueStage5(p: Player, npc: NPC) {
+private fun dialogueStage4(p: Player, npc: NPC) {
     p.startConversation {
         player(HeadE.CALM_TALK, "Wheels have been set in motion, Necrovarus; wheels that will set the citizens of Port Phasmatys free.")
         npc(npc, HeadE.CALM_TALK, "Oh goody goody. I just can't wait.")
     }
 }
 
-private fun dialogueStage6(p: Player, npc: NPC) {
+private fun dialogueStage5(p: Player, npc: NPC) {
     if(p.inventory.containsItems(PETITION) && p.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("Signatures") == 10){
         p.startConversation {
             player(HeadE.CALM_TALK, "Necrovarus, I am presenting you with a petition form that has been signed by 10 citizens of Port Phasmatys.")

@@ -5,6 +5,7 @@ import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
+import com.rs.lib.game.Rights
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onButtonClick
 import kotlin.random.Random
@@ -186,7 +187,9 @@ fun assignRuneToNextFreeSlot(
 
 fun endGame(player: Player, npc: NPC, gameState: GameState) {
     gameState.gameOver = true
-    if(npc.id == 1694 && player.getQuestStage(Quest.GHOSTS_AHOY) == 6) {
+    if (player.hasRights(Rights.ADMIN))
+        gameState.isWinner = true
+    if(npc.id == 1694 && (player.getQuestStage(Quest.GHOSTS_AHOY) == 5 || player.getQuestStage(Quest.GHOSTS_AHOY) == 5 || player.getQuestStage(Quest.GHOSTS_AHOY) == 6)) {
         if (gameState.isWinner) {
             player.questManager.getAttribs(Quest.GHOSTS_AHOY).incI("RobinWins")
             player.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("RobinWinLastRound", false)
