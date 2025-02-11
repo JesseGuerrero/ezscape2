@@ -291,16 +291,20 @@ private fun dialogueStage6(p: Player, npc: NPC) {
         val HAS_BOOK_OF_HARICANTO = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_BOOK_OF_HARICANTO")
         val HAS_NECROVARUS_ROBE = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_NECROVARUS_ROBE")
         val hasAll = HAS_TRANSLATION_MANUAL && HAS_BOOK_OF_HARICANTO && HAS_NECROVARUS_ROBE
+        if (p.equipment.neckId == GHOSTSPEAK && hasAll) {
+            npc(
+                npc,
+                HeadE.CALM_TALK,
+                "Wonderful; all I need now is the amulet of ghostspeak. You'll need to take it off for me to perform the ritual of enchantment."
+            )
+            return@startConversation
+        }
         if (!p.inventory.containsItem(GHOSTSPEAK) && hasAll) {
             npc(
                 npc,
                 HeadE.CALM_TALK,
                 "Wonderful; all I need now is an amulet of ghostspeak to perform the ritual of enchantment."
             )
-            npc(npc, HeadE.CALM_TALK, "The ghostspeak amulet emits a green glow from its gem.")
-            p.inventory.deleteItem(GHOSTSPEAK, 1)
-            p.inventory.addItem(GHOSTSPEAK_E)
-            p.questManager.setStage(Quest.GHOSTS_AHOY, 6)
             return@startConversation
         }
         if (p.inventory.containsItem(GHOSTSPEAK) && hasAll) {
@@ -309,7 +313,7 @@ private fun dialogueStage6(p: Player, npc: NPC) {
                 HeadE.CALM_TALK,
                 "Wonderful; that's everything I need. I will now perform the ritual of enchantment."
             )
-            npc(npc, HeadE.CALM_TALK, "The ghostspeak amulet emits a green glow from its gem.")
+            item(GHOSTSPEAK_E, "The ghostspeak amulet emits a green glow from its gem.")
             p.inventory.deleteItem(GHOSTSPEAK, 1)
             p.inventory.addItem(GHOSTSPEAK_E)
             p.questManager.setStage(Quest.GHOSTS_AHOY, 7)

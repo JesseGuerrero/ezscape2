@@ -99,6 +99,7 @@ private fun dialogueStage5(p: Player, npc: NPC) {
                             p.inventory.deleteItem(4254, 1)
                             p.inventory.addItem(4273)
                             p.itemDialogue(4273,"The old man gives you the chest key.")
+                            p.setQuestStage(Quest.GHOSTS_AHOY, 6)
                         }
                     }
             }

@@ -21,24 +21,31 @@ fun mapRobin() {
     onNpcClick(1694) { e ->
         if(e.player.isQuestComplete(Quest.GHOSTS_AHOY))
             postQuest(e.player, e.npc)
-        if(!e.player.isQuestStarted(Quest.GHOSTS_AHOY) || e.player.getQuestStage(Quest.GHOSTS_AHOY) <= 5 || !e.player.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("RobinHasSpokenTo"))
+
+        if(!e.player.isQuestStarted(Quest.GHOSTS_AHOY) || e.player.getQuestStage(Quest.GHOSTS_AHOY) <= 4)
             preQuest(e.player, e.npc)
-        if(e.player.getQuestStage(Quest.GHOSTS_AHOY) == 6 && e.player.inventory.containsItem(845)) {
+
+        if(e.player.getQuestStage(Quest.GHOSTS_AHOY) == 5 || e.player.getQuestStage(Quest.GHOSTS_AHOY) == 6)
             questDialogue(e.player, e.npc)
-        }
+
         else
             postQuest(e.player, e.npc)
+
     }
 }
 
 private fun questDialogue(player: Player, npc: NPC){
+    if(!player.inventory.containsItem(845) && player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("RobinWins") != 5) {
+        player.playerDialogue(HeadE.SKEPTICAL_THINKING, "I should get a longbow for Robin to sign before talking to him.")
+        return
+    }
     val owed = when (player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("RobinWins")) {
         1 -> "25"
         2 -> "50"
         3 -> "75"
         else -> "0"
     }
-    if(player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("RobinWins") == 5) {
+    if(player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("RobinWins") >= 5) {
         player.startConversation {
             player(HeadE.CALM_TALK, "So, still here then.")
             npc(npc, HeadE.CALM_TALK, "Do you want another game of Runedraw?")
@@ -50,9 +57,9 @@ private fun questDialogue(player: Player, npc: NPC){
         player.startConversation {
             player(HeadE.CALM_TALK, "I've had enough of you not paying up - you owe me 100 gold coins. I'm going to tell the ghosts what you're doing.")
             npc(npc, HeadE.CALM_TALK, "Please don't do that!!! They will suck the life from my bones!!!")
-            player(HeadE.CALM_TALK, "How about you signing my shieldbow then?")
+            player(HeadE.CALM_TALK, "How about you signing my longbow then?")
             npc(npc, HeadE.CALM_TALK, "Yes, anything!!!")
-            item(oakLongbowS,"Robin signs the oak shieldbow for you.")
+            item(oakLongbowS,"Robin signs the oak longbow for you.")
             exec {
                 player.inventory.deleteItem(845, 1)
                 player.inventory.addItem(oakLongbowS)
@@ -104,26 +111,26 @@ private fun questDialogue(player: Player, npc: NPC){
         return
     }
     if(player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("RobinWins") == 0)
-    player.startConversation {
-        player(HeadE.CALM_TALK, "Would you sign this oak shieldbow for me?")
-        npc(npc, HeadE.CALM_TALK, "I'm sorry, I don't sign autographs. While you're here though, why don't you have a game of Runedraw with me? If you've got 25 gold pieces I've got a bag of runes we can use.")
-        label("Init")
-        options {
-            op("Yes, I'll give you a game."){
-                exec{
-                    player.inventory.removeCoins(25)
-                    startRuneDraw(player, npc) }
-            }
-            op("How do you play Runedraw?") {
-                npc(npc, HeadE.CALM_TALK, "Two players take turns to draw a rune from a bag, which contains ten runes in total. Each rune has a different value: an air rune is worth one point, up to a Nature rune which is worth nine points.")
-                        npc(npc, HeadE.CALM_TALK, "If a player draws the Death rune then the game is over and they have lost. A player can choose to hold if they wish and not draw any more runes, but this runs the risk of the other player drawing more runes until they have a greater points total and win.")
-                goto("Init")
-            }
-            op("No, I don't approve of gambling.") {
-                player(HeadE.CALM_TALK,"No, I don't approve of gambling.")
+        player.startConversation {
+            player(HeadE.CALM_TALK, "Would you sign this oak longbow for me?")
+            npc(npc, HeadE.CALM_TALK, "I'm sorry, I don't sign autographs. While you're here though, why don't you have a game of Runedraw with me? If you've got 25 gold pieces I've got a bag of runes we can use.")
+            label("Init")
+            options {
+                op("Yes, I'll give you a game."){
+                    exec{
+                        player.inventory.removeCoins(25)
+                        startRuneDraw(player, npc) }
+                }
+                op("How do you play Runedraw?") {
+                    npc(npc, HeadE.CALM_TALK, "Two players take turns to draw a rune from a bag, which contains ten runes in total. Each rune has a different value: an air rune is worth one point, up to a Nature rune which is worth nine points.")
+                    npc(npc, HeadE.CALM_TALK, "If a player draws the Death rune then the game is over and they have lost. A player can choose to hold if they wish and not draw any more runes, but this runs the risk of the other player drawing more runes until they have a greater points total and win.")
+                    goto("Init")
+                }
+                op("No, I don't approve of gambling.") {
+                    player(HeadE.CALM_TALK,"No, I don't approve of gambling.")
+                }
             }
         }
-    }
 }
 
 private fun preQuest(player: Player, npc: NPC) {
@@ -161,9 +168,9 @@ private fun preQuest(player: Player, npc: NPC) {
                     }
                 }
                 else {
-                        player(HeadE.CALM_TALK, "I've brought you a clean bedsheet, Robin.")
-                        exec { player.inventory.deleteItem(BEDSHEET, 1)}
-                        npc(npc, HeadE.CALM_TALK, "Well it's about time. Run along now, I need some Robin time.")
+                    player(HeadE.CALM_TALK, "I've brought you a clean bedsheet, Robin.")
+                    exec { player.inventory.deleteItem(BEDSHEET, 1)}
+                    npc(npc, HeadE.CALM_TALK, "Well it's about time. Run along now, I need some Robin time.")
                 }
             }
         }

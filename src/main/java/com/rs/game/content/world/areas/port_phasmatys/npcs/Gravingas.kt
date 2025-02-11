@@ -15,13 +15,13 @@ private const val PETITION = 4283
 
 class Gravingas(player: Player, npc: NPC) {
     init {
-        if(!player.isQuestStarted(Quest.GHOSTS_AHOY) || player.getQuestStage(Quest.GHOSTS_AHOY) <= 5)
+        if(!player.isQuestStarted(Quest.GHOSTS_AHOY) || player.getQuestStage(Quest.GHOSTS_AHOY) <= 4)
             player.startConversation {
                 npc(npc, HeadE.CALM_TALK, "Will you join with me and protest against the evil ban of Necrovarus and his disciples?")
                 player(HeadE.CALM_TALK, "I'm sorry, I don't really think I should get involved.")
                 npc(npc, HeadE.CALM, "Ah, the youth of today - so apathetic to politics.")
             }
-        if (player.getQuestStage(Quest.GHOSTS_AHOY) == 6)
+        if (player.getQuestStage(Quest.GHOSTS_AHOY) == 5 || player.getQuestStage(Quest.GHOSTS_AHOY) == 6)
             questDialogue(player, npc)
         else
             postQuestDialogue(player, npc)
