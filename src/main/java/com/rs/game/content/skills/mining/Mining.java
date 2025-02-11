@@ -17,7 +17,6 @@
 package com.rs.game.content.skills.mining;
 
 import com.rs.game.content.Effect;
-import com.rs.game.content.achievements.AchievementSetRewards;
 import com.rs.game.content.achievements.SetReward;
 import com.rs.game.content.dnds.shootingstar.Star;
 import com.rs.game.map.ChunkManager;
@@ -26,7 +25,7 @@ import com.rs.game.model.entity.actions.Action;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.managers.AuraManager;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.util.Utils;
@@ -39,8 +38,6 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Supplier;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 @PluginEventHandler
 public class Mining extends Action {

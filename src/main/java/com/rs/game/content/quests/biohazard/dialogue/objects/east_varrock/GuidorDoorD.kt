@@ -7,7 +7,7 @@ import com.rs.game.content.quests.biohazard.utils.*
 import com.rs.game.content.world.doors.Doors.handleDoor
 import com.rs.game.model.entity.player.Equipment
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 
 class GuidorDoorD(player: Player, obj: GameObject) {
     init {

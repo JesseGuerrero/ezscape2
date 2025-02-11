@@ -24,7 +24,7 @@ import com.rs.game.content.skills.fletching.Fletching;
 import com.rs.game.content.skills.smithing.Smithing;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.SpotAnim;

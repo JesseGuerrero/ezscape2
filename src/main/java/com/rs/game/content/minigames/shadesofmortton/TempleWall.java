@@ -17,7 +17,7 @@
 package com.rs.game.content.minigames.shadesofmortton;
 
 import com.rs.game.World;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.util.Utils;
 
 public class TempleWall extends GameObject {

@@ -16,10 +16,8 @@
 //
 package com.rs.game.content.world.areas.desert.npcs;
 
-import com.rs.game.content.bosses.godwars.saradomin.SaradominFactionNPC;
-import com.rs.game.content.bosses.godwars.zamorak.ZamorakFactionNPC;
+import com.rs.game.content.bosses.godwars.factions.GodFaction;
 import com.rs.game.model.entity.Entity;
-import com.rs.game.model.entity.ForceTalk;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.game.Tile;
@@ -43,7 +41,7 @@ public class BanditCampBandit extends NPC {
 		List<Entity> targets = super.getPossibleTargets();
 		ArrayList<Entity> targetsCleaned = new ArrayList<>();
 		for (Entity t : targets) {
-			if (!(t instanceof Player) || (!ZamorakFactionNPC.hasGodItem((Player) t) && !SaradominFactionNPC.hasGodItem((Player) t)))
+			if (!(t instanceof Player p) || (!GodFaction.ZAMORAK.isWearing(p) && !GodFaction.SARADOMIN.isWearing(p)))
 				continue;
 			targetsCleaned.add(t);
 		}
@@ -52,8 +50,8 @@ public class BanditCampBandit extends NPC {
 
 	@Override
 	public void setCombatTarget(Entity entity) {
-		if (entity instanceof Player && (ZamorakFactionNPC.hasGodItem((Player) entity) || SaradominFactionNPC.hasGodItem((Player) entity)))
-			setNextForceTalk(new ForceTalk(ZamorakFactionNPC.hasGodItem((Player) entity) ? "Prepare to suffer, Zamorakian scum!" : "Time to die, Saradominist filth!"));
+		if (entity instanceof Player p && (GodFaction.ZAMORAK.isWearing(p) || GodFaction.SARADOMIN.isWearing(p)))
+			forceTalk(GodFaction.ZAMORAK.isWearing(p) ? "Prepare to suffer, Zamorakian scum!" : "Time to die, Saradominist filth!");
 		super.setCombatTarget(entity);
 	}
 

@@ -52,7 +52,7 @@ import com.rs.game.content.world.unorganized_dialogue.DestroyItem;
 import com.rs.game.content.world.unorganized_dialogue.FlowerPickup;
 import com.rs.game.content.world.unorganized_dialogue.LeatherCraftingD;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;

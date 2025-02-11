@@ -7,7 +7,7 @@ import com.rs.game.content.skills.crafting.openInterface
 import com.rs.game.content.skills.smithing.MoltenGlassMaking
 import com.rs.game.content.skills.smithing.SmeltingD
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Item
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemOnObject

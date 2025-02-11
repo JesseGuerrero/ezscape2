@@ -20,7 +20,7 @@ import com.rs.game.World;
 import com.rs.game.content.world.doors.Doors.Door;
 import com.rs.engine.pathfinder.RouteEvent;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.game.VarManager;
 import com.rs.plugin.annotations.PluginEventHandler;

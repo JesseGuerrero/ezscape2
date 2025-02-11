@@ -17,9 +17,8 @@
 package com.rs.game.content.skills.woodcutting;
 
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.util.Utils;
-import com.sun.source.tree.Tree;
 
 public enum TreeType {
 	FRUIT_TREE(1, 0, -1, 60, 200, 8, false),

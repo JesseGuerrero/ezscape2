@@ -1,7 +1,7 @@
 package com.rs.game.content.world.areas.global;
 
 import com.rs.game.World;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
 import com.rs.utils.Ticks;

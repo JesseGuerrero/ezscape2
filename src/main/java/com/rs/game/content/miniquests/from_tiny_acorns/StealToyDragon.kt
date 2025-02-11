@@ -4,7 +4,7 @@ import com.rs.engine.miniquest.Miniquest
 import com.rs.game.content.skills.thieving.PickPocketableNPC.hasArdyCloak
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.actions.PlayerAction
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.Constants
 import com.rs.lib.util.Utils

@@ -22,7 +22,7 @@ import com.rs.engine.dialogue.Options;
 import com.rs.game.content.skills.hunter.traps.BoxStyleTrap;
 import com.rs.game.content.skills.hunter.traps.BoxStyleTrap.Status;
 import com.rs.game.content.skills.hunter.traps.NetTrap;
-import com.rs.game.model.object.OwnedObject;
+import com.rs.game.model.gameobject.OwnedObject;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
 import com.rs.lib.net.ClientPacket;

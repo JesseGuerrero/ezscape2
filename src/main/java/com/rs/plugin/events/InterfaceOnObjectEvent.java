@@ -17,7 +17,7 @@
 package com.rs.plugin.events;
 
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.plugin.handlers.InterfaceOnObjectHandler;
 import com.rs.plugin.handlers.PluginHandler;
 

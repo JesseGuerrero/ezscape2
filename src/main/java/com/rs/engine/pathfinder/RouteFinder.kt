@@ -10,8 +10,8 @@ import com.rs.engine.pathfinder.reach.DefaultReachStrategy
 import com.rs.engine.pathfinder.reach.ReachStrategy
 import com.rs.game.model.entity.Entity
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
-import com.rs.game.model.`object`.GameObject.RouteType
+import com.rs.game.model.gameobject.GameObject
+import com.rs.game.model.gameobject.GameObject.RouteType
 import com.rs.lib.game.GroundItem
 import com.rs.lib.game.Tile
 import com.rs.lib.net.packets.decoders.Walk

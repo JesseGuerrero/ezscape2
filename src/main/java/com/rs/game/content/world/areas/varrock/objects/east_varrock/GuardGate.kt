@@ -3,7 +3,7 @@ package com.rs.game.content.world.areas.varrock.objects.east_varrock
 import com.rs.game.content.quests.biohazard.dialogue.objects.east_varrock.GuardGateD
 import com.rs.game.content.world.doors.Doors.handleGate
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onObjectClick
 

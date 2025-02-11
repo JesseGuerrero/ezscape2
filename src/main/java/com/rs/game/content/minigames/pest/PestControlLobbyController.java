@@ -19,7 +19,7 @@ package com.rs.game.content.minigames.pest;
 import com.rs.game.content.skills.magic.TeleType;
 import com.rs.game.model.entity.Teleport;
 import com.rs.game.model.entity.player.Controller;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.util.Utils;
 
 public final class PestControlLobbyController extends Controller {

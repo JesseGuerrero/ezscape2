@@ -50,13 +50,6 @@ fun mapTrollheim() {
         else if (e.objectAt(2906, 10017)) e.player.tele(Tile.of(2911, 3636, 0))
     }
 
-    onObjectClick(26342) { e ->
-        if (e.player.controllerManager.controller == null) {
-            e.player.useStairs(828, Tile.of(2881, 5310, 2), 0, 0)
-            e.player.controllerManager.startController(GodwarsController())
-        } else e.player.sendMessage("Invalid teleport.")
-    }
-
     onObjectClick(35390) { e ->
         if (e.player.isQuestComplete(Quest.DEATH_PLATEAU) && e.player.isQuestStarted(Quest.TROLL_STRONGHOLD)) {
             val lift = e.opNum == ClientPacket.OBJECT_OP1

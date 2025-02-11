@@ -4,7 +4,7 @@ import com.rs.engine.quest.Quest;
 import com.rs.game.content.Effect;
 import com.rs.game.content.world.areas.global.AgilityShortcuts;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;

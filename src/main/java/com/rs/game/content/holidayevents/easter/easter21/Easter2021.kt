@@ -22,7 +22,7 @@ import com.rs.engine.dialogue.startConversation
 import com.rs.game.model.entity.async.schedule
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.EmotesManager
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.game.Item
 import com.rs.lib.game.Tile

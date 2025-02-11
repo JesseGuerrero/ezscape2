@@ -19,7 +19,7 @@ package com.rs.tools.old;
 import com.rs.cache.Cache;
 import com.rs.cache.IndexType;
 import com.rs.cache.loaders.ObjectType;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.io.InputStream;
 import com.rs.lib.util.MapXTEAs;
 

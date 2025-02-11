@@ -2,7 +2,7 @@ package com.rs.game.content.quests.ghosts_ahoy
 
 import com.rs.engine.quest.Quest
 import com.rs.game.World
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onObjectClick
 

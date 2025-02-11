@@ -31,7 +31,7 @@ import com.rs.game.content.world.areas.global.AgilityShortcuts;
 import com.rs.game.content.world.doors.DoorPair;
 import com.rs.game.model.entity.player.Inventory;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;

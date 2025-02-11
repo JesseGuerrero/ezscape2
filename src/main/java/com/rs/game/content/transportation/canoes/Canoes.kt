@@ -9,8 +9,8 @@ import com.rs.game.content.world.areas.wilderness.WildernessController
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
 import com.rs.game.model.entity.player.managers.InterfaceManager.Sub.ALL_GAME_TABS
-import com.rs.game.model.`object`.GameObject
-import com.rs.game.model.`object`.OwnedObject
+import com.rs.game.model.gameobject.GameObject
+import com.rs.game.model.gameobject.OwnedObject
 import com.rs.lib.Constants
 import com.rs.lib.game.Animation
 import com.rs.lib.game.Tile
