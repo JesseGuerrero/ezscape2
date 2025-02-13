@@ -30,7 +30,7 @@ fun mapNecrovarusObjects() {
             e.player.sendMessage("You don't have the space in your inventory.")
             return@onObjectClick
         }
-        if(e.player.inventory.containsItem(NECROVARUS_ROBE) || e.player.isQuestComplete(Quest.GHOSTS_AHOY))
+        if(e.player.inventory.containsItem(NECROVARUS_ROBE) || e.player.isQuestComplete(Quest.GHOSTS_AHOY) || e.player.questManager.getStage(Quest.GHOSTS_AHOY) >= GhostsAhoy.STAGE_6_AMULET_ENCHANTED)
             e.player.sendMessage("It's just the mortal remains of Necrovarus. You probably don't want to touch that.")
         else {
             e.player.inventory.addItem(NECROVARUS_ROBE)
