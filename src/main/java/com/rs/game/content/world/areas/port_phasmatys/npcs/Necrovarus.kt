@@ -3,6 +3,7 @@ package com.rs.game.content.world.areas.port_phasmatys.npcs;
 import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
+import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
 import com.rs.game.content.world.areas.desert.HEAD_SLOT
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.GhostSpeakResponse
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.hasGhostSpeak
@@ -42,9 +43,9 @@ class Necrovarus(p: Player, npc: NPC) {
         else
             when (p.getQuestStage(Quest.GHOSTS_AHOY)) {
                 1 -> dialogueStage1(p, npc)
-                in 2..3 -> dialogueStage2(p, npc)
-                in 5..6 -> dialogueStage5(p, npc)
-                7 -> dialogueStage7(p, npc)
+                in 2..4 -> dialogueStage2(p, npc)
+                5 -> dialogueStage5(p, npc)
+                6 -> dialogueStage7(p, npc)
                 else -> dialogueStage8(p, npc)
             }
     }
@@ -72,7 +73,7 @@ private fun dialogueStage1(p: Player, npc: NPC) {
         npc(npc, HeadE.CALM_TALK,"Silence!<br>Or I will incinerate the flesh from your bones!!")
         player(HeadE.CALM_TALK,"But she-")
         npc(npc, HeadE.CALM_TALK,"Get out of my sight!! Or I promise you that you will regret your insolence for the rest of eternity!!")
-        exec { p.setQuestStage(Quest.GHOSTS_AHOY, 2) }
+        exec { p.setQuestStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_2_PLEAD_WITH_NECROVARUS) }
     }
 }
 
@@ -135,7 +136,7 @@ private fun dialogueStage7(p: Player, npc: NPC) {
                 player(HeadE.CALM_TALK, "I think we're almost getting there...")
                 npc(npc, HeadE.CALM_TALK, "... pass into the next world.")
                 exec{
-                    p.questManager.setStage(Quest.GHOSTS_AHOY, 8)
+                    p.questManager.setStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_7_COMMAND_NECROVARUS)
                     p.equipment.setSlot(HEAD_SLOT, Item(552))
                     dialogueStage8(p, npc)
                 }

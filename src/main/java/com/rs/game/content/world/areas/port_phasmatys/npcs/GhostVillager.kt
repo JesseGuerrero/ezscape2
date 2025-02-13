@@ -125,6 +125,7 @@ fun costDialogue(player: Player, npc: NPC) {
                 op("Okay, if you insist") {
                     player(HeadE.CALM_TALK, "Okay, if you insist.")
                     exec {
+                        player.questManager.getAttribs(Quest.GHOSTS_AHOY).incI("Signatures")
                         player.inventory.deleteItem(ECTOTOKENS, cost)
                         player.itemDialogue(PETITION, "The ghost signs your petition. You have obtained ${player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("Signatures")} signatures so far.")
                         if (player.questManager.getAttribs(Quest.GHOSTS_AHOY).getI("Signatures") == 10) {

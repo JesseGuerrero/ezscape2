@@ -7,6 +7,7 @@ import com.rs.game.content.items.Dye
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
 import com.rs.lib.Constants
+import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -27,31 +28,85 @@ val HARICANTO_TILE = Tile.of(3803, 3530, 0)
 )
 
 class GhostsAhoy : QuestOutline() {
-    override fun getJournalLines(player: Player, stage: Int) = when (stage) {
-        0 -> listOf("To start this quest, I can speak speak to Velorina in Port Phasmatys.")
-        1 -> listOf("I have spoken with Velorina who has told me the sad history of the ghosts of Port Phasmatys. She has asked me to plead with Necrovarus in the Phasmatayan Temple to let any ghost who so wishes pass over into the next world.")
-        2 -> listOf("I Pleaded with Necrovarus to no avail.")
-        3 -> listOf("Velorina was crestfallen at Necrovarus' refusal to lift his ban, and she told me of a woman who fled Port Phasmatys before the townsfolk died, and to seek her out, as she may know of a way around Necrovarus' stubbornness.")
-        4 -> listOf("I found the old woman, who told me of an enchantment she can perform on the Amulet of Ghostspeak, which will then let me command Necrovarus to do my bidding.")
-        5 -> listOf("I need to bring the old woman the following items<br>Book of Haricanto<br>the Robes of Necrovarus<br>and something to translate the Book of Haricanto.")
-        6 -> listOf("I brought the old woman the Book of Haricanto, the Robes of Necrovarus, and a translation manual.")
-        7 -> listOf("The old woman used the items I brought her to perform the enchantment on the Amulet of Ghostspeak.")
-        8 -> listOf("I have commanded Necrovarus to remove his ban.")
-        9 -> listOf("I have told Velorina that Necrovarus has been commanded to remove his ban, and to allow any ghost who so desires to pass over into the next plane of existence. Velorina gave me the Ectophial in return, which I can use to teleport to the Temple of Phasmatys.")
-        10 -> listOf("QUEST COMPLETE!")
-        else -> listOf("Invalid quest stage. Report this to an administrator.")
+
+    companion object {
+        const val STAGE_1_BEGIN_QUEST = 1
+        const val STAGE_2_PLEAD_WITH_NECROVARUS = 2
+        const val STAGE_3_NECROVARUS_REFUSES = 3
+        const val STAGE_4_SEEK_OLD_WOMAN = 4
+        const val STAGE_5_GATHER_ITEMS = 5
+        const val STAGE_6_AMULET_ENCHANTED = 6
+        const val STAGE_7_COMMAND_NECROVARUS = 7
+        const val STAGE_8_TELL_VELORINA = 8
+        const val STAGE_9_QUEST_COMPLETE = 9
+    }
+
+    override fun getJournalLines(player: Player, stage: Int): List<String> {
+        return when (stage) {
+            STAGE_1_BEGIN_QUEST -> listOf(
+                "To start this quest, I can speak to Velorina in Port Phasmatys."
+            )
+
+            STAGE_2_PLEAD_WITH_NECROVARUS -> listOf(
+                "Velorina told me of the trouble the ghosts in Port Phasmatys face.",
+                "She wants me to plead with Necrovarus in the temple to let them pass on."
+            )
+
+            STAGE_3_NECROVARUS_REFUSES -> listOf(
+                "My pleas to Necrovarus were unsuccessful.",
+                "Velorina mentioned an old woman who fled the city before the tragedy—maybe she has a plan."
+            )
+
+            STAGE_4_SEEK_OLD_WOMAN -> listOf(
+                "I found the old woman, who says she can enchant my Amulet of Ghostspeak to command Necrovarus,",
+                "but I need to bring her three items: the Book of Haricanto, the Robes of Necrovarus, and a translation manual."
+            )
+
+            STAGE_5_GATHER_ITEMS -> listOf(
+                "I must gather:",
+                "- The Book of Haricanto",
+                "- The Robes of Necrovarus",
+                "- A translation manual",
+                "…and return to the old woman so she can perform the enchantment."
+            )
+
+            STAGE_6_AMULET_ENCHANTED -> listOf(
+                "I’ve given the old woman the required items.",
+                "She has now enchanted my Amulet of Ghostspeak!"
+            )
+
+            STAGE_7_COMMAND_NECROVARUS -> listOf(
+                "With my newly enchanted amulet, I commanded Necrovarus to lift his ban.",
+                "The ghosts of Port Phasmatys are finally free to move on."
+            )
+
+            STAGE_8_TELL_VELORINA -> listOf(
+                "I should return to Velorina and let her know that Necrovarus has lifted his ban."
+            )
+
+            STAGE_9_QUEST_COMPLETE -> listOf(
+                "I told Velorina the good news!",
+                "She rewarded me with an Ectophial, which teleports me to the temple.",
+                "Quest complete!"
+            )
+
+            else -> listOf("Invalid quest stage. Please report this to an administrator.")
+        }
     }
 
     override fun complete(player: Player) {
-        player.setQuestStage(Quest.GHOSTS_AHOY, 10)
+        player.setQuestStage(Quest.GHOSTS_AHOY, STAGE_9_QUEST_COMPLETE)
+        player.inventory.addItem(Ectophial)
         player.skills.addXp(Skills.PRAYER, 2400.0)
         player.vars.saveVar(217, 5)
         sendQuestCompleteInterface(player, Ectophial)
     }
 
     override fun updateStage(player: Player, stage: Int) {
-        if (stage == 5) {
-            player.vars.setVarBit(217, 5) //Make Ak-Haranu visible
+        if(player.hasRights(Rights.ADMIN))
+        player.sendMessage("Current stage: $stage")
+        if (stage == STAGE_5_GATHER_ITEMS) {
+            player.vars.saveVarBit(217, stage)
             if(player.questManager.getAttribs(Quest.GHOSTS_AHOY).getO<String>("sailColour1") == null) {
                 val sailColour1 = Dye.entries[Utils.random(Dye.entries.size)]
                 player.questManager.getAttribs(Quest.GHOSTS_AHOY).setO<String>("sailColour1", sailColour1.name)
@@ -71,9 +126,9 @@ class GhostsAhoy : QuestOutline() {
 fun mapGAVarbits(){
     onLogin { (player) ->
         if (player.isQuestComplete(Quest.GHOSTS_AHOY))
-            player.vars.setVarBit(217, 5)
-        else if (player.getQuestStage(Quest.GHOSTS_AHOY) >= 5)
-            player.vars.setVarBit(217, 5)
+            player.vars.saveVarBit(217, 5)
+        else if (player.getQuestStage(Quest.GHOSTS_AHOY) >= GhostsAhoy.STAGE_5_GATHER_ITEMS)
+            player.vars.saveVarBit(217, 5)
     }
 }
 

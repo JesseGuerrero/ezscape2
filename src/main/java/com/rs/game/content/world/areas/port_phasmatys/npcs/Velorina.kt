@@ -1,16 +1,22 @@
 package com.rs.game.content.world.areas.port_phasmatys.npcs;
 
+import com.rs.cache.loaders.ObjectType
 import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
+import com.rs.game.World.spawnObjectTemporary
 import com.rs.game.content.minigames.ectofuntus.Ectofuntus
 import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
-import com.rs.game.model.entity.npc.NPC
-import com.rs.game.model.entity.player.Player;
-import com.rs.plugin.annotations.ServerStartupEvent
-import com.rs.plugin.kts.onNpcClick
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.GhostSpeakResponse
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.hasGhostSpeak
+import com.rs.game.model.entity.npc.NPC
+import com.rs.game.model.entity.player.Player
+import com.rs.game.model.gameobject.GameObject
+import com.rs.lib.game.Tile
+import com.rs.plugin.annotations.ServerStartupEvent
+import com.rs.plugin.kts.onItemOnNpc
+import com.rs.plugin.kts.onNpcClick
+import com.rs.plugin.kts.onObjectClick
 
 class Velorina(p: Player, npc: NPC) {
     init {
@@ -20,14 +26,12 @@ class Velorina(p: Player, npc: NPC) {
             dialoguePreQuest(p, npc)
         else
             when (p.getQuestStage(Quest.GHOSTS_AHOY)) {
-                1 -> dialogueStage1(p, npc)
-                2 -> dialogueStage2(p, npc)
-                3 -> dialogueStage3(p, npc)
-                4 -> dialogueStage3(p, npc)
-                5 -> dialogueStage5(p, npc)
-                6 -> dialogueStage5(p, npc)
-                7 -> dialogueStage7(p, npc)
-                8 -> dialogueStage8(p, npc)
+                GhostsAhoy.STAGE_1_BEGIN_QUEST -> dialogueStage1(p, npc)
+                GhostsAhoy.STAGE_2_PLEAD_WITH_NECROVARUS -> dialogueStage2(p, npc)
+                GhostsAhoy.STAGE_3_NECROVARUS_REFUSES, GhostsAhoy.STAGE_4_SEEK_OLD_WOMAN -> dialogueStage3(p, npc)
+                GhostsAhoy.STAGE_5_GATHER_ITEMS -> dialogueStage5(p, npc)
+                GhostsAhoy.STAGE_6_AMULET_ENCHANTED -> dialogueStage7(p, npc)
+                GhostsAhoy.STAGE_7_COMMAND_NECROVARUS -> dialogueStage8(p, npc)
             }
     }
 }
@@ -95,7 +99,7 @@ private fun dialoguePreQuest(p: Player, npc: NPC) {
                                     p.sendMessage("You must complete Priest in Peril before you can accept this quest.")
                                 else {
                                     questStart(Quest.GHOSTS_AHOY)
-                                    p.setQuestStage(Quest.GHOSTS_AHOY, 1)
+                                    p.setQuestStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_1_BEGIN_QUEST)
                                     player(
                                         HeadE.CALM_TALK,
                                         "Yes, of course I will. Tell me what you want me to do."
@@ -228,7 +232,7 @@ private fun dialogueStage2(p: Player, npc: NPC) {
         npc(npc, HeadE.CALM, "It is such a long time ago I cannot remember her name, although I knew her as a friend.")
         npc(npc, HeadE.CALM, "She fled before the Ectofuntus took control over us, but being a disciple of Necrovarus she would have been privy to many of his darkest secrets.")
         npc(npc, HeadE.CALM, "She may know of a way to aid us without Necrovarus.")
-        p.setQuestStage(Quest.GHOSTS_AHOY, 3)
+        p.setQuestStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_3_NECROVARUS_REFUSES)
         options {
             op("Do you know where this woman can be found?") {
                 player(HeadE.CALM_TALK, "Do you know where this woman can be found?")
@@ -305,7 +309,7 @@ private fun dialogueStage8(p: Player, npc: NPC) {
         npc(npc, HeadE.CALM_TALK, "Here, take this as a thank you for the service that you have given us.")
         item(Ectofuntus.FULL_ECTOPHIAL, "Velorina gives you a vial of bright green ectoplasm.")
         npc(npc, HeadE.CALM_TALK, "This is an Ectophial. If you ever want to come back to Port Phasmatys, empty this on the floor beneath your feet, and you will be instantly teleported to the temple - the source of its power.")
-                npc(npc, HeadE.CALM_TALK, "Remember that once the Ectophial has been used you need to refill it from the Ectofuntus.")
+        npc(npc, HeadE.CALM_TALK, "Remember that once the Ectophial has been used you need to refill it from the Ectofuntus.")
         exec {
             p.completeQuest(Quest.GHOSTS_AHOY)
         }
@@ -313,11 +317,46 @@ private fun dialogueStage8(p: Player, npc: NPC) {
 }
 @ServerStartupEvent
 fun mapVelorina() {
+    val TRANSLATION_MANUAL = 4249
+    val NECROVARUS_ROBE = 4247
+    val BOOK_OF_HARICANTO = 4248
+    val GHOSTSPEAK_E = 4250
     onNpcClick(1683, options = arrayOf("Talk-To")) { (player, npc) ->
         if (!hasGhostSpeak(player))
             GhostSpeakResponse(player, npc)
         else
             Velorina(player, npc)
+    }
+    //Temporary method to allow players to repair thier quest stage
+    onItemOnNpc(1683) { e ->
+        when (e.item.id) {
+            GHOSTSPEAK_E -> {
+                e.player.sendMessage("Reset to STAGE_6_AMULET_ENCHANTED")
+                e.player.setQuestStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_6_AMULET_ENCHANTED)
+            }
+            NECROVARUS_ROBE, BOOK_OF_HARICANTO, TRANSLATION_MANUAL -> {
+                e.player.sendMessage("Reset to STAGE_5_GATHER_ITEMS")
+                e.player.setQuestStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_5_GATHER_ITEMS)
+            }
+            else -> {
+                e.player.startConversation {
+                    options {
+                        op("Reset Ghosts Ahoy?") {
+                            exec {
+
+                                e.player.sendMessage("Reset quest")
+                                e.player.questManager.resetQuest(Quest.GHOSTS_AHOY)
+                            }
+                        }
+                        op("Nevermind") {
+                            exec {
+                                return@exec
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

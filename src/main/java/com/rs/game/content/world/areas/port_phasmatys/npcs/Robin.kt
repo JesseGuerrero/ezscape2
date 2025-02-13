@@ -5,6 +5,7 @@ import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
 import com.rs.game.content.achievements.AchievementSystemD
 import com.rs.game.content.achievements.SetReward
+import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
 import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.content.world.areas.port_phasmatys.startRuneDraw
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -14,7 +15,6 @@ import com.rs.game.model.entity.player.Player
 
 private const val oakLongbowS = 4236
 private const val BEDSHEET = 4284
-private const val ECTOBEDSHEET = 4285
 
 @ServerStartupEvent
 fun mapRobin() {
@@ -22,12 +22,15 @@ fun mapRobin() {
         if(e.player.isQuestComplete(Quest.GHOSTS_AHOY))
             postQuest(e.player, e.npc)
 
-        if(!e.player.isQuestStarted(Quest.GHOSTS_AHOY) || e.player.getQuestStage(Quest.GHOSTS_AHOY) <= 4)
+        if(!e.player.isQuestStarted(Quest.GHOSTS_AHOY) || e.player.getQuestStage(Quest.GHOSTS_AHOY) <= GhostsAhoy.STAGE_4_SEEK_OLD_WOMAN)
             preQuest(e.player, e.npc)
 
-        if(e.player.getQuestStage(Quest.GHOSTS_AHOY) == 5 || e.player.getQuestStage(Quest.GHOSTS_AHOY) == 6)
-            questDialogue(e.player, e.npc)
-
+        if(e.player.getQuestStage(Quest.GHOSTS_AHOY) == GhostsAhoy.STAGE_5_GATHER_ITEMS) {
+            if (e.player.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("SPOKE_WITH_AKHARANU"))
+                questDialogue(e.player, e.npc)
+            else
+                preQuest(e.player, e.npc)
+        }
         else
             postQuest(e.player, e.npc)
 
