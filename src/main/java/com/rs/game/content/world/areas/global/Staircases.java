@@ -10,7 +10,7 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 public class Staircases {
     public static ObjectClickHandler worldStaircasesUP = new ObjectClickHandler(new Object[] { 24357, 24358, 11734 }, e ->  {
         Player player = e.getPlayer();
-        switch (e.getObject().getRotation()) {
+        switch (e.getObj().getRotation()) {
             case 0 -> player.useStairs(-1, player.transform(0, 4, 1), 1, 1);
             case 1 -> player.useStairs(-1, player.transform(4, 0, 1), 1, 1);
             case 2 -> player.useStairs(-1, player.transform(0, -4, 1), 1, 1);
@@ -20,11 +20,11 @@ public class Staircases {
 
     public static ObjectClickHandler worldStaircasesDOWN = new ObjectClickHandler(new Object[] { 24359, 24360, 35783 }, e ->  {
         Player player = e.getPlayer();
-        if (e.getObject().getTile().isAt(3189, 3432)) {
+        if (e.getObj().getTile().isAt(3189, 3432)) {
             player.useStairs(-1, player.transform(2, 6400, 0), 1, 1);
             return;
         }
-        switch (e.getObject().getRotation()) {
+        switch (e.getObj().getRotation()) {
             case 0 -> player.useStairs(-1, player.transform(0, -4, -1), 1, 1);
             case 1 -> player.useStairs(-1, player.transform(-4, 0, -1), 1, 1);
             case 2 -> player.useStairs(-1, player.transform(0, 4, -1), 1, 1);
@@ -32,7 +32,7 @@ public class Staircases {
         }
     });
 
-    public static ObjectClickHandler stairs = new ObjectClickHandler(new Object[] { "Staircase", "Stairs" }, e -> handleStaircases(e.getPlayer(), e.getObject(), e.getOption()));
+    public static ObjectClickHandler stairs = new ObjectClickHandler(new Object[] { "Staircase", "Stairs" }, e -> handleStaircases(e.getPlayer(), e.getObj(), e.getOption()));
 
     public static void handleStaircases(Player player, GameObject object, String option) {
         switch (option.toLowerCase()) {

@@ -15,12 +15,12 @@ fun mapNecrovarusObjects() {
     onObjectClick(NECROVARUS_COFFIN) { e ->
         e.player.tasks.schedule(1) {
             val openCoffin = GameObject(
-                e.`object`.id + 1,
-                e.`object`.type,
-                e.`object`.rotation,
-                e.`object`.x,
-                e.`object`.y,
-                e.`object`.plane
+                e.obj.id + 1,
+                e.obj.type,
+                e.obj.rotation,
+                e.obj.x,
+                e.obj.y,
+                e.obj.plane
             )
             World.spawnObjectTemporary(openCoffin, 20)
         }

@@ -91,11 +91,11 @@ player.set("lootbeamThreshold", amount);
 			GE.openCollection(e.getPlayer());
 			break;
 		case "Use":
-			if (e.getObject().getDefinitions().getName(e.getPlayer().getVars()).equals("Bank chest"))
+			if (e.getObj().getDefinitions().getName(e.getPlayer().getVars()).equals("Bank chest"))
 				e.getPlayer().getBank().open();
 			break;
 		case "Open":
-			if (e.getObject().getDefinitions().getName(e.getPlayer().getVars()).equals("Shantay chest"))
+			if (e.getObj().getDefinitions().getName(e.getPlayer().getVars()).equals("Shantay chest"))
 				e.getPlayer().getBank().open();
 			break;
 		default:

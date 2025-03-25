@@ -23,7 +23,7 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 @PluginEventHandler
 public class AncientGuthixTemple {
 
-	public static ObjectClickHandler handleClimbWall = new ObjectClickHandler(false, new Object[] { 40261, 40262 }, e -> e.getPlayer().walkToAndExecute(e.getObject().getTile().transform(0, 1, 0), () -> e.getPlayer().useStairs(-1, e.getPlayer().transform(0, -1, 1), 1, 1)));
+	public static ObjectClickHandler handleClimbWall = new ObjectClickHandler(false, new Object[] { 40261, 40262 }, e -> e.getPlayer().walkToAndExecute(e.getObj().getTile().transform(0, 1, 0), () -> e.getPlayer().useStairs(-1, e.getPlayer().transform(0, -1, 1), 1, 1)));
 
 	public static ObjectClickHandler handleJumpDownWall = new ObjectClickHandler(new Object[] { 40849 }, e -> e.getPlayer().useStairs(-1, e.getPlayer().transform(0, 1, -1), 1, 1));
 

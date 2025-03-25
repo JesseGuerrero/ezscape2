@@ -103,8 +103,6 @@ class GhostsAhoy : QuestOutline() {
     }
 
     override fun updateStage(player: Player, stage: Int) {
-        if(player.hasRights(Rights.ADMIN))
-        player.sendMessage("Current stage: $stage")
         if (stage == STAGE_5_GATHER_ITEMS) {
             player.vars.saveVarBit(217, stage)
             if(player.questManager.getAttribs(Quest.GHOSTS_AHOY).getO<String>("sailColour1") == null) {

@@ -150,7 +150,7 @@ public class LeprecaunLostCityD extends Conversation {
 	}
 
 	public static ObjectClickHandler handleTreeLep = new ObjectClickHandler(true, new Object[] { LEPRACAUN_TREE }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		for(NPC npc : World.getNPCsInChunkRange(e.getPlayer().getChunkId(), 1))
 			if(npc.getId() == LEPRACAUN)
 				return;

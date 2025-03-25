@@ -71,7 +71,7 @@ public class JunglePotion extends QuestOutline {
 		Player player = e.getPlayer();
 		int item;
 		Animation searchAnim;
-		switch (e.getObject().getId()) {
+		switch (e.getObj().getId()) {
 			case 2575 -> {
 				item = GRIMY_SNAKE_WEED;
 				searchAnim = new Animation(2094);
@@ -89,14 +89,14 @@ public class JunglePotion extends QuestOutline {
 			}
 		};
 		player.repeatAction(5, (ticks) -> {
-			if (e.getObject().getId() != 2575 && e.getObject().getId() != 32106)
+			if (e.getObj().getId() != 2575 && e.getObj().getId() != 32106)
 				return false;
 			int rand = Utils.random(0, 10);
 			if (rand == 0) {
 				player.getInventory().addItemDrop(item, 1);
 				player.setNextAnimation(new Animation(-1));
 				player.itemDialogue(item, "You find a grimy herb.");
-				e.getObject().setIdTemporary(e.getObject().getId() + 1, Ticks.fromSeconds(90));
+				e.getObj().setIdTemporary(e.getObj().getId() + 1, Ticks.fromSeconds(90));
 				return false;
 			}
 			if (ticks > 0)
@@ -113,13 +113,13 @@ public class JunglePotion extends QuestOutline {
 			return;
 		}
 		if (e.getOption().equals("Search")) {
-			int item = switch (e.getObject().getId()) {
+			int item = switch (e.getObj().getId()) {
 				case 2577 -> GRIMY_ARDRIGAL;
 				case 2579 -> GRIMY_SITO_FOIL;
 				case 2581 -> GRIMY_VOLENCIA_MOSS;
 				default -> -1;
 			};
-			e.getObject().setIdTemporary(e.getObject().getId() + 1, Ticks.fromSeconds(60));
+			e.getObj().setIdTemporary(e.getObj().getId() + 1, Ticks.fromSeconds(60));
 			player.getInventory().addItem(item, 1);
 			player.itemDialogue(item, "You find a grimy herb.");
 		}

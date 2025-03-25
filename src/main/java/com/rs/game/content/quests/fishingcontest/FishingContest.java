@@ -113,7 +113,7 @@ public class FishingContest extends QuestOutline {
 	public static final int RED_WORM = 25;
 	public static ObjectClickHandler Redvine = new ObjectClickHandler(true, new Object[] { "Vine" }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(obj.getTile().getRegionId() == 10550) //mcgrubbers wood
 			if(p.getInventory().hasFreeSlots()) {
 				p.setNextAnimation(new Animation(2282));//herb picking anim

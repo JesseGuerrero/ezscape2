@@ -131,7 +131,7 @@ public class BoneAltar  {
 	public static ObjectClickHandler handleAltars = new ObjectClickHandler(new Object[] {"Altar", "Chaos altar", "Altar of guthix"}, e -> {
 		Player player = e.getPlayer();
 
-		if (e.getObject().getDefinitions().containsOption(0, "Pray") || e.getObject().getDefinitions().containsOption(0, "Pray-at") || e.getObject().getDefinitions().containsOption(0, "Recharge")) {
+		if (e.getObj().getDefinitions().containsOption(0, "Pray") || e.getObj().getDefinitions().containsOption(0, "Pray-at") || e.getObj().getDefinitions().containsOption(0, "Recharge")) {
 			player.getPrayer().worshipAltar();
 			if (e.getObjectId() == 6552) {
 				player.startConversation(new Dialogue().addOptions("Change spellbooks?", ops -> {

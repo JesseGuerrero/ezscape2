@@ -117,7 +117,7 @@ public class KnightsSword extends QuestOutline {
 	}
 
 	public static ObjectClickHandler handleVyvinCupboard = new ObjectClickHandler(new Object[] { 2271, 2272 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if (e.getOption().equalsIgnoreCase("open")) {
 			e.getPlayer().setNextAnimation(new Animation(536));
 			e.getPlayer().lock(2);

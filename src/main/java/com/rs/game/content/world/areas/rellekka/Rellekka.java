@@ -170,9 +170,9 @@ public class Rellekka {
 
 	public static ItemClickHandler handleEnchantedLyreTeleports = new ItemClickHandler(new Object[] { 3691, 6125, 6126, 6127, 14590, 14591 }, new String[] { "Play" }, e -> e.getPlayer().startConversation(getLyreTeleOptions(e.getPlayer(), e.getItem(), false)));
 
-	public static ObjectClickHandler handleLighthouseDoor = new ObjectClickHandler(new Object[] { 4577 }, e -> e.getPlayer().handleOneWayDoor(e.getObject(), e.getObject().getId()+1));
+	public static ObjectClickHandler handleLighthouseDoor = new ObjectClickHandler(new Object[] { 4577 }, e -> e.getPlayer().handleOneWayDoor(e.getObj(), e.getObj().getId()+1));
 
-	public static ObjectClickHandler handleMountainCampWall = new ObjectClickHandler(new Object[] { 5847 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObject().getX() ? 2 : -2, 0, 0)));
+	public static ObjectClickHandler handleMountainCampWall = new ObjectClickHandler(new Object[] { 5847 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObj().getX() ? 2 : -2, 0, 0)));
 
 	public static ObjectClickHandler handleKeldagrimEntrance = new ObjectClickHandler(new Object[] { 5008 }, e -> e.getPlayer().tele(Tile.of(2773, 10162, 0)));
 

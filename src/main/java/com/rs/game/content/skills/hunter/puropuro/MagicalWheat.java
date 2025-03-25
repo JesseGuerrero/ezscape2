@@ -135,7 +135,7 @@ public class MagicalWheat {
 
     public static ObjectClickHandler pushThrough = new ObjectClickHandler(new Object[] { "Magical wheat" }, e -> {
         if (e.isAtObject()) {
-            e.getPlayer().faceObject(e.getObject());
+            e.getPlayer().faceObject(e.getObj());
 
             int speed = Utils.randomInclusive(0, 2) * 2;
             int finalSpeed = e.getPlayer().hasEffect(Effect.FARMERS_AFFINITY) ? 3 + speed : 6 + speed;

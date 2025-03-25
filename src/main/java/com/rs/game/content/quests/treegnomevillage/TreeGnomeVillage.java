@@ -100,7 +100,7 @@ public class TreeGnomeVillage extends QuestOutline {
 		return lines;
 	}
 
-	public static ObjectClickHandler handleDoorTracker2 = new ObjectClickHandler(new Object[] { 40362, 40361 }, e -> Doors.handleDoor(e.getPlayer(), e.getObject()));
+	public static ObjectClickHandler handleDoorTracker2 = new ObjectClickHandler(new Object[] { 40362, 40361 }, e -> Doors.handleDoor(e.getPlayer(), e.getObj()));
 
 	public static ObjectClickHandler handleWallBallistaHit = new ObjectClickHandler(new Object[] { 12762 }, e -> {
 		if(e.getPlayer().getQuestManager().getStage(Quest.TREE_GNOME_VILLAGE) == ORB1) {
@@ -173,11 +173,11 @@ public class TreeGnomeVillage extends QuestOutline {
 			WorldTasks.scheduleTimer(tick -> {
 				if(tick == 0) {
 					e.getPlayer().lock(2);
-					e.getPlayer().faceObject(e.getObject());
+					e.getPlayer().faceObject(e.getObj());
 					e.getPlayer().setNextAnimation(new Animation(536));
 				}
 				if(tick == 1) {
-					e.getObject().setIdTemporary(2182, 2);
+					e.getObj().setIdTemporary(2182, 2);
 					e.getPlayer().getInventory().addItem(new Item(587, 1));
 					return false;
 				}

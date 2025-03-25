@@ -47,7 +47,7 @@ public class EventEasterEgg extends GameObject {
 	}
 	
     public static ObjectClickHandler crackEgg = new ObjectClickHandler(false, new Object[] { 70106, 70107, 70108, 70109, 70110 }, e -> {
-    	if (!(e.getObject() instanceof EventEasterEgg egg))
+    	if (!(e.getObj() instanceof EventEasterEgg egg))
     		return;
     	if (!Easter2022.ENABLED)
     		return;
@@ -58,21 +58,21 @@ public class EventEasterEgg extends GameObject {
             }
             e.getPlayer().lock();
             e.getPlayer().resetWalkSteps();
-        	e.getPlayer().faceObject(e.getObject());
+        	e.getPlayer().faceObject(e.getObj());
             e.getPlayer().setNextAnimation(new Animation(12174));
             e.getPlayer().setNextSpotAnim(new SpotAnim(2138));
             int attackStyle = e.getPlayer().getCombatDefinitions().getAttackStyleId();
-            int delay = World.sendProjectile(e.getPlayer().getTile(), Tile.of(e.getObject().getTile()), (attackStyle == 0 ? 3034 : 3035), new Pair<>(20, 10), 30, 5, 0).getTaskDelay();
+            int delay = World.sendProjectile(e.getPlayer().getTile(), Tile.of(e.getObj().getTile()), (attackStyle == 0 ? 3034 : 3035), new Pair<>(20, 10), 30, 5, 0).getTaskDelay();
     		int npcId = (attackStyle == 0 ? Easter2022.CHICK : Easter2022.CHOCOCHICK);
     		egg.spotted(e.getPlayer());
     		WorldTasks.scheduleTimer(delay, (tick) -> {
             	switch (tick) {
             		case 0 -> { 
-            			e.getPlayer().getVars().saveVarBit(e.getObject().getDefinitions().varpBit, (attackStyle == 0 ? 2 : 1));
-                        e.getPlayer().getPackets().sendObjectAnimation(e.getObject(), new Animation(16432));
+            			e.getPlayer().getVars().saveVarBit(e.getObj().getDefinitions().varpBit, (attackStyle == 0 ? 2 : 1));
+                        e.getPlayer().getPackets().sendObjectAnimation(e.getObj(), new Animation(16432));
             		}
             		case 2 -> {
-                        EasterChick npc = new EasterChick(e.getPlayer(), npcId, World.getFreeTile(Tile.of(e.getObject().getX(), e.getObject().getY(), e.getObject().getPlane()), 2), e.getObject().getDefinitions().varpBit);
+                        EasterChick npc = new EasterChick(e.getPlayer(), npcId, World.getFreeTile(Tile.of(e.getObj().getX(), e.getObj().getY(), e.getObj().getPlane()), 2), e.getObj().getDefinitions().varpBit);
                         e.getPlayer().startConversation(new Dialogue().addItem(Easter2022.PERMANENT_EGGSTERMINATOR, "You shatter the egg with the Eggsterminator. A " + npc.getName().toLowerCase() + " appears."));
                         e.getPlayer().sendMessage("You shatter the egg with the Eggsterminator. A " + npc.getName().toLowerCase() + " appears.");
                         if (e.getPlayer().getI(Easter2022.STAGE_KEY+"CurrentHunt", 0) != EggHunt.getHunt())

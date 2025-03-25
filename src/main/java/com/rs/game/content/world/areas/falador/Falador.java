@@ -70,12 +70,12 @@ public class Falador {
 	public static ObjectClickHandler handleCrumblingWallShortcut = new ObjectClickHandler(new Object[] { 11844 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 5))
 			return;
-		AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObject().getX() ? 2 : -2, 0, 0));
+		AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObj().getX() ? 2 : -2, 0, 0));
 	});
 
 	public static ObjectClickHandler handleCabbagePatchStile = new ObjectClickHandler(new Object[] { 7527 }, e -> {
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 		if(!obj.getTile().matches(Tile.of(3063, 3282, 0)))
 			return;
 		if(p.getY() > obj.getY())
@@ -86,7 +86,7 @@ public class Falador {
 
 	public static ObjectClickHandler handleCowFieldStile = new ObjectClickHandler(new Object[] { 7527 }, e -> {
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 		if(!obj.getTile().matches(Tile.of(3043, 3305, 0)))
 			return;
 		if(p.getX() > obj.getX())
@@ -98,9 +98,9 @@ public class Falador {
 	//falador
 	public static ObjectClickHandler handlefaladorcastlestairs = new ObjectClickHandler(new Object[] { 11736, 11737 }, e -> {
 		if (e.getObjectId() == 11736)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? 0 : e.getObject().getRotation() == 0 ? -0 : 0, e.getObject().getRotation() == 3 ? -0 : e.getObject().getRotation() == 0 ? 4 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? 0 : e.getObj().getRotation() == 0 ? -0 : 0, e.getObj().getRotation() == 3 ? -0 : e.getObj().getRotation() == 0 ? 4 : 0, 1));
 		else if (e.getObjectId() == 11737)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? -0 : e.getObject().getRotation() == 0 ? -0 : 0, e.getObject().getRotation() == 3 ? 0 : e.getObject().getRotation() == 0 ? -4 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? -0 : e.getObj().getRotation() == 0 ? -0 : 0, e.getObj().getRotation() == 3 ? 0 : e.getObj().getRotation() == 0 ? -4 : 0, -1));
 	});
 
 	public static ObjectClickHandler handleArtisansWorkshopTunnelExit = new ObjectClickHandler(new Object[] { 29391, 29392 }, e -> {
@@ -119,7 +119,7 @@ public class Falador {
 
 	public static ObjectClickHandler handGiantMoleEntrance = new ObjectClickHandler(new Object[] { 12202 }, e -> {
 		Player player = e.getPlayer();
-		GameObject object = e.getObject();
+		GameObject object = e.getObj();
 
 		if (!player.getInventory().containsItem(952, 1)) {
 			player.sendMessage("You need a spade to dig this.");

@@ -123,9 +123,9 @@ public class ErnestTheChicken extends QuestOutline {
 
 	public static ObjectClickHandler handleManorFrontDoor = new ObjectClickHandler(new Object[] { 47424, 47421 }, e -> {
 		Player p = e.getPlayer();
-		if(p.getY() <= e.getObject().getY())
+		if(p.getY() <= e.getObj().getY())
 			if(p.getBool("EverEnteredDraynorManor")) {
-				handleDoubleDoor(p, e.getObject());
+				handleDoubleDoor(p, e.getObj());
 				p.sendMessage("The doors slam shut behind you.");
 			} else
 				p.startConversation(new Conversation(p) {
@@ -138,7 +138,7 @@ public class ErnestTheChicken extends QuestOutline {
 								option("Yes.", new Dialogue()
 										.addNext(()->{
 											p.set("EverEnteredDraynorManor", true);
-											handleDoubleDoor(p, e.getObject());
+											handleDoubleDoor(p, e.getObj());
 											p.sendMessage("The doors slam shut behind you.");
 										}));
 								option("No.", new Dialogue());
@@ -236,8 +236,8 @@ public class ErnestTheChicken extends QuestOutline {
 	});
 
 	public static ObjectClickHandler handleRubberTubeDoor = new ObjectClickHandler(new Object[] { 131 }, e -> {
-		if(e.getPlayer().getInventory().containsItem(GRIMY_KEY) || e.getPlayer().getY() <= e.getObject().getY())
-			handleDoor(e.getPlayer(), e.getObject());
+		if(e.getPlayer().getInventory().containsItem(GRIMY_KEY) || e.getPlayer().getY() <= e.getObj().getY())
+			handleDoor(e.getPlayer(), e.getObj());
 		else
 			e.getPlayer().startConversation(new Conversation(e.getPlayer()) {{
 				addPlayer(HeadE.SKEPTICAL_THINKING, "It appears to need a key");
@@ -254,7 +254,7 @@ public class ErnestTheChicken extends QuestOutline {
 	});
 
 	public static ObjectClickHandler handleDraynorManorLadders = new ObjectClickHandler(new Object[] { 47574, 47575, 133, 32015 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(obj.getTile().matches(Tile.of(3105, 3363, 2)))//To 2nd floor from professor
 			e.getPlayer().useLadder(Tile.of(3105, 3364, 1));
 		if(obj.getTile().matches(Tile.of(3105, 3363, 1)))//to 3rd floor to professor

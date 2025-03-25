@@ -69,7 +69,7 @@ public class CropCircles {
         if (!e.isAtObject())
             return;
         WorldTasks.schedule(10, () -> {
-            e.getPlayer().getControllerManager().startController(new PuroPuroController(e.getObject().getTile()));
+            e.getPlayer().getControllerManager().startController(new PuroPuroController(e.getObj().getTile()));
             if (e.getObjectId() == 24988) {
                 e.getPlayer().addEffect(Effect.FARMERS_AFFINITY, 3000);
                 e.getPlayer().sendMessage("You feel the magic of the crop circle grant you a Farmer's affinity.");

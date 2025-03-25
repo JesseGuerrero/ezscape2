@@ -42,7 +42,7 @@ public class ReflectionCheckResponseHandler implements PacketHandler<Player, Ref
 			check.decode(packet.getData());
 		
 		for (Player staff : World.getPlayers()) {
-			if (staff == null || !staff.hasStarted() || staff.hasFinished() || !staff.hasRights(Rights.ADMIN))
+			if (!staff.hasStarted() || staff.hasFinished() || !staff.hasRights(Rights.ADMIN))
 				continue;
 			ArrayList<String> lines = new ArrayList<>();
 			

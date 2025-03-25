@@ -517,7 +517,7 @@ public class FarmPatch {
 		FarmPatch patch = e.getPlayer().getPatch(loc);
 		if (patch == null)
 			patch = new FarmPatch(loc);
-		patch.handleClick(e.getPlayer(), e.getObject(), e.getOption(), e.getOpNum());
+		patch.handleClick(e.getPlayer(), e.getObj(), e.getOption(), e.getOpNum());
 		e.getPlayer().putPatch(patch);
 	});
 

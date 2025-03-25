@@ -7,8 +7,8 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 public class Ooglog {
 
     public static ObjectClickHandler rockPassage = new ObjectClickHandler(new Object[] { 29099 }, e -> {
-        if (e.getPlayer().getY() > e.getObject().getY()) e.getPlayer().tele(e.getObject().getTile().transform(1, -1, 0));
-        else e.getPlayer().tele(e.getObject().getTile().transform(1, 1, 0));
+        if (e.getPlayer().getY() > e.getObj().getY()) e.getPlayer().tele(e.getObj().getTile().transform(1, -1, 0));
+        else e.getPlayer().tele(e.getObj().getTile().transform(1, 1, 0));
     });
 
 }

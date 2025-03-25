@@ -43,7 +43,7 @@ public class CrystalChest {
 
 
 	public static ItemOnObjectHandler handleKeyUse = new ItemOnObjectHandler(new Object[] { 172 }, new Object[] { 989 }, e -> openChest(e.getPlayer(), e.getObject()));
-	public static ObjectClickHandler handleChest = new ObjectClickHandler(new Object[] { 172 }, e -> openChest(e.getPlayer(), e.getObject()));
+	public static ObjectClickHandler handleChest = new ObjectClickHandler(new Object[] { 172 }, e -> openChest(e.getPlayer(), e.getObj()));
 
 	private static void openChest(Player player, GameObject object) {
 		if (player.getInventory().containsItem(989)) {

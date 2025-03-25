@@ -32,10 +32,10 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 public class KuradalsDungeon {
 
 	public static ObjectClickHandler handleBarriers = new ObjectClickHandler(new Object[] { 47236 }, e -> {
-		if (e.getObject().getRotation() == 2)
-			e.getPlayer().walkOneStep(e.getPlayer().getX() > e.getObject().getX() ? -1 : 1, 0, false);
+		if (e.getObj().getRotation() == 2)
+			e.getPlayer().walkOneStep(e.getPlayer().getX() > e.getObj().getX() ? -1 : 1, 0, false);
 		else
-			e.getPlayer().walkOneStep(0, e.getPlayer().getY() == e.getObject().getY() ? -1 : 1, false);
+			e.getPlayer().walkOneStep(0, e.getPlayer().getY() == e.getObj().getY() ? -1 : 1, false);
 	});
 
 	public static ObjectClickHandler handleWallRunShortcut = new ObjectClickHandler(new Object[] { 47237 }, e -> {

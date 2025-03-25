@@ -26,9 +26,9 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 @PluginEventHandler
 public class TreeGnomeStronghold {
 	public static ObjectClickHandler handleGnomeSpiralStairsUp = new ObjectClickHandler(new Object[] { 69505 }, e -> {
-		GameObject oppObj = e.getObject();
+		GameObject oppObj = e.getObj();
 		for(GameObject obj : ChunkManager.getChunk(e.getPlayer().transform(0, 0, 1).getChunkId()).getBaseObjects())
-			if(obj.getId()== 69504 && obj.getTile().withinDistance(e.getObject().getTile().transform(0, 0, 1), 3))
+			if(obj.getId()== 69504 && obj.getTile().withinDistance(e.getObj().getTile().transform(0, 0, 1), 3))
 				oppObj = obj;
 		if(oppObj.getTile().matches(Tile.of(2444, 3415, 0))) {
 			e.getPlayer().useStairs(Tile.of(2445, 3416, 1));
@@ -53,9 +53,9 @@ public class TreeGnomeStronghold {
 	});
 	
 	public static ObjectClickHandler handleGnomeSpiralStairsDown = new ObjectClickHandler(new Object[] { 69504 }, e -> {
-		GameObject oppObj = e.getObject();
+		GameObject oppObj = e.getObj();
 		for(GameObject obj : ChunkManager.getChunk(e.getPlayer().transform(0, 0, -1).getChunkId()).getBaseObjects())
-			if(obj.getId()== 69505 && obj.getTile().withinDistance(e.getObject().getTile().transform(0, 0, -1), 3))
+			if(obj.getId()== 69505 && obj.getTile().withinDistance(e.getObj().getTile().transform(0, 0, -1), 3))
 				oppObj = obj;
 		if(oppObj.getTile().matches(Tile.of(2445, 3415, 1))) {
 			e.getPlayer().useStairs(Tile.of(2446, 3416, 0));
@@ -88,9 +88,9 @@ public class TreeGnomeStronghold {
 	});
 
 	public static ObjectClickHandler handleDoubleDoor = new ObjectClickHandler(new Object[] { 69197, 69198 }, e -> {
-		Doors.handleInPlaceDoubleDoor(e.getPlayer(), e.getObject());
+		Doors.handleInPlaceDoubleDoor(e.getPlayer(), e.getObj());
 		e.getPlayer().resetWalkSteps();
-		e.getPlayer().addWalkSteps(e.getObject().getX(), e.getPlayer().getY() <= 3491 ? e.getPlayer().getY() + 2 : e.getPlayer().getY() - 2, -1, false);
+		e.getPlayer().addWalkSteps(e.getObj().getX(), e.getPlayer().getY() <= 3491 ? e.getPlayer().getY() + 2 : e.getPlayer().getY() - 2, -1, false);
 	});
 
 	public static ObjectClickHandler handleBrimstailsEntrance = new ObjectClickHandler(new Object[]{17209}, e -> {
@@ -102,9 +102,9 @@ public class TreeGnomeStronghold {
 	});
 
 	public static ObjectClickHandler handleGateEntrance = new ObjectClickHandler(new Object[] { 68983 }, e -> {
-		Doors.handleInPlaceSingleDoor(e.getPlayer(), e.getObject());
+		Doors.handleInPlaceSingleDoor(e.getPlayer(), e.getObj());
 		e.getPlayer().resetWalkSteps();
-		e.getPlayer().addWalkSteps(2461, e.getPlayer().getY() > e.getObject().getY() ? e.getObject().getY() - 1 : e.getObject().getY() + 3, -1, false);
+		e.getPlayer().addWalkSteps(2461, e.getPlayer().getY() > e.getObj().getY() ? e.getObj().getY() - 1 : e.getObj().getY() + 3, -1, false);
 	});
 
 }

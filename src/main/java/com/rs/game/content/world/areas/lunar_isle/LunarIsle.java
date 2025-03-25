@@ -46,7 +46,7 @@ public class LunarIsle {
     });
 
     public static ObjectClickHandler handleLaddersUp = new ObjectClickHandler(new Object[] { 16959, 16960 }, e -> {
-        switch (e.getObject().getRotation()) {
+        switch (e.getObj().getRotation()) {
             case 0 -> e.getPlayer().useStairs(828, e.getPlayer().transform(2, 0, 1), 1, 1);
             case 1 -> e.getPlayer().useStairs(828, e.getPlayer().transform(0, -2, 1), 1, 1);
             case 2, 3 -> e.getPlayer().useStairs(828, e.getPlayer().transform(0, 2, 1), 1, 1);
@@ -54,7 +54,7 @@ public class LunarIsle {
     });
 
     public static ObjectClickHandler handleLaddersDown = new ObjectClickHandler(new Object[] { 16961, 16962 }, e -> {
-        switch (e.getObject().getRotation()) {
+        switch (e.getObj().getRotation()) {
             case 0 -> e.getPlayer().useStairs(827, e.getPlayer().transform(-2, 0, -1), 1, 1);
             case 1 -> e.getPlayer().useStairs(827, e.getPlayer().transform(0, 2, -1), 1, 1);
             case 2, 3 -> e.getPlayer().useStairs(827, e.getPlayer().transform(0, -2, -1), 1, 1);

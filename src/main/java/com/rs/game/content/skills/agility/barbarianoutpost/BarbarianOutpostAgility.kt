@@ -22,7 +22,6 @@ import com.rs.game.World
 import com.rs.game.model.entity.async.schedule
 import com.rs.engine.pathfinder.RouteEvent
 import com.rs.game.content.skills.agility.Agility
-import com.rs.game.content.skills.agility.wilderness.Obstacle
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.game.tasks.Task
@@ -47,19 +46,19 @@ fun initAdvancedCourse(player: Player) {
 @ServerStartupEvent
 fun mapBarbarianOutpostAgility() {
     onObjectClick(32015) { e ->
-        if (e.getObject().tile.matches(Tile.of(2547, 9951, 0))) e.player.useLadder(Tile.of(2546, 3551, 0))
+        if (e.getObj().tile.matches(Tile.of(2547, 9951, 0))) e.player.useLadder(Tile.of(2546, 3551, 0))
     }
 
     onObjectClick(20210) { e ->
         if (!Agility.hasLevel(e.player, 35)) return@onObjectClick
-        e.player.forceMove(Tile.of(e.getObject().x, if (e.player.y >= 3561) 3558 else 3561, e.getObject().plane), 10580, 10, 60) {
+        e.player.forceMove(Tile.of(e.getObj().x, if (e.player.y >= 3561) 3558 else 3561, e.getObj().plane), 10580, 10, 60) {
             e.player.skills.addXp(Constants.AGILITY, 1.0 / 20.0)
         }
     }
 
     onObjectClick(43526, checkDistance = false) { e ->
         Agility.initStagesIfNotAlready(e.player, Agility.BARBARIAN_OUTPOST_COURSE, NormalObstacle.entries.size)
-        val targetTile = if (e.getObject().x == 2552) {
+        val targetTile = if (e.getObj().x == 2552) {
             Tile.of(2552, 3554, 0)
         } else {
             Tile.of(2551, 3554, 0)
@@ -68,8 +67,8 @@ fun mapBarbarianOutpostAgility() {
             if (!Agility.hasLevel(e.player, 35)) return@RouteEvent
             e.player.lock()
             e.player.resetWalkSteps()
-            World.sendObjectAnimation(e.getObject(), Animation(497))
-            e.player.forceMove(Tile.of(e.getObject().x, 3549, 0), 751, 20, 75) {
+            World.sendObjectAnimation(e.getObj(), Animation(497))
+            e.player.forceMove(Tile.of(e.getObj().x, 3549, 0), 751, 20, 75) {
                 e.player.sendMessage("You skillfully swing across.", true)
                 e.player.skills.addXp(Constants.AGILITY, 28.0)
                 Agility.setStageProgress(e.player, Agility.BARBARIAN_OUTPOST_COURSE, NormalObstacle.ROPE_SWING.ordinal, true)
@@ -82,7 +81,7 @@ fun mapBarbarianOutpostAgility() {
         e.player.setRouteEvent(RouteEvent(Tile.of(2551, 3546, 0)) {
             if (!Agility.hasLevel(e.player, 35)) return@RouteEvent
             e.player.sendMessage("You walk carefully across the slippery log...", true)
-            e.player.forceMove(Tile.of(2541, e.getObject().y, e.getObject().plane), 9908, 20, 12 * 30) {
+            e.player.forceMove(Tile.of(2541, e.getObj().y, e.getObj().plane), 9908, 20, 12 * 30) {
                 e.player.anim(-1)
                 e.player.skills.addXp(Constants.AGILITY, 20.7)
                 e.player.sendMessage("... and make it safely to the other side.", true)
@@ -96,18 +95,18 @@ fun mapBarbarianOutpostAgility() {
         if (!Agility.hasLevel(e.player, 35)) return@onObjectClick
         e.player.sendMessage("You climb the netting...", true)
         e.player.skills.addXp(Constants.AGILITY, 10.2)
-        e.player.useStairs(828, Tile.of((e.getObject().x - 1), e.player.y, 1), 1, 2)
+        e.player.useStairs(828, Tile.of((e.getObj().x - 1), e.player.y, 1), 1, 2)
         Agility.setStageProgress(e.player, Agility.BARBARIAN_OUTPOST_COURSE, NormalObstacle.NETTING.ordinal, true)
     }
 
     onObjectClick(2302) { e ->
         Agility.initStagesIfNotAlready(e.player, Agility.BARBARIAN_OUTPOST_COURSE, NormalObstacle.entries.size)
         if (!Agility.hasLevel(e.player, 35)) return@onObjectClick
-        val toTile = Tile.of(2532, e.getObject().y, e.getObject().plane)
+        val toTile = Tile.of(2532, e.getObj().y, e.getObj().plane)
         e.player.sendMessage("You put your foot on the ledge and try to edge across...", true)
         e.player.lock()
         e.player.schedule {
-            e.player.faceObject(e.getObject())
+            e.player.faceObject(e.getObj())
             wait(1)
 
             e.player.anim(753)
@@ -130,14 +129,14 @@ fun mapBarbarianOutpostAgility() {
     onObjectClick(1948) { e ->
         Agility.initStagesIfNotAlready(e.player, Agility.BARBARIAN_OUTPOST_COURSE, NormalObstacle.entries.size)
         if (!Agility.hasLevel(e.player, 35)) return@onObjectClick
-        if (e.player.x >= e.getObject().x) {
+        if (e.player.x >= e.getObj().x) {
             e.player.sendMessage("You cannot climb that from this side.")
             return@onObjectClick
         }
         e.player.lock()
         e.player.sendMessage("You climb the low wall...", true)
-        e.player.forceMove(Tile.of((e.getObject().x + 1), e.getObject().y,
-            e.getObject().plane
+        e.player.forceMove(Tile.of((e.getObj().x + 1), e.getObj().y,
+            e.getObj().plane
         ), 4853, 30, 60) {
             e.player.skills.addXp(Constants.AGILITY, 16.2)
             val wallOne = Agility.getStageProgress(e.player, Agility.BARBARIAN_OUTPOST_COURSE, NormalObstacle.WALL_ONE.ordinal)
@@ -173,7 +172,7 @@ fun mapBarbarianOutpostAgility() {
 
     onObjectClick(43597, checkDistance = false) { e ->
         if (!Agility.hasLevel(e.player, 90)) return@onObjectClick
-        e.player.setRouteEvent(RouteEvent(e.getObject().tile) {
+        e.player.setRouteEvent(RouteEvent(e.getObj().tile) {
             e.player.lock()
             e.player.schedule {
                 e.player.faceDir(Direction.WEST)
@@ -197,7 +196,7 @@ fun mapBarbarianOutpostAgility() {
             e.player.schedule {
                 e.player.faceTile(Tile.of(2531, 3554, 3))
                 wait(1)
-                World.sendObjectAnimation(e.getObject(), Animation(11819))
+                World.sendObjectAnimation(e.getObj(), Animation(11819))
                 e.player.forceMove(Tile.of(2532, 3553, 3), 4189, 15, 90) {
                     e.player.skills.addXp(Constants.AGILITY, 15.0)
                     Agility.setStageProgress(e.player, Agility.BARBARIAN_OUTPOST_COURSE, AdvancedObstacle.SPRING_DEVICE.ordinal, true)

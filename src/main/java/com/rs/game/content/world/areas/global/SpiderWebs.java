@@ -14,10 +14,10 @@ import com.rs.utils.Ticks;
 public class SpiderWebs {
     public static ObjectClickHandler handleSpiderwebs = new ObjectClickHandler(new Object[] { "Spiderweb", "Web" }, e -> {
         Player player = e.getPlayer();
-        GameObject object = e.getObject();
+        GameObject object = e.getObj();
         ObjectDefinitions objectDef = object.getDefinitions();
 
-        switch (e.getObject().getDefinitions().getName()) {
+        switch (e.getObj().getDefinitions().getName()) {
             case "Spiderweb" -> {
                 if (object.getRotation() == 2) {
                     player.lock(2);

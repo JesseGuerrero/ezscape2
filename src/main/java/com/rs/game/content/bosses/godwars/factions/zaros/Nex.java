@@ -81,7 +81,7 @@ public final class Nex extends NPC {
 		}
 		e.getPlayer().setNextAnimation(new Animation(PlayerCombatKt.getWeaponAttackEmote(e.getPlayer().getEquipment().getWeaponId(), e.getPlayer().getCombatDefinitions().getAttackStyle())));
 		e.getPlayer().lock(2);
-		World.removeObject(e.getObject());
+		World.removeObject(e.getObj());
 	});
 
 	@Override

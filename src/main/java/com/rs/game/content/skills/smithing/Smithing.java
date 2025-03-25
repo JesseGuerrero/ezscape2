@@ -44,7 +44,7 @@ public class Smithing extends PlayerAction {
 
 	public static ObjectClickHandler smithAnvil = new ObjectClickHandler(new Object[] { "Anvil", "Kethsian anvil" }, e -> {
 		if (e.getOption().equals("Smith"))
-			ForgingInterfaceKt.openSmithingInterfaceForHighestBar(e.getPlayer(), e.getObject());
+			ForgingInterfaceKt.openSmithingInterfaceForHighestBar(e.getPlayer(), e.getObj());
 	});
 	
 	public enum Smithable {

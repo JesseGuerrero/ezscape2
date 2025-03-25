@@ -41,8 +41,8 @@ fun mapGangPlank() {
 fun mapShipRocks() {
     onObjectClick(5269) { e ->
         var endTile = Tile.of(3604,3550,0)
-        e.player.walkToAndExecute(e.`object`) {
-            when(e.`object`.tile) {
+        e.player.walkToAndExecute(e.obj) {
+            when(e.obj.tile) {
                 Tile.of(3604,3550,0) -> endTile = Tile.of(3602,3550,0)
                 Tile.of(3602,3550,0) -> endTile = Tile.of(3604,3550,0)
 

@@ -15,7 +15,7 @@ import com.rs.plugin.kts.onObjectClick
 
 @ServerStartupEvent
 fun mapFurnaces() {
-    onObjectClick("Furnace", "Small furnace", "Clay forge", "Lava Furnace") { e -> use(e.player, e.`object`) }
+    onObjectClick("Furnace", "Small furnace", "Clay forge", "Lava Furnace") { e -> use(e.player, e.obj) }
     onItemOnObject(arrayOf("Furnace", "Small furnace", "Clay forge", "Lava Furnace"), arrayOf(GOLD_BAR, SILVER_BAR)) { e -> useItem(e.player, e.`object`, e.item) }
 }
 

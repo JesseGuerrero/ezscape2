@@ -43,7 +43,7 @@ public class MuddyChest {
 			e.getPlayer().setNextAnimation(new Animation(536));
 			e.getPlayer().sendMessage("You unlock the chest with your key.");
 			e.getPlayer().getTasks().schedule(1, () -> {
-				GameObject openedChest = new GameObject(e.getObject().getId() + 1, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getX(), e.getObject().getY(), e.getObject().getPlane());
+				GameObject openedChest = new GameObject(e.getObj().getId() + 1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getX(), e.getObj().getY(), e.getObj().getPlane());
 				World.spawnObjectTemporary(openedChest, 1);
 				e.getPlayer().incrementCount("Muddy chests opened");
 				e.getPlayer().sendMessage("You find some treasure in the chest!");

@@ -72,13 +72,13 @@ public class SeersVillage {
 
 	public static ObjectClickHandler grubersWoodFence = new ObjectClickHandler(new Object[] { 51 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		p.forceMove(p.getX() < obj.getX() ? Tile.of(2662, 3500, 0) : Tile.of(2661, 3500, 0), 3844, 25, 75);
 	});
 
 	public static ObjectClickHandler grubersShedDoor = new ObjectClickHandler(new Object[] { 99 }, e -> {
 		if(e.getPlayer().getInventory().containsItem(85) || e.getPlayer().getY() <= 3496) {
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		e.getPlayer().sendMessage("It is locked...");
@@ -227,7 +227,7 @@ public class SeersVillage {
 	public static ObjectClickHandler handleCoalTruckLogBalance = new ObjectClickHandler(new Object[] { 2296 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 20))
 			return;
-		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(e.getObject().getRotation() == 1 ? -5 : 5, 0, 0), 4);
+		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(e.getObj().getRotation() == 1 ? -5 : 5, 0, 0), 4);
 	});
 
 	public static ObjectClickHandler handleSinclairMansionLogBalance = new ObjectClickHandler(new Object[] { 9322, 9324 }, e -> {

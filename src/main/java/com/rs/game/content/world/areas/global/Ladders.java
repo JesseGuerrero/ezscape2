@@ -13,7 +13,7 @@ public class Ladders {
 	public static ObjectClickHandler world2UP = new ObjectClickHandler(new Object[] { 11739 }, e -> e.getPlayer().useStairs(828, e.getPlayer().transform(0, -2, 1)));
 	public static ObjectClickHandler world2DOWN = new ObjectClickHandler(new Object[] { 11741 }, e -> e.getPlayer().useStairs(828, e.getPlayer().transform(0, 2, -1)));
 
-	public static ObjectClickHandler ladders = new ObjectClickHandler(new Object[] { "Ladder", "Bamboo ladder" }, e -> handleLadder(e.getPlayer(), e.getObject(), e.getOption()));
+	public static ObjectClickHandler ladders = new ObjectClickHandler(new Object[] { "Ladder", "Bamboo ladder" }, e -> handleLadder(e.getPlayer(), e.getObj(), e.getOption()));
 
 	private static void handleLadder(Player player, GameObject object, String option) {
 		switch (option.toLowerCase()) {

@@ -444,7 +444,7 @@ public class RunecraftingAltar {
 	});
 
 	public static ObjectClickHandler handleExitPortals = new ObjectClickHandler(new Object[] { 2465, 2466, 2467, 2468, 2469, 2470, 2471, 2474, 2473, 2472, 2475, 2477 }, e -> {
-		if (e.getObject().getDefinitions().getName().equals("Portal")) {
+		if (e.getObj().getDefinitions().getName().equals("Portal")) {
 			Ruins ruins = null;
 			for (Ruins altars : Ruins.values())
 				if (e.getObjectId() == altars.getPortal()) {

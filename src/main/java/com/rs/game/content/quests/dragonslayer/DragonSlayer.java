@@ -266,7 +266,7 @@ public class DragonSlayer extends QuestOutline {
 
     public static ObjectClickHandler handleMagicDoor = new ObjectClickHandler(new Object[]{25115}, e -> {
         Player p = e.getPlayer();
-        GameObject obj = e.getObject();
+        GameObject obj = e.getObj();
         GenericAttribMap attr = p.getQuestManager().getAttribs(Quest.DRAGON_SLAYER);
 
         if (p.getX() > obj.getX()) {
@@ -320,7 +320,7 @@ public class DragonSlayer extends QuestOutline {
 
     public static ObjectClickHandler handleMagicChest = new ObjectClickHandler(new Object[]{MAP_CHEST2}, e -> {
         Player p = e.getPlayer();
-        GameObject obj = e.getObject();
+        GameObject obj = e.getObj();
         if (p.getQuestManager().getStage(Quest.DRAGON_SLAYER) != PREPARE_FOR_CRANDOR)
             return;
         if (p.getInventory().containsItem(MAP_PART3, 1)) {

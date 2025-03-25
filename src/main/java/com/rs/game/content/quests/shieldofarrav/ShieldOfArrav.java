@@ -338,7 +338,7 @@ public class ShieldOfArrav extends QuestOutline {
 
     public static ObjectClickHandler handleBookShelfClick = new ObjectClickHandler(new Object[]{2402, 6916, 15542, 15543, 15544, 23091, 23092, 23102, 24281, 24282, 31207, 35763}, e -> {
     	 Player p = e.getPlayer();
-         if (e.getObject().getId() == 2402)
+         if (e.getObj().getId() == 2402)
              if (!p.getInventory().containsItem(757)) {
                  p.getInventory().addItem(757, 1);
                  p.getPackets().sendGameMessage("You found the book, \"Shield Of Arrav\".");
@@ -357,37 +357,37 @@ public class ShieldOfArrav extends QuestOutline {
 	public static ItemClickHandler handleClickOnIntelReport = new ItemClickHandler(new Object[] { 761 }, new String[] { "Read" }, e -> e.getPlayer().sendMessage("It seems to have intel on the Phoenix gang"));
 
     public static ObjectClickHandler handlePhoenixGangDoor = new ObjectClickHandler(new Object[]{2397}, e -> {
-    	if (e.getObject().getTile().matches(Tile.of(3247, 9779, 0))) {
+    	if (e.getObj().getTile().matches(Tile.of(3247, 9779, 0))) {
             if (e.getOption().equalsIgnoreCase("open")) {
-                if (!ShieldOfArrav.isStageInPlayerSave(e.getPlayer(), ShieldOfArrav.JOINED_PHOENIX_STAGE) && e.getPlayer().getY() > e.getObject().getY()) {
+                if (!ShieldOfArrav.isStageInPlayerSave(e.getPlayer(), ShieldOfArrav.JOINED_PHOENIX_STAGE) && e.getPlayer().getY() > e.getObj().getY()) {
                     e.getPlayer().startConversation(new Dialogue().addNPC(644, HeadE.FRUSTRATED, "Hey! You can't go in there. Only authorised personnel of" +
                             " the VTAM Corporation are allowed beyond this point."));
                     return;
                 }
-                Doors.handleDoor(e.getPlayer(), e.getObject());
+                Doors.handleDoor(e.getPlayer(), e.getObj());
             }
             return;
         }
-        Doors.handleDoor(e.getPlayer(), e.getObject());
+        Doors.handleDoor(e.getPlayer(), e.getObj());
     });
 
     public static ObjectClickHandler handleBlackArmGangDoor = new ObjectClickHandler(new Object[]{2399}, e -> {
-    	 if (e.getObject().getTile().matches(Tile.of(3185, 3388, 0))) {
+    	 if (e.getObj().getTile().matches(Tile.of(3185, 3388, 0))) {
              if (e.getOption().equalsIgnoreCase("open")) {
-                 if (!ShieldOfArrav.isStageInPlayerSave(e.getPlayer(), ShieldOfArrav.JOINED_BLACK_ARM_STAGE) && e.getPlayer().getY() < e.getObject().getY()) {
+                 if (!ShieldOfArrav.isStageInPlayerSave(e.getPlayer(), ShieldOfArrav.JOINED_BLACK_ARM_STAGE) && e.getPlayer().getY() < e.getObj().getY()) {
                      e.getPlayer().sendMessage("The door seems to be locked from the inside.");
                      return;
                  }
-                 Doors.handleDoor(e.getPlayer(), e.getObject());
+                 Doors.handleDoor(e.getPlayer(), e.getObj());
              }
              return;
          }
-         Doors.handleDoor(e.getPlayer(), e.getObject());
+         Doors.handleDoor(e.getPlayer(), e.getObj());
     });
 
     public static ObjectClickHandler handleShieldChest = new ObjectClickHandler(new Object[]{2403, 2404}, e -> {
     	Player p = e.getPlayer();
-        GameObject obj = e.getObject();
+        GameObject obj = e.getObj();
         if (!obj.getTile().matches(Tile.of(3235, 9761, 0)))
             return;
         if (e.getOption().equalsIgnoreCase("open")) {
@@ -415,7 +415,7 @@ public class ShieldOfArrav extends QuestOutline {
 
     public static ObjectClickHandler handleBlackArmCupboard = new ObjectClickHandler(new Object[]{2400, 2401}, e -> {
     	 Player p = e.getPlayer();
-         GameObject obj = e.getObject();
+         GameObject obj = e.getObj();
          if (!obj.getTile().matches(Tile.of(3189, 3385, 1)))
              return;
          if (e.getOption().equalsIgnoreCase("open")) {
@@ -449,11 +449,11 @@ public class ShieldOfArrav extends QuestOutline {
     });
 
     public static ObjectClickHandler handleWeaponsStoreDoor = new ObjectClickHandler(new Object[]{2398}, e -> {
-    	GameObject obj = e.getObject();
+    	GameObject obj = e.getObj();
         if (!obj.getTile().matches(Tile.of(3251, 3386, 0)))
             return;
         if (e.getPlayer().getInventory().containsItem(759, 1) || e.getPlayer().getY() < obj.getY())
-            Doors.handleDoor(e.getPlayer(), e.getObject());
+            Doors.handleDoor(e.getPlayer(), e.getObj());
         else
             e.getPlayer().sendMessage("The door appears to need a key");
     });

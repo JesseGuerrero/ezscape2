@@ -21,7 +21,7 @@ public class MelzarsMaze {
 	public final static int FRONT_DOOR = 2595;
 
 	public static ObjectClickHandler handleMelzarsMazeLadders = new ObjectClickHandler(new Object[] { 1754, 32015, 25038, 25214, 1752, 2605 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(obj.getTile().matches(Tile.of(2928, 3258, 0)) || obj.getTile().matches(Tile.of(2925, 3258, 0)) || obj.getTile().matches(Tile.of(2930, 3258, 1)) || obj.getTile().matches(Tile.of(2937, 3247, 1)))
 			return;
 		if(obj.getTile().matches(Tile.of(2934, 3243, 1)) || obj.getTile().matches(Tile.of(2929, 3245, 1)) || obj.getTile().matches(Tile.of(2940, 3240, 1)) || obj.getTile().matches(Tile.of(2937, 3240, 0)))
@@ -47,7 +47,7 @@ public class MelzarsMaze {
 
 	public static ObjectClickHandler handleFrontDoor = new ObjectClickHandler(new Object[] { FRONT_DOOR }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(p.getInventory().containsItem(new Item(MELZAR_MAZE_KEY, 1)))
 			handleDoor(p, obj);
 		else
@@ -61,7 +61,7 @@ public class MelzarsMaze {
 
 	public static ObjectClickHandler handleExitDoors = new ObjectClickHandler(new Object[] { 2602, 32968 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(p.getX() >= obj.getX())
 			if(p.getX() >= obj.getX()) {
 				handleDoor(p, obj);
@@ -77,7 +77,7 @@ public class MelzarsMaze {
 
 	public static ObjectClickHandler handleColoredDoors = new ObjectClickHandler(new Object[] { 2596,2597,2598,2599,2600,2601 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(obj.getId() == 2596)
 			if(p.getInventory().containsItem(RED_KEY)) {
 				handleDoor(p, obj);
@@ -136,7 +136,7 @@ public class MelzarsMaze {
 
 	public static ObjectClickHandler handleMapPieceChest = new ObjectClickHandler(new Object[] { 2603, 2604 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getOption().equalsIgnoreCase("open")) {
 			p.setNextAnimation(new Animation(536));
 			p.lock(2);

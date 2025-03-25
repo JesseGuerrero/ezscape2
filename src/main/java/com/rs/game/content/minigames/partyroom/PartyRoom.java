@@ -170,14 +170,14 @@ public class PartyRoom {
 		return item;
 	}
 
-	public static ObjectClickHandler handleLever = new ObjectClickHandler(false, new Object[] { 26194 }, e -> e.getPlayer().setRouteEvent(new RouteEvent(Tile.of(e.getObject().getTile()), () -> e.getPlayer().sendOptionDialogue(ops -> {
+	public static ObjectClickHandler handleLever = new ObjectClickHandler(false, new Object[] { 26194 }, e -> e.getPlayer().setRouteEvent(new RouteEvent(Tile.of(e.getObj().getTile()), () -> e.getPlayer().sendOptionDialogue(ops -> {
 ops.add("Balloon Bonanza (1000 coins).", () -> purchase(e.getPlayer(), true));
 ops.add("Nightly Dance (500 coins).", () -> purchase(e.getPlayer(), false));
 ops.add("No action.");
 }))));
 	
 	public static ObjectClickHandler handleBalloons = new ObjectClickHandler(new Object[] { 115, 116, 117, 118, 119, 120, 121, 122 }, e -> {
-		if (e.getObject() instanceof Balloon balloon) {
+		if (e.getObj() instanceof Balloon balloon) {
 			if (e.getPlayer().isIronMan()) {
 				e.getPlayer().sendMessage("You can't pop a party balloon as an ironman.");
 				if (balloon.getItem() != null)
@@ -188,8 +188,8 @@ ops.add("No action.");
 		} else {
 			e.getPlayer().setNextAnimation(new Animation(794));
 			e.getPlayer().lock();
-			World.removeObject(e.getObject());
-			final GameObject poppedBalloon = new GameObject(e.getObject().getId() + 8, ObjectType.SCENERY_INTERACT, e.getObject().getRotation(), e.getObject().getX(), e.getObject().getY(), e.getObject().getPlane());
+			World.removeObject(e.getObj());
+			final GameObject poppedBalloon = new GameObject(e.getObj().getId() + 8, ObjectType.SCENERY_INTERACT, e.getObj().getRotation(), e.getObj().getX(), e.getObj().getY(), e.getObj().getPlane());
 			World.spawnObject(poppedBalloon);
 			WorldTasks.schedule(new Task() {
 				@Override

@@ -235,7 +235,7 @@ public class FairyRings {
 			return;
 		}
 		if(e.getPlayer().isQuestComplete(Quest.FAIRY_TALE_I_GROWING_PAINS, "to use the fairy ring system.")) {
-			FairyRings.openRingInterface(e.getPlayer(), e.getObject().getTile(), e.getObjectId() == 12128);
+			FairyRings.openRingInterface(e.getPlayer(), e.getObj().getTile(), e.getObjectId() == 12128);
 			return;
 		}
 		e.getPlayer().startConversation(new Dialogue().addPlayer(HeadE.FRUSTRATED, "I don't know what's supposed to be happening here..."));

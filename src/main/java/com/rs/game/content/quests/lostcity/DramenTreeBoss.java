@@ -18,7 +18,7 @@ import static com.rs.game.content.quests.lostcity.LostCity.TREE_SPIRIT;
 public class DramenTreeBoss {
 
 	public static ObjectClickHandler handleDramenTree = new ObjectClickHandler(new Object[] { "Dramen tree" }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getPlayer().getQuestManager().getStage(Quest.LOST_CITY) == LostCity.CHOP_DRAMEN_TREE) {
 			if(!e.getPlayer().inCombat()) {
 				for (NPC npc : World.getNPCsInChunkRange(e.getPlayer().getChunkId(), 4))
@@ -31,8 +31,8 @@ public class DramenTreeBoss {
 				spirit.forceTalk("You must defeat me before touching the tree!");
 			}
 		}else if(e.getPlayer().isQuestComplete(Quest.LOST_CITY) || e.getPlayer().getQuestManager().getStage(Quest.LOST_CITY) >= LostCity.FIND_ZANARIS) {
-			if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-				e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.DRAMEN) {
+			if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+				e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.DRAMEN) {
 					@Override
 					public void fellTree() {
 					}

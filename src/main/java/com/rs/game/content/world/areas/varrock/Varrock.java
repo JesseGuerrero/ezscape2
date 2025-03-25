@@ -113,13 +113,13 @@ public class Varrock {
 			ShopsHandler.openShop(e.getPlayer(), "helmet_shop");
 	});
 
-	public static ObjectClickHandler varrockCenterStairs = new ObjectClickHandler(new Object[] { 24367 }, e -> e.getPlayer().useStairs(-1, Tile.of(e.getObject().getX(), 3476, 1), 1, 2));
+	public static ObjectClickHandler varrockCenterStairs = new ObjectClickHandler(new Object[] { 24367 }, e -> e.getPlayer().useStairs(-1, Tile.of(e.getObj().getX(), 3476, 1), 1, 2));
 
-	public static ObjectClickHandler blueMoonStairs = new ObjectClickHandler(new Object[] { 37117 }, e -> e.getPlayer().useStairs(-1, Tile.of(e.getObject().getX()-2, e.getPlayer().getY(), 0), 1, 2));
+	public static ObjectClickHandler blueMoonStairs = new ObjectClickHandler(new Object[] { 37117 }, e -> e.getPlayer().useStairs(-1, Tile.of(e.getObj().getX()-2, e.getPlayer().getY(), 0), 1, 2));
 
 	public static ObjectClickHandler handleVariousStaircases = new ObjectClickHandler(new Object[] { 24356 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(obj.getRotation() == 0)
 			p.useStairs(-1, Tile.of(p.getX(), obj.getY()+3, p.getPlane() + 1), 0, 1);
 		else if (obj.getRotation() == 1)
@@ -152,13 +152,13 @@ public class Varrock {
 		}
 		e.getPlayer().setNextAnimation(new Animation(PlayerCombatKt.getWeaponAttackEmote(e.getPlayer().getEquipment().getWeaponId(), e.getPlayer().getCombatDefinitions().getAttackStyle())));
 		e.getPlayer().lock(3);
-		World.sendObjectAnimation(e.getObject(), new Animation(6482));
+		World.sendObjectAnimation(e.getObj(), new Animation(6482));
 		e.getPlayer().getSkills().addXp(Constants.ATTACK, 5);
 	});
 
 	public static ObjectClickHandler handleVarrockSewerEntrance = new ObjectClickHandler(new Object[] { 882 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getOption().equalsIgnoreCase("Climb-Down"))
 			if(obj.getTile().matches(Tile.of(3237, 3458, 0)))
 				p.useStairs(833, Tile.of(3237, 9858, 0), 1, 2);
@@ -169,7 +169,7 @@ public class Varrock {
 	public static ObjectClickHandler handleRiverLumSteppingStones = new ObjectClickHandler(new Object[] { 9315 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 31))
 			return;
-		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(e.getObject().getRotation() == 1 ? -5 : 5, 0, 0), 4);
+		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(e.getObj().getRotation() == 1 ? -5 : 5, 0, 0), 4);
 	});
 
 	public static ObjectClickHandler handleGrandExchangeShortcut = new ObjectClickHandler(new Object[] { 9311, 9312 }, e -> {
@@ -185,7 +185,7 @@ public class Varrock {
 				e.getPlayer().lock();
 				ticks++;
 				if (ticks == 1) {
-					e.getPlayer().forceMove(e.getObject().getTile(), 2589, 5, 35, false);
+					e.getPlayer().forceMove(e.getObj().getTile(), 2589, 5, 35, false);
 				} else if (ticks == 3) {
 					e.getPlayer().setNextAnimation(new Animation(2590));
 				} else if (ticks == 5) {
@@ -203,38 +203,38 @@ public class Varrock {
 	public static ObjectClickHandler handleFenceShortcut = new ObjectClickHandler(new Object[] { 9300 }, e -> {
 		if (!e.isAtObject())
 			return;
-		switch (e.getObject().getRotation()) {
-		case 0 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObject().getX() ? -1 : 1, 0, 0), 839);
-		case 1 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObject().getY() ? -1 : 1, 0), 839);
-		case 2 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObject().getX() ? -1 : 1, 0, 0), 839);
-		case 3 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObject().getY() ? -1 : 1, 0), 839);
+		switch (e.getObj().getRotation()) {
+		case 0 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObj().getX() ? -1 : 1, 0, 0), 839);
+		case 1 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObj().getY() ? -1 : 1, 0), 839);
+		case 2 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObj().getX() ? -1 : 1, 0, 0), 839);
+		case 3 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObj().getY() ? -1 : 1, 0), 839);
 		}
 	});
 
 	public static ObjectClickHandler handleStileShortcuts = new ObjectClickHandler(new Object[] { 45205, 34776, 48208 }, e -> {
 		if (!e.isAtObject())
 			return;
-		switch (e.getObject().getRotation()) {
-		case 0 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObject().getY() ? -3 : 3, 0), 839);
-		case 1 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObject().getX() ? -3 : 3, 0, 0), 839);
-		case 2 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObject().getY() ? -3 : 3, 0), 839);
-		case 3 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObject().getX() ? -3 : 3, 0, 0), 839);
+		switch (e.getObj().getRotation()) {
+		case 0 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObj().getY() ? -3 : 3, 0), 839);
+		case 1 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObj().getX() ? -3 : 3, 0, 0), 839);
+		case 2 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() >= e.getObj().getY() ? -3 : 3, 0), 839);
+		case 3 -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() >= e.getObj().getX() ? -3 : 3, 0, 0), 839);
 		}
 	});
 
 	public static ObjectClickHandler handlePhoenixGangHideoutLadder = new ObjectClickHandler(new Object[] { 24363 }, e -> {
-		if (e.getObject().getTile().matches(Tile.of(3244, 3383, 0)) && e.getOption().equalsIgnoreCase("climb-down"))
+		if (e.getObj().getTile().matches(Tile.of(3244, 3383, 0)) && e.getOption().equalsIgnoreCase("climb-down"))
 			e.getPlayer().ladder(Tile.of(3245, 9783, 0));
 	});
 
 	public static ObjectClickHandler handlePhoenixGangVarrockLadder = new ObjectClickHandler(new Object[] { 2405 }, e -> {
-		if (e.getObject().getTile().matches(Tile.of(3244, 9783, 0)) && e.getOption().equalsIgnoreCase("climb-up"))
+		if (e.getObj().getTile().matches(Tile.of(3244, 9783, 0)) && e.getOption().equalsIgnoreCase("climb-up"))
 			e.getPlayer().ladder(Tile.of(3243, 3383, 0));
 	});
 
 	public static ObjectClickHandler handleChampionsGuildFrontDoor = new ObjectClickHandler(new Object[] { 1805 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if (p.getY() >= obj.getY()) {
 			if (p.getQuestManager().getQuestPoints() <= 31) {
 				e.getPlayer().startConversation(new Conversation(e.getPlayer()) {
@@ -252,8 +252,8 @@ public class Varrock {
 	});
 
 	public static ObjectClickHandler handleLumberYardFence = new ObjectClickHandler(new Object[] { 31149 }, e -> {
-			boolean isEntering = e.getPlayer().getX() <= e.getObject().getX();
-			e.getPlayer().useStairs(isEntering ? 9221 : 9220, Tile.of(e.getObject().getX() + (isEntering ? 1 : 0), e.getObject().getY(), 0));
+			boolean isEntering = e.getPlayer().getX() <= e.getObj().getX();
+			e.getPlayer().useStairs(isEntering ? 9221 : 9220, Tile.of(e.getObj().getX() + (isEntering ? 1 : 0), e.getObj().getY(), 0));
 	});
 
 	public static ObjectClickHandler handleCooksGuild = new ObjectClickHandler(new Object[] { 2712 }, e -> {
@@ -266,7 +266,7 @@ public class Varrock {
 			player.startConversation(new Conversation(player, new Dialogue(new NPCStatement(847, HeadE.ANGRY, "You sure don't look much like a chef!"))));
 			return;
 		}
-		Doors.handleDoor(player, e.getObject());
+		Doors.handleDoor(player, e.getObj());
 	});
 
 	public static ObjectClickHandler handleStairs24357 = new ObjectClickHandler(new Object[] { 24357 }, new Tile[] { Tile.of(3188, 3355, 0) }, e -> e.getPlayer().useStairs(-1, Tile.of(3189, 3354, 1), 0, 1));

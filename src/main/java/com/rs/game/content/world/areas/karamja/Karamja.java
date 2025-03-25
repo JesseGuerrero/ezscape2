@@ -48,7 +48,7 @@ public class Karamja  {
 		if (!e.getOption().equals("Smelt"))
 			return;
 
-		FurnacesKt.use(player, e.getObject());
+		FurnacesKt.use(player, e.getObj());
 	});
 
 	public static ObjectClickHandler handleShiloFurnaceDoor = new ObjectClickHandler(new Object[] { 2266, 2267 }, e -> {
@@ -60,8 +60,8 @@ public class Karamja  {
 		int blacksmithPays = player.getI("shilo_blacksmith_pay");
 		switch (e.getOption()) {
 			case "Open" -> {
-				if (e.getPlayer().getY() > e.getObject().getY()) {
-					Doors.handleDoor(e.getPlayer(), e.getObject());
+				if (e.getPlayer().getY() > e.getObj().getY()) {
+					Doors.handleDoor(e.getPlayer(), e.getObj());
 					return;
 				}
 				if (blacksmithPays <= 0) {
@@ -76,7 +76,7 @@ public class Karamja  {
 												return;
 											}
 											player.getInventory().removeCoins(20);
-											Doors.handleDoor(e.getPlayer(), e.getObject());
+											Doors.handleDoor(e.getPlayer(), e.getObj());
 										})
 										.addNPC(yohnus, HeadE.HAPPY_TALKING, "Thanks Bwana! Enjoy the facilities!");
 								ops.add("No thanks!")
@@ -86,11 +86,11 @@ public class Karamja  {
 					return;
 				}
 				player.set("shilo_blacksmith_pay", blacksmithPays - 1);
-				Doors.handleDoor(e.getPlayer(), e.getObject());
+				Doors.handleDoor(e.getPlayer(), e.getObj());
 			}
 			case "Use-furnace(20gp)" -> {
-				if (e.getPlayer().getY() > e.getObject().getY()) {
-					Doors.handleDoor(e.getPlayer(), e.getObject());
+				if (e.getPlayer().getY() > e.getObj().getY()) {
+					Doors.handleDoor(e.getPlayer(), e.getObj());
 					return;
 				}
 				if (!player.getInventory().hasCoins(20)) {
@@ -99,7 +99,7 @@ public class Karamja  {
 					return;
 				}
 				player.getInventory().removeCoins(20);
-				Doors.handleDoor(e.getPlayer(), e.getObject());
+				Doors.handleDoor(e.getPlayer(), e.getObj());
 			}
 		}
 	});
@@ -132,32 +132,32 @@ public class Karamja  {
 			e.getPlayer().sendMessage("You can't reach that.", true);
 			return;
 		}
-		Agility.swingOnRopeSwing(e.getPlayer(), fromTile, toTile, e.getObject(), 0.1);
+		Agility.swingOnRopeSwing(e.getPlayer(), fromTile, toTile, e.getObj(), 0.1);
 	});
 
 	public static ObjectClickHandler handleJogreWaterfallSteppingStones = new ObjectClickHandler(new Object[] { 2333, 2334, 2335 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 30))
 			return;
-		e.getPlayer().forceMove(e.getObject().getTile(), 741, 0, 30);
+		e.getPlayer().forceMove(e.getObj().getTile(), 741, 0, 30);
 	});
 
 	public static ObjectClickHandler handleRareTreeDoors = new ObjectClickHandler(new Object[] { 9038, 9039 }, e -> {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP2) {
-			if (e.getPlayer().getX() >= e.getObject().getX())
-				Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+			if (e.getPlayer().getX() >= e.getObj().getX())
+				Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 			else if (e.getPlayer().getInventory().containsItem(6306, 100)) {
-				Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+				Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 				e.getPlayer().getInventory().deleteItem(6306, 100);
 			} else
 				e.getPlayer().sendMessage("You need 100 trading sticks to use this door.");
 		} else if (e.getOpNum() == ClientPacket.OBJECT_OP1)
-			if (e.getPlayer().getX() >= e.getObject().getX())
-				Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+			if (e.getPlayer().getX() >= e.getObj().getX())
+				Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 			else
 				e.getPlayer().sendOptionDialogue("Pay 100 trading sticks to enter?", ops -> {
 					ops.add("Yes", () -> {
 						if (e.getPlayer().getInventory().containsItem(6306, 100)) {
-							Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+							Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 							e.getPlayer().getInventory().deleteItem(6306, 100);
 						} else
 							e.getPlayer().sendMessage("You need 100 trading sticks to use this door.");
@@ -187,7 +187,7 @@ public class Karamja  {
 	public static ObjectClickHandler handleElvargHiddenWall = new ObjectClickHandler(new Object[] { 2606 }, e -> {
 		if (e.getPlayer().isQuestComplete(Quest.DRAGON_SLAYER) || e.getPlayer().getQuestManager().getAttribs(Quest.DRAGON_SLAYER).getB(DragonSlayer.FINISHED_BOAT_SCENE_ATTR)) {
 			e.getPlayer().sendMessage("You know from your boat accident there is more behind this wall...");
-			Doors.handleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoor(e.getPlayer(), e.getObj());
 		} else
 			e.getPlayer().sendMessage("You see nothing but a wall...");
 	});
@@ -214,7 +214,7 @@ public class Karamja  {
 		if (!Agility.hasLevel(e.getPlayer(), 77))
 			return;
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 		Direction dir = Direction.NORTH;
 		if(!obj.getTile().matches(Tile.of(2860, 2974, 0)))
 			return;
@@ -228,7 +228,7 @@ public class Karamja  {
 
 	public static ObjectClickHandler handleShiloEnter = new ObjectClickHandler(new Object[] { 2216 }, e -> {
 		e.getPlayer().sendMessage("You quickly climb over the cart.");
-		e.getPlayer().ladder(e.getPlayer().getX() > e.getObject().getX() ? e.getPlayer().transform(-4, 0, 0) : e.getPlayer().transform(4, 0, 0));
+		e.getPlayer().ladder(e.getPlayer().getX() > e.getObj().getX() ? e.getPlayer().transform(-4, 0, 0) : e.getPlayer().transform(4, 0, 0));
 	});
 
 	public static ObjectClickHandler handleShiloCartEnter = new ObjectClickHandler(new Object[] { 2230 }, e -> e.getPlayer().tele(Tile.of(2833, 2954, 0)));
@@ -273,9 +273,9 @@ public class Karamja  {
 	});
 
 	public static ObjectClickHandler handleHerbloreHabitatVines = new ObjectClickHandler(new Object[] { 56805 }, e -> {
-		switch (e.getObject().getRotation()) {
-			case 3,4 -> Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(e.getPlayer().getX() < e.getObject().getX() ? 2 : -2, 0, 0), 0);
-			default -> Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(0, e.getPlayer().getY() < e.getObject().getY() ? 2 : -2, 0), 0);
+		switch (e.getObj().getRotation()) {
+			case 3,4 -> Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(e.getPlayer().getX() < e.getObj().getX() ? 2 : -2, 0, 0), 0);
+			default -> Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(0, e.getPlayer().getY() < e.getObj().getY() ? 2 : -2, 0), 0);
 		}
 	});
 
@@ -289,7 +289,7 @@ public class Karamja  {
 
 	public static ObjectClickHandler handleKhazariJungleTrees = new ObjectClickHandler(new Object[] { 2890, 2892, 2893 }, e -> {
 		Player player = e.getPlayer();
-		GameObject object = e.getObject();
+		GameObject object = e.getObj();
 
 		if (player.getEquipment().getWeaponId() != 975 && !player.getInventory().containsItem(975, 1) &&
 			player.getEquipment().getWeaponId() != 6313 && !player.getInventory().containsItem(6313, 1) &&
@@ -313,7 +313,7 @@ public class Karamja  {
 	});
 
 	public static ObjectClickHandler handleRocksToCairnIsle = new ObjectClickHandler(new Object[] { 2231 }, e -> {
-		e.getPlayer().useStairs(-1, Tile.of(e.getObject().getX() == 2792 ? 2795 : 2791, 2979, 0), 1, 2, e.getObject().getX() == 2792 ? "You climb down the slope." : "You climb up the slope.");
+		e.getPlayer().useStairs(-1, Tile.of(e.getObj().getX() == 2792 ? 2795 : 2791, 2979, 0), 1, 2, e.getObj().getX() == 2792 ? "You climb down the slope." : "You climb up the slope.");
 	});
 
 }

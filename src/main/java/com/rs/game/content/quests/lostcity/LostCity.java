@@ -93,7 +93,7 @@ public class LostCity extends QuestOutline {
 	}
 
 	public static ObjectClickHandler handleShedDoor = new ObjectClickHandler(new Object[] { 2406 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		Doors.handleDoor(e.getPlayer(), obj);
 		if(e.getPlayer().getX() <= obj.getX())
 			if(e.getPlayer().getEquipment().getWeaponId() == DRAMEN_STAFF

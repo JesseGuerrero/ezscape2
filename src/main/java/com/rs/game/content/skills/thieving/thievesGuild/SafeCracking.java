@@ -104,6 +104,6 @@ public class SafeCracking extends PlayerAction {
 
     public static ObjectClickHandler handleGuildSafes = new ObjectClickHandler(new Object[] { 52306 }, e -> {
         if(e.getOption().equalsIgnoreCase("Crack"))
-            e.getPlayer().getActionManager().setAction(new SafeCracking(e.getObject()));
+            e.getPlayer().getActionManager().setAction(new SafeCracking(e.getObj()));
     });
 }

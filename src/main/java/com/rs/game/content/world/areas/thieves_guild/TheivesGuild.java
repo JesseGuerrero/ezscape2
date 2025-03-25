@@ -7,11 +7,9 @@ import com.rs.engine.quest.Quest;
 import com.rs.game.content.skills.thieving.thievesGuild.PickPocketDummy;
 import com.rs.game.content.skills.thieving.thievesGuild.PickPocketDummyMK2;
 import com.rs.game.ge.GE;
-import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;
-import com.rs.plugin.annotations.ServerStartupEvent;
 import com.rs.plugin.handlers.*;
 import com.rs.utils.shop.ShopsHandler;
 
@@ -76,13 +74,13 @@ public class TheivesGuild {
             e.getPlayer().npcDialogue(11274, HeadE.SHAKING_HEAD, "Now, you see, that's the thing you don't want to be doing if you want to avoid notice.");
         }
         if (e.getOption().equalsIgnoreCase("pickpocket")) {
-            e.getPlayer().getActionManager().setAction(new PickPocketDummy(e.getObject()));
+            e.getPlayer().getActionManager().setAction(new PickPocketDummy(e.getObj()));
         }
     });
 
     public static ObjectClickHandler handleMarkII = new ObjectClickHandler(new Object[]{52317}, e -> {
         if (e.getOption().equalsIgnoreCase("pickpocket")) {
-            e.getPlayer().getActionManager().setAction(new PickPocketDummyMK2(e.getObject()));
+            e.getPlayer().getActionManager().setAction(new PickPocketDummyMK2(e.getObj()));
         }
     });
 

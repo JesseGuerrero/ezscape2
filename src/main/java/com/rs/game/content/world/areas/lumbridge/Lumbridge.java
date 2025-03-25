@@ -173,16 +173,16 @@ public class Lumbridge {
 
 	public static ObjectClickHandler handleStaircases1 = new ObjectClickHandler(new Object[] { 45481, 45482 }, e -> {
 		if (e.getObjectId() == 45481)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 3 : e.getObject().getRotation() == 3 ? -3 : 0, e.getObject().getRotation() == 0 ? 3 : e.getObject().getRotation() == 2 ? -3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 3 : e.getObj().getRotation() == 3 ? -3 : 0, e.getObj().getRotation() == 0 ? 3 : e.getObj().getRotation() == 2 ? -3 : 0, 1));
 		else if (e.getObjectId() == 45482)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -3 : e.getObject().getRotation() == 3 ? 3 : 0, e.getObject().getRotation() == 0 ? -3 : e.getObject().getRotation() == 2 ? 3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -3 : e.getObj().getRotation() == 3 ? 3 : 0, e.getObj().getRotation() == 0 ? -3 : e.getObj().getRotation() == 2 ? 3 : 0, -1));
 	});
 
 	public static ObjectClickHandler handleStaircases2 = new ObjectClickHandler(new Object[] { 45483, 45484 }, e -> {
 		if (e.getObjectId() == 45483)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -3 : e.getObject().getRotation() == 3 ? 3 : 0, e.getObject().getRotation() == 0 ? -3 : e.getObject().getRotation() == 2 ? 3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -3 : e.getObj().getRotation() == 3 ? 3 : 0, e.getObj().getRotation() == 0 ? -3 : e.getObj().getRotation() == 2 ? 3 : 0, 1));
 		else if (e.getObjectId() == 45484)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 3 : e.getObject().getRotation() == 3 ? -3 : 0, e.getObject().getRotation() == 0 ? 3 : e.getObject().getRotation() == 2 ? -3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 3 : e.getObj().getRotation() == 3 ? -3 : 0, e.getObj().getRotation() == 0 ? 3 : e.getObj().getRotation() == 2 ? -3 : 0, -1));
 	});
 
 	public static ObjectClickHandler handleChurchLadders = new ObjectClickHandler(new Object[] { 36984, 36986 }, e -> e.getPlayer().useLadder(e.getPlayer().transform(e.getObjectId() == 36984 ? -2 : 2, 0, 1)));
@@ -217,7 +217,7 @@ public class Lumbridge {
 	});
 
 	public static ObjectClickHandler handleKitchenBasementHole = new ObjectClickHandler(new Object[] { 6898 }, e -> {
-		e.getPlayer().useStairs(10578, e.getObject().getTile());
+		e.getPlayer().useStairs(10578, e.getObj().getTile());
 		e.getPlayer().useStairs(10579, Tile.of(3221, 9618, 0));
 		e.getPlayer().getControllerManager().startController(new UndergroundDungeonController(false, true));
 		e.getPlayer().sendMessage("You squeeze through the hole.");
@@ -225,8 +225,8 @@ public class Lumbridge {
 
 	public static ObjectClickHandler handleBloodPactStairs = new ObjectClickHandler(new Object[] { 48797, 48798, 48678, 48677, 48679, 48688, 48683, 48682 }, e -> {
 		Player player = e.getPlayer();
-		int x = e.getObject().getX();
-		int y = e.getObject().getY();
+		int x = e.getObj().getX();
+		int y = e.getObj().getY();
 
 		switch (e.getObjectId()) {
 			case 48797 -> player.useStairs(-1, Tile.of(3877, 5526, 1), 0, 1);

@@ -17,7 +17,7 @@ public class Spa {
     public static ObjectClickHandler Mud = new ObjectClickHandler(new Object[] { 29004 }, e -> {
         if(!e.getPlayer().isQuestComplete(Quest.AS_A_FIRST_RESORT, "to use the spa."))
             return;
-        jumpIn(e.getObject(),e.getPlayer());
+        jumpIn(e.getObj(),e.getPlayer());
         e.getPlayer().getTasks().schedule(4, () -> {
             if (e.getPlayer().getTile().withinArea(2592, 2859, 2600, 2862)) {
                 e.getPlayer().sendMessage("You jump into the pit of thick, squelching mud.");
@@ -30,7 +30,7 @@ public class Spa {
     public static ObjectClickHandler Thermal = new ObjectClickHandler(new Object[] { 29044 }, e -> {
         if(!e.getPlayer().isQuestComplete(Quest.AS_A_FIRST_RESORT, "to use the spa."))
             return;
-        jumpIn(e.getObject(),e.getPlayer());
+        jumpIn(e.getObj(),e.getPlayer());
         e.getPlayer().getTasks().schedule(4, () -> {
             if (e.getPlayer().getTile().withinArea(2572, 2863, 2577, 2866)) {
                 e.getPlayer().sendMessage("You jump into the warm, relaxing thermal bath.");
@@ -43,7 +43,7 @@ public class Spa {
     public static ObjectClickHandler Spring = new ObjectClickHandler(new Object[] { 29031 }, e -> {
         if(!e.getPlayer().isQuestComplete(Quest.AS_A_FIRST_RESORT, "to use the spa."))
             return;
-        jumpIn(e.getObject(),e.getPlayer());
+        jumpIn(e.getObj(),e.getPlayer());
         e.getPlayer().getTasks().schedule(4, () -> {
             if (e.getPlayer().getTile().withinArea(2555, 2861, 2559, 2866)) {
                 e.getPlayer().sendMessage("You jump into the limpid, salty waters.");
@@ -56,7 +56,7 @@ public class Spa {
     public static ObjectClickHandler Sulphur = new ObjectClickHandler(new Object[] { 29018 }, e -> {
         if(!e.getPlayer().isQuestComplete(Quest.AS_A_FIRST_RESORT, "to use the spa."))
             return;
-        jumpIn(e.getObject(),e.getPlayer());
+        jumpIn(e.getObj(),e.getPlayer());
         e.getPlayer().getTasks().schedule(4, () -> {
             if (e.getPlayer().getTile().withinArea(2533, 2853, 2541, 2856)) {
                 e.getPlayer().sendMessage("You jump into the bubbling, sulphurous waters.");
@@ -69,7 +69,7 @@ public class Spa {
     public static ObjectClickHandler Banados = new ObjectClickHandler(new Object[] { 29057 }, e -> {
         if(!e.getPlayer().isQuestComplete(Quest.AS_A_FIRST_RESORT, "to use the spa."))
             return;
-        jumpIn(e.getObject(),e.getPlayer());
+        jumpIn(e.getObj(),e.getPlayer());
         e.getPlayer().getTasks().schedule(4, () -> {
             if (e.getPlayer().getTile().withinArea(2522, 2842, 2527, 2848)) {
                 e.getPlayer().sendMessage("You jump into the copper-infused waters.");

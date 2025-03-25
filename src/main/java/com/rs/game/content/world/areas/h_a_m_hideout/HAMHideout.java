@@ -18,7 +18,7 @@ public class HAMHideout {
             case "Open" -> e.getPlayer().sendMessage("The trapdoor is securely locked");
             case "Close" -> e.getPlayer().getVars().setVarBit(235, 0);
             case "Climb-down" -> e.getPlayer().ladder(Tile.of(3149, 9652, 0));
-            case "Pick-lock" -> PickLock(e.getPlayer(), e.getObject());
+            case "Pick-lock" -> PickLock(e.getPlayer(), e.getObj());
         }
     });
 
@@ -26,7 +26,7 @@ public class HAMHideout {
         switch (e.getOption()) {
             case "Open" -> e.getPlayer().sendMessage("The door is securely locked");
             case "Pick-lock" -> {
-                e.getPlayer().faceObject(e.getObject());
+                e.getPlayer().faceObject(e.getObj());
                 if(e.getPlayer().getX() >= 3183) {
                     double hasLockpickRate;
                     e.getPlayer().lock();
@@ -39,8 +39,8 @@ public class HAMHideout {
 
                     if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), hasLockpickRate, 190, 190)) {
                         e.getPlayer().getSkills().addXp(Constants.THIEVING, 0.5);
-                        World.removeObjectTemporary(e.getObject(), Ticks.fromSeconds(9));
-                        World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation()+1, e.getObject().getTile().transform(-1, 0, 0)), Ticks.fromSeconds(10), true);
+                        World.removeObjectTemporary(e.getObj(), Ticks.fromSeconds(9));
+                        World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation()+1, e.getObj().getTile().transform(-1, 0, 0)), Ticks.fromSeconds(10), true);
                         e.getPlayer().unlock();
                     } else {
                         e.getPlayer().sendMessage("You fail to pick the lock.");
@@ -48,7 +48,7 @@ public class HAMHideout {
                     }
                 }
                 else {
-                    e.getPlayer().faceObject(e.getObject());
+                    e.getPlayer().faceObject(e.getObj());
                     e.getPlayer().anim(832);
                     e.getPlayer().sendMessage("You fail to pick the lock.");
                     e.getPlayer().unlock();

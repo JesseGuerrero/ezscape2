@@ -256,14 +256,14 @@ public class Thieving {
 	}
 
 	public static ObjectClickHandler handleThievingStalls = new ObjectClickHandler(Stalls.getAllStallIds(), e -> {
-		Thieving.handleStalls(e.getPlayer(), e.getObject());
+		Thieving.handleStalls(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleChests = new ObjectClickHandler(new Object[] { 22697, 22681 }, e -> {
 		if (e.getOption().equals("Pick-lock")) {
 			switch(e.getObjectId()) {
 				case 22697 -> {
-					Thieving.checkTrapsChest(e.getPlayer(), e.getObject(), 22683, 52, 210, 200, new DropSet(
+					Thieving.checkTrapsChest(e.getPlayer(), e.getObj(), 22683, 52, 210, 200, new DropSet(
 						new DropTable(1, 5, 995, 1, 200),
 						new DropTable(1, 5, 4537, 1),
 						new DropTable(1, 5, 4546, 1),
@@ -272,7 +272,7 @@ public class Thieving {
 					));
 				}
 				case 22681 -> {
-					Thieving.checkTrapsChest(e.getPlayer(), e.getObject(), 22683, 78, 300, 650, new DropSet(
+					Thieving.checkTrapsChest(e.getPlayer(), e.getObj(), 22683, 78, 300, 650, new DropSet(
 						new DropTable(1, 15, 1623, 1),
 						new DropTable(1, 15, 1621, 1),
 						new DropTable(1, 15, 1619, 1),

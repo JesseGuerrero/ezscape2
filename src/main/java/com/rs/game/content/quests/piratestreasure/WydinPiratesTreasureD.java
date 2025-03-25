@@ -106,9 +106,9 @@ public class WydinPiratesTreasureD extends Conversation {
 	}
 
 	public static ObjectClickHandler handleBackRoom = new ObjectClickHandler(new Object[] { 2069 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getPlayer().getX() < obj.getX()) {
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		if(e.getPlayer().getQuestManager().getStage(Quest.PIRATES_TREASURE) == SMUGGLE_RUM) {
@@ -131,7 +131,7 @@ public class WydinPiratesTreasureD extends Conversation {
 				return;
 			}
 		}
-		handleDoor(e.getPlayer(), e.getObject());
+		handleDoor(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleSmuggleCrate = new ObjectClickHandler(new Object[] { 2071 }, e -> {

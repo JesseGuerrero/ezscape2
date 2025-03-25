@@ -190,9 +190,9 @@ public class Ardougne  {
 	});
 
 	public static ObjectClickHandler handleZMIShortcut = new ObjectClickHandler(new Object[] { 26844, 26845 }, e -> {
-		if (e.getObject().getId() == 26844)
+		if (e.getObj().getId() == 26844)
 			e.getPlayer().tele(Tile.of(3312, 4817, 0));
-		else if (e.getObject().getId() == 26845)
+		else if (e.getObj().getId() == 26845)
 			e.getPlayer().tele(Tile.of(3308, 4819, 0));
 	});
 
@@ -201,13 +201,13 @@ public class Ardougne  {
 		p.tele(Tile.of(2696, 9683, 0));
 	});
 
-	public static ObjectClickHandler handleClockTowerDungeonEntrances = new ObjectClickHandler(new Object[] { 1754, 1756 }, new Tile[] { Tile.of(2566, 3242, 0), Tile.of(2566, 3231, 0), Tile.of(2569, 3231, 0), Tile.of(2566, 3227, 0), Tile.of(2569, 3227, 0), Tile.of(2572, 3227, 0), Tile.of(2621, 3261, 0) }, e -> e.getPlayer().useLadder(Tile.of(e.getObject().getX(), e.getObject().getY()+6399, 0)));
+	public static ObjectClickHandler handleClockTowerDungeonEntrances = new ObjectClickHandler(new Object[] { 1754, 1756 }, new Tile[] { Tile.of(2566, 3242, 0), Tile.of(2566, 3231, 0), Tile.of(2569, 3231, 0), Tile.of(2566, 3227, 0), Tile.of(2569, 3227, 0), Tile.of(2572, 3227, 0), Tile.of(2621, 3261, 0) }, e -> e.getPlayer().useLadder(Tile.of(e.getObj().getX(), e.getObj().getY()+6399, 0)));
 
-	public static ObjectClickHandler handleClockTowerDungeonExits = new ObjectClickHandler(new Object[] { 32015 }, new Tile[] {  Tile.of(2566, 9642, 0), Tile.of(2572, 9631, 0), Tile.of(2566, 9631, 0), Tile.of(2566, 9627, 0), Tile.of(2569, 9627, 0), Tile.of(2572, 9627, 0), Tile.of(2576, 9655, 0), Tile.of(2621, 9661, 0) }, e -> e.getPlayer().useLadder(Tile.of(e.getObject().getX(), e.getObject().getY()-6399, 0)));
+	public static ObjectClickHandler handleClockTowerDungeonExits = new ObjectClickHandler(new Object[] { 32015 }, new Tile[] {  Tile.of(2566, 9642, 0), Tile.of(2572, 9631, 0), Tile.of(2566, 9631, 0), Tile.of(2566, 9627, 0), Tile.of(2569, 9627, 0), Tile.of(2572, 9627, 0), Tile.of(2576, 9655, 0), Tile.of(2621, 9661, 0) }, e -> e.getPlayer().useLadder(Tile.of(e.getObj().getX(), e.getObj().getY()-6399, 0)));
 
 	public static ObjectClickHandler handleArdougneSewerEntrance = new ObjectClickHandler(new Object[] { 881, 882 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getOption().equalsIgnoreCase("Open")) {
 			GameObject openedHole = new GameObject(obj.getId() + 1, obj.getType(), obj.getRotation(), obj.getX(), obj.getY(), obj.getPlane());
 			p.faceObject(openedHole);
@@ -220,7 +220,7 @@ public class Ardougne  {
 
 	public static ObjectClickHandler handleArdougneSewerExit = new ObjectClickHandler(new Object[] { 32015 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(obj.getTile().matches(Tile.of(2632, 9694, 0)))
 			p.ladder(Tile.of(2633, 3294, 0));
 	});
@@ -274,14 +274,14 @@ public class Ardougne  {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP1)
 			e.getPlayer().sendMessage("This door is securely locked.");
 		else
-			e.getPlayer().handleOneWayDoor(e.getObject(), 1, 3);
+			e.getPlayer().handleOneWayDoor(e.getObj(), 1, 3);
 	});
 
 	public static ObjectClickHandler handleChaosDruidTowerDoor = new ObjectClickHandler(new Object[] { 2554 }, e -> {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP1)
 			e.getPlayer().sendMessage("This door is securely locked.");
 		else
-			Doors.handleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoor(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleEnterTempleOfIkov = new ObjectClickHandler(new Object[] { 1754 }, Tile.of(2677, 3405, 0), e -> e.getPlayer().useStairs(827, e.getPlayer().transform(0, 6400, 0), 1, 2));
@@ -292,7 +292,7 @@ public class Ardougne  {
 
 	public static ObjectClickHandler handleExitBootsofLightnessRoom = new ObjectClickHandler(new Object[] { 96 }, Tile.of(2638, 9763, 0), e -> e.getPlayer().useStairs(-1, e.getPlayer().transform(8, 41, 0), 1, 2));
 
-	public static ObjectClickHandler handleLegendsGuildDoor = new ObjectClickHandler(new Object[] { "Legends Guild door" }, e -> e.getPlayer().handleOneWayDoor(e.getObject(), 1, 3));
+	public static ObjectClickHandler handleLegendsGuildDoor = new ObjectClickHandler(new Object[] { "Legends Guild door" }, e -> e.getPlayer().handleOneWayDoor(e.getObj(), 1, 3));
 
 	public static ObjectClickHandler handleEnterLegendsGuildBasement = new ObjectClickHandler(new Object[] { 41425 }, e -> e.getPlayer().tele(e.getPlayer().transform(-3, 6400, 0)));
 
@@ -316,34 +316,34 @@ public class Ardougne  {
 		Route route = RouteFinderKt.routeEntityToTile(e.getPlayer(), Tile.of(2659, 3437, 0));
 		if (route.getSuccess() && !route.getAlternative())
 			e.getPlayer().setRouteEvent(new RouteEvent(Tile.of(2659, 3437, 0), () -> {
-				Doors.handleDoor(e.getPlayer(), e.getObject());
+				Doors.handleDoor(e.getPlayer(), e.getObj());
 				e.getPlayer().addWalkSteps(Tile.of(2657, 3439, 0), 5, false);
 			}));
 		else
 			e.getPlayer().setRouteEvent(new RouteEvent(Tile.of(2657, 3439, 0), () -> {
-				Doors.handleDoor(e.getPlayer(), e.getObject());
+				Doors.handleDoor(e.getPlayer(), e.getObj());
 				e.getPlayer().addWalkSteps(Tile.of(2659, 3437, 0), 5, false);
 			}));
 	});
 
 	public static ObjectClickHandler handleNatureRuneChests = new ObjectClickHandler(new Object[] { 2567, 2568 }, e -> {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP2)
-			Thieving.checkTrapsChest(e.getPlayer(), e.getObject(), 2574, 28, 21, 25, new Item(995, 3), new Item(561, 1));
+			Thieving.checkTrapsChest(e.getPlayer(), e.getObj(), 2574, 28, 21, 25, new Item(995, 3), new Item(561, 1));
 	});
 
 	public static ObjectClickHandler handleBloodRuneChests = new ObjectClickHandler(new Object[] { 2569 }, e -> {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP2)
-			Thieving.checkTrapsChest(e.getPlayer(), e.getObject(), 2574, 59, 210, 250, new Item(995, 500), new Item(565, 2));
+			Thieving.checkTrapsChest(e.getPlayer(), e.getObj(), 2574, 59, 210, 250, new Item(995, 500), new Item(565, 2));
 	});
 
 	public static ObjectClickHandler handle50CoinChests = new ObjectClickHandler(new Object[] { 2566 }, e -> {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP2)
-			Thieving.checkTrapsChest(e.getPlayer(), e.getObject(), 2574, 43, 50, 125, new Item(995, 50));
+			Thieving.checkTrapsChest(e.getPlayer(), e.getObj(), 2574, 43, 50, 125, new Item(995, 50));
 	});
 
 	public static ObjectClickHandler handleClosedRangeGuildChests = new ObjectClickHandler(new Object[] { 375 }, e -> {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP1) {
-			GameObject openedChest = new GameObject(378, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getX(), e.getObject().getY(), e.getObject().getPlane());
+			GameObject openedChest = new GameObject(378, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getX(), e.getObj().getY(), e.getObj().getPlane());
 			e.getPlayer().faceObject(openedChest);
 			e.getPlayer().setNextAnimation(new Animation(536));
 			e.getPlayer().lock(2);
@@ -354,34 +354,34 @@ public class Ardougne  {
 	public static ObjectClickHandler handleOpenRangeGuildChests = new ObjectClickHandler(new Object[] { 378 }, e -> {
 		if (e.getOpNum() == ClientPacket.OBJECT_OP2) {
 			e.getPlayer().sendMessage("You search the chest but find nothing.");
-			e.getPlayer().faceObject(e.getObject());
+			e.getPlayer().faceObject(e.getObj());
 		} else if (e.getOpNum() == ClientPacket.OBJECT_OP3) {
-			e.getPlayer().faceObject(e.getObject());
+			e.getPlayer().faceObject(e.getObj());
 			e.getPlayer().setNextAnimation(new Animation(536));
 			e.getPlayer().lock(2);
-			World.removeObject(e.getObject());
+			World.removeObject(e.getObj());
 		}
 	});
 	//Legend's Guild
 	public static ObjectClickHandler handleLegendsGuildstairs = new ObjectClickHandler(new Object[] { 41435, 41436 }, e -> {
 		if (e.getObjectId() == 41435)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? -0 : e.getObject().getRotation() == 3 ? -0 : 0, e.getObject().getRotation() == 0 ? 4 : e.getObject().getRotation() == 3 ? -0 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? -0 : e.getObj().getRotation() == 3 ? -0 : 0, e.getObj().getRotation() == 0 ? 4 : e.getObj().getRotation() == 3 ? -0 : 0, 1));
 		else if (e.getObjectId() == 41436)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? 0 : e.getObject().getRotation() == 3 ? -0 : 0, e.getObject().getRotation() == 0 ? -4 : e.getObject().getRotation() == 3 ? 3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? 0 : e.getObj().getRotation() == 3 ? -0 : 0, e.getObj().getRotation() == 0 ? -4 : e.getObj().getRotation() == 3 ? 3 : 0, -1));
 	});
 	//Clocktower
 	public static ObjectClickHandler handleclocktowerspiralstairs = new ObjectClickHandler(new Object[] { 21871, 21872 }, e -> {
 		if (e.getObjectId() == 21871)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? -2 : e.getObject().getRotation() == 1 ? -2 : 0, e.getObject().getRotation() == 0 ? -2 : e.getObject().getRotation() == 1 ? 2 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? -2 : e.getObj().getRotation() == 1 ? -2 : 0, e.getObj().getRotation() == 0 ? -2 : e.getObj().getRotation() == 1 ? 2 : 0, 1));
 		else if (e.getObjectId() == 21872)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? 2 : e.getObject().getRotation() == 1 ? 2 : 0, e.getObject().getRotation() == 0 ? 2 : e.getObject().getRotation() == 1 ? -2 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? 2 : e.getObj().getRotation() == 1 ? 2 : 0, e.getObj().getRotation() == 0 ? 2 : e.getObj().getRotation() == 1 ? -2 : 0, -1));
 	});
 
 	public static ObjectClickHandler handleclocktowerandMeiyerditchstairs = new ObjectClickHandler(new Object[] { 17974, 17975 }, e -> {
 		if (e.getObjectId() == 17974)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 2 : e.getObject().getRotation() == 3 ? -2 : 0, e.getObject().getRotation() == 2 ? -2 : e.getObject().getRotation() == 0 ? 2 : 0,  1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 2 : e.getObj().getRotation() == 3 ? -2 : 0, e.getObj().getRotation() == 2 ? -2 : e.getObj().getRotation() == 0 ? 2 : 0,  1));
 		else if (e.getObjectId() == 17975)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -2 : e.getObject().getRotation() == 3 ? 2 : 0, e.getObject().getRotation() == 2 ? 2 : e.getObject().getRotation() == 0 ? -2 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -2 : e.getObj().getRotation() == 3 ? 2 : 0, e.getObj().getRotation() == 2 ? 2 : e.getObj().getRotation() == 0 ? -2 : 0, -1));
 	});
 
 	//Carnillean
@@ -395,31 +395,31 @@ public class Ardougne  {
 	//Fight Arena
 	public static ObjectClickHandler handlefightarenastairs = new ObjectClickHandler(new Object[] { 41121, 41122 }, e -> {
 		if (e.getObjectId() == 41121)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 3 : e.getObject().getRotation() == 3 ? -3 : 0, e.getObject().getRotation() == 4 ? 3 : e.getObject().getRotation() == 2 ? -3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 3 : e.getObj().getRotation() == 3 ? -3 : 0, e.getObj().getRotation() == 4 ? 3 : e.getObj().getRotation() == 2 ? -3 : 0, 1));
 		else if (e.getObjectId() == 41122)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -3 : e.getObject().getRotation() == 3 ? 3 : 0, e.getObject().getRotation() == 4 ? -3 : e.getObject().getRotation() == 2 ? 3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -3 : e.getObj().getRotation() == 3 ? 3 : 0, e.getObj().getRotation() == 4 ? -3 : e.getObj().getRotation() == 2 ? 3 : 0, -1));
 	});
 
 	//West Ardougne
 	public static ObjectClickHandler handlewestardougnespiralstairs = new ObjectClickHandler(new Object[] { 34388, 34390 }, e -> {
 		if (e.getObjectId() == 34388)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? 3 : e.getObject().getRotation() == 2 ? -3 : 0, e.getObject().getRotation() == 3 ? 3 : e.getObject().getRotation() == 1 ? -3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? 3 : e.getObj().getRotation() == 2 ? -3 : 0, e.getObj().getRotation() == 3 ? 3 : e.getObj().getRotation() == 1 ? -3 : 0, 1));
 		else if (e.getObjectId() == 34390)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? -3 : e.getObject().getRotation() == 2 ? 3 : 0, e.getObject().getRotation() == 3 ? -3 : e.getObject().getRotation() == 1 ? 3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? -3 : e.getObj().getRotation() == 2 ? 3 : 0, e.getObj().getRotation() == 3 ? -3 : e.getObj().getRotation() == 1 ? 3 : 0, -1));
 	});
 
 	public static ObjectClickHandler handlewestardougnestairs = new ObjectClickHandler(new Object[] { 34397, 34398 }, e -> {
 		if (e.getObjectId() == 34397)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 3 : e.getObject().getRotation() == 3 ? -3 : 0, e.getObject().getRotation() == 4 ? 3 : e.getObject().getRotation() == 2 ? -3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 3 : e.getObj().getRotation() == 3 ? -3 : 0, e.getObj().getRotation() == 4 ? 3 : e.getObj().getRotation() == 2 ? -3 : 0, 1));
 		else if (e.getObjectId() == 34398)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -3 : e.getObject().getRotation() == 3 ? 3 : 0, e.getObject().getRotation() == 4 ? -3 : e.getObject().getRotation() == 2 ? 3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -3 : e.getObj().getRotation() == 3 ? 3 : 0, e.getObj().getRotation() == 4 ? -3 : e.getObj().getRotation() == 2 ? 3 : 0, -1));
 	});
 
 	public static ObjectClickHandler handlehadleyspiralstairs = new ObjectClickHandler(new Object[] { 1738, 1740 }, e -> {
 		if (e.getObjectId() == 1738)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 2 ? 0 : e.getObject().getRotation() == 3 ? -0 : 0, e.getObject().getRotation() == 4 ? 0 : e.getObject().getRotation() == 1 ? -0 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 2 ? 0 : e.getObj().getRotation() == 3 ? -0 : 0, e.getObj().getRotation() == 4 ? 0 : e.getObj().getRotation() == 1 ? -0 : 0, 1));
 		else if (e.getObjectId() == 1740)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 2 ? -0 : e.getObject().getRotation() == 3 ? -0 : 0, e.getObject().getRotation() == 4 ? -0 : e.getObject().getRotation() == 1 ? -0 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 2 ? -0 : e.getObj().getRotation() == 3 ? -0 : 0, e.getObj().getRotation() == 4 ? -0 : e.getObj().getRotation() == 1 ? -0 : 0, -1));
 	});
 
 	public static ObjectClickHandler handlehadleystairsup = new ObjectClickHandler(new Object[] { 2536 }, e -> e.getPlayer().tele(Tile.of(2517, 3426, 1)));
@@ -442,7 +442,7 @@ public class Ardougne  {
 
 	public static ObjectClickHandler handleSpiralStairsUp = new ObjectClickHandler(new Object[] { 34548 }, e -> {
 		var player = e.getPlayer();
-		switch (e.getObject().getRotation()) {
+		switch (e.getObj().getRotation()) {
 			case 0 -> player.useStairs(-1, player.transform(3, 0, 1), 1, 1);
 			case 1 -> player.useStairs(-1, player.transform(0, -3, 1), 1, 1);
 			case 2 -> player.useStairs(-1, player.transform(-3, 0, 1), 1, 1);
@@ -452,7 +452,7 @@ public class Ardougne  {
 
 	public static ObjectClickHandler handleSpiralStairsDown = new ObjectClickHandler(new Object[] { 34550 }, e -> {
 		var player = e.getPlayer();
-		switch (e.getObject().getRotation()) {
+		switch (e.getObj().getRotation()) {
 			case 0 -> player.useStairs(-1, player.transform(-3, 0, -1), 1, 1);
 			case 1 -> player.useStairs(-1, player.transform(0, 3, -1), 1, 1);
 			case 2 -> player.useStairs(-1, player.transform(3, 0, -1), 1, 1);
@@ -461,15 +461,15 @@ public class Ardougne  {
 	});
 
 	public static ObjectClickHandler handleStairsUp = new ObjectClickHandler(new Object[] { 34567 }, e -> {
-		e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObject().getRotation() == 3 ? -3 : 3, 0, 1), 1, 1);
+		e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObj().getRotation() == 3 ? -3 : 3, 0, 1), 1, 1);
 	});
 
 	public static ObjectClickHandler handleStairsDown = new ObjectClickHandler(new Object[] { 34568 }, e -> {
-		e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObject().getRotation() == 3 ? 3 : -3, 0, -1), 1, 1);
+		e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObj().getRotation() == 3 ? 3 : -3, 0, -1), 1, 1);
 	});
 
 	public static ObjectClickHandler handleStairsUp1 = new ObjectClickHandler(new Object[] { 34498 }, e -> {
-		switch (e.getObject().getRotation()) {
+		switch (e.getObj().getRotation()) {
 			case 0 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(0, 3, 1), 1, 1);
 			case 1 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(3, 0, 1), 1, 1);
 			case 2 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(0, -3, 1), 1, 1);
@@ -478,7 +478,7 @@ public class Ardougne  {
 	});
 
 	public static ObjectClickHandler handleStairsDown1 = new ObjectClickHandler(new Object[] { 34499 }, e -> {
-		switch (e.getObject().getRotation()) {
+		switch (e.getObj().getRotation()) {
 			case 0 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(0, -3, -1), 1, 1);
 			case 1 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(-3, 0, -1), 1, 1);
 			case 2 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(0, 3, -1), 1, 1);

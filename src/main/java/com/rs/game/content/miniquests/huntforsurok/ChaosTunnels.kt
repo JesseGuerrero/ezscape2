@@ -188,8 +188,8 @@ fun mapChaosTunnels() {
     Stream.of(28779, 28888, 29537, 23095).forEach { id -> setObjectRouteType(id, GameObject.RouteType.WALK_ONTO) }
 
     onObjectClick(28779, 28888, 29537, 23095) { e ->
-        val portal = PortalPair.forTile(e.getObject().tile) ?: return@onObjectClick
-        portal.travel(e.player, e.getObject())
+        val portal = PortalPair.forTile(e.getObj().tile) ?: return@onObjectClick
+        portal.travel(e.player, e.getObj())
     }
 }
 

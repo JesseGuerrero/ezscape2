@@ -23,7 +23,7 @@ public class MorrisFishingContestD extends Conversation {
 	public static NPCClickHandler handleAustriDialogue = new NPCClickHandler(new Object[] { NPC }, e -> e.getPlayer().startConversation(new MorrisFishingContestD(e.getPlayer()).getStart()));
 
 	public static ObjectClickHandler handleFishingContestGate = new ObjectClickHandler(true, new Object[] { 47, 48 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getPlayer().getQuestManager().getStage(Quest.FISHING_CONTEST) == NOT_STARTED) {
 			e.getPlayer().sendMessage("You have no reason to enter...");
 			return;

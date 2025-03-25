@@ -5,7 +5,6 @@ import com.rs.game.content.world.doors.Doors;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
-import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
@@ -35,7 +34,7 @@ public class DwarvenMine {
             e.getPlayer().npcDialogue(3294, HeadE.CHEERFUL, "Sorry, but you need level 60 Mining to go in there.");
             return;
         }
-        Doors.handleDoor(e.getPlayer(), e.getObject());
+        Doors.handleDoor(e.getPlayer(), e.getObj());
     });
 
     public static ObjectClickHandler handlePickaxeFactoryLadder = new ObjectClickHandler(new Object[]{31002, 31012}, e -> {
@@ -49,7 +48,7 @@ public class DwarvenMine {
 
     public static ObjectClickHandler handleObstacle = new ObjectClickHandler(new Object[] { 5906 }, e -> {
         var player = e.getPlayer();
-        var object = e.getObject();
+        var object = e.getObj();
         if (player.getSkills().getLevel(Constants.AGILITY) < 42) {
             player.sendMessage("You need an agility level of 42 to use this obstacle.");
             return;
@@ -63,7 +62,7 @@ public class DwarvenMine {
 
     public static ObjectClickHandler handleRopeClimbDown = new ObjectClickHandler(new Object[] { 45077 }, e -> {
         var player = e.getPlayer();
-        var object = e.getObject();
+        var object = e.getObj();
         player.lock();
 
         if (player.getX() != object.getX() || player.getY() != object.getY()) {

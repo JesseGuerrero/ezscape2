@@ -57,14 +57,14 @@ fun mapPolypore() {
 	).associateBy { Triple(it.objectId, it.x, it.y) }
 
 	onObjectClick(64359, 64360, 64361, 64362) { e ->
-		val key = Triple(e.objectId, e.getObject().x, e.getObject().y)
+		val key = Triple(e.objectId, e.getObj().x, e.getObj().y)
 		vines[key]?.let { useStairs(e.player, it.targetTile, it.down) }
 	}
 
 	onObjectClick("Neem drupes") { e ->
 		if (e.option == "Pick") {
 			e.player.inventory.addItemDrop(22445, 1)
-            val vb = e.getObject().definitions.varpBit
+            val vb = e.getObj().definitions.varpBit
             e.player.vars.setVarBit(vb, e.player.vars.getVarBit(vb) + 1)
             e.player.tasks.schedule("neemRespawn$vb", Ticks.fromSeconds(10)) { e.player.vars.setVarBit(vb, 0) }
 		}

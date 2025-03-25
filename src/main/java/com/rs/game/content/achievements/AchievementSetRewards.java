@@ -184,7 +184,7 @@ public class AchievementSetRewards {
 
 	public static ObjectClickHandler handleCooksGuildSpecialDoor = new ObjectClickHandler(new Object[] { 26810 }, e -> {
 		if (AchievementDef.meetsRequirements(e.getPlayer(), Area.VARROCK, Difficulty.HARD))
-			Doors.handleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoor(e.getPlayer(), e.getObj());
 		else
 			e.getPlayer().sendMessage("You must have the requirements for the Varrock Hard Achievement Set to enter here.");
 	});

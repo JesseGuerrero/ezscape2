@@ -20,7 +20,7 @@ public class IceQueenDungeon {
 		}
 		if (e.getPlayer().getSkills().getLevel(Constants.MINING) < 50)
 			return;
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		int id = e.getObjectId();
 		boolean hasRun = e.getPlayer().getRun();
 		if (e.isAtObject()) {

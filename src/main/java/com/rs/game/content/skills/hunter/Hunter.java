@@ -130,7 +130,7 @@ public final class Hunter {
 	});
 
 	public static ObjectClickHandler handleTrapCheck = new ObjectClickHandler(new Object[] { "Net trap", "Magic box", "Magic box failed", "Bird snare", "Box trap", "Shaking box", "Marasamaw plant", "Wilted marasamaw plant", "Shaking marasamaw plant" }, e -> {
-		if (!(e.getObject() instanceof BoxStyleTrap trap))
+		if (!(e.getObj() instanceof BoxStyleTrap trap))
 			return;
         if (!trap.ownedBy(e.getPlayer())) {
 			e.getPlayer().sendMessage("This isn't your trap.");
@@ -157,9 +157,9 @@ public final class Hunter {
 
 	public static ObjectClickHandler handleDeadfalls = new ObjectClickHandler(new Object[] { "Boulder", "Deadfall" }, e -> {
 		if (e.getOption().equals("Set-trap"))
-			e.getPlayer().getActionManager().setAction(new BoxAction(BoxTrapType.DEAD_FALL, e.getObject()));
+			e.getPlayer().getActionManager().setAction(new BoxAction(BoxTrapType.DEAD_FALL, e.getObj()));
 		else if (e.getOpNum() == ClientPacket.OBJECT_OP1) {
-			if (!(e.getObject() instanceof BoxStyleTrap trap))
+			if (!(e.getObj() instanceof BoxStyleTrap trap))
 				return;
             if (!trap.ownedBy(e.getPlayer())) {
 				e.getPlayer().sendMessage("This isn't your trap.");
@@ -174,14 +174,14 @@ public final class Hunter {
 
 	public static ObjectClickHandler handleTreeNets = new ObjectClickHandler(new Object[] { "Young tree" }, e -> {
 		if (e.getOption().equals("Set-trap"))
-			e.getPlayer().getActionManager().setAction(new BoxAction(BoxTrapType.TREE_NET, e.getObject()));
+			e.getPlayer().getActionManager().setAction(new BoxAction(BoxTrapType.TREE_NET, e.getObj()));
 		else if (e.getOption().equals("Dismantle")) {
-			if (e.getObject() instanceof OwnedObject oo && !oo.ownedBy(e.getPlayer())) {
+			if (e.getObj() instanceof OwnedObject oo && !oo.ownedBy(e.getPlayer())) {
 				e.getPlayer().sendMessage("This isn't your trap.");
 				return;
 			}
 			for (OwnedObject o : OwnedObject.getOwnedBy(e.getPlayer()))
-				if (o instanceof NetTrap nt && o.getTile().withinDistance(e.getObject().getTile(), 1))
+				if (o instanceof NetTrap nt && o.getTile().withinDistance(e.getObj().getTile(), 1))
 					nt.dismantle(e.getPlayer());
 		}
 	});

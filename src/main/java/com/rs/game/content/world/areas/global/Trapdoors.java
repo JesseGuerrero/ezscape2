@@ -10,7 +10,7 @@ import com.rs.utils.Ticks;
 public class Trapdoors {
 
     public static ObjectClickHandler handleTrapdoor = new ObjectClickHandler(new Object[] { "Trapdoor" }, e -> {
-        GameObject object = e.getObject();
+        GameObject object = e.getObj();
         if (object.getDefinitions().containsOption(0, "Open")) {
             GameObject openedTrapdoor = new GameObject(
                 object.getId() + 1,
