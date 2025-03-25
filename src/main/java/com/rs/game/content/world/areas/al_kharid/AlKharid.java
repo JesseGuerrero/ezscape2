@@ -49,12 +49,12 @@ public class AlKharid {
 	public static ObjectClickHandler handleGates = new ObjectClickHandler(new Object[] { 35549, 35551 }, e -> {
 		if (e.getPlayer().getInventory().hasCoins(10)) {
 			e.getPlayer().getInventory().removeCoins(10);
-			Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 		} else
 			e.getPlayer().sendMessage("You need 10 gold to pass through this gate.");
 	});
 
-	public static ObjectClickHandler handleStrykewyrmStile = new ObjectClickHandler(new Object[] { 48208 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObject().getX() ? 3 : -3, 0, 0)));
+	public static ObjectClickHandler handleStrykewyrmStile = new ObjectClickHandler(new Object[] { 48208 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObj().getX() ? 3 : -3, 0, 0)));
 
 	public static ObjectClickHandler handleMiningSiteShortcut = new ObjectClickHandler(new Object[] { 9331, 9332 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 38)) {
@@ -63,7 +63,7 @@ public class AlKharid {
 		}
 
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 
 		if(obj.getTile().matches(Tile.of(3306, 3315, 0)))//above
 			p.forceMove(Tile.of(3303, 3315, 0), 2050, 10, 60);
@@ -73,9 +73,9 @@ public class AlKharid {
 	//brimhaven
 	public static ObjectClickHandler handlebrimhavenstairs = new ObjectClickHandler(new Object[] { 45, 46 }, e -> {
 		if (e.getObjectId() == 45)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 2 ? -0 : e.getObject().getRotation() == 0 ? -0 : 0, e.getObject().getRotation() == 2 ? -4 : e.getObject().getRotation() == 0 ? 4 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 2 ? -0 : e.getObj().getRotation() == 0 ? -0 : 0, e.getObj().getRotation() == 2 ? -4 : e.getObj().getRotation() == 0 ? 4 : 0, 1));
 		else if (e.getObjectId() == 46)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 2 ? 0 : e.getObject().getRotation() == 0 ? -0 : 0, e.getObject().getRotation() == 2 ? 4 : e.getObject().getRotation() == 0 ? -4 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 2 ? 0 : e.getObj().getRotation() == 0 ? -0 : 0, e.getObj().getRotation() == 2 ? 4 : e.getObj().getRotation() == 0 ? -4 : 0, -1));
 	});
 
 	public static ObjectClickHandler handlePolyporeEntrance = new ObjectClickHandler(new Object[] { 63093, 63094 }, e -> {

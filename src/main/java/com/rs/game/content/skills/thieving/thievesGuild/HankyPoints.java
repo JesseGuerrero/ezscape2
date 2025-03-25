@@ -6,7 +6,7 @@ import com.rs.game.World;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.util.Utils;
@@ -237,9 +237,9 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleNorthDoors = new ObjectClickHandler(new Object[] { 52302 }, e -> {
         if(e.getOption().equalsIgnoreCase("Open")) {
-            if(e.getPlayer().getTile().getY() >= e.getObject().getY()) {
-                World.spawnObjectTemporary(new GameObject(-1, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getTile()), Ticks.fromSeconds(10), true);
-                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() - 1, e.getObject().getTile().transform(0, -1, 0)), Ticks.fromSeconds(10), true);
+            if(e.getPlayer().getTile().getY() >= e.getObj().getY()) {
+                World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromSeconds(10), true);
+                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() - 1, e.getObj().getTile().transform(0, -1, 0)), Ticks.fromSeconds(10), true);
                 return;
             }
             e.getPlayer().lock();
@@ -247,15 +247,15 @@ public class HankyPoints {
             WorldTasks.scheduleTimer(i -> {
                 switch(i) {
                     case 1 -> {
-                        e.getPlayer().faceObject(e.getObject());
+                        e.getPlayer().faceObject(e.getObj());
                         e.getPlayer().anim(832);
                     }
                     case 3 -> {
                         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
                             e.getPlayer().sendMessage("The door swings open.");
                             e.getPlayer().getSkills().addXp(Constants.THIEVING, 210);
-                            World.spawnObjectTemporary(new GameObject(-1, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getTile()), Ticks.fromMinutes(5), true);
-                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() - 3, e.getObject().getTile().transform(0, -1, 0)), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() - 3, e.getObj().getTile().transform(0, -1, 0)), Ticks.fromMinutes(5), true);
                         } else {
                             e.getPlayer().sendMessage("You fail to pick the lock.");
                             e.getPlayer().unlock();
@@ -271,9 +271,9 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleSouthDoors = new ObjectClickHandler(new Object[] { 52304 }, e -> {
         if(e.getOption().equalsIgnoreCase("Open")) {
-            if(e.getPlayer().getY() <= e.getObject().getY()) {
-                World.spawnObjectTemporary(new GameObject(-1, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getTile()), Ticks.fromSeconds(10), true);
-                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() + 1, e.getObject().getTile().transform(0, +1, 0)), Ticks.fromSeconds(10), true);
+            if(e.getPlayer().getY() <= e.getObj().getY()) {
+                World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromSeconds(10), true);
+                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() + 1, e.getObj().getTile().transform(0, +1, 0)), Ticks.fromSeconds(10), true);
                 return;
             }
             if(e.getPlayer().getSkills().getLevel(Skills.THIEVING) < 35){
@@ -289,15 +289,15 @@ public class HankyPoints {
             WorldTasks.scheduleTimer(i -> {
                 switch(i) {
                     case 1 -> {
-                        e.getPlayer().faceObject(e.getObject());
+                        e.getPlayer().faceObject(e.getObj());
                         e.getPlayer().anim(832);
                     }
                     case 3 -> {
                         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
                             e.getPlayer().sendMessage("The door swings open.");
                             e.getPlayer().getSkills().addXp(Constants.THIEVING, 280);
-                            World.spawnObjectTemporary(new GameObject(-1, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getTile()), Ticks.fromMinutes(5), true);
-                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() + 1, e.getObject().getTile().transform(0, +1, 0)), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() + 1, e.getObj().getTile().transform(0, +1, 0)), Ticks.fromMinutes(5), true);
                         } else {
                             e.getPlayer().sendMessage("You fail to pick the lock.");
                             e.getPlayer().unlock();
@@ -313,7 +313,7 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleNorthChests = new ObjectClickHandler(new Object[] { 52296 }, e -> {
         Player player = e.getPlayer();
-        GameObject object = e.getObject();
+        GameObject object = e.getObj();
         player.faceObject(object);
         if (player.getSkills().getLevel(Constants.THIEVING) < 26) {
             player.simpleDialogue("You need a Thieving level of at least 26 to pick this lock.");
@@ -336,7 +336,7 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleSouthChests = new ObjectClickHandler(new Object[] { 52299 }, e -> {
         Player player = e.getPlayer();
-        GameObject object = e.getObject();
+        GameObject object = e.getObj();
         player.faceObject(object);
         if (player.getSkills().getLevel(Constants.THIEVING) < 35) {
             player.simpleDialogue("You need a Thieving level of at least 35 to pick this lock.");

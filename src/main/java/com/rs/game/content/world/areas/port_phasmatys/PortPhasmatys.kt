@@ -27,7 +27,7 @@ import com.rs.game.content.world.doors.Doors
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Equipment
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemOnObject
@@ -68,22 +68,22 @@ fun mapPortPhasmatys() {
     }
     //handle Town Doors
     onObjectClick(5244) { e ->
-        if (e.`object`.tile != Tile.of(3656, 3514, 1)) {
-            Doors.handleDoor(e.player, e.`object`)
+        if (e.obj.tile != Tile.of(3656, 3514, 1)) {
+            Doors.handleDoor(e.player, e.obj)
             return@onObjectClick
         }
-        if(e.player.x >= e.`object`.x ) {
+        if(e.player.x >= e.obj.x ) {
             e.player.tasks.schedule(1) {
                 val door = GameObject(
-                    e.`object`.id + 1,
-                    e.`object`.type,
-                    e.`object`.rotation + 3,
-                    e.`object`.x,
-                    e.`object`.y,
-                    e.`object`.plane
+                    e.obj.id + 1,
+                    e.obj.type,
+                    e.obj.rotation + 3,
+                    e.obj.x,
+                    e.obj.y,
+                    e.obj.plane
                 )
                 World.spawnObjectTemporary(door, 2)
-                e.player.addWalkSteps(if (e.player.x >= e.`object`.x) e.`object`.x - 1 else e.`object`.x + 1, 3514)
+                e.player.addWalkSteps(if (e.player.x >= e.obj.x) e.obj.x - 1 else e.obj.x + 1, 3514)
             }
             return@onObjectClick
         }
@@ -141,7 +141,7 @@ fun mapPortPhasmatys() {
     }
     //Handle Gangplanks
     onObjectClick(11209, 11210, 17392, 17393) { e ->
-        val entering = e.player.x < e.`object`.x
+        val entering = e.player.x < e.obj.x
         e.player.useStairs(
             -1,
             e.player.transform(if (entering) 3 else -3, 0, if (entering) 1 else -1),

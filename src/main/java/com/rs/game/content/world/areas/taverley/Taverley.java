@@ -24,7 +24,7 @@ import com.rs.game.content.world.doors.Doors;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
@@ -37,7 +37,7 @@ public class Taverley {
 
 	public static ObjectClickHandler handleTaverleyHouseStaircase = new ObjectClickHandler(new Object[] { 66637, 66638 }, e -> {
 		Player p = e.getPlayer();
-		GameObject o = e.getObject();
+		GameObject o = e.getObj();
 		Tile tile = o.getTile();
 		if (e.getObjectId() == 66637) {
 			if (tile.isAt(2928, 3445, 0)) {
@@ -100,7 +100,7 @@ public class Taverley {
 			case "Infuse-pouch" -> {
 				if (p.getQuestManager().getStage(Quest.WOLF_WHISTLE) == WolfWhistle.WOLPERTINGER_CREATION) {
 					if (WolfWhistle.wolfWhistleObeliskReadyToInfusePouch(p)) {
-						WolfWhistle.doWolpertingerPouchCreation(p, e.getObject());
+						WolfWhistle.doWolpertingerPouchCreation(p, e.getObj());
 						break;
 					}
 				}
@@ -121,7 +121,7 @@ public class Taverley {
 		}
 	});
 
-	public static ObjectClickHandler handleTaverleyDungeonOddWall = new ObjectClickHandler(new Object[] { 2117 }, e -> Doors.handleDoor(e.getPlayer(), e.getObject(), -1));
+	public static ObjectClickHandler handleTaverleyDungeonOddWall = new ObjectClickHandler(new Object[] { 2117 }, e -> Doors.handleDoor(e.getPlayer(), e.getObj(), -1));
 
 	public static PickupItemHandler zammyWines = new PickupItemHandler(new Object[] { 245 }, new Tile[] { Tile.of(2946, 3474, 0), Tile.of(2946, 3473, 0) }, e -> {
 		if (!e.isTelegrabbed()) {
@@ -139,8 +139,8 @@ public class Taverley {
 	//Nora T. Hagg House
 	public static ObjectClickHandler handlenorathaggstairs = new ObjectClickHandler(new Object[] { 24672, 24673 }, e -> {
 		if (e.getObjectId() == 24672)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? -0 : e.getObject().getRotation() == 1 ? -0 : 0, e.getObject().getRotation() == 0 ? 4 : e.getObject().getRotation() == 1 ? -0 : 0,  1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? -0 : e.getObj().getRotation() == 1 ? -0 : 0, e.getObj().getRotation() == 0 ? 4 : e.getObj().getRotation() == 1 ? -0 : 0,  1));
 		else if (e.getObjectId() == 24673)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? 0 : e.getObject().getRotation() == 1 ? -0 : 0, e.getObject().getRotation() == 0 ? -4 : e.getObject().getRotation() == 1 ? -0 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? 0 : e.getObj().getRotation() == 1 ? -0 : 0, e.getObj().getRotation() == 0 ? -4 : e.getObj().getRotation() == 1 ? -0 : 0, -1));
 	});
 }

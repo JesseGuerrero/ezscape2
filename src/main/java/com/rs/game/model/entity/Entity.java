@@ -47,7 +47,7 @@ import com.rs.game.model.entity.player.Equipment;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.game.model.entity.player.actions.ActionManager;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.TaskManager;
 import com.rs.game.tasks.WorldTasks;
@@ -2198,6 +2198,10 @@ public abstract class Entity {
 	public void clearPendingTasks() {
 		tasks = new TaskManager();
 		asyncTasks.stopAll();
+	}
+
+	public Tile getNextTile() {
+		return nextTile;
 	}
 
 	public AsyncTaskScheduler getAsyncTasks() {

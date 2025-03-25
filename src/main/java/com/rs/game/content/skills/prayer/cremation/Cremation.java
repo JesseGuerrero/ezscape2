@@ -85,7 +85,7 @@ public class Cremation {
 	});
 
 	public static ObjectClickHandler handleLightPyre = new ObjectClickHandler(new Object[] { 4100, 4101, 4102, 4103, 4104, 9008, 9009, 21272, 29167, 29182, 30478, 30479, 30480, 30481, 30482, 30483, 30484, 30485, 30486, 30487 }, e -> {
-		if (!(e.getObject() instanceof Pyre pyre))
+		if (!(e.getObj() instanceof Pyre pyre))
 			return;
         if (!pyre.ownedBy(e.getPlayer())) {
 			e.getPlayer().sendMessage("That's not your pyre!");

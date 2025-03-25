@@ -24,7 +24,7 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 @PluginEventHandler
 public class MosLeHarmless {
     public static ObjectClickHandler handleGangplanks = new ObjectClickHandler(new Object[] { 11211, 11212 }, e -> {
-        boolean entering = e.getPlayer().getY() > e.getObject().getY();
+        boolean entering = e.getPlayer().getY() > e.getObj().getY();
         e.getPlayer().useStairs(-1, e.getPlayer().transform(0, entering ? -3 : 3, entering ? 1 : -1), 0, 1);
     });
 
@@ -34,7 +34,7 @@ public class MosLeHarmless {
     });
 
     public static ObjectClickHandler handleUndergroundDungeonStairs = new ObjectClickHandler(new Object[] { 15791 }, e -> {
-            switch(e.getObject().getX()) {
+            switch(e.getObj().getX()) {
                 case 3829 -> e.getPlayer().useStairs(-1, Tile.of(3830, 9461, 0));
                 case 3814 -> e.getPlayer().useStairs(-1, Tile.of(3815, 9461, 0));
             }

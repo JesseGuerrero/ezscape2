@@ -4,7 +4,7 @@ import com.rs.cache.loaders.ObjectDefinitions
 import com.rs.cache.loaders.ObjectType
 import com.rs.cache.loaders.map.ClipFlag
 import com.rs.game.model.entity.npc.NPC
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Tile
 import com.rs.lib.util.MapUtils
 

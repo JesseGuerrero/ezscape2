@@ -19,8 +19,8 @@ import static com.rs.game.content.world.doors.Doors.handleDoor;
 @PluginEventHandler
 public class BrimhavenHeroesQuest {
 	public static ObjectClickHandler handleMansionDoor = new ObjectClickHandler(new Object[]{2627}, e -> {
-		if (e.getPlayer().getY() > e.getObject().getY())
-			handleDoor(e.getPlayer(), e.getObject());
+		if (e.getPlayer().getY() > e.getObj().getY())
+			handleDoor(e.getPlayer(), e.getObj());
 		else
 			e.getPlayer().startConversation(new MansionDoorHeroesQuestD(e.getPlayer(), e));
 	});
@@ -44,12 +44,12 @@ public class BrimhavenHeroesQuest {
 	});
 
 	public static ObjectClickHandler handleBlackArmHideoutDoor = new ObjectClickHandler(new Object[]{2626}, e -> {
-		if (e.getPlayer().getX() >= e.getObject().getX()) {
-			handleDoor(e.getPlayer(), e.getObject());
+		if (e.getPlayer().getX() >= e.getObj().getX()) {
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		if (e.getPlayer().isQuestComplete(Quest.HEROES_QUEST) || e.getPlayer().getQuestManager().getAttribs(Quest.HEROES_QUEST).getB("black_arm_hideout_open")) {
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		if (e.getPlayer().getQuestManager().getStage(Quest.HEROES_QUEST) == HeroesQuest.GET_ITEMS && ShieldOfArrav.isBlackArmGang(e.getPlayer())) {

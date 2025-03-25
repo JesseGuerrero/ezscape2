@@ -77,16 +77,16 @@ public class StrongholdOfSecurity {
 		WorldTasks.schedule(new Task() {
 			@Override
 			public void run() {
-				Tile tile = switch (e.getObject().getRotation()) {
-				case 0 -> Tile.of(e.getObject().getX() == e.getPlayer().getX() ? e.getObject().getX() - 1 : e.getObject().getX(), e.getPlayer().getY(), 0);
-				case 1 -> Tile.of(e.getPlayer().getX(), e.getObject().getY() == e.getPlayer().getY() ? e.getObject().getY() + 1 : e.getObject().getY(), 0);
-				case 2 -> Tile.of(e.getObject().getX() == e.getPlayer().getX() ? e.getObject().getX() + 1 : e.getObject().getX(), e.getPlayer().getY(), 0);
-				case 3 -> Tile.of(e.getPlayer().getX(), e.getObject().getY() == e.getPlayer().getY() ? e.getObject().getY() - 1 : e.getObject().getY(), 0);
+				Tile tile = switch (e.getObj().getRotation()) {
+				case 0 -> Tile.of(e.getObj().getX() == e.getPlayer().getX() ? e.getObj().getX() - 1 : e.getObj().getX(), e.getPlayer().getY(), 0);
+				case 1 -> Tile.of(e.getPlayer().getX(), e.getObj().getY() == e.getPlayer().getY() ? e.getObj().getY() + 1 : e.getObj().getY(), 0);
+				case 2 -> Tile.of(e.getObj().getX() == e.getPlayer().getX() ? e.getObj().getX() + 1 : e.getObj().getX(), e.getPlayer().getY(), 0);
+				case 3 -> Tile.of(e.getPlayer().getX(), e.getObj().getY() == e.getPlayer().getY() ? e.getObj().getY() - 1 : e.getObj().getY(), 0);
 				default -> null;
 				};
 				e.getPlayer().tele(tile);
 				e.getPlayer().setNextAnimation(new Animation(4283));
-				e.getPlayer().faceObject(e.getObject());
+				e.getPlayer().faceObject(e.getObj());
 			}
 		}, 0);
 	});

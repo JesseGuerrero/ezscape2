@@ -153,7 +153,7 @@ public class Halloween2009 {
 		e.getPlayer().lock();
 		e.getPlayer().setRunHidden(false);
 		Tile from = curr.getCoordFace();
-		Tile to = e.getObject().getCoordFace();
+		Tile to = e.getObj().getCoordFace();
 		boolean needStart = !e.getPlayer().matches(from);
 		if (needStart)
 			e.getPlayer().addWalkSteps(curr.getCoordFace(), 2, false);
@@ -238,7 +238,7 @@ public class Halloween2009 {
 	});
 
 	public static ObjectClickHandler webLaddersDown = new ObjectClickHandler(new Object[] { 46936 }, e -> {
-		if (e.getObject().getTile().isAt(3744, 5288)) {
+		if (e.getObj().getTile().isAt(3744, 5288)) {
 			if (e.getPlayer().getI(Halloween2009.STAGE_KEY) >= 6) {
 				e.getPlayer().sendOptionDialogue("Select an Option", ops -> {
 					ops.add("Go down the ladder.", () -> e.getPlayer().useLadder(/*Tile.of(3936, 5372, 2)*/Tile.of(3936, 5150, 2)));

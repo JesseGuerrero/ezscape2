@@ -41,9 +41,9 @@ public class HeroesGuild  {
 	});
 
 	public static ObjectClickHandler handleLadders = new ObjectClickHandler(new Object[] { 67691, 67690 }, e -> {
-		if (e.getObject().getId() == 67691)
+		if (e.getObj().getId() == 67691)
 			e.getPlayer().useLadder(Tile.of(2906, 3516, 0));
-		else if (e.getObject().getId() == 67690)
+		else if (e.getObj().getId() == 67690)
 			e.getPlayer().useLadder(Tile.of(2893, 9907, 0));
 	});
 

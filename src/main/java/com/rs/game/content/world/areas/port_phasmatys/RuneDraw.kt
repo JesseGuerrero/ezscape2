@@ -3,6 +3,7 @@ package com.rs.game.content.world.areas.port_phasmatys
 import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
+import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Rights
@@ -114,8 +115,8 @@ fun drawRuneForOpponent(player: Player, npc: NPC, gameState: GameState, onComple
     player.packets.setIFText(9, 32, "Thinking...")
     player.tasks.scheduleTimer(0, 0) { tick: Int? ->
         when (tick) {
-        2 ->
-        player.packets.setIFHidden(9, 32, true)
+            2 ->
+                player.packets.setIFHidden(9, 32, true)
             3 -> {
                 assignRuneToNextFreeSlot(player, opponentSlots, gameState.runePool, gameState.opponentSlots) { rune ->
                     gameState.opponentScore.value += rune.points
@@ -189,7 +190,7 @@ fun endGame(player: Player, npc: NPC, gameState: GameState) {
     gameState.gameOver = true
     if (player.hasRights(Rights.ADMIN))
         gameState.isWinner = true
-    if(npc.id == 1694 && (player.getQuestStage(Quest.GHOSTS_AHOY) == 5 || player.getQuestStage(Quest.GHOSTS_AHOY) == 5 || player.getQuestStage(Quest.GHOSTS_AHOY) == 6)) {
+    if(npc.id == 1694 && player.questManager.getStage(Quest.GHOSTS_AHOY) == GhostsAhoy.STAGE_5_GATHER_ITEMS) {
         if (gameState.isWinner) {
             player.questManager.getAttribs(Quest.GHOSTS_AHOY).incI("RobinWins")
             player.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("RobinWinLastRound", false)
@@ -214,7 +215,7 @@ fun endGame(player: Player, npc: NPC, gameState: GameState) {
         player.inventory.addCoins(50)
     }
     else {
-    player.sendMessage("You loose and ${npc.name} keeps your 25gp")
+        player.sendMessage("You loose and ${npc.name} keeps your 25gp")
     }
     player.packets.setIFHidden(9, 5, true)
     player.packets.setIFHidden(9, 6, true)

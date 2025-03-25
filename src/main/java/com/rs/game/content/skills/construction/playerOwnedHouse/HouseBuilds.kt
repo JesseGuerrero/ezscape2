@@ -1,6 +1,6 @@
 package com.rs.game.content.skills.construction.playerOwnedHouse
 
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 
 enum class HouseBuilds(
     private val ids: IntArray,

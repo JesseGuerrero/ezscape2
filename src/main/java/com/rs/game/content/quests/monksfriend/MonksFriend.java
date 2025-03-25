@@ -92,7 +92,7 @@ public class MonksFriend extends QuestOutline {
 		Player p = e.getPlayer();
 		if (e.getObjectId() == 42)
 			p.useLadder(Tile.of(2561, 9621, 0));
-		else if (e.getObject().getTile().matches(Tile.of(2561, 9622, 0)))
+		else if (e.getObj().getTile().matches(Tile.of(2561, 9622, 0)))
 			p.useLadder(Tile.of(2560, 3222, 0));
 	});
 

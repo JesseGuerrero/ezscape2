@@ -163,9 +163,9 @@ public class PrinceAliRescue extends QuestOutline {
 	}
 
 	public static ObjectClickHandler handleJailCellDoor = new ObjectClickHandler(new Object[] { 3436 }, e -> {
-		if(e.getObject().getTile().matches(Tile.of(3128, 3243, 0))) {
+		if(e.getObj().getTile().matches(Tile.of(3128, 3243, 0))) {
 			if (e.getPlayer().getInventory().containsItem(BRONZE_KEY, 1))
-				handleDoor(e.getPlayer(), e.getObject());
+				handleDoor(e.getPlayer(), e.getObj());
 			else
 				e.getPlayer().startConversation(new Conversation(e.getPlayer()) {
 					{
@@ -182,7 +182,7 @@ public class PrinceAliRescue extends QuestOutline {
 					e.getPlayer().sendMessage("You'd better get rid of Lady Keli before trying to go through there.");
 					return;
 				}
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 		}
 		else
 			e.getPlayer().startConversation(new Conversation(e.getPlayer()) {

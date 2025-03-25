@@ -29,7 +29,7 @@ import com.rs.game.content.quests.knightssword.ThurgoKnightsSwordD;
 import com.rs.game.content.skills.agility.Agility;
 import com.rs.game.content.world.unorganized_dialogue.skillmasters.GenericSkillcapeOwnerD;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;
@@ -142,20 +142,20 @@ public class PortSarim {
 
 	public static ObjectClickHandler handleEnterLadyLumbridgeBoat = new ObjectClickHandler(new Object[]{ 2594, 2593 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if (p.getY() > obj.getY())
 			e.getPlayer().tele(Tile.of(3047, 3204, 0));
 		if (p.getY() < obj.getY())
 			e.getPlayer().tele(Tile.of(3047, 3207, 1));
 	});
 
-	public static ObjectClickHandler handleEnterLadyLumbridgeBoatUpperLadder = new ObjectClickHandler(new Object[]{ 2590 }, e -> e.getPlayer().useStairs(828, Tile.of(e.getObject().getX() - 1, e.getObject().getY(), e.getObject().getPlane() - 1), 1, 2));
+	public static ObjectClickHandler handleEnterLadyLumbridgeBoatUpperLadder = new ObjectClickHandler(new Object[]{ 2590 }, e -> e.getPlayer().useStairs(828, Tile.of(e.getObj().getX() - 1, e.getObj().getY(), e.getObj().getPlane() - 1), 1, 2));
 
 	public static ObjectClickHandler handlePrisonTrapdoor = new ObjectClickHandler(new Object[]{ 40113 }, Tile.of(3013, 3179, 2), e -> e.getPlayer().useStairs(828, Tile.of(3013, 3180, 1)));
 
 	public static ObjectClickHandler handleLowerBoatLadder = new ObjectClickHandler(new Object[]{ 272 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if (obj.getRotation() == 0)
 			p.useStairs(828, Tile.of(obj.getX(), obj.getY() - 1, obj.getPlane() + 1), 1, 2);
 		if (obj.getRotation() == 1)

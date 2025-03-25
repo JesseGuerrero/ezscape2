@@ -22,7 +22,7 @@ import com.rs.game.map.ChunkManager;
 import com.rs.game.map.instance.InstanceBuilder;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.OwnedObject;
+import com.rs.game.model.gameobject.OwnedObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;

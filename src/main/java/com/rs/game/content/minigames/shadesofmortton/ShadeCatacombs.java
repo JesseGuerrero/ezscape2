@@ -41,28 +41,28 @@ public class ShadeCatacombs {
 				e.getPlayer().sendMessage("The door seems securely locked.");
 				return;
 			}
-			Doors.handleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoor(e.getPlayer(), e.getObj());
 			break;
 		case 4107:
 			if (!e.getPlayer().getInventory().containsOneItem(Utils.range(3455, 3469)) && !e.getPlayer().getInventory().containsItem(21511)) {
 				e.getPlayer().sendMessage("The door seems securely locked.");
 				return;
 			}
-			Doors.handleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoor(e.getPlayer(), e.getObj());
 			break;
 		case 4108:
 			if (!e.getPlayer().getInventory().containsOneItem(Utils.range(3460, 3469)) && !e.getPlayer().getInventory().containsItem(21511)) {
 				e.getPlayer().sendMessage("The door seems securely locked.");
 				return;
 			}
-			Doors.handleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoor(e.getPlayer(), e.getObj());
 			break;
 		case 4109:
 			if (!e.getPlayer().getInventory().containsOneItem(Utils.range(3465, 3469)) && !e.getPlayer().getInventory().containsItem(21511)) {
 				e.getPlayer().sendMessage("The door seems securely locked.");
 				return;
 			}
-			Doors.handleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoor(e.getPlayer(), e.getObj());
 			break;
 		}
 	});

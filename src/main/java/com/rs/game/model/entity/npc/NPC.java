@@ -424,6 +424,7 @@ public class NPC extends Entity {
 			setTile(respawnTile);
 			finish();
 		}
+		cancelRespawnTask();
 		respawnTask = WorldTasks.schedule(time < 0 ? getCombatDefinitions().getRespawnDelay() : time, this::spawn);
 	}
 

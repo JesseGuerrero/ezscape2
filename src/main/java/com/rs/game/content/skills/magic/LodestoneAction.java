@@ -21,8 +21,6 @@ import com.rs.game.content.achievements.Achievement;
 import com.rs.game.model.entity.Teleport;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.tasks.Task;
-import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.SpotAnim;
 import com.rs.lib.game.Tile;
@@ -101,9 +99,9 @@ public class LodestoneAction extends PlayerAction {
 	public static ObjectClickHandler handleUnlock = new ObjectClickHandler(new Object[] { 69827, 69828, 69829, 69830, 69831, 69832, 69833, 69834, 69835, 69836, 69837, 69838, 69839, 69840, 69841 }, e -> {
 		if (e.getOpNum() != ClientPacket.OBJECT_OP1)
 			return;
-		Lodestone stone = Lodestone.forObject(e.getObject().getId());
+		Lodestone stone = Lodestone.forObject(e.getObj().getId());
 		if (stone != null)
-			e.getPlayer().unlockLodestone(stone, e.getObject());
+			e.getPlayer().unlockLodestone(stone, e.getObj());
 	});
 
 	public static ButtonClickHandler handleLodestoneButtons = new ButtonClickHandler(1092, e -> {

@@ -8,7 +8,7 @@ import com.rs.engine.quest.QuestOutline;
 import com.rs.game.World;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
@@ -117,7 +117,7 @@ public class KnightsSword extends QuestOutline {
 	}
 
 	public static ObjectClickHandler handleVyvinCupboard = new ObjectClickHandler(new Object[] { 2271, 2272 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if (e.getOption().equalsIgnoreCase("open")) {
 			e.getPlayer().setNextAnimation(new Animation(536));
 			e.getPlayer().lock(2);

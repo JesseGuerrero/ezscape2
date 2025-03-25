@@ -9,7 +9,7 @@ import com.rs.game.content.skills.summoning.Familiar;
 import com.rs.game.model.WorldProjectile;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.*;
 import com.rs.lib.net.packets.encoders.Sound;
 import com.rs.lib.net.packets.encoders.updatezone.*;

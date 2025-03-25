@@ -23,7 +23,7 @@ public class DagannothCaves {
         }
     });
 
-    public static ObjectClickHandler handleDagDoors = new ObjectClickHandler(new Object[] { 8958, 8959, 8960 }, e -> World.removeObjectTemporary(e.getObject(), Ticks.fromMinutes(1)));
+    public static ObjectClickHandler handleDagDoors = new ObjectClickHandler(new Object[] { 8958, 8959, 8960 }, e -> World.removeObjectTemporary(e.getObj(), Ticks.fromMinutes(1)));
     public static ObjectClickHandler handleStairs = new ObjectClickHandler(new Object[] { 10177, 10193, 8930, 10195, 10196, 10198, 10197, 10199, 10200, 10201, 10202, 10203, 10204, 10205, 10206, 10207, 10208, 10209, 10210, 10211, 10212, 10213, 10214, 10215, 10216, 10230, 10229, 10217, 10218, 10226, 10225, 10228, 10227, 10194, 10219, 10220, 10221, 10222, 10223, 10224 }, e -> {
         switch (e.getObjectId()) {
             case 10177 -> e.getPlayer().promptUpDown(

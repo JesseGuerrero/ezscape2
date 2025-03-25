@@ -13,14 +13,13 @@ import com.rs.game.model.entity.async.schedule
 import com.rs.game.model.entity.npc.OwnedNPC
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.Constants
 import com.rs.lib.game.Animation
 import com.rs.lib.game.Item
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
-import com.rs.plugin.kts.onItemEquip
 import com.rs.plugin.kts.onObjectClick
 import com.rs.plugin.kts.onPlayerStep
 import com.rs.utils.DropSets

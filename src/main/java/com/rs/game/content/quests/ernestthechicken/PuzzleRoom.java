@@ -20,7 +20,7 @@ import com.rs.game.World;
 import com.rs.game.content.world.doors.Doors.Door;
 import com.rs.engine.pathfinder.RouteEvent;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.game.VarManager;
 import com.rs.plugin.annotations.PluginEventHandler;
@@ -69,7 +69,7 @@ public class PuzzleRoom {
 
 
 	public static ObjectClickHandler handleLevers = new ObjectClickHandler(new Object[] { LEVER_A, LEVER_B, LEVER_C, LEVER_D, LEVER_E, LEVER_F }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		VarManager vars = e.getPlayer().getVars();
 		int id = obj.getId();
 
@@ -136,20 +136,20 @@ public class PuzzleRoom {
 		}
 	});
 
-	public static ObjectClickHandler handleDoors = new ObjectClickHandler(false, new Object[] { DOOR1, DOOR2, DOOR3, DOOR4, DOOR5, DOOR6, DOOR7, DOOR8, DOOR9 }, e -> e.getPlayer().setRouteEvent(new RouteEvent(e.getObject(), () -> {
-		if(e.getObject().getId() == DOOR1 || e.getObject().getId() == DOOR3 || e.getObject().getId() == DOOR8 || e.getObject().getId() == DOOR5)
-			handlePuzzle2Door(e.getPlayer(), e.getObject(), 2);
+	public static ObjectClickHandler handleDoors = new ObjectClickHandler(false, new Object[] { DOOR1, DOOR2, DOOR3, DOOR4, DOOR5, DOOR6, DOOR7, DOOR8, DOOR9 }, e -> e.getPlayer().setRouteEvent(new RouteEvent(e.getObj(), () -> {
+		if(e.getObj().getId() == DOOR1 || e.getObj().getId() == DOOR3 || e.getObj().getId() == DOOR8 || e.getObj().getId() == DOOR5)
+			handlePuzzle2Door(e.getPlayer(), e.getObj(), 2);
 		else
-			handlePuzzleDoor(e.getPlayer(), e.getObject(), 2);
+			handlePuzzleDoor(e.getPlayer(), e.getObj(), 2);
 	}, () -> {
-		if (!WorldUtil.isInRange(e.getPlayer().getTile(), e.getObject().getTile(), 2)) {
+		if (!WorldUtil.isInRange(e.getPlayer().getTile(), e.getObj().getTile(), 2)) {
 			e.getPlayer().sendMessage("You can't reach that.");
 			return false;
 		}
-		if(e.getObject().getId() == DOOR1 || e.getObject().getId() == DOOR3 || e.getObject().getId() == DOOR8 || e.getObject().getId() == DOOR5)
-			handlePuzzle2Door(e.getPlayer(), e.getObject(), 2);
+		if(e.getObj().getId() == DOOR1 || e.getObj().getId() == DOOR3 || e.getObj().getId() == DOOR8 || e.getObj().getId() == DOOR5)
+			handlePuzzle2Door(e.getPlayer(), e.getObj(), 2);
 		else
-			handlePuzzleDoor(e.getPlayer(), e.getObject(), 2);
+			handlePuzzleDoor(e.getPlayer(), e.getObj(), 2);
 		return true;
 	})));
 

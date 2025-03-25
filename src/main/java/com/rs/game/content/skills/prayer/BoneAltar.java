@@ -23,7 +23,7 @@ import com.rs.game.content.combat.CombatDefinitions;
 import com.rs.game.content.skills.prayer.Burying.Bone;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.SpotAnim;
@@ -131,7 +131,7 @@ public class BoneAltar  {
 	public static ObjectClickHandler handleAltars = new ObjectClickHandler(new Object[] {"Altar", "Chaos altar", "Altar of guthix"}, e -> {
 		Player player = e.getPlayer();
 
-		if (e.getObject().getDefinitions().containsOption(0, "Pray") || e.getObject().getDefinitions().containsOption(0, "Pray-at") || e.getObject().getDefinitions().containsOption(0, "Recharge")) {
+		if (e.getObj().getDefinitions().containsOption(0, "Pray") || e.getObj().getDefinitions().containsOption(0, "Pray-at") || e.getObj().getDefinitions().containsOption(0, "Recharge")) {
 			player.getPrayer().worshipAltar();
 			if (e.getObjectId() == 6552) {
 				player.startConversation(new Dialogue().addOptions("Change spellbooks?", ops -> {

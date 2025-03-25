@@ -1,7 +1,7 @@
 package com.rs.game.content.skills.construction.playerOwnedHouse
 
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 
 class RoomReference(val room: HouseRooms, x: Int, y: Int, plane: Int, rotation: Int) {
     val trapObject: Int

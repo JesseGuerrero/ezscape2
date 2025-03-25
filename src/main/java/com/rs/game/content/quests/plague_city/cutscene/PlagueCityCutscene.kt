@@ -9,7 +9,7 @@ import com.rs.game.World
 import com.rs.game.content.quests.plague_city.utils.*
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.InterfaceManager
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Animation
 import com.rs.lib.game.Tile
 

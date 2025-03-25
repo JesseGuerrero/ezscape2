@@ -23,10 +23,9 @@ import com.rs.game.World.spawnNPC
 import com.rs.game.content.miniquests.huntforsurok.PortalPair
 import com.rs.game.content.skills.magic.TeleType
 import com.rs.game.map.instance.Instance
-import com.rs.game.model.entity.Entity
 import com.rs.game.model.entity.player.InstancedController
 import com.rs.game.model.entity.player.managers.EmotesManager
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Tile
 
 class BorkController(private val quest: Boolean) : InstancedController(Instance.of(PortalPair.BORK.tile1, 8, 8).setEntranceOffset(intArrayOf(43, 24, 0))) {

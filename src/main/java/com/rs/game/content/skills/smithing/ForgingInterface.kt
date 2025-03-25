@@ -21,7 +21,7 @@ import com.rs.cache.loaders.interfaces.IComponentDefinitions
 import com.rs.engine.quest.Quest
 import com.rs.game.content.skills.smithing.ForgingInterface.Slot
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.Constants
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent

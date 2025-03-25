@@ -29,7 +29,7 @@ import com.rs.game.model.entity.Entity
 import com.rs.game.model.entity.Hit
 import com.rs.game.model.entity.async.schedule
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.OwnedObject
+import com.rs.game.model.gameobject.OwnedObject
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.Constants
 import com.rs.lib.game.Animation

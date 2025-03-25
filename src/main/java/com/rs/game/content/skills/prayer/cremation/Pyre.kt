@@ -23,8 +23,8 @@ import com.rs.game.World.sendSpotAnim
 import com.rs.game.model.entity.async.schedule
 import com.rs.game.model.entity.npc.OwnedNPC
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
-import com.rs.game.model.`object`.OwnedObject
+import com.rs.game.model.gameobject.GameObject
+import com.rs.game.model.gameobject.OwnedObject
 import com.rs.lib.Constants
 import com.rs.lib.game.Item
 import com.rs.lib.game.Tile

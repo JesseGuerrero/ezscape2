@@ -4,7 +4,7 @@ import com.rs.engine.quest.Quest
 import com.rs.game.content.skills.magic.TeleType
 import com.rs.game.model.entity.Teleport
 import com.rs.game.model.entity.player.Controller
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
@@ -47,17 +47,16 @@ class ShipMastController() : Controller() {
     }
 
     override fun processObjectClick1(obj: GameObject): Boolean {
-        if(player.hasRights(Rights.ADMIN)) {
-            player.sendMessage("You can see a tattered flag blowing in the wind. The top half of the flag is coloured ${SailColorManager.getSailColor(player, "sailColour1")}.")
-            player.sendMessage("You can see a tattered flag blowing in the wind. The skull emblem is coloured ${SailColorManager.getSailColor(player, "sailColour2")}.")
-            player.sendMessage("You can see a tattered flag blowing in the wind. The bottom half of the flag is coloured ${SailColorManager.getSailColor(player, "sailColour3")}.")
-            return true
-        }
         if (obj.id == 5266) {
             exitShip()
             return false
         }
         if (obj.id == 5274) {
+            if(player.hasRights(Rights.ADMIN)) {
+                player.sendMessage("You can see a tattered flag blowing in the wind. The top half of the flag is coloured ${SailColorManager.getSailColor(player, "sailColour1")}.")
+                player.sendMessage("You can see a tattered flag blowing in the wind. The skull emblem is coloured ${SailColorManager.getSailColor(player, "sailColour2")}.")
+                player.sendMessage("You can see a tattered flag blowing in the wind. The bottom half of the flag is coloured ${SailColorManager.getSailColor(player, "sailColour3")}.")
+            }
             if(highWindSpeed){
                 player.simpleDialogue("You can see a tattered flag blowing in the wind. The wind is blowing too hard to make out the details.")
             }

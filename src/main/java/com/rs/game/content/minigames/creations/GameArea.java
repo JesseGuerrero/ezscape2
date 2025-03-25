@@ -19,7 +19,7 @@ package com.rs.game.content.minigames.creations;
 import com.rs.cache.loaders.ObjectType;
 import com.rs.game.World;
 import com.rs.game.map.instance.Instance;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;

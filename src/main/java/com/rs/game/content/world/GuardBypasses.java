@@ -22,7 +22,7 @@ import com.rs.game.content.skills.dungeoneering.DamonheimController;
 import com.rs.game.content.world.areas.wilderness.WildernessController;
 import com.rs.game.content.world.doors.DoorPair;
 import com.rs.engine.pathfinder.Direction;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
@@ -149,10 +149,10 @@ public class GuardBypasses {
 			World.spawnObjectTemporary(new GameObject(gate2.getId(), gate2.getType(), gate2.getRotation(1), gate2.getTile().transform(1, 0, 0)), 3, true);
 		}
 		e.getPlayer().lock(2);
-		if(e.getObject().getRotation() == 2) //East
-			e.getPlayer().addWalkSteps(e.getPlayer().getX() > e.getObject().getX() ? e.getObject().getTile().transform(-1, 0) : e.getObject().getTile().transform(1, 0), 3, false);
-		if(e.getObject().getRotation() == 1) //North
-			e.getPlayer().addWalkSteps(e.getPlayer().getY() > e.getObject().getY() ? e.getObject().getTile().transform(0, -1) : e.getObject().getTile().transform(0, 1), 3, false);
+		if(e.getObj().getRotation() == 2) //East
+			e.getPlayer().addWalkSteps(e.getPlayer().getX() > e.getObj().getX() ? e.getObj().getTile().transform(-1, 0) : e.getObj().getTile().transform(1, 0), 3, false);
+		if(e.getObj().getRotation() == 1) //North
+			e.getPlayer().addWalkSteps(e.getPlayer().getY() > e.getObj().getY() ? e.getObj().getTile().transform(0, -1) : e.getObj().getTile().transform(0, 1), 3, false);
 	});
 
 }

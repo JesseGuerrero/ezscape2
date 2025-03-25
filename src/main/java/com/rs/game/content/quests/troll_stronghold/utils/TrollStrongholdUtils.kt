@@ -9,7 +9,7 @@ import com.rs.game.content.world.doors.Doors
 import com.rs.game.model.entity.async.schedule
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Tile
 
 class TrollStrongholdUtils(val player: Player) {

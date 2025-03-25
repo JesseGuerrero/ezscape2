@@ -8,7 +8,7 @@ import com.rs.engine.quest.QuestOutline;
 import com.rs.game.map.ChunkManager;
 import com.rs.game.model.entity.npc.OwnedNPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.GroundItem;
@@ -172,7 +172,7 @@ public class MerlinsCrystal extends QuestOutline {
 	private static final int MERLIN_FREE_VAR = 14;
 	private static final int MERLINS_CRYSTAL_OBJ = 62;
 	public static ObjectClickHandler handleMerlinsCrystal = new ObjectClickHandler(new Object[] { MERLINS_CRYSTAL_OBJ }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if (e.getOption().equalsIgnoreCase("smash")) {
 			e.getPlayer().sendMessage("You attempt to smash the crystal...");
 			if (e.getPlayer().getQuestManager().getStage(Quest.MERLINS_CRYSTAL) == BREAK_MERLIN_CRYSTAL)

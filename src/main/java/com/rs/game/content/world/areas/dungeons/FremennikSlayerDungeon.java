@@ -34,6 +34,6 @@ public class FremennikSlayerDungeon {
 	public static ObjectClickHandler handleShortcut2 = new ObjectClickHandler(new Object[] { 9321 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 62))
 			return;
-		e.getPlayer().forceMove(e.getPlayer().transform(e.getObject().getRotation() == 0 ? 5 : -5, 0), 3844, 25, 75);
+		e.getPlayer().forceMove(e.getPlayer().transform(e.getObj().getRotation() == 0 ? 5 : -5, 0), 3844, 25, 75);
 	});
 }

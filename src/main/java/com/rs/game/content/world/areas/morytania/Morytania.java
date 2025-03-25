@@ -81,7 +81,7 @@ public class Morytania  {
     }));
 
 	public static ObjectClickHandler handleSlayerTowerChains = new ObjectClickHandler(new Object[] { 9319, 9320 }, e -> {
-		if (!Agility.hasLevel(e.getPlayer(), e.getObject().getX() < 3447 ? 61 : 71))
+		if (!Agility.hasLevel(e.getPlayer(), e.getObj().getX() < 3447 ? 61 : 71))
 			return;
 		e.getPlayer().useStairs(828, e.getPlayer().transform(0, 0, e.getObjectId() == 9319 ? 1 : -1), 1, 2);
 	});
@@ -90,9 +90,9 @@ public class Morytania  {
 
 	public static ObjectClickHandler handleLabExit = new ObjectClickHandler(new Object[] { 18050 }, e -> e.getPlayer().useStairs(-1, Tile.of(3643, 3306, 0), 1, 1));
 
-	public static ObjectClickHandler handleBurghDeRottToMineFence = new ObjectClickHandler(new Object[] { 12776 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObject().getX() ? 1 : -1, 0, 0), 2923));
+	public static ObjectClickHandler handleBurghDeRottToMineFence = new ObjectClickHandler(new Object[] { 12776 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() < e.getObj().getX() ? 1 : -1, 0, 0), 2923));
 
-	public static ObjectClickHandler handleBrokenFence = new ObjectClickHandler(new Object[] { 18411 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() > e.getObject().getY() ? -1 : 1, 0)));
+	public static ObjectClickHandler handleBrokenFence = new ObjectClickHandler(new Object[] { 18411 }, e -> AgilityShortcuts.climbOver(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() > e.getObj().getY() ? -1 : 1, 0)));
 
 	public static ObjectClickHandler handleTempleTrapdoor = new ObjectClickHandler(new Object[] { 30572 }, e -> e.getPlayer().ladder(Tile.of(3405, 9906, 0)));
 
@@ -102,12 +102,12 @@ public class Morytania  {
 
 	public static ObjectClickHandler handleSwampTrapdoorShortcut = new ObjectClickHandler(new Object[] { 5055, 5054 }, e -> e.getPlayer().ladder(e.getObjectId() == 5055 ? Tile.of(3477, 9845, 0) : Tile.of(3495, 3466, 0)));
 
-	public static ObjectClickHandler handleMyrequeWall = new ObjectClickHandler(new Object[] { 5052 }, e -> Doors.handleOneWayDoor(e.getPlayer(), e.getObject(), 1));
+	public static ObjectClickHandler handleMyrequeWall = new ObjectClickHandler(new Object[] { 5052 }, e -> Doors.handleOneWayDoor(e.getPlayer(), e.getObj(), 1));
 
 	public static ObjectClickHandler handleSwampWoodenDoors = new ObjectClickHandler(new Object[] { 30261, 30262, 30265 }, e -> e.getPlayer().useStairs(e.getObjectId() == 30265 ? Tile.of(3500, 9812, 0) : Tile.of(3510, 3448, 0)));
 
 	public static ObjectClickHandler handleTreeBridgeShortcut = new ObjectClickHandler(new Object[] { 5005 }, e -> {
-		if (e.getObject().getTile().isAt(3502, 3431))
+		if (e.getObj().getTile().isAt(3502, 3431))
 			e.getPlayer().ladder(Tile.of(3502, 3425, 0));
 		else
 			e.getPlayer().ladder(Tile.of(3502, 3432, 0));
@@ -118,8 +118,8 @@ public class Morytania  {
 	public static ObjectClickHandler handleSwampBoatToMorton = new ObjectClickHandler(new Object[] { 6970 }, e -> e.getPlayer().tele(Tile.of(3521, 3284, 0)));
 
 	public static ObjectClickHandler handleGrottoBridge = new ObjectClickHandler(new Object[] { 3522 }, e -> {
-		int jumpTo = ((e.getObject().getY() <= 3329) ? e.getObject().getY()+2 : e.getObject().getY()-2);
-		Tile endTile = Tile.of(e.getObject().getX(), jumpTo, e.getObject().getPlane());
+		int jumpTo = ((e.getObj().getY() <= 3329) ? e.getObj().getY()+2 : e.getObj().getY()-2);
+		Tile endTile = Tile.of(e.getObj().getX(), jumpTo, e.getObj().getPlane());
 		e.getPlayer().lock();
 		e.getPlayer().setNextFaceTile(endTile);
 		e.getPlayer().setNextAnimation(new Animation(769));
@@ -203,7 +203,7 @@ public class Morytania  {
 				e.getPlayer().lock();
 				e.getPlayer().applyHit(new Hit(null, 10, HitLook.TRUE_DAMAGE), 0, () -> {
 					e.getPlayer().getInventory().addItem(new Item(21576, 1).addMetaData("drakanCharges", 10));
-					e.getObject().setIdTemporary(61093, 20);
+					e.getObj().setIdTemporary(61093, 20);
 					e.getPlayer().unlock();
 				});
 			});
@@ -214,9 +214,9 @@ public class Morytania  {
 	//Fenkenstraincastle
 	public static ObjectClickHandler handleFenkenstraincastlestairs = new ObjectClickHandler(new Object[] { 5206, 5207 }, e -> {
 		if (e.getObjectId() == 5206)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? -0 : e.getObject().getRotation() == 1 ? -0 : 0, e.getObject().getRotation() == 0 ? 4 : e.getObject().getRotation() == 1 ? -0 : 0,  1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? -0 : e.getObj().getRotation() == 1 ? -0 : 0, e.getObj().getRotation() == 0 ? 4 : e.getObj().getRotation() == 1 ? -0 : 0,  1));
 		else if (e.getObjectId() == 5207)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 0 ? 0 : e.getObject().getRotation() == 1 ? -0 : 0, e.getObject().getRotation() == 0 ? -4 : e.getObject().getRotation() == 1 ? -0 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 0 ? 0 : e.getObj().getRotation() == 1 ? -0 : 0, e.getObj().getRotation() == 0 ? -4 : e.getObj().getRotation() == 1 ? -0 : 0, -1));
 	});
 	public static ObjectClickHandler experimentcavegraveentrance = new ObjectClickHandler(new Object[] { 5167 }, e ->
 			e.getPlayer().useLadder(e.getPlayer().transform(0, 6400)));

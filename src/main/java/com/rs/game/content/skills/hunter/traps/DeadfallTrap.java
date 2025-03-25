@@ -18,7 +18,7 @@ package com.rs.game.content.skills.hunter.traps;
 
 import com.rs.game.content.skills.hunter.BoxTrapType;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 
 public class DeadfallTrap extends BoxStyleTrap {
 

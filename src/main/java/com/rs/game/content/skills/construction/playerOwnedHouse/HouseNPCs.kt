@@ -1,7 +1,7 @@
 package com.rs.game.content.skills.construction.playerOwnedHouse
 
 import com.rs.game.World
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.game.model.entity.npc.NPC
 import com.rs.lib.game.Item
 import com.rs.lib.game.Tile

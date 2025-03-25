@@ -1,7 +1,7 @@
 package com.rs.game.content.world.areas.global;
 
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
@@ -13,7 +13,7 @@ public class Ladders {
 	public static ObjectClickHandler world2UP = new ObjectClickHandler(new Object[] { 11739 }, e -> e.getPlayer().useStairs(828, e.getPlayer().transform(0, -2, 1)));
 	public static ObjectClickHandler world2DOWN = new ObjectClickHandler(new Object[] { 11741 }, e -> e.getPlayer().useStairs(828, e.getPlayer().transform(0, 2, -1)));
 
-	public static ObjectClickHandler ladders = new ObjectClickHandler(new Object[] { "Ladder", "Bamboo ladder" }, e -> handleLadder(e.getPlayer(), e.getObject(), e.getOption()));
+	public static ObjectClickHandler ladders = new ObjectClickHandler(new Object[] { "Ladder", "Bamboo ladder" }, e -> handleLadder(e.getPlayer(), e.getObj(), e.getOption()));
 
 	private static void handleLadder(Player player, GameObject object, String option) {
 		switch (option.toLowerCase()) {

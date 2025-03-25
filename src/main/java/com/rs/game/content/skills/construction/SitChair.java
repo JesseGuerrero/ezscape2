@@ -20,7 +20,7 @@ import com.rs.cache.loaders.ObjectType;
 import com.rs.game.content.skills.construction.playerOwnedHouse.HouseConstants;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
 

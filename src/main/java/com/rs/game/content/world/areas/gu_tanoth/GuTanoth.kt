@@ -12,7 +12,7 @@ import com.rs.plugin.kts.onObjectClick
 fun mapGuTanoth() {
     onObjectClick(2832) { e ->
         if (!Agility.hasLevel(e.player, 20)) return@onObjectClick
-        Agility.handleObstacle(e.player, 3303, 2, e.player.transform(if (e.player.x < e.getObject().x) 2 else -2, 0, 0), 1.0)
+        Agility.handleObstacle(e.player, 3303, 2, e.player.transform(if (e.player.x < e.getObj().x) 2 else -2, 0, 0), 1.0)
     }
 
     onObjectClick(28722) { (player, obj, option) ->

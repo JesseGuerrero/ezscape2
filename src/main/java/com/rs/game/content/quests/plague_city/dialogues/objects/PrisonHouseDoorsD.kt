@@ -9,7 +9,7 @@ import com.rs.game.content.quests.plague_city.utils.*
 import com.rs.game.content.world.doors.Doors
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 
 class PrisonHouseDoorsD (player: Player, obj: GameObject) {
     private val eastDoor = PlagueCityUtils().isAtEastDoor(player.tile)

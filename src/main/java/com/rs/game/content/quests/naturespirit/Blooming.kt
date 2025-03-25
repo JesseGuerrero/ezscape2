@@ -63,7 +63,7 @@ fun mapBlooming() {
             if (e.player.inventory.addItemDrop(product.itemId, 1)) {
                 e.player.sendMessage("You pick a $productName.")
                 e.player.incrementCount("$productName bloomed", 1)
-                e.getObject().setId(e.getObject().originalId)
+                e.getObj().setId(e.getObj().originalId)
             }
         }
     }

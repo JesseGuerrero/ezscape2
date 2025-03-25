@@ -25,7 +25,7 @@ import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.npc.OwnedNPC;
 import com.rs.engine.pathfinder.Direction;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
@@ -143,7 +143,7 @@ public class CountDraynorBoss extends OwnedNPC {
 		Player p = e.getPlayer();
 		if(p.getQuestManager().getStage(Quest.VAMPYRE_SLAYER) != VampireSlayer.STAKE_RECIEVED)
 			return;
-		if(e.getObject().getId() == COFFIN_ID) {
+		if(e.getObj().getId() == COFFIN_ID) {
 			p.startConversation(new Conversation(p) {
 				{
 					addPlayer(HeadE.CALM_TALK, "Count Draynor isn't here. He'll probably be back soon...");
@@ -160,14 +160,14 @@ public class CountDraynorBoss extends OwnedNPC {
 			});
 			return;
 		}
-		if(e.getObject().getId() == 158) {
-			World.removeObject(e.getObject());
-			World.spawnObject(new GameObject(COFFIN_ID, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getTile()), true);
+		if(e.getObj().getId() == 158) {
+			World.removeObject(e.getObj());
+			World.spawnObject(new GameObject(COFFIN_ID, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), true);
 		}
 
 		p.set("live_in_scene", true);
 		p.lock();
-		GameObject coffin = World.getObject(e.getObject().getTile(), ObjectType.forId(10));
+		GameObject coffin = World.getObject(e.getObj().getTile(), ObjectType.forId(10));
 		p.getMusicsManager().playSongAndUnlock(COUNTING_ON_YOU);
 
         CountDraynorBoss countDraynor = new CountDraynorBoss(p, Tile.of(coffin.getX()+1, coffin.getY()+1, coffin.getPlane()));
@@ -180,7 +180,7 @@ public class CountDraynorBoss extends OwnedNPC {
 			@Override
 			public void run() {
 				World.removeObject(coffin);
-				World.spawnObject(new GameObject(158, e.getObject().getType(), e.getObject().getRotation(), e.getObject().getTile()), true);
+				World.spawnObject(new GameObject(158, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), true);
 				countDraynor.finish();
 			}
 		}, Ticks.fromMinutes(3));

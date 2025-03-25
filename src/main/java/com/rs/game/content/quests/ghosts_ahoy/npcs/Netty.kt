@@ -3,10 +3,12 @@ package com.rs.game.content.quests.ghosts_ahoy.npcs
 import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
+import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
+import com.rs.plugin.kts.onItemOnNpc
 import com.rs.plugin.kts.onNpcClick
 
 class Netty(p: Player, npc: NPC) {
@@ -16,15 +18,14 @@ class Netty(p: Player, npc: NPC) {
         if(!p.isQuestStarted(Quest.GHOSTS_AHOY))
             defaultResponses(p, npc)
         else
-        when(p.getQuestStage(Quest.GHOSTS_AHOY)) {
-            in 1 .. 2 -> defaultResponses(p, npc)
-            3 -> dialogueStage3(p, npc)
-            4 -> dialogueStage4(p, npc)
-            5 -> dialogueStage5(p, npc)
-            6 -> dialogueStage6(p, npc)
-            7 -> dialogueStage7(p, npc)
-            else -> dialoguePostQuest(p, npc)
-        }
+            when(p.getQuestStage(Quest.GHOSTS_AHOY)) {
+                in 1 .. 2 -> defaultResponses(p, npc)
+                3 -> dialogueStage3(p, npc)
+                4 -> dialogueStage4(p, npc)
+                5 -> dialogueStage5(p, npc)
+                6 -> dialogueStage6(p, npc)
+                else -> dialoguePostQuest(p, npc)
+            }
     }
 }
 private const val PORCELAIN_CUP = 4244
@@ -66,7 +67,7 @@ private fun dialogueStage3(p: Player, npc: NPC) {
         npc(npc, HeadE.CALM_TALK,"Yes, I would love a nice hot cup of nettle tea.")
         player(HeadE.CALM_TALK,"Do you know where I can find nettles around here?")
         npc(npc, HeadE.CALM_TALK,"I believe they grow wild in the Haunted Forest.")
-        exec { p.setQuestStage(Quest.GHOSTS_AHOY, 4) }
+        exec { p.setQuestStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_4_SEEK_OLD_WOMAN) }
     }
 }
 
@@ -121,7 +122,7 @@ private fun teaFinal(p: Player, npc: NPC) {
         player(HeadE.CALM_TALK, "Here's a lovely cup of milky tea for you, in your own special cup.")
         exec {
             p.inventory.deleteItem(NETTLE_TEA_PM, 1)
-            p.setQuestStage(Quest.GHOSTS_AHOY, 5)
+            p.setQuestStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_5_GATHER_ITEMS)
         }
         simple("As the old woman drinks the cup of milky tea, enlightenment glows from within her eyes.")
         npc(npc, HeadE.CALM_TALK, "Ah, that's better. Now, let me see... Yes, I was once a disciple of Necrovarus.")
@@ -145,7 +146,7 @@ private fun teaFinal(p: Player, npc: NPC) {
             npc(npc, HeadE.CALM_TALK, "All his rituals come from a book written by an ancient sorcerer from the East called Haricanto. Bring me this strange book.")
             npc(npc, HeadE.CALM_TALK, "I cannot read the strange letters of the eastern lands. I will need something to help me translate the book.")
             exec {
-                dialogueStage5ops(p, npc)
+                dialogueStage5(p, npc)
             }
         }
         npc(npc, HeadE.CALM_TALK, "Well, that's a stroke of luck. There is an enchantment that I can perform on such an amulet that will give it the power of command over ghosts.")
@@ -155,61 +156,75 @@ private fun teaFinal(p: Player, npc: NPC) {
         npc(npc, HeadE.CALM_TALK, "All his rituals come from a book written by an ancient sorcerer from the East called Haricanto. Bring me this strange book.")
         npc(npc, HeadE.CALM_TALK, "I cannot read the strange letters of the eastern lands. I will need something to help me translate the book.")
         exec {
-            dialogueStage5ops(p, npc)
+            dialogueStage5(p, npc)
         }
     }
 }
 
 private fun dialogueStage5(p: Player, npc: NPC) {
     p.startConversation {
-        player(HeadE.CALM_TALK, "I'm here about Necrovarus.")
-        exec {
-            dialogueStage5ops(p, npc)
-        }
-    }
-}
-
-private fun dialogueStage5ops(p: Player, npc: NPC) {
-    p.startConversation {
         label("initialOptions")
         options {
-            if (p.getQuestStage(Quest.GHOSTS_AHOY) == 5) {
-                op("You are doing so much for me - is there anything I can do for you?") {
-                    player(HeadE.CALM_TALK, "You are doing so much for me - is there anything I can do for you?")
-                    npc(
-                        npc,
-                        HeadE.CALM_TALK,
-                        "I have lived here on my own for many years, but not always. When I left Port Phasmatys, I took my son with me. He grew up to be a fine boy, always in love with the sea."
-                    )
-                    npc(
-                        npc,
-                        HeadE.CALM_TALK,
-                        "He was about twelve years old when he ran away with some pirates to be a cabin boy. I never saw him again."
-                    )
+            if (p.getQuestStage(Quest.GHOSTS_AHOY) == GhostsAhoy.STAGE_5_GATHER_ITEMS) {
+                if (!p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("FOUND_SON")) {
+                    op("You are doing so much for me - is there anything I can do for you?") {
+                        player(HeadE.CALM_TALK, "You are doing so much for me - is there anything I can do for you?")
+                        npc(
+                            npc,
+                            HeadE.CALM_TALK,
+                            "I have lived here on my own for many years, but not always. When I left Port Phasmatys, I took my son with me. He grew up to be a fine boy, always in love with the sea."
+                        )
+                        npc(
+                            npc,
+                            HeadE.CALM_TALK,
+                            "He was about twelve years old when he ran away with some pirates to be a cabin boy. I never saw him again."
+                        )
 
-                    player(HeadE.CALM_TALK, "That's the second saddest story I have heard today.")
-                    npc(
-                        npc,
-                        HeadE.CALM_TALK,
-                        "If you ever see him, please give him this...and tell him that his mother still loves him."
-                    )
-                    exec {
-                        if (p.inventory.hasFreeSlots()) {
-                            p.inventory.addItem(4253)
-                            item(4253,"The old woman gives you a toy boat.")
-                            player(HeadE.CALM_TALK, "Was this his boat?")
-                            npc(
-                                npc,
-                                HeadE.CALM_TALK,
-                                "Yes, he made it himself. It is a model of the very ship in which he sailed away. The paint has peeled off and it has lost its flag, but I could never throw it away."
-                            )
-                            player(HeadE.CALM_TALK, "If I find him, I will pass it on.")
-                        } else
-                            npc(
-                                npc,
-                                HeadE.CALM_TALK,
-                                "Come back to me when you have some room to take it."
-                            )
+                        player(HeadE.CALM_TALK, "That's the second saddest story I have heard today.")
+                        npc(
+                            npc,
+                            HeadE.CALM_TALK,
+                            "If you ever see him, please give him this...and tell him that his mother still loves him."
+                        )
+                        exec {
+                            if (p.inventory.hasFreeSlots()) {
+                                p.inventory.addItem(4253)
+                                item(4253, "The old woman gives you a toy boat.")
+                                player(HeadE.CALM_TALK, "Was this his boat?")
+                                npc(
+                                    npc,
+                                    HeadE.CALM_TALK,
+                                    "Yes, he made it himself. It is a model of the very ship in which he sailed away. The paint has peeled off and it has lost its flag, but I could never throw it away."
+                                )
+                                player(HeadE.CALM_TALK, "If I find him, I will pass it on.")
+                            } else
+                                npc(
+                                    npc,
+                                    HeadE.CALM_TALK,
+                                    "Come back to me when you have some room to take it."
+                                )
+                        }
+                    }
+                } else {
+                    op("Good news! I have found your son!") {
+                        player(HeadE.CALM_TALK, "Good news! I have found your son!")
+                        npc(npc, HeadE.CALM_TALK, "Goodness! Where is he?")
+                        player(
+                            HeadE.CALM_TALK,
+                            "He lives on a shipwreck to the east of here. He remembers you and wishes you well."
+                        )
+                        npc(npc, HeadE.CALM_TALK, "Oh thank you! I will travel to see him as soon as I am able!!")
+                    }
+
+                }
+                if (p.inventory.containsItem(NECROVARUS_ROBE) ||
+                    p.inventory.containsItem(BOOK_OF_HARICANTO) ||
+                    p.inventory.containsItem(TRANSLATION_MANUAL)
+                ) {
+                    op("I have something for you.") {
+                        exec {
+                            handInItems(p, npc)
+                        }
                     }
                 }
                 op("Remind me - what can I do about Necrovarus?") {
@@ -222,8 +237,16 @@ private fun dialogueStage5ops(p: Player, npc: NPC) {
                         player(HeadE.CALM_TALK, "Yes, I'm wearing one right now.")
                     else
                         player(HeadE.CALM_TALK, "Yes, I have one of those somewhere.")
-                    npc(npc, HeadE.CALM_TALK, "Well, that's a stroke of luck. There is an enchantment that I can perform on such an amulet that will give it the power of command over ghosts.")
-                                npc(npc, HeadE.CALM_TALK,"It will work only once, but it will enable you to command Necrovarus to let the ghosts pass on.")
+                    npc(
+                        npc,
+                        HeadE.CALM_TALK,
+                        "Well, that's a stroke of luck. There is an enchantment that I can perform on such an amulet that will give it the power of command over ghosts."
+                    )
+                    npc(
+                        npc,
+                        HeadE.CALM_TALK,
+                        "It will work only once, but it will enable you to command Necrovarus to let the ghosts pass on."
+                    )
 
                     goto("initialOptions")
                 }
@@ -254,51 +277,28 @@ private fun dialogueStage5ops(p: Player, npc: NPC) {
     }
 }
 
-private fun dialogueStage6(p: Player, npc: NPC) {
+private fun handInItems(p: Player, npc: NPC) {
     p.startConversation {
-        player(HeadE.CALM_TALK, "Good news! I have found your son!")
-        npc(npc, HeadE.CALM_TALK, "Goodness! Where is he?")
-        player(HeadE.CALM_TALK, "He lives on a shipwreck to the east of here. He remembers you and wishes you well.")
-        npc(npc, HeadE.CALM_TALK, "Oh thank you! I will travel to see him as soon as I am able!!")
-        if (p.inventory.containsItem(NECROVARUS_ROBE) ||
-            p.inventory.containsItem(BOOK_OF_HARICANTO) ||
-            p.inventory.containsItem(TRANSLATION_MANUAL)) {
-
-            player(HeadE.CALM_TALK, "I have something for you.")
-            if (p.inventory.containsItem(NECROVARUS_ROBE)) {
-                npc(npc, HeadE.CALM_TALK, "Good - the robes of Necrovarus.")
-
-                p.inventory.deleteItem(NECROVARUS_ROBE, 1)
-                p.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("HAS_NECROVARUS_ROBE", true)
-
-            }
-
-            if (p.inventory.containsItem(TRANSLATION_MANUAL)) {
-                npc(npc, HeadE.CALM_TALK, "A translation manual - yes, this should do the job.")
-                p.inventory.deleteItem(TRANSLATION_MANUAL, 1)
-                p.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("HAS_TRANSLATION_MANUAL", true)
-
-            }
-
-            if (p.inventory.containsItem(BOOK_OF_HARICANTO)) {
-                npc(npc, HeadE.CALM_TALK, "The Book of Haricanto! I have no idea how you came by this, but well done!")
-                p.inventory.deleteItem(BOOK_OF_HARICANTO, 1)
-                p.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("HAS_BOOK_OF_HARICANTO", true)
-
-            }
+        player(HeadE.CALM_TALK, "I have something for you.")
+        if (p.inventory.containsItem(NECROVARUS_ROBE)) {
+            npc(npc, HeadE.CALM_TALK, "Good - the robes of Necrovarus.")
+            p.inventory.deleteItem(NECROVARUS_ROBE, 1)
+            p.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("HAS_NECROVARUS_ROBE", true)
+        }
+        if (p.inventory.containsItem(TRANSLATION_MANUAL)) {
+            npc(npc, HeadE.CALM_TALK, "A translation manual - yes, this should do the job.")
+            p.inventory.deleteItem(TRANSLATION_MANUAL, 1)
+            p.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("HAS_TRANSLATION_MANUAL", true)
+        }
+        if (p.inventory.containsItem(BOOK_OF_HARICANTO)) {
+            npc(npc, HeadE.CALM_TALK, "The Book of Haricanto! I have no idea how you came by this, but well done!")
+            p.inventory.deleteItem(BOOK_OF_HARICANTO, 1)
+            p.questManager.getAttribs(Quest.GHOSTS_AHOY).setB("HAS_BOOK_OF_HARICANTO", true)
         }
         val HAS_TRANSLATION_MANUAL = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_TRANSLATION_MANUAL")
         val HAS_BOOK_OF_HARICANTO = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_BOOK_OF_HARICANTO")
         val HAS_NECROVARUS_ROBE = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_NECROVARUS_ROBE")
         val hasAll = HAS_TRANSLATION_MANUAL && HAS_BOOK_OF_HARICANTO && HAS_NECROVARUS_ROBE
-        if (p.equipment.neckId == GHOSTSPEAK && hasAll) {
-            npc(
-                npc,
-                HeadE.CALM_TALK,
-                "Wonderful; all I need now is the amulet of ghostspeak. You'll need to take it off for me to perform the ritual of enchantment."
-            )
-            return@startConversation
-        }
         if (!p.inventory.containsItem(GHOSTSPEAK) && hasAll) {
             npc(
                 npc,
@@ -316,10 +316,9 @@ private fun dialogueStage6(p: Player, npc: NPC) {
             item(GHOSTSPEAK_E, "The ghostspeak amulet emits a green glow from its gem.")
             p.inventory.deleteItem(GHOSTSPEAK, 1)
             p.inventory.addItem(GHOSTSPEAK_E)
-            p.questManager.setStage(Quest.GHOSTS_AHOY, 7)
+            p.questManager.setStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_6_AMULET_ENCHANTED)
             return@startConversation
-        }
-        else {
+        } else {
             val missingItems = mutableListOf<String>()
             if (!HAS_NECROVARUS_ROBE) {
                 missingItems.add("the Robes of Necrovarus")
@@ -331,7 +330,7 @@ private fun dialogueStage6(p: Player, npc: NPC) {
                 missingItems.add("something to translate the Book of Haricanto")
             }
             if (!p.inventory.containsItems(GHOSTSPEAK)) {
-                missingItems.add("Ghostspeak Amulet")
+                missingItems.add("a Ghostspeak Amulet")
             }
             val missingItemsMessage = if (missingItems.isNotEmpty()) {
                 "You are still missing: ${missingItems.joinToString(", ")} the sooner you find them the sooner we can perform the ritual."
@@ -340,14 +339,12 @@ private fun dialogueStage6(p: Player, npc: NPC) {
             }
             npc(npc, HeadE.CALM_TALK, missingItemsMessage)
         }
-        exec {
-            dialogueStage5ops(p, npc)
-        }
     }
 }
 
 
-private fun dialogueStage7(p: Player, npc: NPC) {
+
+private fun dialogueStage6(p: Player, npc: NPC) {
     p.startConversation {
         player(HeadE.CALM_TALK, "I'm here about Necrovarus.")
         npc(npc, HeadE.CALM_TALK, "Did it work?")
@@ -381,6 +378,16 @@ private fun defaultResponses(p: Player, npc: NPC) {
 fun mapNettyGA() {
     onNpcClick(1695, options = arrayOf("Talk-To")) { (player, npc) ->
         Netty(player, npc)
+    }
+    onItemOnNpc(1695) { e ->
+        if(e.item.id == NETTLE_TEA_PM)
+            teaFinal(e.player, e.npc)
+        if (e.item.id == NETTLE_TEA_P)
+            teaMilk(e.player, e.npc)
+        if (e.item.id in nettleTeaBasic)
+            teaBasic(e.player, e.npc)
+        if (e.item.id == NECROVARUS_ROBE || e.item.id == TRANSLATION_MANUAL || e.item.id == BOOK_OF_HARICANTO)
+            handInItems(e.player, e.npc)
     }
 }
 

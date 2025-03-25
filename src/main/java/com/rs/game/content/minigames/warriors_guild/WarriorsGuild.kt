@@ -30,7 +30,7 @@ import com.rs.game.model.entity.player.Skills.ATTACK
 import com.rs.game.model.entity.player.Skills.STRENGTH
 import com.rs.game.model.entity.player.managers.AuraManager
 import com.rs.game.model.entity.player.managers.InterfaceManager
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.Constants
 import com.rs.lib.game.Animation

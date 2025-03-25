@@ -1,7 +1,7 @@
 package com.rs.game.content.world.areas.global;
 
 import com.rs.game.World;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
 import com.rs.utils.Ticks;
@@ -10,7 +10,7 @@ import com.rs.utils.Ticks;
 public class Chests {
 
     public static ObjectClickHandler handleClosedChest = new ObjectClickHandler(new Object[] { "Closed chest" }, e -> {
-        GameObject object = e.getObject();
+        GameObject object = e.getObj();
 
         if (object.getDefinitions().containsOption(0, "Open")) {
             GameObject openedChest = new GameObject(
@@ -32,7 +32,7 @@ public class Chests {
     });
 
     public static ObjectClickHandler handleOpenChest = new ObjectClickHandler(new Object[] { "Open chest" }, e -> {
-        if (e.getObject().getDefinitions().containsOption(0, "Search")) {
+        if (e.getObj().getDefinitions().containsOption(0, "Search")) {
             e.getPlayer().sendMessage("You search the chest but find nothing.");
         }
     });

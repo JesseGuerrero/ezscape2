@@ -167,14 +167,14 @@ public class DwarfCannon extends QuestOutline {
 
 	public static ObjectClickHandler handleRailingClick = new ObjectClickHandler(new Object[] { 15590, 15591, 15592, 15593, 15594, 15595 }, e -> {
 		if (e.getOption().equals("Inspect"))
-			if (e.getPlayer().getVars().getVarBit(e.getObject().getDefinitions().varpBit) == 1)
+			if (e.getPlayer().getVars().getVarBit(e.getObj().getDefinitions().varpBit) == 1)
 				e.getPlayer().startConversation(new Dialogue(new SimpleStatement("That railing does not need to be replaced.")));
 			else {
 				e.getPlayer().startConversation(new Dialogue(new SimpleStatement("This railing is broken and needs to be replaced.")));
 				if (e.getPlayer().getInventory().containsItem(14)) {
 					e.getPlayer().setNextAnimation(new Animation(4190));
 					if (Utils.random(4) == 0) {
-						e.getPlayer().getVars().saveVarBit(e.getObject().getDefinitions().varpBit, 1);
+						e.getPlayer().getVars().saveVarBit(e.getObj().getDefinitions().varpBit, 1);
 						e.getPlayer().getInventory().deleteItem(14, 1);
 						if (checkRemainingRepairs(e.getPlayer()) == 0)
 							e.getPlayer().getQuestManager().setStage(Quest.DWARF_CANNON, 2);

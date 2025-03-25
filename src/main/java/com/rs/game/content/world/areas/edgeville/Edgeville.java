@@ -45,12 +45,12 @@ public class Edgeville  {
 	public static ObjectClickHandler handleEdgevilleWildernessDungeonGate = new ObjectClickHandler(new Object[] { 29319, 29320 }, e -> {
 		if (e.getPlayer().getY() <= 9917) {
 			e.getPlayer().getControllerManager().startController(new WildernessController());
-			Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 		} else
-			Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+			Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 	});
 
-	public static ObjectClickHandler handleBlackKnightWall = new ObjectClickHandler(new Object[] { 2341 }, e -> Doors.handleDoor(e.getPlayer(), e.getObject(), -1));
+	public static ObjectClickHandler handleBlackKnightWall = new ObjectClickHandler(new Object[] { 2341 }, e -> Doors.handleDoor(e.getPlayer(), e.getObj(), -1));
 
 	public static ObjectClickHandler handleJailEntrance = new ObjectClickHandler(new Object[] { 29603 }, e -> e.getPlayer().useStairs(-1, Tile.of(3082, 4229, 0), 0, 1));
 
@@ -61,7 +61,7 @@ public class Edgeville  {
 	public static ObjectClickHandler handlePosterExit = new ObjectClickHandler(new Object[] { 29623 }, e -> e.getPlayer().useStairs(-1, Tile.of(3077, 4235, 0), 0, 1));
 
 	public static ObjectClickHandler handleJailDoors = new ObjectClickHandler(new Object[] { 29624 }, e -> {
-		if (e.getObject().getRotation() == 0) {
+		if (e.getObj().getRotation() == 0) {
 			if (e.getPlayer().getPlane() == 0)
 				e.getPlayer().useStairs(-1, e.getPlayer().transform(0, 3, 2), 0, 1);
 			else
@@ -75,7 +75,7 @@ public class Edgeville  {
 	public static ObjectClickHandler handleEdgevilleMonkeybars = new ObjectClickHandler(new Object[] { 29375 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 15))
 			return;
-		Agility.crossMonkeybars(e.getPlayer(), e.getObject().getTile(), e.getObject().getTile().transform(0, e.getPlayer().getY() > 9967 ? -5 : 5, 0), 20.0);
+		Agility.crossMonkeybars(e.getPlayer(), e.getObj().getTile(), e.getObj().getTile().transform(0, e.getPlayer().getY() > 9967 ? -5 : 5, 0), 20.0);
 	});
 
 	public static ObjectClickHandler handleMonastaryLadders = new ObjectClickHandler(new Object[] { 2641 }, e -> {

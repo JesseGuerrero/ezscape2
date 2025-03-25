@@ -28,7 +28,7 @@ public class EnchantedValley {
             e.getPlayer().sendMessage("You can't chop down a tree while you are under attack.");
             return;
         }
-        e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.NORMAL) {
+        e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.NORMAL) {
             @Override
             public void giveLog(Entity entity) { }
 
@@ -47,7 +47,7 @@ public class EnchantedValley {
             e.getPlayer().sendMessage("You can't mine a rock while you are under attack.");
             return;
         }
-        e.getPlayer().getActionManager().setAction(new Mining(RockType.CLAY, e.getObject()) {
+        e.getPlayer().getActionManager().setAction(new Mining(RockType.CLAY, e.getObj()) {
             @Override
             public boolean depleteOre(Entity entity) {
                 NPC rockGolem = new OwnedNPC(e.getPlayer(), 8648, e.getPlayer().getNearestTeleTile(1), false);

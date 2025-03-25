@@ -2,7 +2,7 @@ package com.rs.game.content.quests.ghosts_ahoy
 
 import com.rs.engine.quest.Quest
 import com.rs.game.World
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onObjectClick
 
@@ -15,12 +15,12 @@ fun mapNecrovarusObjects() {
     onObjectClick(NECROVARUS_COFFIN) { e ->
         e.player.tasks.schedule(1) {
             val openCoffin = GameObject(
-                e.`object`.id + 1,
-                e.`object`.type,
-                e.`object`.rotation,
-                e.`object`.x,
-                e.`object`.y,
-                e.`object`.plane
+                e.obj.id + 1,
+                e.obj.type,
+                e.obj.rotation,
+                e.obj.x,
+                e.obj.y,
+                e.obj.plane
             )
             World.spawnObjectTemporary(openCoffin, 20)
         }
@@ -30,7 +30,7 @@ fun mapNecrovarusObjects() {
             e.player.sendMessage("You don't have the space in your inventory.")
             return@onObjectClick
         }
-        if(e.player.inventory.containsItem(NECROVARUS_ROBE) || e.player.isQuestComplete(Quest.GHOSTS_AHOY))
+        if(e.player.inventory.containsItem(NECROVARUS_ROBE) || e.player.isQuestComplete(Quest.GHOSTS_AHOY) || e.player.questManager.getStage(Quest.GHOSTS_AHOY) >= GhostsAhoy.STAGE_6_AMULET_ENCHANTED)
             e.player.sendMessage("It's just the mortal remains of Necrovarus. You probably don't want to touch that.")
         else {
             e.player.inventory.addItem(NECROVARUS_ROBE)

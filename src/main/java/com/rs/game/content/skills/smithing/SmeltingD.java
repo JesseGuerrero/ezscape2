@@ -22,7 +22,7 @@ import com.rs.engine.dialogue.statements.MakeXStatement;
 import com.rs.game.content.skills.smithing.Smelting.SmeltingBar;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 
 import java.util.ArrayList;
 import java.util.List;

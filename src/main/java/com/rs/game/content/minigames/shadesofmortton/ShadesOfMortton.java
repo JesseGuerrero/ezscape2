@@ -19,7 +19,7 @@ package com.rs.game.content.minigames.shadesofmortton;
 import com.rs.game.World;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.SpotAnim;
@@ -222,7 +222,7 @@ public class ShadesOfMortton {
 
         @Override
         public boolean start(Player player) {
-			player.faceTile(e.getObject().getTile());
+			player.faceTile(e.getObj().getTile());
 			if (player.getI("shadeResources", 0) <= 95 && player.getInventory().containsItem(8837) && player.getInventory().containsItem(3420) && player.getInventory().containsItem(1941, 5)) {
 				player.getInventory().deleteItem(8837, 1);
 				player.getInventory().deleteItem(3420, 1);
@@ -247,13 +247,13 @@ public class ShadesOfMortton {
 			int anim = -1;
 
 			if (player.getInventory().containsItem(3678)) {
-				if (getWall(e.getObject()).getRepairPerc() > 50) {
+				if (getWall(e.getObj()).getRepairPerc() > 50) {
 					anim = 8950;
 				} else {
 					anim = inside ? 8865 : 8890;
 				}
 			} else if (player.getInventory().containsItem(2347)) {
-				if (getWall(e.getObject()).getRepairPerc() > 50) {
+				if (getWall(e.getObj()).getRepairPerc() > 50) {
 					anim = 8893;
 				} else {
 					anim = inside ? 8861 : 8888;
@@ -266,7 +266,7 @@ public class ShadesOfMortton {
 
         @Override
         public int processWithDelay(Player player) {
-            player.faceTile(e.getObject().getTile());
+            player.faceTile(e.getObj().getTile());
             if (player.getI("shadeResources", 0) <= 95 && player.getInventory().containsItem(8837) && player.getInventory().containsItem(3420) && player.getInventory().containsItem(1941, 5)) {
                 player.getInventory().deleteItem(8837, 1);
                 player.getInventory().deleteItem(3420, 1);
@@ -281,9 +281,9 @@ public class ShadesOfMortton {
                 player.getSkills().addXp(Constants.CRAFTING, Utils.random(5, 9));
                 return 4;
             }
-            TempleWall wall = WALLS.get(e.getObject().getTile().getTileHash());
+            TempleWall wall = WALLS.get(e.getObj().getTile().getTileHash());
             if (wall == null)
-                wall = new TempleWall(e.getObject());
+                wall = new TempleWall(e.getObj());
             wall.increaseProgress();
             removeResources(player, 1);
             addSanctity(player, 5);

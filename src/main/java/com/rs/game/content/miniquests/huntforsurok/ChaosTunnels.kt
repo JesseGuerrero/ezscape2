@@ -12,7 +12,7 @@ import com.rs.game.content.world.areas.wilderness.WildernessController
 import com.rs.game.model.entity.Hit
 import com.rs.game.model.entity.npc.OwnedNPC
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onNpcClick
@@ -188,8 +188,8 @@ fun mapChaosTunnels() {
     Stream.of(28779, 28888, 29537, 23095).forEach { id -> setObjectRouteType(id, GameObject.RouteType.WALK_ONTO) }
 
     onObjectClick(28779, 28888, 29537, 23095) { e ->
-        val portal = PortalPair.forTile(e.getObject().tile) ?: return@onObjectClick
-        portal.travel(e.player, e.getObject())
+        val portal = PortalPair.forTile(e.getObj().tile) ?: return@onObjectClick
+        portal.travel(e.player, e.getObj())
     }
 }
 

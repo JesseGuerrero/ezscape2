@@ -9,8 +9,12 @@ object PluginCompilationConfiguration : ScriptCompilationConfiguration({
     jvm { dependenciesFromCurrentContext(wholeClasspath = true) }
     ide { acceptedLocations(ScriptAcceptedLocation.Everywhere) }
     compilerOptions.append("-Xadd-modules=ALL-MODULE-PATH")
-})
+}) {
+    private fun readResolve(): Any = PluginCompilationConfiguration
+}
 
 object PluginEvaluationConfiguration : ScriptEvaluationConfiguration({
 
-})
+}) {
+    private fun readResolve(): Any = PluginEvaluationConfiguration
+}

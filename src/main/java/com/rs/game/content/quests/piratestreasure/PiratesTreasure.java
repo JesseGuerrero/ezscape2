@@ -6,7 +6,7 @@ import com.rs.engine.quest.QuestOutline;
 import com.rs.game.World;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
@@ -92,7 +92,7 @@ public class PiratesTreasure extends QuestOutline {
 	}
 
 	public static ObjectClickHandler handleTreasureChest = new ObjectClickHandler(new Object[] {BLUE_MOON_INN_CHEST }, e -> {;
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(!e.getPlayer().getInventory().containsItem(CHEST_KEY))
 			return;
 		if(e.getOption().equalsIgnoreCase("open")) {
@@ -153,7 +153,7 @@ public class PiratesTreasure extends QuestOutline {
 		}
 		e.getPlayer().anim(2280);
 		e.getPlayer().getInventory().addItem(BANANA, 1);
-		e.getObject().setIdTemporary(e.getObjectId()+1, Ticks.fromSeconds(30));
+		e.getObj().setIdTemporary(e.getObjectId()+1, Ticks.fromSeconds(30));
 	});
 
 	@Override

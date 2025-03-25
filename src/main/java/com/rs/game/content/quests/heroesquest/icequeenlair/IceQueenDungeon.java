@@ -2,7 +2,7 @@ package com.rs.game.content.quests.heroesquest.icequeenlair;
 
 import com.rs.game.content.skills.mining.Pickaxe;
 import com.rs.game.model.entity.npc.NPC;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
@@ -20,7 +20,7 @@ public class IceQueenDungeon {
 		}
 		if (e.getPlayer().getSkills().getLevel(Constants.MINING) < 50)
 			return;
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		int id = e.getObjectId();
 		boolean hasRun = e.getPlayer().getRun();
 		if (e.isAtObject()) {

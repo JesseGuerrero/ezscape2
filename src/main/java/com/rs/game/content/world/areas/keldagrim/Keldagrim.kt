@@ -69,14 +69,14 @@ fun mapKeldagrim() {
     }
 
     onObjectClick(6085, 6086) { e ->
-        val xOffset = when(e.getObject().rotation) {
+        val xOffset = when(e.getObj().rotation) {
             0 -> 0
             1 -> 3
             2 -> 0
             3 -> -3
             else -> 0
         }
-        val yOffset = when(e.getObject().rotation) {
+        val yOffset = when(e.getObj().rotation) {
             0 -> 3
             1 -> 0
             2 -> -3
@@ -90,14 +90,14 @@ fun mapKeldagrim() {
     }
 
     onObjectClick(6089, 6090) { e ->
-        val xOffset = when(e.getObject().rotation) {
+        val xOffset = when(e.getObj().rotation) {
             0 -> 0
             1 -> 3
             2 -> 0
             3 -> -3
             else -> 0
         }
-        val yOffset = when(e.getObject().rotation) {
+        val yOffset = when(e.getObj().rotation) {
             0 -> 3
             1 -> 0
             2 -> -3
@@ -110,14 +110,14 @@ fun mapKeldagrim() {
             e.player.tele(e.player.transform(-xOffset, -yOffset, -1))
     }
     onObjectClick(6087, 6088) { e ->
-        val xOffset = when(e.getObject().rotation) {
+        val xOffset = when(e.getObj().rotation) {
             0 -> -0
             1 -> 3
             2 -> 0
             3 -> -3
             else -> 0
         }
-        val yOffset = when(e.getObject().rotation) {
+        val yOffset = when(e.getObj().rotation) {
             0 -> 0
             1 -> 0
             2 -> -3
@@ -131,14 +131,14 @@ fun mapKeldagrim() {
     }
 
     onObjectClick(34040, 34041) { e ->
-        val xOffset = when(e.getObject().rotation) {
+        val xOffset = when(e.getObj().rotation) {
             0 -> 0
             1 -> 3
             2 -> 0
             3 -> -3
             else -> 0
         }
-        val yOffset = when(e.getObject().rotation) {
+        val yOffset = when(e.getObj().rotation) {
             0 -> 3
             1 -> 0
             2 -> -3

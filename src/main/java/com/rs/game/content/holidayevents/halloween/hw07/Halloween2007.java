@@ -23,7 +23,7 @@ import com.rs.game.World;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.Hit.HitLook;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
@@ -146,22 +146,22 @@ public class Halloween2007 {
 			e.getPlayer().startConversation(new Dialogue()
 					.addNPC(6389, HeadE.CAT_CALM_TALK2, "We're watching you..")
 					.addNext(() -> {
-						handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+						handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 						if (e.getPlayer().getI(Halloween2007.STAGE_KEY) == 1)
 							e.getPlayer().set(Halloween2007.STAGE_KEY, 2);
 					}));
 		else
-			handleDenyGargoyleEntry(e.getPlayer(), e.getObject());
+			handleDenyGargoyleEntry(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleSpiderWebs = new ObjectClickHandler(new Object[] { 27266 }, e -> {
 		if (e.getPlayer().getControllerManager().getController() == null)
 			e.getPlayer().getControllerManager().startController(new Halloween2007Controller());
 		Halloween2007Controller ctrl = (Halloween2007Controller) e.getPlayer().getControllerManager().getController();
-		if (ctrl.checkWeb(e.getObject().getTile().getTileHash()))
-			passWeb(e.getPlayer(), e.getObject());
+		if (ctrl.checkWeb(e.getObj().getTile().getTileHash()))
+			passWeb(e.getPlayer(), e.getObj());
 		else
-			failWeb(e.getPlayer(), e.getObject());
+			failWeb(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler pickUpSkull = new ObjectClickHandler(new Object[] { 27279 }, e -> {
@@ -174,7 +174,7 @@ public class Halloween2007 {
 			@Override
 			public void run() {
 				if (stage == 0)
-					e.getPlayer().faceObject(e.getObject());
+					e.getPlayer().faceObject(e.getObj());
 				else if (stage == 1)
 					e.getPlayer().setNextAnimation(new Animation(7270));
 				else if (stage == 2)
@@ -204,7 +204,7 @@ public class Halloween2007 {
 						.addPlayer(HeadE.NERVOUS, "Sorry I asked. I'll go find the skull and bring it back out of the garden.")
 						.addNPC(8867, HeadE.CALM_TALK, "Yes, and do not try teleporting out of the garden with the skull. The skull will remain behind and you'll have to find it again.")
 						.addNext(() -> {
-							handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+							handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 							e.getPlayer().set(Halloween2007.STAGE_KEY, 3);
 						}));
 			else if (e.getPlayer().getI(Halloween2007.STAGE_KEY) == 3 && e.getPlayer().getInventory().containsItem(11784))
@@ -217,12 +217,12 @@ public class Halloween2007 {
 						.addNext(() -> {
 							e.getPlayer().getInventory().deleteItem(11784, 28);
 							e.getPlayer().set(Halloween2007.STAGE_KEY, 4);
-							handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+							handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 						}));
 			else
-				handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+				handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 		} else
-			handleDenyGargoyleEntry(e.getPlayer(), e.getObject());
+			handleDenyGargoyleEntry(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleNothingObjects = new ObjectClickHandler(new Object[] { 27246, 27247, 27248, 27250, 27260 }, e -> searchItem(e.getPlayer(), -1, "You find nothing of interest."));
@@ -360,7 +360,7 @@ public class Halloween2007 {
 						.addNPC(8867, HeadE.CALM_TALK, "If you search around the room you'll find various items. Put them back where they belong. My diary is on the table - read this for some clues, but tell anyone what you read and you die.")
 						.addPlayer(HeadE.NERVOUS, "*Gulp* I shall have a look.")
 						.addNext(() -> {
-							handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+							handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 							e.getPlayer().set(Halloween2007.STAGE_KEY, 5);
 						}));
 			else if (e.getPlayer().getI(Halloween2007.STAGE_KEY) == 5) {
@@ -372,26 +372,26 @@ public class Halloween2007 {
 							.addPlayer(HeadE.CALM_TALK, "Upstairs it is.")
 							.addNext(() -> {
 								e.getPlayer().set(Halloween2007.STAGE_KEY, 6);
-								handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+								handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 							}));
 				else {
-					if (e.getPlayer().getX() > e.getObject().getX()) {
-						handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+					if (e.getPlayer().getX() > e.getObj().getX()) {
+						handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 						return;
 					}
 					e.getPlayer().sendOptionDialogue("If you leave, the items will be returned to where you found them. Leave?", ops -> {
 						ops.add("Yes", () -> {
 							ctrl.removeItems();
 							ctrl.resetReturnedItems();
-							handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+							handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 						});
 						ops.add("No, I'll finish first.");
 					});
 				}
 			} else
-				handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+				handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 		} else
-			handleDenyGargoyleEntry(e.getPlayer(), e.getObject());
+			handleDenyGargoyleEntry(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleDoorway4 = new ObjectClickHandler(new Object[] { 27276 }, Tile.of(1641, 4829, 0), e -> {
@@ -405,13 +405,13 @@ public class Halloween2007 {
 						.addNPC(8867, HeadE.CALM_TALK, "This course hasn't been used for some time. I wish to make sure it all still works.")
 						.addPlayer(HeadE.NERVOUS, "You've got to be kidding me.")
 						.addNext(() -> {
-							handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+							handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 							e.getPlayer().set(Halloween2007.STAGE_KEY, 7);
 						}));
 			else
-				handlePassGargoyleEntry(e.getPlayer(), e.getObject());
+				handlePassGargoyleEntry(e.getPlayer(), e.getObj());
 		} else
-			handleDenyGargoyleEntry(e.getPlayer(), e.getObject());
+			handleDenyGargoyleEntry(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleSlide = new ObjectClickHandler(new Object[] { 27218 }, e -> {
@@ -421,7 +421,7 @@ public class Halloween2007 {
 		e.getPlayer().lock();
 		WorldTasks.scheduleTimer(stage -> {
 			if (stage == 0) {
-				e.getPlayer().faceObject(e.getObject());
+				e.getPlayer().faceObject(e.getObj());
 				e.getPlayer().addWalkSteps(e.getPlayer().transform(0, -1, 0), 1, false);
 				Tile camTile = Tile.of(1638, 4827, 0);
 				e.getPlayer().getPackets().sendCameraPos(camTile, 2000);
@@ -441,14 +441,14 @@ public class Halloween2007 {
 	});
 
 	public static ObjectClickHandler handleSpringboards = new ObjectClickHandler(new Object[] { 27278 }, e -> {
-		Tile toTile = Tile.of(SPRINGBOARD_PAIRS.get(e.getObject().getTile().getTileHash()));
-		boolean toSlime = e.getObject().getTile().isAt(1624, 4822);
+		Tile toTile = Tile.of(SPRINGBOARD_PAIRS.get(e.getObj().getTile().getTileHash()));
+		boolean toSlime = e.getObj().getTile().isAt(1624, 4822);
 		e.getPlayer().lock();
 		WorldTasks.scheduleTimer(stage -> {
 			if (stage == 0)
-				e.getPlayer().addWalkSteps(e.getObject().getTile(), 1, false);
+				e.getPlayer().addWalkSteps(e.getObj().getTile(), 1, false);
 			else if (stage == 1) {
-				World.sendObjectAnimation(e.getObject(), new Animation(7268));
+				World.sendObjectAnimation(e.getObj(), new Animation(7268));
 				if (toSlime) {
 					e.getPlayer().getAppearance().setBAS(616);
 					e.getPlayer().blockRun();
@@ -464,7 +464,7 @@ public class Halloween2007 {
 		e.getPlayer().lock();
 		WorldTasks.scheduleTimer(stage -> {
 			if (stage == 0)
-				e.getPlayer().faceObject(e.getObject());
+				e.getPlayer().faceObject(e.getObj());
 			else if (stage == 1) {
 				e.getPlayer().forceMove(e.getPlayer().transform(0, 2, 0), 7273, 1, 150, () -> e.getPlayer().unblockRun());
 				e.getPlayer().getAppearance().setBAS(-1);
@@ -482,9 +482,9 @@ public class Halloween2007 {
 			if (e.getPlayer().getI(Halloween2007.STAGE_KEY) == 7) {
 				if (!ctrl.isRodeSlide()) {
 					e.getPlayer().startConversation(new Dialogue().addNPC(6389, HeadE.CAT_CALM_TALK2, "You didn't test the slide!"));
-					handleDenyGargoyleEntry(e.getPlayer(), e.getObject());
+					handleDenyGargoyleEntry(e.getPlayer(), e.getObj());
 				} else
-					handleDenyGargoyleEntry(e.getPlayer(), e.getObject(), () -> {
+					handleDenyGargoyleEntry(e.getPlayer(), e.getObj(), () -> {
 						e.getPlayer().tele(Tile.of(1641, 4828, 0));
 						e.getPlayer().set(Halloween2007.STAGE_KEY, 8);
 						e.getPlayer().startConversation(new Dialogue()
@@ -495,9 +495,9 @@ public class Halloween2007 {
 					});
 			} else if (!ctrl.isRodeSlide()) {
 				e.getPlayer().startConversation(new Dialogue().addNPC(6389, HeadE.CAT_CALM_TALK2, "You didn't test the slide!"));
-				handleDenyGargoyleEntry(e.getPlayer(), e.getObject());
+				handleDenyGargoyleEntry(e.getPlayer(), e.getObj());
 			} else
-				handleDenyGargoyleEntry(e.getPlayer(), e.getObject(), () -> {
+				handleDenyGargoyleEntry(e.getPlayer(), e.getObj(), () -> {
 					e.getPlayer().tele(Tile.of(1641, 4840, 0));
 					e.getPlayer().set(Halloween2007.STAGE_KEY, 9);
 					e.getPlayer().startConversation(new Dialogue()
