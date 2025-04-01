@@ -227,6 +227,17 @@ private fun dialogueStage5(p: Player, npc: NPC) {
                         }
                     }
                 }
+                val HAS_TRANSLATION_MANUAL = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_TRANSLATION_MANUAL")
+                val HAS_BOOK_OF_HARICANTO = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_BOOK_OF_HARICANTO")
+                val HAS_NECROVARUS_ROBE = p.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_NECROVARUS_ROBE")
+                val hasAll = HAS_TRANSLATION_MANUAL && HAS_BOOK_OF_HARICANTO && HAS_NECROVARUS_ROBE
+                if (p.inventory.containsItem(GHOSTSPEAK) && hasAll) {
+                    op("I have something for you.") {
+                        exec {
+                            handInItems(p, npc)
+                        }
+                    }
+                }
                 op("Remind me - what can I do about Necrovarus?") {
                     npc(
                         npc,
@@ -380,6 +391,11 @@ fun mapNettyGA() {
         Netty(player, npc)
     }
     onItemOnNpc(1695) { e ->
+        val GHOSTSPEAK = 552
+        val HAS_TRANSLATION_MANUAL = e.player.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_TRANSLATION_MANUAL")
+        val HAS_BOOK_OF_HARICANTO = e.player.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_BOOK_OF_HARICANTO")
+        val HAS_NECROVARUS_ROBE = e.player.questManager.getAttribs(Quest.GHOSTS_AHOY).getB("HAS_NECROVARUS_ROBE")
+        val hasAll = HAS_TRANSLATION_MANUAL && HAS_BOOK_OF_HARICANTO && HAS_NECROVARUS_ROBE
         if(e.item.id == NETTLE_TEA_PM)
             teaFinal(e.player, e.npc)
         if (e.item.id == NETTLE_TEA_P)
@@ -387,6 +403,8 @@ fun mapNettyGA() {
         if (e.item.id in nettleTeaBasic)
             teaBasic(e.player, e.npc)
         if (e.item.id == NECROVARUS_ROBE || e.item.id == TRANSLATION_MANUAL || e.item.id == BOOK_OF_HARICANTO)
+            handInItems(e.player, e.npc)
+        if (e.item.id == GHOSTSPEAK && hasAll)
             handInItems(e.player, e.npc)
     }
 }
