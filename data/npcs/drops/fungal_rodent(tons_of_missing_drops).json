@@ -4,6 +4,10 @@
   ],
   "tables": [
     {
+      "chance": 17.0, "outOf": 128.0,
+      "rollTable": "herb"
+    },
+    {
       "chance": 0.0,
       "outOf": 0.0,
       "dropOne": false,
@@ -14,12 +18,6 @@
           "max": 1
         }
       ]
-    },
-    {
-      "chance": 17.0,
-      "outOf": 128.0,
-      "dropOne": false,
-      "rollTable": "herb"
     },
     {
       "chance": 29.0,
@@ -54,18 +52,6 @@
           "id": 1939,
           "min": 3,
           "max": 6
-        }
-      ]
-    },
-    {
-      "chance": 9.0,
-      "outOf": 128.0,
-      "dropOne": false,
-      "drops": [
-        {
-          "id": 995,
-          "min": 18,
-          "max": 99
         }
       ]
     },
