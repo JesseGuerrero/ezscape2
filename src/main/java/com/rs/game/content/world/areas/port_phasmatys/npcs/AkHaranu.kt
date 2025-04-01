@@ -115,8 +115,8 @@ fun mapAkHaranu() {
 	onNpcClick(1687, options = arrayOf("Trade")) { (player) ->
 		ShopsHandler.openShop(player, "akharanus_exotic_shop")
 	}
-	onItemOnNpc(1687) { (player, item, npc) ->
-		if (item.id == oakLongbowS) akHaranuReward(player, npc)
+	onItemOnNpc(1687) { e ->
+		if (e.item.id == oakLongbowS) akHaranuReward(e.player, e.npc)
 	}
 }
 
