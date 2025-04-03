@@ -106,7 +106,7 @@ fun freeDialogue(player: Player, npc: NPC) {
 fun costDialogue(player: Player, npc: NPC) {
     val tileAsString = "${npc.respawnTile.x},${npc.respawnTile.y},${npc.respawnTile.plane}"
     player.questManager.getAttribs(Quest.GHOSTS_AHOY).setO<Any?>("LastSigned", tileAsString)
-    val cost = Utils.random(4)
+    val cost = Utils.random(1, 3)
     player.startConversation {
         player(HeadE.CALM_TALK, "Would you sign this petition form, please?")
         when (Utils.random(3)) {

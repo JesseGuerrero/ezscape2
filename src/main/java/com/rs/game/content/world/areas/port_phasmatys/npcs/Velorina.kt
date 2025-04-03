@@ -1,22 +1,17 @@
 package com.rs.game.content.world.areas.port_phasmatys.npcs;
 
-import com.rs.cache.loaders.ObjectType
 import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
-import com.rs.game.World.spawnObjectTemporary
 import com.rs.game.content.minigames.ectofuntus.Ectofuntus
 import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.GhostSpeakResponse
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.hasGhostSpeak
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.gameobject.GameObject
-import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onItemOnNpc
 import com.rs.plugin.kts.onNpcClick
-import com.rs.plugin.kts.onObjectClick
 
 class Velorina(p: Player, npc: NPC) {
     init {
@@ -327,8 +322,10 @@ fun mapVelorina() {
         else
             Velorina(player, npc)
     }
-    //Temporary method to allow players to repair thier quest stage
+    //Temporary method to allow players to repair their quest stage
     onItemOnNpc(1683) { e ->
+        if(e.player.isQuestComplete(Quest.GHOSTS_AHOY) || !e.player.isQuestStarted(Quest.GHOSTS_AHOY))
+            return@onItemOnNpc
         when (e.item.id) {
             GHOSTSPEAK_E -> {
                 e.player.sendMessage("Reset to STAGE_6_AMULET_ENCHANTED")
@@ -341,11 +338,16 @@ fun mapVelorina() {
             else -> {
                 e.player.startConversation {
                     options {
+                        if(!e.player.questManager.isComplete(Quest.GHOSTS_AHOY) && e.player.questManager.getStage(Quest.GHOSTS_AHOY) >= 8)
+                            op("Force Complete Ghosts Ahoy") {
+                                exec {
+                                    e.player.questManager.completeQuest(Quest.GHOSTS_AHOY)
+                                }
+                            }
                         op("Reset Ghosts Ahoy?") {
                             exec {
-
-                                e.player.sendMessage("Reset quest")
                                 e.player.questManager.resetQuest(Quest.GHOSTS_AHOY)
+                                e.player.sendMessage("Reset quest")
                             }
                         }
                         op("Nevermind") {

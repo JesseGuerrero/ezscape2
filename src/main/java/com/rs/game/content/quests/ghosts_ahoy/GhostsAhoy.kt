@@ -6,8 +6,6 @@ import com.rs.engine.quest.QuestOutline
 import com.rs.game.content.items.Dye
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
-import com.rs.lib.Constants
-import com.rs.lib.game.Rights
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -24,7 +22,7 @@ val HARICANTO_TILE = Tile.of(3803, 3530, 0)
     rewardsText = "2,400 Prayer XP<br>" +
             "Free passage into Port Phasmatys<br>" +
             "The Ectophial",
-    completedStage = 10
+    completedStage = 9
 )
 
 class GhostsAhoy : QuestOutline() {
@@ -42,60 +40,60 @@ class GhostsAhoy : QuestOutline() {
     }
 
     override fun getJournalLines(player: Player, stage: Int): List<String> {
-        return when (stage) {
-            STAGE_1_BEGIN_QUEST -> listOf(
-                "To start this quest, I can speak to Velorina in Port Phasmatys."
-            )
+        val lines = ArrayList<String>()
+        when (stage) {
+            STAGE_1_BEGIN_QUEST -> {
+                lines.add("To start this quest, I can speak to Velorina in Port Phasmatys.")
+            }
 
-            STAGE_2_PLEAD_WITH_NECROVARUS -> listOf(
-                "Velorina told me of the trouble the ghosts in Port Phasmatys face.",
-                "She wants me to plead with Necrovarus in the temple to let them pass on."
-            )
+            STAGE_2_PLEAD_WITH_NECROVARUS -> {
+                lines.add("Velorina told me of the trouble the ghosts in Port Phasmatys face.",)
+                lines.add("She wants me to plead with Necrovarus in the temple to let them pass on.")
+            }
 
-            STAGE_3_NECROVARUS_REFUSES -> listOf(
-                "My pleas to Necrovarus were unsuccessful.",
-                "Velorina mentioned an old woman who fled the city before the tragedy—maybe she has a plan."
-            )
+            STAGE_3_NECROVARUS_REFUSES -> {
+                lines.add("My pleas to Necrovarus were unsuccessful.",)
+                lines.add("Velorina mentioned an old woman who fled the city before the tragedy—maybe she has a plan.")
+            }
 
-            STAGE_4_SEEK_OLD_WOMAN -> listOf(
-                "I found the old woman, who says she can enchant my Amulet of Ghostspeak to command Necrovarus,",
-                "but I need to bring her three items: the Book of Haricanto, the Robes of Necrovarus, and a translation manual."
-            )
+            STAGE_4_SEEK_OLD_WOMAN -> {
+                lines.add("I found the old woman, who says she can enchant my Amulet of Ghostspeak to command Necrovarus,",)
+                lines.add("but I need to bring her three items: the Book of Haricanto, the Robes of Necrovarus, and a translation manual.")
+            }
 
-            STAGE_5_GATHER_ITEMS -> listOf(
-                "I must gather:",
-                "- The Book of Haricanto",
-                "- The Robes of Necrovarus",
-                "- A translation manual",
-                "…and return to the old woman so she can perform the enchantment."
-            )
+            STAGE_5_GATHER_ITEMS -> {
+                lines.add("I must gather:",)
+                lines.add("- The Book of Haricanto",)
+                lines.add("- The Robes of Necrovarus",)
+                lines.add("- A translation manual",)
+                lines.add("…and return to the old woman so she can perform the enchantment.")
+            }
 
-            STAGE_6_AMULET_ENCHANTED -> listOf(
-                "I’ve given the old woman the required items.",
-                "She has now enchanted my Amulet of Ghostspeak!"
-            )
+            STAGE_6_AMULET_ENCHANTED -> {
+                lines.add("I’ve given the old woman the required items.",)
+                lines.add("She has now enchanted my Amulet of Ghostspeak!")
+            }
 
-            STAGE_7_COMMAND_NECROVARUS -> listOf(
-                "With my newly enchanted amulet, I commanded Necrovarus to lift his ban.",
-                "The ghosts of Port Phasmatys are finally free to move on."
-            )
+            STAGE_7_COMMAND_NECROVARUS -> {
+                lines.add("With my newly enchanted amulet, I commanded Necrovarus to lift his ban.",)
+                lines.add("The ghosts of Port Phasmatys are finally free to move on.")
+            }
 
-            STAGE_8_TELL_VELORINA -> listOf(
-                "I should return to Velorina and let her know that Necrovarus has lifted his ban."
-            )
+            STAGE_8_TELL_VELORINA -> {
+                lines.add("I should return to Velorina and let her know that Necrovarus has lifted his ban.")
+            }
 
-            STAGE_9_QUEST_COMPLETE -> listOf(
-                "I told Velorina the good news!",
-                "She rewarded me with an Ectophial, which teleports me to the temple.",
-                "Quest complete!"
-            )
-
-            else -> listOf("Invalid quest stage. Please report this to an administrator.")
+            STAGE_9_QUEST_COMPLETE -> {
+                lines.add("I told Velorina the good news!",)
+                lines.add("She rewarded me with an Ectophial, which teleports me to the temple.",)
+                lines.add("Quest complete!")
+            }
+            else -> lines.add("Invalid quest stage. Report this to an administrator.")
         }
+        return lines
     }
 
     override fun complete(player: Player) {
-        player.setQuestStage(Quest.GHOSTS_AHOY, STAGE_9_QUEST_COMPLETE)
         player.inventory.addItem(Ectophial)
         player.skills.addXp(Skills.PRAYER, 2400.0)
         player.vars.saveVar(217, 5)
@@ -117,6 +115,8 @@ class GhostsAhoy : QuestOutline() {
                 player.questManager.getAttribs(Quest.GHOSTS_AHOY).setO<String>("sailColour3Player", "white")
             }
         }
+        else
+            return
     }
 }
 
