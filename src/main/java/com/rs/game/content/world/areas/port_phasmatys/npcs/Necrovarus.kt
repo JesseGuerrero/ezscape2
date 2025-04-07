@@ -4,10 +4,10 @@ import com.rs.engine.dialogue.HeadE
 import com.rs.engine.dialogue.startConversation
 import com.rs.engine.quest.Quest
 import com.rs.game.content.quests.ghosts_ahoy.GhostsAhoy
-import com.rs.game.content.world.areas.desert.HEAD_SLOT
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.GhostSpeakResponse
 import com.rs.game.content.world.areas.port_phasmatys.PortPhasmatys.Companion.hasGhostSpeak
 import com.rs.game.model.entity.npc.NPC
+import com.rs.game.model.entity.player.Equipment
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
 import com.rs.lib.util.Utils
@@ -137,7 +137,7 @@ private fun dialogueStage7(p: Player, npc: NPC) {
                 npc(npc, HeadE.CALM_TALK, "... pass into the next world.")
                 exec{
                     p.questManager.setStage(Quest.GHOSTS_AHOY, GhostsAhoy.STAGE_7_COMMAND_NECROVARUS)
-                    p.equipment.setSlot(HEAD_SLOT, Item(552))
+                    p.equipment.setSlot(Equipment.NECK, Item(552))
                     dialogueStage8(p, npc)
                 }
             }
