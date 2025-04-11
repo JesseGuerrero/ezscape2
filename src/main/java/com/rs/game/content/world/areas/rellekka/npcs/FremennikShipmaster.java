@@ -24,39 +24,13 @@ import com.rs.lib.game.Tile;
 
 public class FremennikShipmaster extends Conversation {
 
-	final int SELECTION_DAEMONHEIM=0;
-	final int SELECTION_GRUMPY=1;
+	static final int SELECTION_NONE=0;
+	static final int SELECTION_DAEMONHEIM=1;
+	static final int SELECTION_GRUMPY=2;
 
 	public FremennikShipmaster(Player player, int npcId, boolean backing) {
-		super(player);
-		
-		addNPC(npcId, HeadE.CONFUSED, backing ? "Do you want a lift back to the south?" : "You want passage to Daemonheim?");
-		addOptions(ops -> {
-			ops.add("Yes, please.", () -> sail(player, backing));
-			ops.add("Not right now, thanks.");
-			if (npcId == 9708) {  //
-				// Al-Kharid to Daemonheim Shipmaster
-				ops.add("Daemonheim?")
-						.addPlayer(HeadE.CONFUSED, "Daemonheim?")
-						.addNPC(npcId, HeadE.FRUSTRATED, "Yes, the icy peninsula far to the north of here.")
-						.addNPC(npcId, HeadE.CALM_TALK, "Ice, snow, harsh winds...")
-						.addNPC(npcId, HeadE.SAD_MILD, "...and no sand or swamp sludge, clogging up every orifice.")
-						.addNPC(npcId, HeadE.FRUSTRATED, "Are you done with questions? Can we go now?", () -> {
-							player.startConversation(new FremennikShipmaster(player, npcId, backing, SELECTION_DAEMONHEIM));
-						});
-
-				ops.add("Why are you so grumpy?")
-						.addPlayer(HeadE.CONFUSED, "Why are you so grumpy?")
-						.addNPC(npcId, HeadE.ANGRY, "Grumpy? I should kill you where you stand!")
-						.addNPC(npcId, HeadE.SAD_MILD, "But that wouldn't help with this damned humidity.")
-						.addNPC(npcId, HeadE.SAD_MILD, "I need the snow in my boots, the sea wind stinging my face...")
-						.addNPC(npcId, HeadE.SAD_MILD, "That's why I want to leave. Are you ready to go to Daemonheim?", () ->
-								player.startConversation(new FremennikShipmaster(player, npcId, backing, SELECTION_GRUMPY)));
-			}
-		});
-		create();
+		this(player, npcId, backing, SELECTION_NONE);
 	}
-
 
 	private FremennikShipmaster(Player player, int npcId, boolean backing, int previousSelection) {
 		super(player);
