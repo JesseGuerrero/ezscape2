@@ -21,8 +21,8 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Easter2022 {
 
     //Event configs
-    public static String STAGE_KEY = "easter2022";
-    public static Boolean ENABLED = false;
+    public static String STAGE_KEY = "easter2025";
+    public static Boolean ENABLED = true;
 
     //Rewards
     public static final int PERMANENT_EGGSTERMINATOR = 24146;
@@ -53,8 +53,8 @@ public class Easter2022 {
     public static EggHunt event;
 
     static AtomicLong currentTime = new AtomicLong(Instant.now().getEpochSecond());
-    static long startDate = 1649548800; //April 10th - 00:00
-    static long endDate = 1650412800; //April 20th - 00:00
+    static long startDate = 1744259476; //April 10th - 00:00
+    static long endDate = 1746160276; //April 20th - 00:00
 
     /*
      *   Runescape 2012 Easter event - Chocatrice vs Evil Chicken.
