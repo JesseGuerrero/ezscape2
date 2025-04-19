@@ -20,7 +20,7 @@
       ]
     },
     {
-      "chance": 52.0,
+      "chance": 29.0,
       "outOf": 128.0,
       "dropOne": false,
       "drops": [
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "chance": 39.0,
+      "chance": 25.0,
       "outOf": 128.0,
       "dropOne": false,
       "drops": [
