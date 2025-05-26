@@ -169,8 +169,9 @@ public final class WorldThread extends Thread {
 
 				Timer timerPlayerMove = new Timer().start();
 				for (Player player : World.getPlayers()) {
-					if (player == null || !player.hasStarted() || player.hasFinished())
+					if (player == null || !player.hasStarted() || player.hasFinished()) {
 						continue;
+					}
 					try {
 						player.processMovement();
 					} catch (Throwable e) {

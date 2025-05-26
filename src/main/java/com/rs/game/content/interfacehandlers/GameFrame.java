@@ -16,6 +16,7 @@
 //
 package com.rs.game.content.interfacehandlers;
 
+import com.rs.game.content.Effect;
 import com.rs.game.content.skills.dungeoneering.DungeonController;
 import com.rs.game.content.world.Rest;
 import com.rs.game.model.entity.player.managers.InterfaceManager;
@@ -27,6 +28,7 @@ import com.rs.net.LobbyCommunicator;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
 import com.rs.utils.ReportsManager;
+import com.rs.utils.Ticks;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -165,6 +167,16 @@ public class GameFrame {
 	});
 
 	public static ButtonClickHandler handleButtons = new ButtonClickHandler(new Object[] { InterfaceManager.FIXED_TOP, InterfaceManager.RESIZEABLE_TOP }, e -> {
+		if(e.getInterfaceId() == 746 && e.getComponentId() == 244)
+			e.getPlayer().showTilemanTilesThenRemove();
+		if(e.getInterfaceId() == 746 && e.getComponentId() == 252)
+			e.getPlayer().setTileUsage(!e.getPlayer().getTileUsage());
+		if (e.getInterfaceId() == 746 && e.getComponentId() == 260) {
+			if (e.getPlayer().hasEffect(Effect.TILEMAN_ON))
+				e.getPlayer().removeEffect(Effect.TILEMAN_ON);
+			else
+				e.getPlayer().addEffect(Effect.TILEMAN_ON, Ticks.fromHours(10));
+		}
 		if ((e.getInterfaceId() == 548 && e.getComponentId() == 167) || (e.getInterfaceId() == 746 && e.getComponentId() == 208)) {
 			if (e.getPlayer().getControllerManager().isIn(DungeonController.class))
 				return;

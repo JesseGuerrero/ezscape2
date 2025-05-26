@@ -34,6 +34,9 @@ import com.rs.engine.dialogue.statements.SimpleStatement;
 import com.rs.engine.miniquest.Miniquest;
 import com.rs.engine.miniquest.MiniquestManager;
 import com.rs.engine.pathfinder.Direction;
+import com.rs.engine.pathfinder.StepValidator;
+import com.rs.engine.pathfinder.WalkStep;
+import com.rs.engine.pathfinder.WorldCollision;
 import com.rs.engine.quest.Quest;
 import com.rs.engine.quest.QuestManager;
 import com.rs.game.World;
@@ -45,20 +48,44 @@ import com.rs.game.content.achievements.AchievementInterface;
 import com.rs.game.content.bosses.godwars.GodwarsController;
 import com.rs.game.content.bosses.godwars.factions.GodFaction;
 import com.rs.game.content.bosses.godwars.factions.zaros.Nex;
+import com.rs.game.content.bosses.qbd.QBDController;
 import com.rs.game.content.clans.ClansManager;
 import com.rs.game.content.combat.CombatDefinitions;
 import com.rs.game.content.death.DeathOfficeController;
 import com.rs.game.content.death.GraveStone;
+import com.rs.game.content.holidayevents.halloween.hw07.Halloween2007Controller;
+import com.rs.game.content.holidayevents.halloween.hw09.Halloween2009Controller;
+import com.rs.game.content.minigames.castlewars.CastleWarsPlayingController;
+import com.rs.game.content.minigames.creations.StealingCreationController;
+import com.rs.game.content.minigames.creations.StealingCreationLobbyController;
+import com.rs.game.content.minigames.domtower.DomTowerController;
 import com.rs.game.content.minigames.domtower.DominionTower;
+import com.rs.game.content.minigames.duel.DuelController;
 import com.rs.game.content.minigames.duel.DuelRules;
+import com.rs.game.content.minigames.fightcaves.FightCavesController;
+import com.rs.game.content.minigames.fightkiln.FightKilnController;
+import com.rs.game.content.minigames.fightpits.FightPitsController;
+import com.rs.game.content.minigames.fightpits.FightPitsLobbyController;
 import com.rs.game.content.minigames.herblorehabitat.HabitatFeature;
+import com.rs.game.content.minigames.pest.PestControlGameController;
+import com.rs.game.content.minigames.pest.PestControlLobbyController;
+import com.rs.game.content.minigames.trawler.FishingTrawlerCrashedController;
+import com.rs.game.content.minigames.trawler.FishingTrawlerGameController;
+import com.rs.game.content.minigames.trawler.FishingTrawlerLobbyController;
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager;
+import com.rs.game.content.miniquests.huntforsurok.bork.BorkController;
 import com.rs.game.content.pets.Pet;
 import com.rs.game.content.pets.PetManager;
+import com.rs.game.content.quests.dragonslayer.DragonSlayer_BoatScene;
+import com.rs.game.content.quests.fightarena.FightArenaFightCutsceneController;
+import com.rs.game.content.quests.merlinscrystal.MerlinsCrystalCrateScene;
+import com.rs.game.content.quests.merlinscrystal.MerlinsCrystalRitualScene;
 import com.rs.game.content.skills.construction.playerOwnedHouse.House;
+import com.rs.game.content.skills.construction.playerOwnedHouse.HouseController;
 import com.rs.game.content.skills.cooking.Brewery;
 import com.rs.game.content.skills.cooking.Foods;
 import com.rs.game.content.skills.dungeoneering.DungManager;
+import com.rs.game.content.skills.dungeoneering.DungeonController;
 import com.rs.game.content.skills.dungeoneering.DungeonRewards.HerbicideSetting;
 import com.rs.game.content.skills.farming.FarmPatch;
 import com.rs.game.content.skills.farming.PatchLocation;
@@ -138,6 +165,199 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
 public class Player extends Entity {
+	private long previousXP = 0;
+	private int previousQP = 0;
+	private boolean tileMan;
+	private int tilesAvailable = 5;
+	private Set<Integer> tilesUnlocked;;
+	public long getPreviousXP() {
+		return previousXP;
+	}
+	public int getPreviousQP() {
+		return previousQP;
+	}
+
+	public boolean isTileMan() {
+		return tileMan;
+	}
+
+	public boolean addToolbeltTileMan(int itemId) {
+		if (toolbelt == null)
+			toolbelt = new HashMap<>();
+		Tools tool = Tools.forId(itemId);
+		if (tool == null)
+			return false;
+		if (toolbelt.get(tool) != null && toolbelt.get(tool) <= tool.getValue(itemId)) {
+//            sendMessage("You already have this tool on your belt.");
+			return false;
+		}
+		toolbelt.put(tool, tool.getValue(itemId));
+//        sendMessage("You add the " + ItemDefinitions.getDefs(itemId).name + " to your toolbelt.");
+		return true;
+	}
+
+	public void updateTileManQP() {
+		if(previousQP < 0 || previousQP > 400)
+			previousQP = 0;
+		int pointsAdded = getQuestManager().getQuestPoints() - previousQP;
+		if (pointsAdded > 0) {
+			addTilesAvailableFor(pointsAdded*100, "finishing quest");
+			previousQP = getQuestManager().getQuestPoints();
+		}
+	}
+
+	public void addPreviousXP() {
+		previousXP = previousXP + 80_000;
+	}
+
+	public void addTilesAvailable(int amount) {
+		tilesAvailable = tilesAvailable + amount;
+		sendMessage(amount + " tiles have been added to your tileman.");
+	}
+
+	public void addTilesAvailableFor(int amount, String reason) {
+		tilesAvailable = tilesAvailable + amount;
+		sendMessage(amount + " tiles have been added to your tileman for " + reason + ".");
+	}
+
+	boolean toggle = false;
+
+	public void addHalfTile() {
+		if(toggle) {
+			addTilesAvailable(1);
+			toggle = false;
+		} else
+			toggle = true;
+	}
+
+	public void setTileMan(boolean tileMan) {
+		this.tileMan = tileMan;
+	}
+
+	@Override
+	public boolean canMove(Direction dir) {
+		if (!getControllerManager().canMove(dir))
+			return false;
+		StepValidator step = new StepValidator(WorldCollision.INSTANCE.getAllFlags());
+		if (getMovementType() != MoveType.TELE && !isLocked() && step.canTravel(getPlane(), getX(), getY(), dir.dx, dir.dy, getSize(), getSize(), getCollisionStrategy()) && tileMan && tileManExceptions()) {
+			int tileHash = getTile().transform(dir.dx, dir.dy).getTileHash();
+			if (!tilesUnlocked.contains(tileHash)) {
+				if (tilesAvailable <= 0 || !getTileUsage())
+					return false;
+				tilesAvailable--;
+				tilesUnlocked.add(tileHash);
+				showTilemanTilesThenRemove();
+			}
+		}
+		return true;
+	}
+
+	public void markTile(Tile tile) {
+		GameObject decoration = World.getObject(tile, ObjectType.GROUND_DECORATION);
+		if(decoration == null || decoration.getDefinitions().getFirstOption().equalsIgnoreCase("")) {
+			getPackets().sendAddObject(
+					new GameObject(47868, ObjectType.GROUND_DECORATION, 0,
+							tile));
+			getTasks().schedule(new Task() {
+				@Override
+				public void run() {
+					if(decoration == null)
+						getPackets().sendRemoveObject(new GameObject(47868, ObjectType.GROUND_DECORATION, 0, tile));
+					else
+						getPackets().sendAddObject(decoration);
+				}
+			}, 10);
+		}
+	}
+	/*
+	 * Controllers, instances, etc. that should not be tilemanned.
+	 * */
+	private static Set<Class<?>> allowedControllerTypes = Set.of(//static is transient too...
+			InstancedController.class,
+			FightPitsLobbyController.class,
+			FightPitsController.class,
+			FightCavesController.class,
+			FightKilnController.class,
+			PestControlGameController.class,
+			StealingCreationController.class,
+			StealingCreationLobbyController.class,
+			TutorialIslandController.class,
+			DungeonController.class,
+			BorkController.class,
+			DuelController.class,
+			DomTowerController.class,
+			HouseController.class,
+			CastleWarsPlayingController.class,
+			FishingTrawlerLobbyController.class,
+			QBDController.class,
+			Halloween2007Controller.class,
+			FightArenaFightCutsceneController.class,
+			Halloween2009Controller.class,
+			FishingTrawlerCrashedController.class,
+			MerlinsCrystalRitualScene.class,
+			DragonSlayer_BoatScene.class,
+			FishingTrawlerGameController.class,
+			MerlinsCrystalCrateScene.class,
+			PestControlLobbyController.class
+	);
+	public boolean tileManExceptions() {
+		if(instancedArea != null ||
+				getCutsceneManager().hasCutscene() ||
+				allowedControllerTypes.stream().anyMatch(
+						type -> type.isInstance(getControllerManager().getController())
+				))
+			return false;
+		return true;
+	}
+
+	public void showTilemanTilesThenRemove() {
+		for(int dx = -32; dx <= 32; dx++)
+			for(int dy = -32; dy <=32; dy++) {
+				Tile currentTile = Tile.of(getX() + dx, getY() + dy, getPlane());
+				if(tilesUnlocked.contains(currentTile.getTileHash()))
+					markTile(currentTile);
+			}
+		long xpDiff = previousXP - getSkills().getTotalXp();
+		if(xpDiff < 0)
+			xpDiff = 0;
+		sendMessage("You have " + Utils.formatNumber(tilesAvailable) + " tiles available. You have unlocked " + Utils.formatNumber(tilesUnlocked.size()) + " You need " + Utils.formatLong(xpDiff) + " more xp to unlock another tile.");
+	}
+
+	public void showTilemanTiles(boolean turnOnTiles) {
+		for(int dx = -32; dx <= 32; dx++)
+			for(int dy = -32; dy <=32; dy++) {
+				Tile tile = Tile.of(getX() + dx, getY() + dy, getPlane());
+				if(tilesUnlocked.contains(tile.getTileHash()))
+					refreshTile(tile, turnOnTiles);
+			}
+	}
+
+	public void refreshTile(Tile tile, boolean turnOnTiles) {
+		GameObject decoration = World.getObject(tile, ObjectType.GROUND_DECORATION);
+		if(decoration == null)
+			getPackets().sendRemoveObject(new GameObject(47868, ObjectType.GROUND_DECORATION, 0, tile));
+		else
+			getPackets().sendAddObject(decoration);
+		if(turnOnTiles && (decoration == null || decoration.getDefinitions().getFirstOption().equalsIgnoreCase(""))) {
+			getPackets().sendAddObject(
+					new GameObject(47868, ObjectType.GROUND_DECORATION, 0,
+							tile));
+		}
+	}
+
+	public void setTileUsage(boolean useTiles) {
+		if(useTiles)
+			sendMessage("You have enabled tile usage.");
+		else
+			sendMessage("You have disabled tile usage.");
+		this.useTiles = useTiles;
+	}
+
+	public boolean getTileUsage() {
+		return useTiles;
+	}
+
+	private transient boolean useTiles = true;
 
 	private String username;
 	private Date dateJoined;
@@ -315,10 +535,6 @@ public class Player extends Entity {
 	private transient boolean largeSceneView;
 	private transient String lastNpcInteractedName = null;
 	private transient Account account;
-
-	private transient boolean tileMan;
-	private transient int tilesAvailable;
-	private transient Set<Integer> tilesUnlocked;
 
 	private HabitatFeature habitatFeature;
 
@@ -551,6 +767,7 @@ public class Player extends Entity {
 		super(Tile.of(Settings.getConfig().getPlayerStartTile()));
 		this.account = account;
 		username = account.getUsername();
+		tilesUnlocked = new HashSet<>();
 		setHitpoints(100);
 		dateJoined = Date.from(Clock.systemUTC().instant());
 		house = new House();
@@ -1276,22 +1493,8 @@ public class Player extends Entity {
 			processWeeklyTasks();
 		}
 
-		if (!isChosenAccountType()) {
-			if (!Settings.getConfig().isDebug())
-				getControllerManager().startController(new TutorialIslandController());
-			else
-				setStarter(1);
+		if (!isChosenAccountType())
 			PlayerLook.openCharacterCustomizing(this);
-			startConversation(new GamemodeSelection(this));
-		}
-		if (getUsername().startsWith("cli_bot")) {
-			if (getControllerManager().isIn(TutorialIslandController.class)) {
-				tele(Settings.getConfig().getPlayerStartTile());
-				getControllerManager().forceStop();
-			}
-			setChosenAccountType(true);
-			setStarter(1);
-		}
 		//getPackets().write(new UpdateRichPresence("state", "Logged in as " + getDisplayName()));
 		PluginManager.handle(new LoginEvent(this));
 		PluginManager.handle(new EnterChunkEvent(this, getChunkId()));
@@ -3546,34 +3749,6 @@ public class Player extends Entity {
 		sendMessage(string);
 	}
 
-	@Override
-	public boolean canMove(Direction dir) {
-		if (!getControllerManager().canMove(dir))
-			return false;
-		if (tileMan) {
-			if (tilesUnlocked == null) {
-				tilesUnlocked = new HashSet<>();
-				tilesAvailable = 50;
-			}
-			int tileHash = getTile().transform(dir.dx, dir.dy).getTileHash();
-			if (!tilesUnlocked.contains(tileHash)) {
-				if (tilesAvailable <= 0)
-					return false;
-				tilesAvailable--;
-				tilesUnlocked.add(tileHash);
-				markTile(Tile.of(tileHash));
-			}
-		}
-		return true;
-	}
-
-	public void markTile(Tile tile) {
-		getPackets().sendAddObject(new GameObject(21777, ObjectType.GROUND_DECORATION, 0, tile));
-		//model 4162 = orange square
-		//model 2636 = white dot?
-
-	}
-
 	public void updateTilemanTiles() {
 		for (int i : tilesUnlocked) {
 			Tile tile = Tile.of(i);
@@ -4038,14 +4213,6 @@ public class Player extends Entity {
 		}
 
 		return boost;
-	}
-
-	public boolean isTileMan() {
-		return tileMan;
-	}
-
-	public void setTileMan(boolean tileMan) {
-		this.tileMan = tileMan;
 	}
 
 	public int getPvpCombatLevelThreshhold() {

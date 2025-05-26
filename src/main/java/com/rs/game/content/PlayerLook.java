@@ -20,10 +20,12 @@ import com.rs.cache.loaders.EnumDefinitions;
 import com.rs.cache.loaders.StructDefinitions;
 import com.rs.engine.dialogue.Dialogue;
 import com.rs.engine.dialogue.HeadE;
+import com.rs.game.content.skills.magic.LodestoneAction;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.game.Animation;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
+import com.rs.rsps.tileman.StartTilemanCutscene;
 
 @PluginEventHandler
 public final class PlayerLook {
@@ -43,6 +45,7 @@ public final class PlayerLook {
 			e.getPlayer().getTempAttribs().removeI("ViewWearDesign");
 			e.getPlayer().getTempAttribs().removeI("ViewWearDesignD");
 			e.getPlayer().getAppearance().generateAppearanceData();
+			e.getPlayer().getCutsceneManager().play(new StartTilemanCutscene(LodestoneAction.Lodestone.LUMBRIDGE));
 		} else if (e.getComponentId() >= 68 && e.getComponentId() <= 74) {
 			e.getPlayer().getTempAttribs().setI("ViewWearDesign", (e.getComponentId() - 68));
 			e.getPlayer().getTempAttribs().setI("ViewWearDesignD", 0);

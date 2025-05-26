@@ -152,6 +152,24 @@ public enum Effect {
 		}
 	},
 
+	TILEMAN_ON("Show_Tiles") {
+		@Override
+		public void apply(Entity entity) {
+		}
+
+		@Override
+		public void tick(Entity entity, long tick) {
+			if (tick % 4 == 0 && entity instanceof Player player)
+				player.showTilemanTiles(true);
+		}
+
+		@Override
+		public void expire(Entity entity) {
+			if(entity instanceof Player player)
+				player.showTilemanTiles(false);
+		}
+	},
+
 	EXCALIBUR_HEAL() {
 		@Override
 		public void tick(Entity entity, long tick) {

@@ -948,7 +948,7 @@ public abstract class Entity {
 		walkSteps.clear();
 	}
 
-	private WalkStep getNextWalkStep() {
+	protected WalkStep getNextWalkStep() {
 		WalkStep step = walkSteps.poll();
         return step;
 	}

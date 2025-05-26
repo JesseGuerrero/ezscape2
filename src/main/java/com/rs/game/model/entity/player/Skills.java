@@ -36,6 +36,7 @@ import com.rs.plugin.PluginManager;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.events.XPGainEvent;
 import com.rs.plugin.handlers.ButtonClickHandler;
+import com.rs.rsps.tileman.TileMan;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
 
@@ -872,6 +873,7 @@ public final class Skills {
 		int levelDiff = newLevel - oldLevel;
 		if (newLevel > oldLevel) {
 			level[skill] += levelDiff;
+			TileMan.addAccordingToLevel(player, levelDiff);
 			markedForLevelUp = skill;
 			//gold fireworks 2589, 2599
 			player.setNextSpotAnim(new SpotAnim(2456, 0, 254));
@@ -1011,6 +1013,7 @@ public final class Skills {
 		int levelDiff = newLevel - oldLevel;
 		if (newLevel > oldLevel) {
 			level[skill] += levelDiff;
+			TileMan.addAccordingToLevel(player, levelDiff);
 			markedForLevelUp = skill;
 			//gold fireworks 2589, 2599
 			player.setNextSpotAnim(new SpotAnim(2456, 0, 254));
