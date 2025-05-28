@@ -158,6 +158,7 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
 import kotlin.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -171,13 +172,21 @@ public class Player extends Entity {
 	private long previousXP = 0;
 	private int previousQP = 0;
 	private boolean tileMan;
-	private int tilesAvailable = 5;
-	private Set<Integer> tilesUnlocked;;
+	private Integer tilesAvailable = 5;
+	private Integer scaleAvailable = 0;
+	private Map<Integer, IntOpenHashSet> tilesUnlocked = Map.of(0, new IntOpenHashSet());
+
+	public int getScaleAvailable() {
+		return scaleAvailable;
+	}
+
+	public void addScaleAvailable() {
+		scaleAvailable++;
+		tilesUnlocked.put(scaleAvailable, new IntOpenHashSet());
+	}
+
 	public long getPreviousXP() {
 		return previousXP;
-	}
-	public int getPreviousQP() {
-		return previousQP;
 	}
 
 	public boolean isTileMan() {
@@ -204,7 +213,6 @@ public class Player extends Entity {
 			previousQP = 0;
 		int pointsAdded = getQuestManager().getQuestPoints() - previousQP;
 		if (pointsAdded > 0) {
-			addTilesAvailableFor(pointsAdded*100, "finishing quest");
 			previousQP = getQuestManager().getQuestPoints();
 		}
 	}
@@ -237,6 +245,13 @@ public class Player extends Entity {
 		this.tileMan = tileMan;
 	}
 
+	public IntOpenHashSet getTilesUnlockedForScale(int scale) {
+		if(!tilesUnlocked.containsKey(scale))
+			tilesUnlocked.put(scale, new IntOpenHashSet());
+		IntOpenHashSet tilesSet = (IntOpenHashSet) tilesUnlocked.get(scale);
+		return tilesSet;
+	}
+
 	@Override
 	public boolean canMove(Direction dir) {
 		if (!getControllerManager().canMove(dir))
@@ -244,11 +259,11 @@ public class Player extends Entity {
 		StepValidator step = new StepValidator(WorldCollision.INSTANCE.getAllFlags());
 		if (getMovementType() != MoveType.TELE && !isLocked() && step.canTravel(getPlane(), getX(), getY(), dir.dx, dir.dy, getSize(), getSize(), getCollisionStrategy()) && tileMan && tileManExceptions()) {
 			int tileHash = getTile().transform(dir.dx, dir.dy).getTileHash();
-			if (!tilesUnlocked.contains(tileHash)) {
+			if (!getTilesUnlockedForScale(getI("WorldScale", 0)).contains(tileHash)) {
 				if (tilesAvailable <= 0 || !getTileUsage())
 					return false;
 				tilesAvailable--;
-				tilesUnlocked.add(tileHash);
+				getTilesUnlockedForScale(getI("WorldScale", 0)).add(tileHash);
 				showTilemanTilesThenRemove();
 			}
 		}
@@ -317,20 +332,20 @@ public class Player extends Entity {
 		for(int dx = -32; dx <= 32; dx++)
 			for(int dy = -32; dy <=32; dy++) {
 				Tile currentTile = Tile.of(getX() + dx, getY() + dy, getPlane());
-				if(tilesUnlocked.contains(currentTile.getTileHash()))
+				if(getTilesUnlockedForScale(getI("WorldScale", 0)).contains(currentTile.getTileHash()))
 					markTile(currentTile);
 			}
 		long xpDiff = previousXP - getSkills().getTotalXp();
 		if(xpDiff < 0)
 			xpDiff = 0;
-		sendMessage("You have " + Utils.formatNumber(tilesAvailable) + " tiles available. You have unlocked " + Utils.formatNumber(tilesUnlocked.size()) + " You need " + Utils.formatLong(xpDiff) + " more xp to unlock another tile.");
+		sendMessage("You have " + Utils.formatNumber(tilesAvailable) + " tiles available on scale " + Integer.toString(getI("WorldScale", 0)) + ". You have unlocked " + Utils.formatNumber(getTilesUnlockedForScale(getI("WorldScale", 0)).size()) + " You need " + Utils.formatLong(xpDiff) + " more xp to unlock another tile.");
 	}
 
 	public void showTilemanTiles(boolean turnOnTiles) {
 		for(int dx = -32; dx <= 32; dx++)
 			for(int dy = -32; dy <=32; dy++) {
 				Tile tile = Tile.of(getX() + dx, getY() + dy, getPlane());
-				if(tilesUnlocked.contains(tile.getTileHash()))
+				if(getTilesUnlockedForScale(getI("WorldScale", 0)).contains(tile.getTileHash()))
 					refreshTile(tile, turnOnTiles);
 			}
 	}
@@ -770,7 +785,7 @@ public class Player extends Entity {
 		super(Tile.of(Settings.getConfig().getPlayerStartTile()));
 		this.account = account;
 		username = account.getUsername();
-		tilesUnlocked = new HashSet<>();
+		tilesUnlocked = new HashMap<Integer, IntOpenHashSet>();
 		setHitpoints(100);
 		dateJoined = Date.from(Clock.systemUTC().instant());
 		house = new House();
@@ -3760,14 +3775,6 @@ public class Player extends Entity {
 
 	public void sm(String string) {
 		sendMessage(string);
-	}
-
-	public void updateTilemanTiles() {
-		for (int i : tilesUnlocked) {
-			Tile tile = Tile.of(i);
-			if (Utils.getDistance(getTile(), tile) < 64)
-				markTile(tile);
-		}
 	}
 
 	@Override

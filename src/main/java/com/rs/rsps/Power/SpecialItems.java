@@ -102,8 +102,14 @@ public class SpecialItems {
     //Item accumulator (20M)
     //Scale chinchompas and cannons
     //Limit scale drops cost
-    //Scale Unlock codex, Combat level / 15000*(increase with scale of combat level) chance of dropping a scale X augment, tradeable
-    //Make all codexes tradeable.
+
+    // These
+    //Make coins and stackables increase at each scale for all monsters
+    //Make the anarchy pvp timer 5 minutes
+    //Test most to all features
+    //Reduce perk xp amounts on level ups
+    //Make an X Tiles codex, make tiles tradeable
+    //Make all monsters scale not just boses, but just the coins and stackables with the levels
 
 
     public static NPCDeathHandler dropCodexes = new NPCDeathHandler(new Object[]{"Kree\u0027arra", "General Graardor",
@@ -113,44 +119,55 @@ public class SpecialItems {
             if(e.getNPC().getName().equalsIgnoreCase("Kree\u0027arra")) {
                 dropCodex(player, e.getNPC(), rollCodexNames(new String[]{"Ranged Attack", "Ranged Strength", "Ranged Defense", "Stab Defense"}));
                 dropCodex(player, e.getNPC(), "Weight");
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
             if(e.getNPC().getName().equalsIgnoreCase("General Graardor")) {
                 dropCodex(player, e.getNPC(), "Alchemy");
                 dropCodex(player, e.getNPC(), "Weight");
                 dropCodex(player, e.getNPC(), rollCodexNames(new String[]{"Melee Strength", "Stab Attack", "Crush Attack", "Slash Attack"}));
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
             if(e.getNPC().getName().equalsIgnoreCase("K\u0027ril Tsutsaroth")) {
                 dropCodex(player, e.getNPC(), "Poison");
                 dropCodex(player, e.getNPC(), "Weight");
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
             if(e.getNPC().getName().equalsIgnoreCase("King Black Dragon")) {
                 dropCodex(player, e.getNPC(), "Poison");
                 dropCodex(player, e.getNPC(), "Dragon Fire");
                 dropCodex(player, e.getNPC(), "Weight");
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
             if(e.getNPC().getName().equalsIgnoreCase("Dagannoth Prime")) {
                 dropCodex(player, e.getNPC(), rollCodexNames(new String[]{"Mage Attack", "Mage Strength", "Mage Defense", "Crush Defense", "Slash Defense"}));
                 dropCodex(player, e.getNPC(), "Agility");
                 dropCodex(player, e.getNPC(), "Weight");
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
             if(e.getNPC().getName().equalsIgnoreCase("Dagannoth Rex")) {
                 dropCodex(player, e.getNPC(), rollCodexNames(new String[]{"Melee Strength", "Stab Attack", "Crush Attack", "Slash Attack"}));
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
-            if(e.getNPC().getName().equalsIgnoreCase("Dagannoth Supreme"))
+            if(e.getNPC().getName().equalsIgnoreCase("Dagannoth Supreme")) {
                 dropCodex(player, e.getNPC(), rollCodexNames(new String[]{"Ranged Attack", "Ranged Strength", "Ranged Defense", "Stab Defense"}));
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale") + 1) + " Scale Unlock");
+            }
             if(e.getNPC().getName().equalsIgnoreCase("Tormented demon")) {
                 dropCodex(player, e.getNPC(), "Prayer");
                 dropCodex(player, e.getNPC(), "Weight");
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
             if(e.getNPC().getName().equalsIgnoreCase("Corporeal Beast")) {
                 dropCodex(player, e.getNPC(), "Prayer");
                 dropCodex(player, e.getNPC(), "Agility");
                 dropCodex(player, e.getNPC(), "Weight");
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
             if(e.getNPC().getName().equalsIgnoreCase("Commander Zilyana")) {
                 dropCodex(player, e.getNPC(), "Alchemy");
                 dropCodex(player, e.getNPC(), "Weight");
                 dropCodex(player, e.getNPC(), rollCodexNames(new String[]{"Melee Strength", "Stab Attack", "Crush Attack", "Slash Attack"}));
+                dropCodex(player, e.getNPC(), Integer.toString(player.getI("WorldScale")+1) + " Scale Unlock");
             }
         }
     });
@@ -189,7 +206,15 @@ public class SpecialItems {
                             .addSimple("You hammer at the book...")
                             .addSimple("It seems to be glowing with power...")
                             .addNext(() -> {
-                                e.getPlayer().incrementCount("Codex_" + codexType);
+                                if(codexType.contains(" Scale Unlock")) {
+                                    if(e.getPlayer().getScaleAvailable() + 1 == Integer.valueOf(codexType.split(" ")[0])) {
+                                        e.getPlayer().addScaleAvailable();
+                                    } else {
+                                        e.getPlayer().sendMessage("You need a scale " + String.valueOf(e.getPlayer().getScaleAvailable() + 1) + " codex to unlock the next scale.");
+                                    }
+                                } else {
+                                    e.getPlayer().incrementCount("Codex_" + codexType);
+                                }
                                 e.getPlayer().sendMessage("You have used the Codex of " + codexType);
                                 codex.deleteMetaData();
                             })

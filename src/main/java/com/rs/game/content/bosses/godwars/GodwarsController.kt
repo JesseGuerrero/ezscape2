@@ -31,6 +31,7 @@ import com.rs.lib.Constants
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onObjectClick
+import com.rs.rsps.EZScape
 
 @ServerStartupEvent
 fun mapGWDEntranceAndExit() {
@@ -62,10 +63,13 @@ fun mapGWDEntranceAndExit() {
 }
 
 class GodwarsController : Controller() {
-    private val killcount = IntArray(5)
+    private var killcount = IntArray(5)
     private var lastPrayerRecharge: Long = 0
 
-    override fun start() = sendInterfaces()
+    override fun start() {
+        killcount = EZScape.getKillCount(player);
+        sendInterfaces()
+    }
     override fun logout() = false
 
     override fun login(): Boolean {
@@ -269,6 +273,7 @@ class GodwarsController : Controller() {
         GodFaction.entries.forEach {
             player.vars.setVarBit(it.kcVarbit, killcount[it.ordinal])
         }
+        EZScape.saveKillCount(player, killcount)
     }
 
     fun sendKill(faction: GodFaction) {
@@ -278,7 +283,7 @@ class GodwarsController : Controller() {
 
     fun remove() {
         player.interfaceManager.removeOverlay(true)
-        player.sendMessage("The souls of those you have slain leave you as you exit the dungeon.")
+        if (EZScape.showKillCountPrompt()) player.sendMessage("The souls of those you have slain leave you as you exit the dungeon.")
     }
 
     companion object {

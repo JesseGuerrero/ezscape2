@@ -301,6 +301,7 @@ public class ScalingWorld {
     */
     public static NPCClickHandler handleScaleModerator = new NPCClickHandler(new Object[]{ 2899 }, new String[]{"Talk-to"}, e -> {
         e.getPlayer().startConversation(new Dialogue()
+            .addNPC(2899, HeadE.CALM_TALK, "Your highest unlocked scale is " + String.valueOf(e.getPlayer().getScaleAvailable()))
             .addNPC(2899, HeadE.CALM_TALK, "We fight not with flesh and blood but with principalities and rulers of darkness of this world", () ->{
                 e.getPlayer().getMusicsManager().reset();
             })
@@ -315,6 +316,10 @@ public class ScalingWorld {
                 e.getPlayer().sendInputInteger("How much would you like to scale the world?", (scale) -> {
                     if(scale < 1)
                         scale = 0;
+                    if(scale > e.getPlayer().getScaleAvailable()) {
+                        scale = e.getPlayer().getScaleAvailable();
+                        e.getPlayer().sendMessage("Your unlocked scale is " + e.getPlayer().getScaleAvailable());
+                    }
                     e.getPlayer().set("WorldScale", scale);
                     e.getPlayer().set("WaitScale", true);
                     e.getPlayer().getTasks().schedule(Ticks.fromMinutes(10), () -> e.getPlayer().set("WaitScale", false));

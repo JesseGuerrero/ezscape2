@@ -435,6 +435,7 @@ public class ItemConstants {
 			case 11173:
 			case 11174:
 			case 759:
+			case 6767:
 				return true;
 		}
 		if ((!item.getDefinitions().isStackable() && item.getDefinitions().getCertId() == -1) || item.getDefinitions().isDestroyItem() || item.getDefinitions().isLended())
