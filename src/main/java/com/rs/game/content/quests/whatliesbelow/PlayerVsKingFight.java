@@ -13,7 +13,7 @@ import com.rs.engine.pathfinder.Direction;
 import com.rs.game.model.entity.player.InstancedController;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.managers.EmotesManager;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.SpotAnim;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;

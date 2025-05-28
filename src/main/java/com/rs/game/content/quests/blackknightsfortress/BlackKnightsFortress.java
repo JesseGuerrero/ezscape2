@@ -10,7 +10,7 @@ import com.rs.engine.quest.QuestOutline;
 import com.rs.game.World;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
@@ -138,7 +138,7 @@ public class BlackKnightsFortress extends QuestOutline {
 
 	public static ObjectClickHandler handleMeetingDoor = new ObjectClickHandler(new Object[] { FORTRESS_MEETING_ROOM_DOOR }, e -> {
 		Player p = e.getPlayer();
-		if (p.getX() < e.getObject().getX())
+		if (p.getX() < e.getObj().getX())
 			p.startConversation(new Conversation(p) {
 				{
 					addNPC(4604, HeadE.SKEPTICAL, "I wouldn't go in there if I were you. Those Black Knights are in an important meeting. " + "They said they'd kill anyone who went in there!");
@@ -146,7 +146,7 @@ public class BlackKnightsFortress extends QuestOutline {
 						@Override
 						public void create() {
 							option("Okay, I won't", new Dialogue().addPlayer(HeadE.SCARED, "Okay, I won't."));
-							option("I don't care: i'm going in anyway", new Dialogue().addPlayer(HeadE.LAUGH, "I am going in anyway").addNext(() -> handleDoor(p, e.getObject())));
+							option("I don't care: i'm going in anyway", new Dialogue().addPlayer(HeadE.LAUGH, "I am going in anyway").addNext(() -> handleDoor(p, e.getObj())));
 						}
 					});
 					addPlayer(HeadE.SKEPTICAL_THINKING, "I don't know...");
@@ -154,13 +154,13 @@ public class BlackKnightsFortress extends QuestOutline {
 				}
 			});
 		else
-			handleDoor(p, e.getObject());
+			handleDoor(p, e.getObj());
 	});
 
 	public static ObjectClickHandler handleFrontDoor = new ObjectClickHandler(new Object[] { FORTRESS_FRONT_DOOR }, e -> {
 		Player p = e.getPlayer();
-		if (p.getY() > e.getObject().getY()) {
-			handleDoor(p, e.getObject());
+		if (p.getY() > e.getObj().getY()) {
+			handleDoor(p, e.getObj());
 			return;
 		}
 		if (p.getEquipment().getHatId() != 1139 || p.getEquipment().getChestId() != 1101) {//bronze med iron chainbody
@@ -173,7 +173,7 @@ public class BlackKnightsFortress extends QuestOutline {
 			});
 			return;
 		}
-		handleDoor(p, e.getObject());
+		handleDoor(p, e.getObj());
 	});
 
 	public static ObjectClickHandler handleGrill = new ObjectClickHandler(new Object[] { GRILL_LISTEN }, e -> {

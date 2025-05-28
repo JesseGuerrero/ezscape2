@@ -24,12 +24,12 @@ public class MansionDoorHeroesQuestD extends Conversation {
 		switch (player.getQuestManager().getStage(Quest.HEROES_QUEST)) {
 			case GET_ITEMS -> {
 				if (player.getQuestManager().getAttribs(Quest.HEROES_QUEST).getB("mansion_open_phoenix")) {
-					handleDoor(player, e.getObject());
+					handleDoor(player, e.getObj());
 					return;
 				}
 				if (player.getQuestManager().getAttribs(Quest.HEROES_QUEST).getB("mansion_open_black_arm")) {
 					if (isWearingBlackArmour())
-						handleDoor(player, e.getObject());
+						handleDoor(player, e.getObj());
 					return;
 				}
 				if (player.getQuestManager().getAttribs(Quest.HEROES_QUEST).getB("black_arm_trick") && isWearingBlackArmour())

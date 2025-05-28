@@ -24,7 +24,7 @@ import com.rs.game.content.skills.dungeoneering.npcs.bosses.DungeonBoss;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.Hit.HitLook;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.utils.Ticks;

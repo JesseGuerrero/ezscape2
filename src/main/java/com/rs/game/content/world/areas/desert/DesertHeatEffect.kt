@@ -6,7 +6,7 @@ import com.rs.game.model.entity.Hit
 import com.rs.game.model.entity.player.Equipment
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.Constants
 import com.rs.lib.game.Item
 import com.rs.lib.util.Utils

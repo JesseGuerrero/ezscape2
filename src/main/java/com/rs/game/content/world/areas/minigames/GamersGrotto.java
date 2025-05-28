@@ -11,5 +11,5 @@ public class GamersGrotto {
 
     public static ObjectClickHandler exitGamersGrotto = new ObjectClickHandler(new Object[] { 20604 }, e -> e.getPlayer().useStairs(-1, Tile.of(3018, 3404, 0), 0, 1));
 
-    public static ObjectClickHandler enterStealingCreation = new ObjectClickHandler(new Object[] { 39508, 39509 }, e -> StealingCreationLobbyController.climbOverStile(e.getPlayer(), e.getObject(), true));
+    public static ObjectClickHandler enterStealingCreation = new ObjectClickHandler(new Object[] { 39508, 39509 }, e -> StealingCreationLobbyController.climbOverStile(e.getPlayer(), e.getObj(), true));
 }

@@ -22,7 +22,7 @@ import com.rs.game.content.world.LightSource;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.Hit.HitLook;
 import com.rs.game.model.entity.player.Controller;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
@@ -91,7 +91,7 @@ public class UndergroundDungeonController extends Controller {
 		ticks++;
 		if (hasStench)
 			if (ticks % 12 == 0) {
-				player.sendMessage("The strench of the monsters burns your innards.");
+				player.sendMessage("The stench of the monsters burns your innards.");
 				player.applyHit(new Hit(player, 200, HitLook.TRUE_DAMAGE));
 			}
 		if (requiresLightSource)

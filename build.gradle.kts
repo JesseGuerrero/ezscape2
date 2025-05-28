@@ -4,11 +4,11 @@ plugins {
 	application
 	`maven-publish`
 	id("com.github.johnrengelman.shadow") version "8.1.1"
-	kotlin("jvm") version("2.0.20")
+	kotlin("jvm") version("2.1.10")
 }
 
-val darkanVersion: String = "2.0.3"
-val ktVer: String = "2.0.20"
+val darkanVersion: String = "2.0.9"
+val ktVer: String = "2.1.10"
 
 application {
 	group = "rs.darkan"
@@ -17,7 +17,7 @@ application {
 }
 
 java {
-	toolchain.languageVersion = JavaLanguageVersion.of(22)
+	toolchain.languageVersion = JavaLanguageVersion.of(23)
 }
 
 repositories {
@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-	implementation("rs.darkan:core:2.0.1")
+	implementation("rs.darkan:core:2.0.2")
 
 	implementation("org.jetbrains.kotlin:kotlin-stdlib:$ktVer")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-common:$ktVer")
@@ -36,16 +36,16 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:$ktVer")
 	implementation("org.jetbrains.kotlin:kotlin-main-kts:$ktVer")
 	implementation("org.jetbrains.kotlin:kotlin-script-runtime:$ktVer")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
 
 	implementation("org.openjdk.jmh:jmh-core:1.37")
-	implementation("com.google.code.gson:gson:2.10.1")
-	implementation("com.google.guava:guava:33.0.0-jre")
-	implementation("org.mongodb:mongodb-driver-sync:4.11.1")
-	implementation("org.mongodb:mongodb-driver-core:4.11.1")
-	implementation("io.netty:netty-all:4.1.112.Final")
-	implementation("io.undertow:undertow-core:2.3.16.Final")
-	implementation("it.unimi.dsi:fastutil:8.5.12")
+	implementation("com.google.code.gson:gson:2.12.1")
+	implementation("com.google.guava:guava:33.4.0-jre")
+	implementation("org.mongodb:mongodb-driver-sync:5.3.1")
+	implementation("org.mongodb:mongodb-driver-core:5.3.1")
+	implementation("io.netty:netty-all:4.1.117.Final")
+	implementation("io.undertow:undertow-core:2.3.18.Final")
+	implementation("it.unimi.dsi:fastutil:8.5.15")
 	implementation("com.trivago:fastutil-concurrent-wrapper:0.2.2")
 
 	// TODO: Deprecated. Upstream dead. Replace with unirest
@@ -55,6 +55,10 @@ dependencies {
 tasks.withType<ShadowJar> {
 	isZip64 = true
 	mergeServiceFiles()
+}
+
+tasks.withType<Jar> {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 publishing {

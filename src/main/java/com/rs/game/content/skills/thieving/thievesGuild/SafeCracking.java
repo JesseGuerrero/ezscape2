@@ -4,7 +4,7 @@ import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
@@ -104,6 +104,6 @@ public class SafeCracking extends PlayerAction {
 
     public static ObjectClickHandler handleGuildSafes = new ObjectClickHandler(new Object[] { 52306 }, e -> {
         if(e.getOption().equalsIgnoreCase("Crack"))
-            e.getPlayer().getActionManager().setAction(new SafeCracking(e.getObject()));
+            e.getPlayer().getActionManager().setAction(new SafeCracking(e.getObj()));
     });
 }

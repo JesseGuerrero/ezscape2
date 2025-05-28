@@ -19,9 +19,8 @@ package com.rs.game.content.skills.cooking;
 import com.rs.game.map.ChunkManager;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
-import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
 import com.rs.lib.net.packets.encoders.Sound;
 import com.rs.plugin.annotations.PluginEventHandler;
@@ -100,10 +99,19 @@ public class Cooking extends PlayerAction {
 		RAW_MANTA_RAY(389, 393, new int[] {391}, 91, 100, 216),
 		RAW_ROCKTAIL(15270, 15274, new int[] {15272}, 93, 100, 225),
 		RAW_SUMMER_PIE(7216, 2329, new int[] {7218}, 95, 100, 260),
+		UNCOOKED_PIZZA(2287, 2305, new int[] {2289}, 35, 68, 143),
+		UNCOOKED_STEW(2001, 2005, new int[] {2003}, 25, 58, 117),
+		UNCOOKED_CURRY(2009, 2013, new int[] {2011}, 60, 74, 280),
+		UNCOOKED_EGG(7076, 7090, new int[] {7078}, 13, 48, 50),
+		CHOPPED_ONION(1871, 7092, new int[] {7084}, 42, 77, 60),
+		SLICED_MUSHROOMS(7080, 7094, new int[] {7082}, 46, 90, 60),
+		THIN_SNAIL(3363, 3375, new int[] {3369}, 12, 47, 70),
+		FAT_SNAIL(3367, 3375, new int[] {3373}, 22, 56, 95),
+		LEAN_SNAIL(3365, 3375, new int[] {3371}, 17, 50, 80),
 
 		// Dungeoneering
 		CAVE_POTATO(17817, -1, new int[] {18093}, 1, 1, 9),
-		HIEM_CRAB(17797, 18179, new int[] {18159}, 1, 20, 22),
+		HEIM_CRAB(17797, 18179, new int[] {18159}, 1, 20, 22),
 		RED_EYE(17799, 18181, new int[] {18161}, 10, 30, 41),
 		DUSK_EEL(17801, 18183, new int[] {18163}, 20, 40, 61),
 		GIANT_FLATFISH(17803, 18185, new int[] {18165}, 30, 50, 82),
@@ -226,6 +234,10 @@ public class Cooking extends PlayerAction {
 
 	@Override
 	public int processWithDelay(Player player) {
+
+		int bonfireParticipants = gameObject.getAttribs().getI("bonfire_participants");
+		boolean isBonfire = bonfireParticipants > 0;
+
 		quantity--;
 		player.anim(gameObject.getDefinitions(player).getName().equals("Fire") ? 897 : 896);
 		if (rollIsBurnt(cookable, player)) {
@@ -235,10 +247,14 @@ public class Cooking extends PlayerAction {
 		} else {
 			player.getInventory().deleteItem(cookable.getRawItem().getId(), 1);
 			player.getInventory().addItem(new Item(cookable.getProductItem()[option]).getId(), new Item(cookable.getProductItem()[option]).getAmount());
+
+			double xp = cookable.getXp();
+			if (isBonfire) xp += xp * 0.10; // Add 10% extra XP when cooking on bonfire
+
 			if (new Item(cookable.getProductItem()[option]).getId() == 9436) {
 				player.getSkills().addXp(Constants.COOKING, 3); // Sinew only awards 3xp
 			} else {
-				player.getSkills().addXp(Constants.COOKING, cookable.getXp());
+				player.getSkills().addXp(Constants.COOKING, xp);
 			}
 			player.sendMessage("You successfully cook " + (cookable == Cookables.RAW_SHRIMP || cookable == Cookables.RAW_ANCHOVIES ? "some" : "a") + " " + productName.toLowerCase() + ".", true);
 			Power.incrementPowerCooking(player, new Item(cookable.getProductItem()[option]).getId());

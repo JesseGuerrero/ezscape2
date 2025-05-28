@@ -16,7 +16,7 @@ public class StrongholdOfSafety {
     public static ObjectClickHandler handleTrainingCentreStairsUp = new ObjectClickHandler(new Object[] { 29589 }, Tile.of(3086, 4244, 0), e -> e.getPlayer().useStairs(827, Tile.of(3084, 3452, 0), 1, 2));
 
     public static ObjectClickHandler handleSecureZoneLever = new ObjectClickHandler(new Object[]{ 29736 }, Tile.of(3146, 4278, 3), e -> {
-        e.getObject().setIdTemporary(29731, Ticks.fromSeconds(20));
+        e.getObj().setIdTemporary(29731, Ticks.fromSeconds(20));
         e.getPlayer().getTempAttribs().setB("TrainingCentreSecureZoneDoor", true);
         e.getPlayer().sendMessage("You hear a door unlock.");
     });

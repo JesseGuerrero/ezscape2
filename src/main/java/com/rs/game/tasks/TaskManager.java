@@ -5,9 +5,11 @@ import com.rs.utils.Ticks;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -219,6 +221,28 @@ public class TaskManager {
             mappedTasks.put(mapping, taskInfo);
         }
         return taskInfo;
+    }
+
+    public int getRemainingTicks(String mapping) {
+        synchronized (tasks) {
+            TaskInformation task = mappedTasks.get(mapping);
+            if (task != null) {
+                return task.currDelay;
+            }
+        }
+        return -1;
+    }
+
+    public Map<String, Integer> listAllMappedTasks() {
+        Map<String, Integer> tasksSnapshot = new HashMap<>();
+        synchronized (tasks) {
+            for (Map.Entry<String, TaskInformation> entry : mappedTasks.entrySet()) {
+                String mapping = entry.getKey();
+                TaskInformation task = entry.getValue();
+                tasksSnapshot.put(mapping, task.currDelay);
+            }
+        }
+        return tasksSnapshot;
     }
 
     public int getSize() {

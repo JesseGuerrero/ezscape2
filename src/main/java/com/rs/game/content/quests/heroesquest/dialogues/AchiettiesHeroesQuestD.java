@@ -36,8 +36,8 @@ public class AchiettiesHeroesQuestD extends Conversation {
 						.addPlayer(HeadE.HAPPY_TALKING, "Any hints on getting the eel?")
 						.addNPC(NPC, HeadE.CALM_TALK, "Maybe go and find someone who knows a lot about fishing? (Try Gerrant in Port Sarim...)")
 						.addNext(() -> player.startConversation(new Conversation(itemsOptions))));
-				option("I'll start looking for all those things then", new Dialogue()
-						.addPlayer(HeadE.HAPPY_TALKING, "I'll start looking for all those things then")
+				option("I'll start looking for all those things then.", new Dialogue()
+						.addPlayer(HeadE.HAPPY_TALKING, "I'll start looking for all those things then.")
 						.addNPC(NPC, HeadE.CALM_TALK, "Good luck with that."));
 			}
 		});
@@ -45,14 +45,14 @@ public class AchiettiesHeroesQuestD extends Conversation {
 			case NOT_STARTED -> {
 				Dialogue startQuest = new Dialogue()
 						.addPlayer(HeadE.HAPPY_TALKING, "I'm a hero - may I apply to join?")
-						.addOptions("Start Heroes Quest?", new Options() {
+						.addOptions("Start Heroes' Quest?", new Options() {
 							@Override
 							public void create() {
 								option("Yes", new Dialogue()
 										.addNPC(NPC, HeadE.CALM_TALK, "Well, you have a lot of quest points, and you have done all of the required quests, " +
 												"so you may now begin the tasks to meet the entry requirements for membership in the Heroes' Guild.", () -> player.getQuestManager().setStage(Quest.HEROES_QUEST, 1))
 										.addNPC(NPC, HeadE.CALM_TALK, "The three items required for entrance are: An Entranan Firebird feather, a Master " +
-												"Thieves' armband, and a cooked Lava Eel.")
+												"Thieves' armband, and a cooked lava eel.")
 										.addNext(itemsOptions));
 								option("No", new Dialogue());
 							}
@@ -97,7 +97,7 @@ public class AchiettiesHeroesQuestD extends Conversation {
 				}
 				addPlayer(HeadE.HAPPY_TALKING, "It's tough. I've not done it yet.");
 				addNPC(NPC, HeadE.CALM_TALK, "Remember, the items you need to enter are: An Entranan Firebirds' feather, A Master Thieves armband, and a " +
-						"cooked Lava Eel.");
+						"cooked lava eel.");
 				addNext(itemsOptions);
 			}
 		}

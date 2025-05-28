@@ -29,7 +29,7 @@ import com.rs.plugin.handlers.ObjectClickHandler;
 public class Entrana {
 
 	public static ObjectClickHandler handleMagicDoor = new ObjectClickHandler(new Object[] { 2407 }, e -> {
-		Doors.handleDoor(e.getPlayer(), e.getObject());
+		Doors.handleDoor(e.getPlayer(), e.getObj());
 		Magic.sendNormalTeleportSpell(e.getPlayer(), 0, 0, Tile.of(3093, 3222, 0));
 	});
 

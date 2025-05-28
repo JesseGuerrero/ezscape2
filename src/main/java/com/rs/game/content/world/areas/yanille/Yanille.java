@@ -43,7 +43,7 @@ public class Yanille {
 
 	public static ObjectClickHandler handleMagicGuildStairs = new ObjectClickHandler(new Object[] { 1722, 1723 }, e -> e.getPlayer().tele(e.getPlayer().transform(0, e.getObjectId() == 1722 ? 4 : -4, e.getObjectId() == 1722 ? 1 : -1)));
 
-	public static ObjectClickHandler handleTreeGnomeVillageGateSqueeze = new ObjectClickHandler(new Object[] { 2186 }, e -> AgilityShortcuts.sidestep(e.getPlayer(), e.getPlayer().getY() < e.getObject().getY() ? e.getPlayer().transform(0, 1, 0) : e.getPlayer().transform(0, -1, 0)));
+	public static ObjectClickHandler handleTreeGnomeVillageGateSqueeze = new ObjectClickHandler(new Object[] { 2186 }, e -> AgilityShortcuts.sidestep(e.getPlayer(), e.getPlayer().getY() < e.getObj().getY() ? e.getPlayer().transform(0, 1, 0) : e.getPlayer().transform(0, -1, 0)));
 
 	public static NPCClickHandler handleMagicGuildArmorShop = new NPCClickHandler(new Object[] { 1658 }, e -> {
 		if (e.getOpNum() == 3)
@@ -89,7 +89,7 @@ public class Yanille {
 			e.getPlayer().sendMessage("You require 66 magic to enter the Magic Guild.");
 			return;
 		}
-		Doors.handleDoubleDoor(e.getPlayer(), e.getObject());
+		Doors.handleDoubleDoor(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleGrottoBridge = new ObjectClickHandler(new Object[] { 2830, 2831 }, e -> {
@@ -119,7 +119,7 @@ public class Yanille {
 		}
 
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 
 		if(obj.getId() == 20056) {
 			p.useLadder(Tile.of(2548, 3118, 1));

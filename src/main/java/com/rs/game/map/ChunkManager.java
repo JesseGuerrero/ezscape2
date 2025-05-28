@@ -8,7 +8,7 @@ import com.rs.game.map.instance.InstancedChunk;
 import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.game.WorldObject;
 import com.rs.lib.util.Logger;
@@ -306,6 +306,14 @@ public final class ChunkManager {
                 continue;
             getChunk(Tile.of((regionId >> 8) * 64 + 32, (regionId & 0xff) * 64 + 32, 0).getChunkId(), true);
             PERMANENTLY_LOADED_REGIONS.add(regionId);
+        }
+    }
+
+    public static void removePermanentlyPreloadedRegions(Set<Integer> regionIds) {
+        for (int regionId : regionIds) {
+            if (!PERMANENTLY_LOADED_REGIONS.contains(regionId))
+                continue;
+            PERMANENTLY_LOADED_REGIONS.remove(regionId);
         }
     }
 

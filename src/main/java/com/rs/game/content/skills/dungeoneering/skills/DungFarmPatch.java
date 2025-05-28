@@ -20,8 +20,8 @@ import com.rs.game.content.skills.dungeoneering.DungeonConstants;
 import com.rs.game.content.skills.dungeoneering.DungeonManager;
 import com.rs.game.content.skills.dungeoneering.skills.DungeoneeringFarming.Harvest;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
-import com.rs.game.model.object.OwnedObject;
+import com.rs.game.model.gameobject.GameObject;
+import com.rs.game.model.gameobject.OwnedObject;
 
 public class DungFarmPatch extends OwnedObject {
 

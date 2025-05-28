@@ -3,7 +3,7 @@ package com.rs.game.content.minigames.trawler;
 import com.rs.game.model.entity.Teleport;
 import com.rs.engine.pathfinder.RouteEvent;
 import com.rs.game.model.entity.player.Controller;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
@@ -80,14 +80,14 @@ public class FishingTrawlerGameController extends Controller {
 		e.getPlayer().resetWalkSteps();
 		MapUtils.Area area = FishingTrawler.getInstance().isWaterShip() ? FishingTrawler.WATER_SHIP : FishingTrawler.NO_WATER_SHIP;
 		Tile tile;
-		if(e.getObject().getY() == area.getY()-1)
-			tile = e.getObject().getTile().transform(0, 1);
+		if(e.getObj().getY() == area.getY()-1)
+			tile = e.getObj().getTile().transform(0, 1);
 		else
-			tile = e.getObject().getTile().transform(0, 0);
+			tile = e.getObj().getTile().transform(0, 0);
 		e.getPlayer().addWalkSteps(tile, 25, false);
 		e.getPlayer().setRouteEvent(new RouteEvent(tile, () -> {
 			e.getPlayer().lock(1);
-			e.getPlayer().setNextFaceTile(Tile.of(e.getObject().getTile()));
+			e.getPlayer().setNextFaceTile(Tile.of(e.getObj().getTile()));
 			if(!e.getPlayer().getInventory().containsItem(FishingTrawler.SWAMP_PASTE)) {
 				e.getPlayer().sendMessage("You'll need some swamp paste to fill that.");
 				return;
@@ -95,7 +95,7 @@ public class FishingTrawlerGameController extends Controller {
 			e.getPlayer().setNextAnimation(new Animation(827));
 			FishingTrawler.getInstance().addActivity(e.getPlayer(), 50);
 			FishingTrawler.getInstance().cheerMonty();
-			FishingTrawler.getInstance().repairLeak(e.getObject());
+			FishingTrawler.getInstance().repairLeak(e.getObj());
 			e.getPlayer().getInventory().deleteItem(new Item(FishingTrawler.SWAMP_PASTE, 1));
 		}));
 	});

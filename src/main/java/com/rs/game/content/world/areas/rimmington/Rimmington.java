@@ -74,13 +74,13 @@ public class Rimmington {
             player.startConversation(new Conversation(player, new Dialogue(new NPCStatement(805, HeadE.CHEERFUL, "Don't forget to put on your brown apron! It can be a little messy in here."))));
             return;
         }
-        Doors.handleDoor(player, e.getObject());
+        Doors.handleDoor(player, e.getObj());
     });
 
     public static ObjectClickHandler handleStairs = new ObjectClickHandler(new Object[] { 71902, 71903 }, e -> {
         switch (e.getObjectId()) {
-            case 71902 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObject().getRotation() == 1 ? 4 : 0, e.getObject().getRotation() == 0 ? 4 : 0, 1), 1, 1);
-            case 71903 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObject().getRotation() == 1 ? -4 : 0, e.getObject().getRotation() == 0 ? -4 : 0, -1), 1, 1);
+            case 71902 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObj().getRotation() == 1 ? 4 : 0, e.getObj().getRotation() == 0 ? 4 : 0, 1), 1, 1);
+            case 71903 -> e.getPlayer().useStairs(-1, e.getPlayer().transform(e.getObj().getRotation() == 1 ? -4 : 0, e.getObj().getRotation() == 0 ? -4 : 0, -1), 1, 1);
         }
     });
 }

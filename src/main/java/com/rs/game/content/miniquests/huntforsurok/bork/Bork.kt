@@ -7,6 +7,7 @@ import com.rs.engine.miniquest.Miniquest
 import com.rs.game.World
 import com.rs.game.content.achievements.AchievementDef
 import com.rs.game.content.achievements.SetReward
+import com.rs.game.content.combat.CombatStyle
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager
 import com.rs.game.model.entity.Entity
 import com.rs.game.model.entity.Hit
@@ -123,7 +124,7 @@ fun instantiateAndCombat() {
 			return@npcCombat 0
 		}
 		npc.anim(if ((0..1).random() == 0) defs.attackEmote else 8757)
-		delayHit(npc, 0, target, Hit.melee(npc, getMaxHit(npc, defs.maxHit, null, target)))
+		delayHit(npc, 0, target, Hit.melee(npc, getMaxHit(npc, defs.maxHit, CombatStyle.MELEE, target)))
 		npc.attackSpeed
 	}
 

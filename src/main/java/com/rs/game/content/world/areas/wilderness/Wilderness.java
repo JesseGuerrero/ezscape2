@@ -26,7 +26,7 @@ import com.rs.game.content.transportation.WildernessObelisk;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
@@ -44,7 +44,7 @@ public class Wilderness {
 			e.getPlayer().sendMessage("You attempt to open the chest without disarming the traps.");
 			e.getPlayer().applyHit(new Hit((int) (e.getPlayer().getSkills().getLevel(Skills.HITPOINTS) + 20), Hit.HitLook.TRUE_DAMAGE));
 		}
-		case OBJECT_OP2 -> Thieving.checkTrapsChest(e.getPlayer(), e.getObject(), 2574, 32, 14, 7.5, DropSets.getDropSet("magic_axe_hut_chest"));
+		case OBJECT_OP2 -> Thieving.checkTrapsChest(e.getPlayer(), e.getObj(), 2574, 32, 14, 7.5, DropSets.getDropSet("magic_axe_hut_chest"));
 		default -> e.getPlayer();
 		}
 	});
@@ -79,7 +79,7 @@ public class Wilderness {
 
 	public static ObjectClickHandler handleGWDShortcut = new ObjectClickHandler(new Object[] { 26323, 26324, 26328, 26327 }, e -> {
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 		if (!Agility.hasLevel(p, 60)) {
 			p.getPackets().sendGameMessage("You need level 60 agility to use this shortcut.");
 			return;
@@ -123,7 +123,7 @@ public class Wilderness {
 
 	public static ObjectClickHandler handleSparklingPool = new ObjectClickHandler(new Object[] { 2878, 2879 }, e -> {
 		Player player = e.getPlayer();
-		int id = e.getObject().getId();
+		int id = e.getObj().getId();
 
 		player.simpleDialogue("You step into the pool of sparkling water. You feel the energy rush through your veins.");
 		Tile destination = id == 2879 ? Tile.of(2509, 4687, 0) : Tile.of(2542, 4720, 0);
@@ -137,14 +137,14 @@ public class Wilderness {
 
 	public static ObjectClickHandler handleGodStatues = new ObjectClickHandler(new Object[] { 2873, 2874, 2875 }, e -> {
 		int id = e.getObjectId();
-		e.getPlayer().sendMessage("You kneel and begin to chant to " + e.getObject().getDefinitions().getName().replace("Statue of ", "") + "...");
+		e.getPlayer().sendMessage("You kneel and begin to chant to " + e.getObj().getDefinitions().getName().replace("Statue of ", "") + "...");
 		e.getPlayer().setNextAnimation(new Animation(645));
 
 		WorldTasks.schedule(new Task() {
 			@Override
 			public void run() {
 				e.getPlayer().simpleDialogue("You feel a rush of energy charge through your veins. Suddenly a cape appears before you.");
-				Tile location = Tile.of(e.getObject().getX(), e.getObject().getY() - 1, 0);
+				Tile location = Tile.of(e.getObj().getX(), e.getObj().getY() - 1, 0);
 				World.sendSpotAnim(location, new SpotAnim(1605));
 				Item capeItem = new Item(id == 2873 ? 2412 : id == 2874 ? 2414 : 2413);
 				World.addGroundItem(capeItem, location);
@@ -152,7 +152,7 @@ public class Wilderness {
 		}, 3);
 	});
 
-	public static ObjectClickHandler handleCorpCave = new ObjectClickHandler(new Object[] { 38811, 37928, 38815 }, e -> {
+	public static ObjectClickHandler handleCorpCave = new ObjectClickHandler(new Object[] { 38811, 37928, 37929, 38815 }, e -> {
 		Player player = e.getPlayer();
         switch (e.getObjectId()) {
 			case 38811 -> player.getInterfaceManager().sendInterface(650);
@@ -210,7 +210,7 @@ public class Wilderness {
 
 	public static ObjectClickHandler handleWildernessDitch = new ObjectClickHandler(new Object[] { 1440, 1441, 1442, 1443, 1444, 65076, 65077, 65078, 65079, 65080, 65081, 65082, 65083, 65084, 65085, 65086, 65087 }, e -> {
 		Player player = e.getPlayer();
-		GameObject object = e.getObject();
+		GameObject object = e.getObj();
 
 		if (WildernessController.isDitch(e.getObjectId())) {
 			player.startConversation(new Dialogue()

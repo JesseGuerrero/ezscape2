@@ -21243,15 +21243,6 @@
   {
     "tile": {
       "plane": 0,
-      "x": 2596,
-      "y": 3266
-    },
-    "comment": "Larry",
-    "npcId": 8693
-  },
-  {
-    "tile": {
-      "plane": 0,
       "x": 2621,
       "y": 3688
     },
@@ -21950,6 +21941,15 @@
     },
     "comment": "Tool leprechaun",
     "npcId": 3021
+  },
+  {
+    "comment": "Tool leprechaun",
+    "npcId": 3021,
+    "tile": {
+      "x": 3197,
+      "y": 3230,
+      "plane": 0
+    }
   },
   {
     "tile": {
@@ -34642,15 +34642,6 @@
     },
     "comment": "Baby icefiend",
     "npcId": 7734
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3045,
-      "y": 3497
-    },
-    "comment": "Rock",
-    "npcId": 8109
   },
   {
     "tile": {
@@ -47858,15 +47849,6 @@
   {
     "tile": {
       "plane": 0,
-      "x": 3231,
-      "y": 9609
-    },
-    "comment": "Kazgar",
-    "npcId": 2085
-  },
-  {
-    "tile": {
-      "plane": 0,
       "x": 3225,
       "y": 9862
     },
@@ -49274,6 +49256,7 @@
       "x": 3267,
       "y": 3164
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 496
   },
@@ -49283,6 +49266,7 @@
       "x": 3267,
       "y": 3167
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 496
   },
@@ -49292,6 +49276,7 @@
       "x": 3267,
       "y": 3169
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 496
   },
@@ -49301,6 +49286,7 @@
       "x": 3267,
       "y": 3166
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 497
   },
@@ -49310,6 +49296,7 @@
       "x": 3267,
       "y": 3168
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 497
   },
@@ -52795,87 +52782,6 @@
     },
     "comment": "Guard",
     "npcId": 4998
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3323,
-      "y": 9644
-    },
-    "comment": "Cave goblin guard",
-    "npcId": 2073
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3314,
-      "y": 9630
-    },
-    "comment": "Cave goblin guard",
-    "npcId": 2074
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3313,
-      "y": 9630
-    },
-    "comment": "Cave goblin miner",
-    "npcId": 2075
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3313,
-      "y": 9654
-    },
-    "comment": "Cave goblin miner",
-    "npcId": 2075
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3313,
-      "y": 9638
-    },
-    "comment": "Cave goblin miner",
-    "npcId": 2076
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3314,
-      "y": 9647
-    },
-    "comment": "Cave goblin miner",
-    "npcId": 2076
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3313,
-      "y": 9629
-    },
-    "comment": "Cave goblin miner",
-    "npcId": 2078
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3312,
-      "y": 9646
-    },
-    "comment": "Cave goblin miner",
-    "npcId": 2078
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 3323,
-      "y": 9608
-    },
-    "comment": "Nardok",
-    "npcId": 4312
   },
   {
     "tile": {
@@ -65123,6 +65029,7 @@
       "x": 2615,
       "y": 3091
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65132,6 +65039,7 @@
       "x": 2615,
       "y": 3092
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65141,6 +65049,7 @@
       "x": 2615,
       "y": 3094
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65150,6 +65059,7 @@
       "x": 2614,
       "y": 3330
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65159,6 +65069,7 @@
       "x": 2616,
       "y": 3330
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65168,6 +65079,7 @@
       "x": 2619,
       "y": 3330
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65177,6 +65089,7 @@
       "x": 2583,
       "y": 3422
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65186,6 +65099,7 @@
       "x": 2583,
       "y": 3423
     },
+	"dir": "EAST",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65195,6 +65109,7 @@
       "x": 2621,
       "y": 3895
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 1360
   },
@@ -65204,6 +65119,7 @@
       "x": 2657,
       "y": 3280
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 495
   },
@@ -65213,6 +65129,7 @@
       "x": 2657,
       "y": 3283
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65222,6 +65139,7 @@
       "x": 2657,
       "y": 3286
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 494
   },
@@ -65321,6 +65239,7 @@
       "x": 2851,
       "y": 2954
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 499
   },
@@ -65330,6 +65249,7 @@
       "x": 2853,
       "y": 2955
     },
+	"dir": "NORTH",
     "comment": "Banker",
     "npcId": 499
   },
@@ -65724,6 +65644,7 @@
       "x": 3514,
       "y": 3479
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 1036
   },
@@ -65733,6 +65654,7 @@
       "x": 3514,
       "y": 3481
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 1036
   },
@@ -65742,6 +65664,7 @@
       "x": 3682,
       "y": 2981
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 3198
   },
@@ -65751,6 +65674,7 @@
       "x": 3682,
       "y": 2982
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 3199
   },
@@ -65760,6 +65684,7 @@
       "x": 3682,
       "y": 2983
     },
+	"dir": "WEST",
     "comment": "Banker",
     "npcId": 3198
   },
@@ -84777,6 +84702,7 @@
       "x": 3652,
       "y": 3484
     },
+	"dir": "WEST",
     "comment": "Ghost guard",
     "npcId": 1706
   },
@@ -84786,6 +84712,7 @@
       "x": 3652,
       "y": 3487
     },
+	"dir": "WEST",
     "comment": "Ghost guard",
     "npcId": 1706
   },
@@ -84795,6 +84722,7 @@
       "x": 3658,
       "y": 3508
     },
+	"dir": "NORTH",
     "comment": "Ghost guard",
     "npcId": 1706
   },
@@ -84804,6 +84732,7 @@
       "x": 3661,
       "y": 3508
     },
+	"dir": "NORTH",
     "comment": "Ghost guard",
     "npcId": 1706
   },
@@ -98124,6 +98053,7 @@
       "x": 2841,
       "y": 3538
     },
+	"dir": "EAST",
     "comment": "Jade",
     "npcId": 4296
   },
@@ -111563,6 +111493,7 @@
       "x": 3076,
       "y": 3429
     },
+	"clip": "INDOOR",
     "comment": "Peksa",
     "npcId": 538
   },
@@ -113878,15 +113809,6 @@
     },
     "comment": "Port Sarim guard",
     "npcId": 2705
-  },
-  {
-    "tile": {
-      "plane": 0,
-      "x": 2446,
-      "y": 3097
-    },
-    "comment": "Postie Pete",
-    "npcId": 3805
   },
   {
     "tile": {
@@ -118061,6 +117983,7 @@
       "x": 3187,
       "y": 3423
     },
+	"clip": "INDOOR",
     "comment": "Sani",
     "npcId": 4905
   },

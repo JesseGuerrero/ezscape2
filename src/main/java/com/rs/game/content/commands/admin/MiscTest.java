@@ -25,7 +25,6 @@ import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cache.loaders.NPCDefinitions;
 import com.rs.cache.loaders.ObjectDefinitions;
 import com.rs.cache.loaders.ObjectType;
-import com.rs.cache.loaders.interfaces.IFEvents;
 import com.rs.cache.loaders.map.ClipFlag;
 import com.rs.engine.command.Commands;
 import com.rs.engine.cutscene.ExampleCutscene;
@@ -35,8 +34,8 @@ import com.rs.engine.quest.Quest;
 import com.rs.game.World;
 import com.rs.game.content.achievements.Achievement;
 import com.rs.game.content.combat.CombatDefinitions.Spellbook;
-import com.rs.game.content.combat.PlayerCombatKt;
 import com.rs.game.content.dnds.eviltree.EvilTreesKt;
+import com.rs.game.content.dnds.penguins.*;
 import com.rs.game.content.dnds.shootingstar.ShootingStars;
 import com.rs.game.content.minigames.barrows.BarrowsController;
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager;
@@ -62,7 +61,7 @@ import com.rs.game.model.entity.player.InstancedController;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.game.model.entity.player.managers.InterfaceManager;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
@@ -82,6 +81,7 @@ import com.rs.tools.MapSearcher;
 import com.rs.tools.NPCDropDumper;
 import com.rs.utils.DropSets;
 import com.rs.utils.ObjAnimList;
+import com.rs.utils.Ticks;
 import com.rs.utils.music.Genre;
 import com.rs.utils.music.Music;
 import com.rs.utils.music.Song;
@@ -95,9 +95,10 @@ import com.rs.utils.spawns.NPCSpawns;
 import kotlin.Pair;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.ZonedDateTime;
+import java.util.*;
 
 @PluginEventHandler
 public class MiscTest {
@@ -154,6 +155,106 @@ public class MiscTest {
 		Commands.add(Rights.ADMIN, "shootingstar", "spawn a shooting star", (p, args) -> ShootingStars.spawnStar());
 
 		Commands.add(Rights.ADMIN, "eviltree", "spawn an evil tree", (p, args) -> EvilTreesKt.spawnTree());
+
+		Commands.add(Rights.ADMIN, "penguin_status", "Returns the location of the active polar bear.", (p, args) -> {
+			PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
+			long[] activePenguinCount = {0};
+
+			Penguins.getEntries().stream()
+					.filter(penguin -> penguinSpawnService.getSpawnedNPCs().values().stream()
+							.anyMatch(npc -> npc.getRespawnTile().equals(penguin.getTile())))
+					.forEach(penguin -> {
+						activePenguinCount[0]++;
+						p.getPackets().sendDevConsoleMessage(activePenguinCount[0] + ". " + penguin + " - " + penguin.getTile() + " - " + penguin.getWikiLocation());
+					});
+
+			p.getPackets().sendDevConsoleMessage("Total active penguins: " + activePenguinCount[0]);
+
+			PolarBearManager polarBearManager = PenguinServices.INSTANCE.getPolarBearManager();
+			p.getPackets().sendDevConsoleMessage("Polar Bear currently located in: " + polarBearManager.getLocationName(polarBearManager.getCurrentLocationId()));
+
+			Commands.processCommand(p, "penguin_next_reset", true, false);
+		});
+
+		Commands.add(Rights.ADMIN, "penguin_participants", "Returns a list of all Penguin Hide and Seek participants for the current Penguin/Polar Bear spawns.", (p, args) -> {
+			try {
+				List<Penguin> allPenguins = PenguinServices.INSTANCE.getPenguinSpawnService().getPenguins();
+
+				if (allPenguins.isEmpty()) {
+					p.getPackets().sendDevConsoleMessage("No penguins found.");
+				} else {
+					Set<String> uniqueSpotters = new HashSet<>();
+					StringBuilder participantsInfo = new StringBuilder();
+
+					for (Penguin penguin : allPenguins) {
+						uniqueSpotters.addAll(penguin.getSpotters());
+					}
+
+					if (!uniqueSpotters.isEmpty()) {
+						participantsInfo.append("Penguin Hide and Seek Participants (Spotters):\n");
+						for (String spotter : uniqueSpotters) {
+							participantsInfo.append(spotter).append("\n");
+						}
+						p.getPackets().sendDevConsoleMessage(participantsInfo.toString());
+					} else {
+						p.getPackets().sendDevConsoleMessage("No participants found.");
+					}
+
+					p.getPackets().sendDevConsoleMessage("Total spotters for week " + PenguinServices.INSTANCE.getPenguinHideAndSeekManager().getCurrentWeek() + ": " + uniqueSpotters.size());
+				}
+			} catch (Exception e) {
+				p.getPackets().sendDevConsoleMessage("Couldn't retrieve participants.");
+			}
+		});
+
+		Commands.add(Rights.ADMIN, "penguin_respawn", "Respawns both penguins and polar bear.", (p, args) -> {
+			PolarBearManager polarBearManager = PenguinServices.INSTANCE.getPolarBearManager();
+			polarBearManager.setLocation(false);
+			if (p != null) p.getPackets().sendDevConsoleMessage("Polar Bear respawned at: " + polarBearManager.getLocationName(polarBearManager.getCurrentLocationId()));
+			PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
+			PenguinManager penguinManager = PenguinServices.INSTANCE.getPenguinHideAndSeekManager();
+			penguinSpawnService.getSpawnedNPCs().values().forEach(NPC::finish);
+			penguinSpawnService.getSpawnedNPCs().clear();
+			penguinManager.checkAndSpawn();
+			if (p != null) p.getPackets().sendDevConsoleMessage("Penguins respawned.");
+			if (p != null) Commands.processCommand(p, "penguin_status", true, false);
+		});
+
+		Commands.add(Rights.ADMIN, "penguin_reset [type]", "Resets penguins or polar bear and spawns a new set. Type can be 'penguins' or 'polarbear'.", (p, args) -> {
+			if (args.length < 1 || (!args[0].equalsIgnoreCase("penguins") && !args[0].equalsIgnoreCase("polarbear"))) {
+				p.getPackets().sendDevConsoleMessage("Usage: ::penguin_reset [penguins|polarbear]");
+				return;
+			}
+
+			String type = args[0].toLowerCase();
+
+			if (type.equals("penguins")) {
+				PenguinSpawnService penguinSpawnService = PenguinServices.INSTANCE.getPenguinSpawnService();
+				if (penguinSpawnService.removeAllSpawns()) {
+					penguinSpawnService.prepareNew();
+					World.getPlayers().forEach(player -> player.getVars().saveVarBit(5276, 0));
+				}
+				Commands.processCommand(p, "penguin_status", true, true);
+
+			} else if (type.equals("polarbear")) {
+				PolarBearManager polarBearManager = PenguinServices.INSTANCE.getPolarBearManager();
+				polarBearManager.setLocation(true);
+				p.getPackets().sendDevConsoleMessage("Polar Bear manually changed to: " + polarBearManager.getLocationName(polarBearManager.getCurrentLocationId()));
+			}
+		});
+
+		Commands.add(Rights.ADMIN, "penguin_next_reset", "Returns the date/time of the next reset.", (p, args) -> {
+			PenguinManager penguinManager = PenguinServices.INSTANCE.getPenguinHideAndSeekManager();
+
+			ZonedDateTime nextResetTime = penguinManager.getLastReset().plusWeeks(1);
+			long millisUntilReset = Duration.between(penguinManager.getCurrentDayAndTime(), nextResetTime).toMillis();
+
+			Date resetDate = Date.from(nextResetTime.toInstant());
+			SimpleDateFormat formatter = new SimpleDateFormat("EEE, MMM d, yyyy 'at' HH:mm:ss z");
+			String formattedResetTime = formatter.format(resetDate);
+
+			p.getPackets().sendDevConsoleMessage("Next reset is scheduled for: " + formattedResetTime + ", or in " + Ticks.breakDownOfTicks((int) (millisUntilReset / 600)) + ".");
+		});
 
 		Commands.add(Rights.DEVELOPER, "dumpdrops [npcId]", "exports a drop dump file for the specified NPC", (p, args) -> NPCDropDumper.dumpNPC(args[0]));
 
@@ -1032,7 +1133,7 @@ public class MiscTest {
 			p.getAppearance().generateAppearanceData();
 		});
 
-		Commands.add(Rights.DEVELOPER, "dropstobank,bankdrops", "Will send all drops recieved from monsters directly to the bank.", (p, args) -> p.getNSV().setB("sendingDropsToBank", true));
+		Commands.add(Rights.DEVELOPER, "dropstobank,bankdrops", "Will send all drops received from monsters directly to the bank.", (p, args) -> p.getNSV().setB("sendingDropsToBank", true));
 
 		Commands.add(Rights.DEVELOPER, "spotanim,gfx [id height]", "Creates a spot animation on top of the player.", (p, args) -> p.setNextSpotAnim(new SpotAnim(Integer.parseInt(args[0]), 0, args.length == 1 ? 0 : Integer.parseInt(args[1]))));
 

@@ -43,7 +43,8 @@ import com.rs.game.content.ItemConstants.ItemDegrade;
 import com.rs.game.content.Toolbelt.Tools;
 import com.rs.game.content.achievements.AchievementInterface;
 import com.rs.game.content.bosses.godwars.GodwarsController;
-import com.rs.game.content.bosses.godwars.zaros.Nex;
+import com.rs.game.content.bosses.godwars.factions.GodFaction;
+import com.rs.game.content.bosses.godwars.factions.zaros.Nex;
 import com.rs.game.content.clans.ClansManager;
 import com.rs.game.content.combat.CombatDefinitions;
 import com.rs.game.content.death.DeathOfficeController;
@@ -54,7 +55,7 @@ import com.rs.game.content.minigames.herblorehabitat.HabitatFeature;
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager;
 import com.rs.game.content.pets.Pet;
 import com.rs.game.content.pets.PetManager;
-import com.rs.game.content.skills.construction.House;
+import com.rs.game.content.skills.construction.playerOwnedHouse.House;
 import com.rs.game.content.skills.cooking.Brewery;
 import com.rs.game.content.skills.cooking.Foods;
 import com.rs.game.content.skills.dungeoneering.DungManager;
@@ -91,7 +92,7 @@ import com.rs.game.model.entity.player.managers.InterfaceManager.ScreenMode;
 import com.rs.game.model.entity.player.managers.InterfaceManager.Sub;
 import com.rs.game.model.entity.player.social.FCManager;
 import com.rs.game.model.item.ItemsContainer;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
@@ -1332,7 +1333,10 @@ public class Player extends Entity {
     }
 
 	public void processWeeklyTasks() {
-		if (Utils.getTodayDate() >= weeklyDate) {
+		int todayDate = Utils.getTodayDate();
+		int currentYear = Calendar.getInstance(TimeZone.getTimeZone("UTC")).get(Calendar.YEAR);
+		int fullTodayDate = currentYear * 10000 + todayDate;
+		if (fullTodayDate >= weeklyDate) {
 			sendMessage("<col=FF0000>Your weekly tasks have been reset.</col>");
 			weeklyAttributes = new ConcurrentHashMap<>();
 			weeklyDate = setLastDateToNextWednesday();
@@ -1347,9 +1351,10 @@ public class Player extends Entity {
 			daysUntilNextWednesday = 7;
 		}
 		cal.add(Calendar.DAY_OF_MONTH, daysUntilNextWednesday);
-		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int year = cal.get(Calendar.YEAR);
 		int month = cal.get(Calendar.MONTH);
-		return (month * 100 + day);
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		return year * 10000 + month * 100 + day;
 	}
 
 	private void sendUnlockedObjectConfigs() {
@@ -2084,7 +2089,7 @@ public class Player extends Entity {
 
 	@Override
 	public void handlePreHitOut(Entity target, Hit hit) {
-		if (getEquipment().fullGuthansEquipped())
+		if (getEquipment().fullGuthansEquipped() && hit.getLook() == HitLook.MELEE_DAMAGE)
 			if (Utils.random(4) == 0) {
 				int heal = hit.getDamage();
 				if (heal > 0)
@@ -3117,31 +3122,31 @@ public class Player extends Entity {
 	public void sendGodwarsKill(NPC npc) {
 		boolean dropKey = Utils.getRandomInclusive(500) <= 10 && npc.getDefinitions().combatLevel <= 134;
         if (npc.getId() >= 6247 && npc.getId() <= 6259) {
-			((GodwarsController) getControllerManager().getController()).sendKill(GodwarsController.SARADOMIN);
+			((GodwarsController) getControllerManager().getController()).sendKill(GodFaction.SARADOMIN);
 			if (dropKey)
 				World.addGroundItem(new Item(20124, 1), Tile.of(npc.getCoordFaceX(npc.getSize()), npc.getCoordFaceY(npc.getSize()), npc.getPlane()), this, false, 60);
 			return;
 		}
 		if (npc.getId() >= 6260 && npc.getId() <= 6283) {
-			((GodwarsController) getControllerManager().getController()).sendKill(GodwarsController.BANDOS);
+			((GodwarsController) getControllerManager().getController()).sendKill(GodFaction.BANDOS);
 			if (dropKey)
 				World.addGroundItem(new Item(20122, 1), Tile.of(npc.getCoordFaceX(npc.getSize()), npc.getCoordFaceY(npc.getSize()), npc.getPlane()), this, false, 60);
 			return;
 		}
 		if (npc.getId() >= 6222 && npc.getId() <= 6246) {
-			((GodwarsController) getControllerManager().getController()).sendKill(GodwarsController.ARMADYL);
+			((GodwarsController) getControllerManager().getController()).sendKill(GodFaction.ARMADYL);
 			if (dropKey)
 				World.addGroundItem(new Item(20121, 1), Tile.of(npc.getCoordFaceX(npc.getSize()), npc.getCoordFaceY(npc.getSize()), npc.getPlane()), this, false, 60);
 			return;
 		}
 		if (npc.getId() >= 6203 && npc.getId() <= 6221) {
-			((GodwarsController) getControllerManager().getController()).sendKill(GodwarsController.ZAMORAK);
+			((GodwarsController) getControllerManager().getController()).sendKill(GodFaction.ZAMORAK);
 			if (dropKey)
 				World.addGroundItem(new Item(20123, 1), Tile.of(npc.getCoordFaceX(npc.getSize()), npc.getCoordFaceY(npc.getSize()), npc.getPlane()), this, false, 60);
 			return;
 		}
 		if (npc.getId() >= 13447 && npc.getId() <= 13459) {
-			((GodwarsController) getControllerManager().getController()).sendKill(GodwarsController.ZAROS);
+			((GodwarsController) getControllerManager().getController()).sendKill(GodFaction.ZAROS);
         }
 	}
 

@@ -16,6 +16,8 @@
 //
 package com.rs.game.tasks;
 
+import java.time.DayOfWeek;
+import java.util.Map;
 import java.util.function.Function;
 
 public class WorldTasks {
@@ -68,6 +70,10 @@ public class WorldTasks {
 		return TASKS.schedule(startDelay, task);
 	}
 
+	public static TaskInformation schedule(String mapping, int startDelay, Runnable task) {
+		return TASKS.schedule(mapping, startDelay, task);
+	}
+
 	public static TaskInformation schedule(Runnable task) {
 		return TASKS.schedule(task);
 	}
@@ -88,6 +94,14 @@ public class WorldTasks {
 		TASKS.remove(task);
 	}
 
+	public static boolean hasTask(String mapping) {
+		return TASKS.hasTask(mapping);
+	}
+
+	public static void remove(String mapping) {
+		TASKS.remove(mapping);
+	}
+
 	private WorldTasks() {
 
 	}
@@ -104,5 +118,14 @@ public class WorldTasks {
 	public static int getSize() {
 		return TASKS.getSize();
 	}
+
+	public static int getRemainingTicks(String mapping) {
+		return TASKS.getRemainingTicks(mapping);
+	}
+
+	public static Map<String, Integer> listAllMappedTasks() {
+		return TASKS.listAllMappedTasks();
+	}
+
 
 }

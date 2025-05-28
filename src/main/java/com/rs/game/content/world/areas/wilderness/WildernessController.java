@@ -27,7 +27,7 @@ import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Controller;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
@@ -196,6 +196,7 @@ public class WildernessController extends Controller {
 		} else if (!showingSkull && isAtWild && !isAtWildSafe) {
 			showingSkull = true;
 			player.setCanPvp(true);
+			player.getPackets().sendDrawOrder(true);
 			showSkull();
 			player.setPvpCombatLevelThreshhold(getWildLevel());
 		} else if (showingSkull && (isAtWildSafe || !isAtWild))
@@ -206,6 +207,7 @@ public class WildernessController extends Controller {
 		if (showingSkull) {
 			showingSkull = false;
 			player.setCanPvp(false);
+			player.getPackets().sendDrawOrder(false);
 			player.getInterfaceManager().removeOverlay();
 			player.setPvpCombatLevelThreshhold(-1);
 			player.getEquipment().refresh(null);
@@ -237,7 +239,8 @@ public class WildernessController extends Controller {
 			{3078, 3139, 9923, 10002},
 			{3158, 3181, 3679, 3697},
 			{3264, 3279, 3279, 3672},
-			{3280, 3283, 3885, 3888}
+			{3280, 3283, 3885, 3888},
+			{2988, 3009, 10337, 10366} // Wildy Agility Course Spikes
 	};
 
 	public static boolean isAtWild(Tile tile) {

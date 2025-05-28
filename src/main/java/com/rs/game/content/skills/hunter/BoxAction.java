@@ -24,8 +24,8 @@ import com.rs.game.content.skills.hunter.traps.NetTrap;
 import com.rs.game.map.ChunkManager;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.model.object.GameObject;
-import com.rs.game.model.object.OwnedObject;
+import com.rs.game.model.gameobject.GameObject;
+import com.rs.game.model.gameobject.OwnedObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.GroundItem;
@@ -76,7 +76,7 @@ public class BoxAction extends PlayerAction {
 			player.getInventory().deleteItem(type.getId(), 1);
 			World.addGroundItem(new Item(type.getId(), 1), Tile.of(player.getTile()), player, true, 180);
 		}
-		player.sendMessage("You start setting up the trap..");
+		player.sendMessage("You begin setting up a trap.", true);
 		player.setNextAnimation(type == BoxTrapType.TREE_NET ? new Animation(5215) : new Animation(5208));
 		setActionDelay(player, type == BoxTrapType.TREE_NET ? 1 : 2);
 		return true;
@@ -129,7 +129,7 @@ public class BoxAction extends PlayerAction {
 		int trapAmt = getTrapAmount(player);
 		int numberSetup = OwnedObject.getNumOwned(player, BoxStyleTrap.class);
 		if (numberSetup >= trapAmt) {
-			player.sendMessage("You can't setup more than " + trapAmt + " traps.");
+			player.sendMessage("You can't setup more than " + trapAmt + " " + (trapAmt == 1 ? "trap." : "traps."));
 			return false;
 		}
 		if (type != BoxTrapType.DEAD_FALL && trap.overlapsExisting() || player.getControllerManager().getController() != null) {

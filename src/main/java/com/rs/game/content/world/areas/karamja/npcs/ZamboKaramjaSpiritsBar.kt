@@ -1,11 +1,13 @@
 package com.rs.game.content.world.areas.karamja.npcs
 
 import com.rs.engine.dialogue.*
+import com.rs.engine.quest.Quest
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.Bars.KARAMJA_SPIRITS
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisited
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.utils.BartenderUtils.buyBarcrawlDrink
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.plugin.annotations.ServerStartupEvent
@@ -22,6 +24,11 @@ class ZamboKaramjaSpiritsBar(p: Player, npc: NPC) {
                     exec { ShopsHandler.openShop(p, "karamja_wines_spirits_and_beers") }
                 }
                 op("No, thank you.") { player(HeadE.HAPPY_TALKING, "No, thank you.") }
+                if (p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
+                    }
+                }
                 if (!isBarVisited(p, KARAMJA_SPIRITS) && BarCrawl.hasCard(p) && onBarCrawl(p)) {
                     op("I'm doing Alfred Grimhand's Barcrawl.") {
                         player(HeadE.HAPPY_TALKING, "I'm doing Alfred Grimhand's Barcrawl.")

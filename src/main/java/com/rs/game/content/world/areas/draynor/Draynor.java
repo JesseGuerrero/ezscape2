@@ -31,7 +31,7 @@ import com.rs.game.content.world.areas.global.AgilityShortcuts;
 import com.rs.game.content.world.doors.DoorPair;
 import com.rs.game.model.entity.player.Inventory;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
@@ -345,7 +345,7 @@ public class Draynor {
 
     public static ObjectClickHandler handleEnterDraynorSewers = new ObjectClickHandler(new Object[]{6435}, e -> {
         Player p = e.getPlayer();
-        GameObject obj = e.getObject();
+        GameObject obj = e.getObj();
         if (obj.getTile().matches(Tile.of(3118, 3244, 0)))//south entrance
             p.useStairs(827, Tile.of(3118, 9643, 0), 1, 1);
         if (obj.getTile().matches(Tile.of(3084, 3272, 0)))//north entrance
@@ -356,7 +356,7 @@ public class Draynor {
 
     public static ObjectClickHandler handleExitsDraynorSewers = new ObjectClickHandler(new Object[]{26518, 32015}, e -> {
         Player p = e.getPlayer();
-        GameObject obj = e.getObject();
+        GameObject obj = e.getObj();
         if (obj.getTile().matches(Tile.of(3118, 9643, 0)))//north
             p.ladder(Tile.of(3118, 3245, 0));
         if (obj.getTile().matches(Tile.of(3084, 9672, 0)))//south
@@ -365,15 +365,15 @@ public class Draynor {
 
     public static ObjectClickHandler handleEnterDraynorAvaSecret = new ObjectClickHandler(new Object[]{160, 47404}, e -> {
         e.getPlayer().lock();
-        e.getPlayer().setNextFaceTile(e.getObject().getTile());
+        e.getPlayer().setNextFaceTile(e.getObj().getTile());
         e.getPlayer().setNextAnimation(new Animation(1548));
         WorldTasks.delay(2, () -> e.getPlayer().addWalkSteps(e.getPlayer().transform(0, e.getObjectId() == 47404 ? -1 : 1), 1, true));
         WorldTasks.delay(4, () -> {
             GameObject door1 = World.getObjectWithId(
-                e.getObject().getTile().transform(e.getObjectId() == 47404 ? 0 : 1, e.getObjectId() == 47404 ? -1 : 2),
+                e.getObj().getTile().transform(e.getObjectId() == 47404 ? 0 : 1, e.getObjectId() == 47404 ? -1 : 2),
                 47531);
             GameObject door2 = World.getObjectWithId(
-                e.getObject().getTile().transform(e.getObjectId() == 47404 ? 0 : 1, e.getObjectId() == 47404 ? -2 : 1),
+                e.getObj().getTile().transform(e.getObjectId() == 47404 ? 0 : 1, e.getObjectId() == 47404 ? -2 : 1),
                 47529);
             if (door1 != null && door2 != null) {
                 World.spawnObjectTemporary(new GameObject(door1, 83), 2, true);
@@ -384,7 +384,7 @@ public class Draynor {
                     door2.getType(), door2.getRotation(-1), door2.getTile().transform(-1, 0, 0)), 2, true);
             }
             e.getPlayer().addWalkSteps(
-                e.getObject().getTile().transform(e.getObjectId() == 47404 ? -1 : 1, e.getObjectId() == 47404 ? -1 : 1),
+                e.getObj().getTile().transform(e.getObjectId() == 47404 ? -1 : 1, e.getObjectId() == 47404 ? -1 : 1),
                 3, false);
             e.getPlayer().unlock();
         });
@@ -402,7 +402,7 @@ public class Draynor {
 
     public static ObjectClickHandler handleDraynorManorRailing = new ObjectClickHandler(new Object[]{37703}, e -> {
         Player p = e.getPlayer();
-        GameObject obj = e.getObject();
+        GameObject obj = e.getObj();
         if (!Agility.hasLevel(p, 28)) {
             p.getPackets().sendGameMessage("You need level 28 agility to use this shortcut.");
             return;
@@ -426,8 +426,8 @@ public class Draynor {
 
     public static ObjectClickHandler handleLadders = new ObjectClickHandler(new Object[] { 2347, 2348 }, e -> {
         switch (e.getObjectId()) {
-            case 2347 -> e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? 3 : -3, 0, 1));
-            case 2348 -> e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? -3 : 3, 0, -1));
+            case 2347 -> e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? 3 : -3, 0, 1));
+            case 2348 -> e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? -3 : 3, 0, -1));
         }
     });
 }

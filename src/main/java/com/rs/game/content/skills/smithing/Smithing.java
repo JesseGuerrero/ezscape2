@@ -18,15 +18,13 @@ package com.rs.game.content.skills.smithing;
 
 import com.rs.engine.quest.Quest;
 import com.rs.game.World;
-import com.rs.game.content.skills.firemaking.Bonfire;
 import com.rs.game.content.skills.smithing.ForgingInterface.Slot;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.actions.PlayerAction;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
-import com.rs.lib.game.SpotAnim;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemOnObjectHandler;
@@ -46,7 +44,7 @@ public class Smithing extends PlayerAction {
 
 	public static ObjectClickHandler smithAnvil = new ObjectClickHandler(new Object[] { "Anvil", "Kethsian anvil" }, e -> {
 		if (e.getOption().equals("Smith"))
-			ForgingInterfaceKt.openSmithingInterfaceForHighestBar(e.getPlayer(), e.getObject());
+			ForgingInterfaceKt.openSmithingInterfaceForHighestBar(e.getPlayer(), e.getObj());
 	});
 	
 	public enum Smithable {

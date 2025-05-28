@@ -1,6 +1,5 @@
 package com.rs.game.content.minigames.crucible;
 
-import com.rs.game.model.object.GameObject;
 import com.rs.lib.game.Tile;
 
 import java.util.HashMap;

@@ -47,7 +47,7 @@ import com.rs.game.model.entity.player.Equipment;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.game.model.entity.player.actions.ActionManager;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.TaskManager;
 import com.rs.game.tasks.WorldTasks;
@@ -675,8 +675,12 @@ public abstract class Entity {
 			receivedDamage.put(source, damage);
 	}
 
-	public void heal(int ammount) {
-		heal(ammount, 0);
+	public void heal(int amount) {
+		heal(amount, 0);
+	}
+
+	public void healHit(int amount) {
+		applyHit(Hit.heal(null, amount));
 	}
 
 	public void heal(int ammount, int extra) {
@@ -858,7 +862,7 @@ public abstract class Entity {
 	}
 
 	public boolean lineOfSightTo(Object target, boolean melee) {
-		Tile tile = WorldUtil.targetToTile(target);
+		Tile targTile = WorldUtil.targetToTile(target);
 		int targSize = target instanceof Entity ? ((Entity) target).getSize() : 1;
 		if (target instanceof NPC npc) {
 			if (LOS_NPC_OVERRIDES.contains(npc.getId()) || LOS_NPC_OVERRIDES.contains(npc.getName()))
@@ -868,8 +872,8 @@ public abstract class Entity {
 			if (func.apply(this, target, melee))
 				return true;
 		if (melee && !(target instanceof Entity e && e.ignoreWallsWhenMeleeing()))
-			return World.checkMeleeStep(this, this.getSize(), target, targSize) && World.hasLineOfSight(getMiddleTile(), getSize(), target instanceof Entity e ? e.getMiddleTile() : tile, targSize);
-		return World.hasLineOfSight(getMiddleTile(), getSize(), target instanceof Entity e ? e.getMiddleTile() : tile, targSize);
+			return World.checkMeleeStep(this, this.getSize(), target, targSize) && World.hasLineOfSight(tile, getSize(), targTile, targSize);
+		return World.hasLineOfSight(tile, getSize(), targTile, targSize);
 	}
 
 	public boolean addWalkSteps(final int destX, final int destY, int maxStepsCount) {
@@ -2195,6 +2199,10 @@ public abstract class Entity {
 	public void clearPendingTasks() {
 		tasks = new TaskManager();
 		asyncTasks.stopAll();
+	}
+
+	public Tile getNextTile() {
+		return nextTile;
 	}
 
 	public AsyncTaskScheduler getAsyncTasks() {

@@ -45,12 +45,12 @@ public class GnomeAgility {
 	public static ObjectClickHandler handle = new ObjectClickHandler(false, new Object[] { 43529 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 85))
 			return;
-		int x = Utils.clampI(e.getObject().getX(), 2485, 2487);
+		int x = Utils.clampI(e.getObj().getX(), 2485, 2487);
 		e.getPlayer().setRouteEvent(new RouteEvent(Tile.of(x, 3419, 3), () -> {
 			e.getPlayer().lock();
 			WorldTasks.scheduleTimer(tick -> {
 				switch(tick) {
-					case 0 -> e.getPlayer().faceObject(e.getObject());
+					case 0 -> e.getPlayer().faceObject(e.getObj());
 					case 1 -> e.getPlayer().forceMoveVisually(Tile.of(x, 3421, 3), 11784, 0, 30);
 					case 2 -> {
 						e.getPlayer().tele(Tile.of(x, 3421, 3));
@@ -216,9 +216,9 @@ public class GnomeAgility {
 		}, 1);
 	});
 
-	public static ObjectClickHandler handleObstacleNet2 = new ObjectClickHandler(false, new Object[] { 69384 }, e -> e.getPlayer().setRouteEvent(new RouteEvent(Tile.of(Utils.clampI(e.getPlayer().getX(), 2483, 2488), e.getObject().getY()-1, 0), () -> {
+	public static ObjectClickHandler handleObstacleNet2 = new ObjectClickHandler(false, new Object[] { 69384 }, e -> e.getPlayer().setRouteEvent(new RouteEvent(Tile.of(Utils.clampI(e.getPlayer().getX(), 2483, 2488), e.getObj().getY()-1, 0), () -> {
         e.getPlayer().sendMessage("You climb the netting.", true);
-        e.getPlayer().useStairs(828, Tile.of(e.getPlayer().getX(), e.getObject().getY()+1, 0), 1, 2);
+        e.getPlayer().useStairs(828, Tile.of(e.getPlayer().getX(), e.getObj().getY()+1, 0), 1, 2);
         WorldTasks.schedule(new Task() {
             @Override
             public void run() {
@@ -232,7 +232,7 @@ public class GnomeAgility {
 		final boolean running = e.getPlayer().getRun();
 		e.getPlayer().setRunHidden(false);
 		e.getPlayer().lock(8);
-		e.getPlayer().addWalkSteps(e.getObject().getX(), e.getObject().getY() == 3431 ? 3437 : 3430, -1, false);
+		e.getPlayer().addWalkSteps(e.getObj().getX(), e.getObj().getY() == 3431 ? 3437 : 3430, -1, false);
 		e.getPlayer().sendMessage("You pulled yourself through the pipes.", true);
 		WorldTasks.scheduleLooping(new Task() {
 			boolean secondloop;

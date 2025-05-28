@@ -17,7 +17,7 @@
 package com.rs.plugin.events;
 
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.net.ClientPacket;
 import com.rs.plugin.handlers.ObjectClickHandler;
@@ -33,7 +33,7 @@ public class ObjectClickEvent implements PluginEvent {
 	private static final Map<Object, Map<Integer, List<ObjectClickHandler>>> METHODS = new HashMap<>();
 
 	private final Player player;
-	private final GameObject object;
+	private final GameObject obj;
 	private final ClientPacket opNum;
 	private final String option;
 	private final boolean atObject;
@@ -41,7 +41,7 @@ public class ObjectClickEvent implements PluginEvent {
 
 	public ObjectClickEvent(Player player, GameObject object, ClientPacket opNum, boolean atObject) {
 		this.player = player;
-		this.object = object;
+		this.obj = object;
 		this.opNum = opNum;
 		this.atObject = atObject;
 		objectId = object.getId();
@@ -56,8 +56,8 @@ public class ObjectClickEvent implements PluginEvent {
 		return player;
 	}
 
-	public GameObject getObject() {
-		return object;
+	public GameObject getObj() {
+		return obj;
 	}
 
 	public ClientPacket getOpNum() {
@@ -73,11 +73,11 @@ public class ObjectClickEvent implements PluginEvent {
 	}
 
 	public boolean objectAt(int x, int y) {
-		return object.getTile().isAt(x, y);
+		return obj.getTile().isAt(x, y);
 	}
 
 	public boolean objectAt(int x, int y, int plane) {
-		return object.getTile().isAt(x, y, plane);
+		return obj.getTile().isAt(x, y, plane);
 	}
 
 	@Override
@@ -85,12 +85,12 @@ public class ObjectClickEvent implements PluginEvent {
 		List<PluginHandler<? extends PluginEvent>> valids = new ArrayList<>();
 		Map<Integer, List<ObjectClickHandler>> methodMapping = METHODS.get(getObjectId());
 		if (methodMapping == null)
-			methodMapping = METHODS.get(getObject().getDefinitions(getPlayer()).getName());
+			methodMapping = METHODS.get(getObj().getDefinitions(getPlayer()).getName());
 		if (methodMapping == null)
 			return null;
-		List<ObjectClickHandler> methods = methodMapping.get(getObject().getTile().getTileHash());
+		List<ObjectClickHandler> methods = methodMapping.get(getObj().getTile().getTileHash());
 		if (methods == null)
-			methods = methodMapping.get(-getObject().getType().id);
+			methods = methodMapping.get(-getObj().getType().id);
 		if (methods == null)
 			methods = methodMapping.get(0);
 		if (methods == null)
@@ -135,7 +135,7 @@ public class ObjectClickEvent implements PluginEvent {
 	}
 
 	public GameObject component2() {
-		return object;
+		return obj;
 	}
 
 	public String component3() {

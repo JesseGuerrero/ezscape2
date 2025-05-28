@@ -25,7 +25,6 @@ import com.rs.game.World;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.Constants;
-import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;
@@ -113,7 +112,7 @@ public class PriestInPeril extends QuestOutline {
 				break;
 			case 3:
 				lines.add("");
-				lines.add("I killed the dog easily");
+				lines.add("I killed the dog easily.");
 				break;
 			case 4:
 				lines.add("");
@@ -134,14 +133,13 @@ public class PriestInPeril extends QuestOutline {
 				break;
 			case 10:
 				lines.add("");
-				lines.add("I followed Drezel to the mausoleum only to fine the Salve contaminated");
-				lines.add("and in need of purification.");
+				lines.add("I followed Drezel to the mausoleum only to find the Salve contaminated and in need of purification.");
 				break;
 			case 11:
 				lines.add("");
-				lines.add("I brought Drezel fifty rune essences and the contaminats were dissolved");
+				lines.add("I brought Drezel fifty rune essences and the contaminates were dissolved");
 				lines.add("from the Salve.");
-				lines.add("Drezel rewarded me for my help with an ancient Holy Weapon");
+				lines.add("Drezel rewarded me for my help with an ancient Holy Weapon.");
 				break;
 			default:
 				lines.add("Invalid quest stage. Report this to an administrator.");
@@ -167,7 +165,7 @@ public class PriestInPeril extends QuestOutline {
 	public static ObjectClickHandler handleTempleDoor = new ObjectClickHandler(new Object[] { 30707, 30708 }, e -> {
 		if(e.getOption().equalsIgnoreCase("open"))
 			if(e.getPlayer().getQuestManager().isComplete(Quest.PRIEST_IN_PERIL) || e.getPlayer().getQuestManager().getStage(Quest.PRIEST_IN_PERIL) >= 4){
-				handleDoubleDoor(e.getPlayer(), e.getObject());
+				handleDoubleDoor(e.getPlayer(), e.getObj());
 				return;
 			}
 			else {
@@ -188,7 +186,7 @@ public class PriestInPeril extends QuestOutline {
 
 	public static ObjectClickHandler handleDungeonGate = new ObjectClickHandler(new Object[] { 3444, Tile.of(3405, 9895, 0), }, e -> {
 		if(e.getPlayer().getQuestManager().isComplete(Quest.PRIEST_IN_PERIL) || e.getPlayer().getQuestManager().getStage(Quest.PRIEST_IN_PERIL) >= 3){
-			handleGate(e.getPlayer(), e.getObject());
+			handleGate(e.getPlayer(), e.getObj());
 		}
 		else {
 			e.getPlayer().startConversation(new Dialogue() .addNPC(7711, HeadE.CAT_SHOUTING, "Grrr..."));
@@ -198,7 +196,7 @@ public class PriestInPeril extends QuestOutline {
 
 	public static ObjectClickHandler handleDrezelDungeonGate = new ObjectClickHandler(new Object[] { 3445, Tile.of(3431, 9897, 0), }, e -> {
 		if (e.getPlayer().getQuestManager().isComplete(Quest.PRIEST_IN_PERIL) || e.getPlayer().getQuestManager().getStage(Quest.PRIEST_IN_PERIL) >= 9) {
-			handleGate(e.getPlayer(), e.getObject());
+			handleGate(e.getPlayer(), e.getObj());
 		} else
 			e.getPlayer().startConversation(new Dialogue()
 					.addSimple("The gate is securely locked.")
@@ -270,7 +268,7 @@ public class PriestInPeril extends QuestOutline {
 		final int Drezel = 1047;
 		if(e.getOption().equalsIgnoreCase("Talk-through")) {
 			if (e.getPlayer().getQuestManager().isComplete(Quest.PRIEST_IN_PERIL) ||  e.getPlayer().getQuestManager().getStage(Quest.PRIEST_IN_PERIL) >= 6) {
-				handleGate(e.getPlayer(), e.getObject());
+				handleGate(e.getPlayer(), e.getObj());
 				return;
 			}
 			else
@@ -278,7 +276,7 @@ public class PriestInPeril extends QuestOutline {
 		}
 		if(e.getOption().equalsIgnoreCase("Open")) {
 			if (e.getPlayer().getQuestManager().isComplete(Quest.PRIEST_IN_PERIL) || e.getPlayer().getQuestManager().getStage(Quest.PRIEST_IN_PERIL) >= 6) {
-				handleGate(e.getPlayer(), e.getObject());
+				handleGate(e.getPlayer(), e.getObj());
 				return;
 			}
 			if (e.getPlayer().getInventory().containsItem(2944)) {
@@ -291,7 +289,7 @@ public class PriestInPeril extends QuestOutline {
 				);
 				e.getPlayer().getInventory().deleteItem(2945,1);
 				e.getPlayer().getQuestManager().setStage(Quest.PRIEST_IN_PERIL, 7);
-				handleGate(e.getPlayer(), e.getObject());
+				handleGate(e.getPlayer(), e.getObj());
 				return;
 			}
 			else
@@ -323,32 +321,32 @@ public class PriestInPeril extends QuestOutline {
 		Player player = e.getPlayer();
 		if (e.getOption().equalsIgnoreCase("study")) {
 			player.getInterfaceManager().sendInterface(272);
-			player.getPackets().setIFText(272, 17, Monuments.getMonumentByTile(e.getObject().getTile()).message);
-			if(player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).getB(String.valueOf(Monuments.getMonumentByTile(e.getObject().getTile())))){
-				player.getPackets().setIFItem(272, 4, Monuments.getMonumentByTile(e.getObject().getTile()).itemID, 1);
-				player.sendMessage("This monument holds a " + ItemConfig.get(Monuments.getMonumentByTile(e.getObject().getTile()).itemID).getUidName().replaceAll("_", " "));
+			player.getPackets().setIFText(272, 17, Monuments.getMonumentByTile(e.getObj().getTile()).message);
+			if(player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).getB(String.valueOf(Monuments.getMonumentByTile(e.getObj().getTile())))){
+				player.getPackets().setIFItem(272, 4, Monuments.getMonumentByTile(e.getObj().getTile()).itemID, 1);
+				player.sendMessage("This monument holds a " + ItemConfig.get(Monuments.getMonumentByTile(e.getObj().getTile()).itemID).getUidName().replaceAll("_", " "));
 			}
 			else {
-				player.getPackets().setIFItem(272, 4, Monuments.getMonumentByTile(e.getObject().getTile()).goldenID, 1);
-				player.sendMessage("This monument holds a " + ItemConfig.get(Monuments.getMonumentByTile(e.getObject().getTile()).goldenID).getUidName().replaceAll("_", " "));
+				player.getPackets().setIFItem(272, 4, Monuments.getMonumentByTile(e.getObj().getTile()).goldenID, 1);
+				player.sendMessage("This monument holds a " + ItemConfig.get(Monuments.getMonumentByTile(e.getObj().getTile()).goldenID).getUidName().replaceAll("_", " "));
 			}
 		}
 		if(e.getOption().equalsIgnoreCase("take-from")) {
 			if (player.getQuestManager().getStage(Quest.PRIEST_IN_PERIL) == 5) {
-				if (!player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).getB(String.valueOf(Monuments.getMonumentByTile(e.getObject().getTile())))) {
-					if (player.getInventory().containsItem(Monuments.getMonumentByTile(e.getObject().getTile()).itemID)) {
-						player.getInventory().replace(Monuments.getMonumentByTile(e.getObject().getTile()).itemID, Monuments.getMonumentByTile(e.getObject().getTile()).goldenID);
-						player.sendMessage("You take the " + ItemConfig.get(Monuments.getMonumentByTile(e.getObject().getTile()).goldenID).getUidName().replaceAll("_", " ") + " from the statue leaving your " + ItemConfig.get(Monuments.getMonumentByTile(e.getObject().getTile()).itemID).getUidName().replaceAll("_", " ") + " in its place.");
-						player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).setB(String.valueOf(Monuments.getMonumentByTile(e.getObject().getTile())), true);
+				if (!player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).getB(String.valueOf(Monuments.getMonumentByTile(e.getObj().getTile())))) {
+					if (player.getInventory().containsItem(Monuments.getMonumentByTile(e.getObj().getTile()).itemID)) {
+						player.getInventory().replace(Monuments.getMonumentByTile(e.getObj().getTile()).itemID, Monuments.getMonumentByTile(e.getObj().getTile()).goldenID);
+						player.sendMessage("You take the " + ItemConfig.get(Monuments.getMonumentByTile(e.getObj().getTile()).goldenID).getUidName().replaceAll("_", " ") + " from the statue leaving your " + ItemConfig.get(Monuments.getMonumentByTile(e.getObj().getTile()).itemID).getUidName().replaceAll("_", " ") + " in its place.");
+						player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).setB(String.valueOf(Monuments.getMonumentByTile(e.getObj().getTile())), true);
 					} else {
 						player.applyHit(new Hit(player, 3, Hit.HitLook.TRUE_DAMAGE));
 						player.sendMessage("A holy power prevents you stealing from the monument.");
 					}
 				} else {
-					if (player.getInventory().containsItem(Monuments.getMonumentByTile(e.getObject().getTile()).goldenID)) {
-						player.getInventory().replace(Monuments.getMonumentByTile(e.getObject().getTile()).goldenID, Monuments.getMonumentByTile(e.getObject().getTile()).itemID);
-						player.sendMessage("You take the " + ItemConfig.get(Monuments.getMonumentByTile(e.getObject().getTile()).itemID).getUidName().replaceAll("_", " ") + " from the statue leaving your " + ItemConfig.get(Monuments.getMonumentByTile(e.getObject().getTile()).goldenID).getUidName().replaceAll("_", " ") + " in its place.");
-						player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).setB(String.valueOf(Monuments.getMonumentByTile(e.getObject().getTile())), false);
+					if (player.getInventory().containsItem(Monuments.getMonumentByTile(e.getObj().getTile()).goldenID)) {
+						player.getInventory().replace(Monuments.getMonumentByTile(e.getObj().getTile()).goldenID, Monuments.getMonumentByTile(e.getObj().getTile()).itemID);
+						player.sendMessage("You take the " + ItemConfig.get(Monuments.getMonumentByTile(e.getObj().getTile()).itemID).getUidName().replaceAll("_", " ") + " from the statue leaving your " + ItemConfig.get(Monuments.getMonumentByTile(e.getObj().getTile()).goldenID).getUidName().replaceAll("_", " ") + " in its place.");
+						player.getQuestManager().getAttribs(Quest.PRIEST_IN_PERIL).setB(String.valueOf(Monuments.getMonumentByTile(e.getObj().getTile())), false);
 					} else {
 						player.applyHit(new Hit(player, 3, Hit.HitLook.TRUE_DAMAGE));
 						player.sendMessage("A holy power prevents you stealing from the monument.");

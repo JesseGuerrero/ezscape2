@@ -16,13 +16,14 @@
 //
 package com.rs.game.content.skills.hunter.traps;
 
+import com.rs.engine.pathfinder.WorldCollision;
 import com.rs.game.World;
 import com.rs.game.content.skills.hunter.BoxHunterNPC;
 import com.rs.game.content.skills.hunter.BoxHunterType;
 import com.rs.game.content.skills.hunter.BoxTrapType;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
-import com.rs.game.model.object.OwnedObject;
+import com.rs.game.model.gameobject.GameObject;
+import com.rs.game.model.gameobject.OwnedObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
@@ -93,8 +94,10 @@ public class NetTrap extends BoxStyleTrap {
 
 	@Override
 	public void onDestroy() {
-		if (tree != null)
+		if (tree != null) {
+			WorldCollision.addBlockedTile(tree.getTile());
 			tree.destroy();
+		}
 	}
 
 	@Override

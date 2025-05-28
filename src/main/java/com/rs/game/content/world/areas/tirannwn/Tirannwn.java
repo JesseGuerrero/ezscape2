@@ -47,13 +47,13 @@ public class Tirannwn {
 		 * 3 = S -> N 2 = W -> E 1 = N- > S 0 = E -> W
 		 */
 		Player p = e.getPlayer();
-		Tile objTile = Tile.of(e.getObject().getX(), e.getObject().getY(), e.getObject().getPlane());
-		if (p.withinDistance(objTile, 3) && (e.getObject().getRotation() == 3 || e.getObject().getRotation() == 1))
+		Tile objTile = Tile.of(e.getObj().getX(), e.getObj().getY(), e.getObj().getPlane());
+		if (p.withinDistance(objTile, 3) && (e.getObj().getRotation() == 3 || e.getObj().getRotation() == 1))
 			if (p.getY() > objTile.getY())
 				p.addWalkSteps(Tile.of(objTile.getX(), objTile.getY() - 1, objTile.getPlane()), 5, false);
 			else if (p.getY() <= objTile.getY())
 				p.addWalkSteps(Tile.of(objTile.getX(), objTile.getY() + 2, objTile.getPlane()), 5, false);
-		if (p.withinDistance(objTile, 3) && (e.getObject().getRotation() == 0 || e.getObject().getRotation() == 2))
+		if (p.withinDistance(objTile, 3) && (e.getObj().getRotation() == 0 || e.getObj().getRotation() == 2))
 			if (p.getX() > objTile.getX())
 				p.addWalkSteps(Tile.of(objTile.getX() - 1, objTile.getY(), objTile.getPlane()), 5, false);
 			else if (p.getX() <= objTile.getX())
@@ -65,13 +65,13 @@ public class Tirannwn {
 		 * 2 = S -> N 3 = W -> E 0 = N- > S 1 = E -> W
 		 */
 		Player p = e.getPlayer();
-		Tile objTile = Tile.of(e.getObject().getX(), e.getObject().getY(), e.getObject().getPlane());
-		if (p.withinDistance(objTile, 3) && (e.getObject().getRotation() == 0 || e.getObject().getRotation() == 2))
+		Tile objTile = Tile.of(e.getObj().getX(), e.getObj().getY(), e.getObj().getPlane());
+		if (p.withinDistance(objTile, 3) && (e.getObj().getRotation() == 0 || e.getObj().getRotation() == 2))
 			if (p.getY() > objTile.getY())
 				p.addWalkSteps(Tile.of(objTile.getX(), objTile.getY() - 1, objTile.getPlane()), 5, false);
 			else if (p.getY() <= objTile.getY())
 				p.addWalkSteps(Tile.of(objTile.getX(), objTile.getY() + 2, objTile.getPlane()), 5, false);
-		if (p.withinDistance(objTile, 3) && (e.getObject().getRotation() == 1 || e.getObject().getRotation() == 3))
+		if (p.withinDistance(objTile, 3) && (e.getObj().getRotation() == 1 || e.getObj().getRotation() == 3))
 			if (p.getX() > objTile.getX())
 				p.addWalkSteps(Tile.of(objTile.getX() - 1, objTile.getY(), objTile.getPlane()), 5, false);
 			else if (p.getX() <= objTile.getX())
@@ -80,7 +80,7 @@ public class Tirannwn {
 
 	public static ObjectClickHandler handleLeafTrap = new ObjectClickHandler(new Object[] { 3923, 3925 }, e -> {
 		Player p = e.getPlayer();
-		Tile objTile = Tile.of(e.getObject().getX(), e.getObject().getY(), e.getObject().getPlane());
+		Tile objTile = Tile.of(e.getObj().getX(), e.getObj().getY(), e.getObj().getPlane());
 		if (p.withinDistance(Tile.of(2208, 3204, 0), 4))
 			if (p.getY() > objTile.getY())
 				p.forceMove(Tile.of(2209, 3201, 0), 10963, 0, 25);
@@ -136,7 +136,7 @@ public class Tirannwn {
 			e.getPlayer().sendMessage("You need 45 agility");
 			return;
 		}
-		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() > e.getObject().getX() ? -6 : 6, 0, 0), 4);
+		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(e.getPlayer().getX() > e.getObj().getX() ? -6 : 6, 0, 0), 4);
 	});
 
 	public static ObjectClickHandler handleArandarLogBalance = new ObjectClickHandler(new Object[] { 3933 }, e -> {
@@ -144,7 +144,7 @@ public class Tirannwn {
 			e.getPlayer().sendMessage("You need 45 agility");
 			return;
 		}
-		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() > e.getObject().getY() ? -7 : 7, 0), 6);
+		AgilityShortcuts.walkLog(e.getPlayer(), e.getPlayer().transform(0, e.getPlayer().getY() > e.getObj().getY() ? -7 : 7, 0), 6);
 	});
 
 	public static ObjectClickHandler handleEnterUndergroundPass = new ObjectClickHandler(new Object[] { 4006 }, e -> {
@@ -158,7 +158,7 @@ public class Tirannwn {
 	public static ObjectClickHandler handleLletyaTreePass = new ObjectClickHandler(new Object[] { 8742 }, e -> {
 		if (!e.getPlayer().isQuestComplete(Quest.ROVING_ELVES, "to navigate the forest."))
 			return;
-		Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(e.getPlayer().getX() < e.getObject().getX() ? 2 : -2, 0, 0), 0);
+		Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(e.getPlayer().getX() < e.getObj().getX() ? 2 : -2, 0, 0), 0);
 	});
 
 	public static ObjectClickHandler handleDenseForest = new ObjectClickHandler(new Object[] { "Dense forest" }, e -> {
@@ -166,15 +166,15 @@ public class Tirannwn {
 			e.getPlayer().sendMessage("You need 56 agility");
 			return;
 		}
-		if (e.getObject().getRotation() == 3 || e.getObject().getRotation() == 1)
-			Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(e.getPlayer().getX() < e.getObject().getX() ? 3 : -3, 0, 0), 0);
+		if (e.getObj().getRotation() == 3 || e.getObj().getRotation() == 1)
+			Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(e.getPlayer().getX() < e.getObj().getX() ? 3 : -3, 0, 0), 0);
 		else
-			Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(0, e.getPlayer().getY() < e.getObject().getY() ? 3 : -3, 0), 0);
+			Agility.handleObstacle(e.getPlayer(), 3303, 1, e.getPlayer().transform(0, e.getPlayer().getY() < e.getObj().getY() ? 3 : -3, 0), 0);
 	});
 
 	public static ObjectClickHandler handleHeavyGateToArandar = new ObjectClickHandler(new Object[] { 3945, 3944 }, e -> {
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 
 		if (p.getY() > obj.getY())
 			p.tele(Tile.of(obj.getX(), obj.getY() - 1, obj.getPlane()));
@@ -184,7 +184,7 @@ public class Tirannwn {
 
 	public static ObjectClickHandler handleAdvancedElvenCliffside = new ObjectClickHandler(new Object[] { 9297, 9296 }, e -> {
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 
 		if (obj.getId() == 9296) {// above
 			if (obj.getTile().matches(Tile.of(2333, 3252, 0))) {

@@ -55,4 +55,5 @@ public class WorldDB extends DBConnection {
 	public static LogManager getLogs() {
 		return LOGS;
 	}
+
 }

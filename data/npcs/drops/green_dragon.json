@@ -4,6 +4,10 @@
   ],
   "tables": [
     {
+      "chance": 0.0, "outOf": 0.0,
+      "rollTable": "green_dragon_egg"
+    },
+    {
       "chance": 0.0,
       "outOf": 0.0,
       "dropOne": false,

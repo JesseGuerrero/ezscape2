@@ -6,7 +6,7 @@ import com.rs.engine.quest.QuestOutline;
 import com.rs.game.content.transportation.FairyRings;
 import com.rs.game.content.world.doors.Doors;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Tile;
@@ -93,7 +93,7 @@ public class LostCity extends QuestOutline {
 	}
 
 	public static ObjectClickHandler handleShedDoor = new ObjectClickHandler(new Object[] { 2406 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		Doors.handleDoor(e.getPlayer(), obj);
 		if(e.getPlayer().getX() <= obj.getX())
 			if(e.getPlayer().getEquipment().getWeaponId() == DRAMEN_STAFF

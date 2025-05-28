@@ -9,7 +9,7 @@ import com.rs.game.World;
 import com.rs.game.content.skills.magic.Magic;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
@@ -150,7 +150,7 @@ public class LeprecaunLostCityD extends Conversation {
 	}
 
 	public static ObjectClickHandler handleTreeLep = new ObjectClickHandler(true, new Object[] { LEPRACAUN_TREE }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		for(NPC npc : World.getNPCsInChunkRange(e.getPlayer().getChunkId(), 1))
 			if(npc.getId() == LEPRACAUN)
 				return;

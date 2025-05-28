@@ -29,7 +29,7 @@ public class Interactions {
 		if (!(e.getNPC() instanceof Familiar familiar))
 			return;
 		if (familiar.getOwner() != e.getPlayer()) {
-			e.getPlayer().sendMessage("This isn't your familiar");
+			e.getPlayer().sendMessage("This isn't your familiar.");
 			return;
 		}
 		familiar.interact();
@@ -39,7 +39,7 @@ public class Interactions {
 		if (!(e.getNPC() instanceof Familiar familiar))
 			return;
 		if (familiar.getOwner() != e.getPlayer()) {
-			e.getPlayer().sendMessage("This isn't your familiar");
+			e.getPlayer().sendMessage("This isn't your familiar.");
 			return;
 		}
 		if (e.getPlayer().getSkills().getLevel(Constants.SUMMONING) < 2) {

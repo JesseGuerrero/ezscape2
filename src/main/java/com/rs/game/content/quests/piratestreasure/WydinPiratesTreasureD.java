@@ -6,7 +6,7 @@ import com.rs.engine.dialogue.HeadE;
 import com.rs.engine.dialogue.Options;
 import com.rs.engine.quest.Quest;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Item;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
@@ -106,9 +106,9 @@ public class WydinPiratesTreasureD extends Conversation {
 	}
 
 	public static ObjectClickHandler handleBackRoom = new ObjectClickHandler(new Object[] { 2069 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getPlayer().getX() < obj.getX()) {
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		if(e.getPlayer().getQuestManager().getStage(Quest.PIRATES_TREASURE) == SMUGGLE_RUM) {
@@ -131,7 +131,7 @@ public class WydinPiratesTreasureD extends Conversation {
 				return;
 			}
 		}
-		handleDoor(e.getPlayer(), e.getObject());
+		handleDoor(e.getPlayer(), e.getObj());
 	});
 
 	public static ObjectClickHandler handleSmuggleCrate = new ObjectClickHandler(new Object[] { 2071 }, e -> {

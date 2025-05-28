@@ -1,11 +1,13 @@
 package com.rs.game.content.world.areas.tree_gnome_stronghold.npcs
 
 import com.rs.engine.dialogue.*
+import com.rs.engine.quest.Quest
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.Bars.BLURBERRYS_BAR
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisited
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.Companion.hasCard
 import com.rs.game.content.utils.BartenderUtils.buyDrinkOrIngredients
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
@@ -34,6 +36,11 @@ class BarmanBlurberry(p: Player, npc: NPC) {
                     player(HeadE.HAPPY_TALKING, "I was just wanting to buy a cocktail ingredient actually.")
                     npc(npc, HeadE.HAPPY_TALKING, "Sure thing, what did you want?")
                     exec { purchaseIngredients(p, npc) }
+                }
+                if (p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
+                    }
                 }
             }
         }

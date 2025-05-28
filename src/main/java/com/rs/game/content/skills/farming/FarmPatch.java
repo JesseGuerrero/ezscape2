@@ -27,7 +27,7 @@ import com.rs.game.content.skills.dungeoneering.DungeonRewards;
 import com.rs.game.content.skills.woodcutting.TreeType;
 import com.rs.game.content.skills.woodcutting.Woodcutting;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
@@ -518,7 +518,7 @@ public class FarmPatch {
 		FarmPatch patch = e.getPlayer().getPatch(loc);
 		if (patch == null)
 			patch = new FarmPatch(loc);
-		patch.handleClick(e.getPlayer(), e.getObject(), e.getOption(), e.getOpNum());
+		patch.handleClick(e.getPlayer(), e.getObj(), e.getOption(), e.getOpNum());
 		e.getPlayer().putPatch(patch);
 	});
 

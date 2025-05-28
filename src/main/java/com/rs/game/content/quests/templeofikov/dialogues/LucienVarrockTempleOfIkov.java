@@ -52,7 +52,7 @@ public class LucienVarrockTempleOfIkov extends Conversation {
 
 	public static ObjectClickHandler handleLuciensHouse = new ObjectClickHandler(new Object[] { 102 }, e -> {
 		if(e.getPlayer().getQuestManager().getStage(Quest.TEMPLE_OF_IKOV) > 0) {
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		e.getPlayer().sendMessage("The door is locked...");

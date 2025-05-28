@@ -129,7 +129,7 @@ public class ShootingStars {
     });
 
     public static ObjectClickHandler handleStarClick = new ObjectClickHandler(new Object[] { "Crashed star" }, e -> {
-        if (!(e.getObject() instanceof Star star)) {
+        if (!(e.getObj() instanceof Star star)) {
             e.getPlayer().sendMessage("Star is not a real star. Report this to a staff member.");
             return;
         }
@@ -147,7 +147,7 @@ public class ShootingStars {
                     ShootingStars.addDiscoveredStar(star, e.getPlayer().getDisplayName());
                     return;
                 }
-                e.getPlayer().getActionManager().setAction(new Mining(RockType.valueOf("CRASHED_STAR_" + star.getTier()), e.getObject()));
+                e.getPlayer().getActionManager().setAction(new Mining(RockType.valueOf("CRASHED_STAR_" + star.getTier()), e.getObj()));
             }
         }
     });

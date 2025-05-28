@@ -5,7 +5,7 @@ import com.rs.game.World;
 import com.rs.game.content.Effect;
 import com.rs.game.map.ChunkManager;
 import com.rs.game.model.entity.player.Skills;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
@@ -135,7 +135,7 @@ public class MagicalWheat {
 
     public static ObjectClickHandler pushThrough = new ObjectClickHandler(new Object[] { "Magical wheat" }, e -> {
         if (e.isAtObject()) {
-            e.getPlayer().faceObject(e.getObject());
+            e.getPlayer().faceObject(e.getObj());
 
             int speed = Utils.randomInclusive(0, 2) * 2;
             int finalSpeed = e.getPlayer().hasEffect(Effect.FARMERS_AFFINITY) ? 3 + speed : 6 + speed;

@@ -27,19 +27,19 @@ public class Ghorrock {
 	//Ghorrock
 	public static ObjectClickHandler iceblocks = new ObjectClickHandler(new Object[] { 47130 }, e -> {
 		if (e.getPlayer().isQuestComplete(Quest.RITUAL_OF_MAHJARRAT)) {
-			if (e.getPlayer().getX() < e.getObject().getX())
-				e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 4 : e.getObject().getRotation() == 3 ? 4 : 0, e.getObject().getRotation() == 1 ? 0 : e.getObject().getRotation() == 3 ? -0 : 0, 0));
-			if (e.getPlayer().getX() > e.getObject().getX())
-				e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -4 : e.getObject().getRotation() == 3 ? -4 : 0, e.getObject().getRotation() == 1 ? 0 : e.getObject().getRotation() == 3 ? -0 : 0, 0));
+			if (e.getPlayer().getX() < e.getObj().getX())
+				e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 4 : e.getObj().getRotation() == 3 ? 4 : 0, e.getObj().getRotation() == 1 ? 0 : e.getObj().getRotation() == 3 ? -0 : 0, 0));
+			if (e.getPlayer().getX() > e.getObj().getX())
+				e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -4 : e.getObj().getRotation() == 3 ? -4 : 0, e.getObj().getRotation() == 1 ? 0 : e.getObj().getRotation() == 3 ? -0 : 0, 0));
 		}else
 			e.getPlayer().sendMessage("You do not meet the requirements for Ritual of Mahjarrat.");
 	});
 
 	public static ObjectClickHandler handleGhorrockstairs = new ObjectClickHandler(new Object[] { 47142, 47144 }, e -> {
 		if (e.getObjectId() == 47142)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? 0 : e.getObject().getRotation() == 0 ? -1 : 0, e.getObject().getRotation() == 3 ? -0 : e.getObject().getRotation() == 0 ? -4 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? 0 : e.getObj().getRotation() == 0 ? -1 : 0, e.getObj().getRotation() == 3 ? -0 : e.getObj().getRotation() == 0 ? -4 : 0, 1));
 		else if (e.getObjectId() == 47144)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? -0 : e.getObject().getRotation() == 0 ? 1 : 0, e.getObject().getRotation() == 3 ? 0 : e.getObject().getRotation() == 0 ? 4 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? -0 : e.getObj().getRotation() == 0 ? 1 : 0, e.getObj().getRotation() == 3 ? 0 : e.getObj().getRotation() == 0 ? 4 : 0, -1));
 	});
 	public static ObjectClickHandler handleGhorrockstairsuponly = new ObjectClickHandler(new Object[] { 47143 }, e -> e.getPlayer().tele(Tile.of(2921, 3931, 1)));
 	public static LoginHandler makeghorrockcanoe = new LoginHandler(e -> e.getPlayer().getVars().setVarBit(6075, 1));
@@ -73,9 +73,9 @@ public class Ghorrock {
 	//Zemouregal's fort
 	public static ObjectClickHandler handleZemouregalstairs = new ObjectClickHandler(new Object[] { 44253, 44255 }, e -> {
 		if (e.getObjectId() == 44253)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? -3 : e.getObject().getRotation() == 0 ? -0 : 0, e.getObject().getRotation() == 3 ? -0 : e.getObject().getRotation() == 0 ? 3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? -3 : e.getObj().getRotation() == 0 ? -0 : 0, e.getObj().getRotation() == 3 ? -0 : e.getObj().getRotation() == 0 ? 3 : 0, 1));
 		else if (e.getObjectId() == 44255)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 3 ? 3 : e.getObject().getRotation() == 0 ? -0 : 0, e.getObject().getRotation() == 3 ? 0 : e.getObject().getRotation() == 0 ? -3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 3 ? 3 : e.getObj().getRotation() == 0 ? -0 : 0, e.getObj().getRotation() == 3 ? 0 : e.getObj().getRotation() == 0 ? -3 : 0, -1));
 	});
 	public static ObjectClickHandler handleZemouregalrightstairsuponly = new ObjectClickHandler(new Object[] { 44254 }, e -> e.getPlayer().tele(Tile.of(2836, 3868, 1)));
 

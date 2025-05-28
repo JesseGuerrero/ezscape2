@@ -1,12 +1,14 @@
 package com.rs.game.content.world.areas.karamja.npcs
 
 import com.rs.engine.dialogue.*
+import com.rs.engine.quest.Quest
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.Bars.DEAD_MANS_CHEST
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.isBarVisited
 import com.rs.game.content.miniquests.bar_crawl.BarCrawl.BarCrawlBars.onBarCrawl
 import com.rs.game.content.utils.BartenderUtils.buyBarcrawlDrink
 import com.rs.game.content.utils.BartenderUtils.buyDrinkOrIngredients
+import com.rs.game.content.world.areas.port_phasmatys.RuneDrawInvite
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.lib.game.Item
@@ -28,6 +30,11 @@ class BartenderDeadMansChest(p: Player, npc: NPC) {
                     player(HeadE.HAPPY_TALKING, "A bottle of rum please.")
                     npc(npc, HeadE.HAPPY_TALKING, "That'll be 27 coins.")
                     exec { buyDrinkOrIngredients(p, npc, 27, Item(431), true) }
+                }
+                if (p.isQuestComplete(Quest.GHOSTS_AHOY)) {
+                    op("Do you fancy a game of Runedraw?") {
+                        exec { RuneDrawInvite.npcInviteToPlay(p, npc) }
+                    }
                 }
                 if (!isBarVisited(p, DEAD_MANS_CHEST) && BarCrawl.hasCard(p) && onBarCrawl(p)) {
                     op("I'm doing Alfred Grimhand's Barcrawl.") {

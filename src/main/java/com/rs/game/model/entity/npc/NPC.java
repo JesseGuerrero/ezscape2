@@ -27,6 +27,7 @@ import com.rs.game.content.Effect;
 import com.rs.game.content.bosses.godwars.GodwarsController;
 import com.rs.game.content.combat.CombatStyle;
 import com.rs.game.content.combat.PolyporeStaffKt;
+import com.rs.game.content.minigames.barrows.BarrowsController;
 import com.rs.game.content.minigames.treasuretrails.TreasureTrailsManager;
 import com.rs.game.content.quests.elderkiln.TokkulZoKt;
 import com.rs.game.content.skills.hunter.BoxHunterType;
@@ -69,10 +70,7 @@ import com.rs.utils.WorldUtil;
 import com.rs.utils.drop.Drop;
 import com.rs.utils.drop.DropTable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.rs.rsps.Power.ScalingWorld.extractScaleFromName;
@@ -275,21 +273,7 @@ public class NPC extends Entity {
 			restoreTick();
 		if (!combat.process() && routeEvent == null) {
 			if (getTickCounter() % 3 == 0 && !isForceWalking() && !cantInteract && !checkAggressivity() && !hasEffect(Effect.FREEZE)) {
-				if (!hasWalkSteps() && shouldRandomWalk()) {
-					boolean can = Math.random() > 0.9;
-					if (can) {
-						int moveX = Utils.random(getDefinitions().hasAttackOption() ? 4 : 2, getDefinitions().hasAttackOption() ? 8 : 4);
-						int moveY = Utils.random(getDefinitions().hasAttackOption() ? 4 : 2, getDefinitions().hasAttackOption() ? 8 : 4);
-						if (Utils.random(2) == 0)
-							moveX = -moveX;
-						if (Utils.random(2) == 0)
-							moveY = -moveY;
-						resetWalkSteps();
-						DumbRouteFinder.addDumbPathfinderSteps(this, respawnTile.transform(moveX, moveY, 0), getDefinitions().hasAttackOption() ? 7 : 3, getCollisionStrategy());
-						if (Utils.getDistance(this.getTile(), respawnTile) > 3 && !getDefinitions().hasAttackOption())
-							DumbRouteFinder.addDumbPathfinderSteps(this, respawnTile, getDefinitions().hasAttackOption() ? 7 : 3, getCollisionStrategy());
-					}
-				}
+				randomWalk();
 			}
 		}
 		if (isForceWalking())
@@ -306,6 +290,22 @@ public class NPC extends Entity {
 				} else
 					// walked till forcewalk place
 					forceWalk = null;
+	}
+
+	protected void randomWalk() {
+		if (!hasWalkSteps() && shouldRandomWalk()) {
+			boolean can = Math.random() > 0.9;
+			if (can) {
+				int moveX = Utils.random(getDefinitions().hasAttackOption() ? 4 : 2, getDefinitions().hasAttackOption() ? 8 : 4);
+				int moveY = Utils.random(getDefinitions().hasAttackOption() ? 4 : 2, getDefinitions().hasAttackOption() ? 8 : 4);
+				if (Utils.random(2) == 0) moveX = -moveX;
+				if (Utils.random(2) == 0) moveY = -moveY;
+				resetWalkSteps();
+				DumbRouteFinder.addDumbPathfinderSteps(this, respawnTile.transform(moveX, moveY, 0), getDefinitions().hasAttackOption() ? 7 : 3, getCollisionStrategy());
+				if (Utils.getDistance(this.getTile(), respawnTile) > 3 && !getDefinitions().hasAttackOption())
+					DumbRouteFinder.addDumbPathfinderSteps(this, respawnTile, getDefinitions().hasAttackOption() ? 7 : 3, getCollisionStrategy());
+			}
+		}
 	}
 
 	@Override
@@ -430,6 +430,7 @@ public class NPC extends Entity {
 			setTile(respawnTile);
 			finish();
 		}
+		cancelRespawnTask();
 		respawnTask = WorldTasks.schedule(time < 0 ? getCombatDefinitions().getRespawnDelay() : time, this::spawn);
 	}
 
@@ -555,9 +556,9 @@ public class NPC extends Entity {
 			if (killer.hasSlayerTask() && killer.getSlayer().isOnTaskAgainst(this))
 				killer.getSlayer().sendKill(killer, this);
 
-			if (getId() >= 2031 && getId() <= 2037) {
-				killer.setBarrowsKillCount(killer.getBarrowsKillCount()+1);
-				killer.getVars().setVarBit(464, killer.getBarrowsKillCount()+killer.getKilledBarrowBrothersCount());
+			if (BarrowsController.barrowsKCNPCs.contains(getId())) {
+				killer.setBarrowsKillCount(killer.getBarrowsKillCount() + 1);
+				killer.getVars().setVarBit(464, killer.getBarrowsKillCount() + killer.getKilledBarrowBrothersCount());
 			}
 
 			Item[] drops = EZScape.tripleNPCDrops(killer, id);
@@ -627,9 +628,9 @@ public class NPC extends Entity {
 				dropTo = possible.get(Utils.random(possible.size()));
 				for (Player p : possible)
 					if (!p.getUsername().equals(dropTo.getUsername()))
-						p.sendMessage(dropTo.getDisplayName()+" has recieved: "+item.getAmount()+" "+item.getName()+".");
+						p.sendMessage(dropTo.getDisplayName()+" has received: "+item.getAmount()+" "+item.getName()+".");
 					else
-						p.sendMessage("<col=006600>You recieved: "+item.getAmount()+" "+item.getName()+".");
+						p.sendMessage("<col=006600>You received: "+item.getAmount()+" "+item.getName()+".");
 			}
 		}
 
@@ -720,7 +721,7 @@ public class NPC extends Entity {
 		int maxHit = getAttackLevel();
 		if (style == CombatStyle.RANGE)
 			maxHit = getRangeLevel();
-		else if (style == CombatStyle.MAGE)
+		else if (style == CombatStyle.MAGIC)
 			maxHit = getMagicLevel();
 		return maxHit;
 	}

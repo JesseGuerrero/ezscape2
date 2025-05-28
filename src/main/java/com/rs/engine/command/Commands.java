@@ -26,7 +26,7 @@ import com.rs.game.content.skills.summoning.Familiar;
 import com.rs.game.model.entity.BodyGlow;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.GroundItem;
 import com.rs.lib.game.GroundItem.GroundItemType;
 import com.rs.lib.game.Item;
@@ -34,7 +34,6 @@ import com.rs.lib.game.Rights;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;
-import kotlin.Pair;
 
 import java.util.HashMap;
 import java.util.HashSet;

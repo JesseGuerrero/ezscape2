@@ -1,7 +1,7 @@
 package com.rs.game.content.world.areas.ardougne.objects.west_ardougne
 
 import com.rs.game.model.entity.player.Player
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.lib.game.Tile
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onObjectClick

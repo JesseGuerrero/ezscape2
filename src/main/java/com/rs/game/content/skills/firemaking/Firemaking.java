@@ -26,11 +26,10 @@ import com.rs.game.map.ChunkManager;
 import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.actions.Action;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
-import com.rs.lib.game.Animation;
 import com.rs.lib.game.GroundItem;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
@@ -139,7 +138,7 @@ public class Firemaking extends Action {
 		boolean quickFire = entity.getTempAttribs().removeL("Fire") > System.currentTimeMillis();
 		setActionDelay(entity, quickFire ? 1 : 2);
 		if (!quickFire)
-			entity.setNextAnimation(new Animation(entity instanceof Familiar ? 8085 : 16700));
+			entity.anim(entity instanceof Familiar ? 8085 : 16700);
 		return true;
 	}
 

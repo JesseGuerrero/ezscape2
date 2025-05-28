@@ -22,7 +22,7 @@ import com.rs.engine.dialogue.startConversation
 import com.rs.game.model.entity.async.schedule
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.EmotesManager
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.game.Item
 import com.rs.lib.game.Tile
@@ -75,7 +75,7 @@ fun mapEaster2021() {
     }
 
     onObjectClick(30075, 30076) { e ->
-        useBunnyHole(e.player, e.getObject(), e.player.transform(0, if (e.objectId == 30075) 7 else -7))
+        useBunnyHole(e.player, e.getObj(), e.player.transform(0, if (e.objectId == 30075) 7 else -7))
     }
 
     onItemClick(12645, options = arrayOf("Emote")) { e ->
@@ -157,17 +157,17 @@ fun mapEaster2021() {
             e.player.sendMessage("You don't find anything that looks useful to you right now.")
             return@onObjectClick
         }
-        if (COG_LOCATIONS[e.player.nsv.getI("cogLocation")].matches(e.getObject().tile) && !e.player.inventory.containsItem(COG)) {
+        if (COG_LOCATIONS[e.player.nsv.getI("cogLocation")].matches(e.getObj().tile) && !e.player.inventory.containsItem(COG)) {
             e.player.inventory.addItem(COG)
             e.player.startConversation(Conversation(e.player).addItem(COG, "You find a cog in the crate!"))
             return@onObjectClick
         }
-        if (PISTON_LOCATIONS[e.player.nsv.getI("pistonLocation")].matches(e.getObject().tile) && !e.player.inventory.containsItem(PISTON)) {
+        if (PISTON_LOCATIONS[e.player.nsv.getI("pistonLocation")].matches(e.getObj().tile) && !e.player.inventory.containsItem(PISTON)) {
             e.player.inventory.addItem(PISTON)
             e.player.startConversation(Conversation(e.player).addItem(PISTON, "You find some pistons in the crate!"))
             return@onObjectClick
         }
-        if (CHIMNEY_LOCATIONS[e.player.nsv.getI("chimneyLocation")].matches(e.getObject().tile) && !e.player.inventory.containsItem(CHIMNEY)) {
+        if (CHIMNEY_LOCATIONS[e.player.nsv.getI("chimneyLocation")].matches(e.getObj().tile) && !e.player.inventory.containsItem(CHIMNEY)) {
             e.player.inventory.addItem(CHIMNEY)
             e.player.startConversation(Conversation(e.player).addItem(CHIMNEY, "You find a chimney in the crate!"))
             return@onObjectClick

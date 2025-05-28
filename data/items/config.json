@@ -162110,7 +162110,7 @@
       "2": 1067,
       "0": 393
     },
-    "defendAnim": 403,
+    "defendAnim": 430,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 5.0,
@@ -162136,7 +162136,7 @@
       "2": 1067,
       "0": 393
     },
-    "defendAnim": 403,
+    "defendAnim": 430,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 5.0,
@@ -173199,7 +173199,7 @@
       "0": 15072,
       "1": 15071
     },
-    "defendAnim": 420,
+    "defendAnim": 12806,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 2.2,
@@ -173380,7 +173380,7 @@
       "0": 15072,
       "1": 15071
     },
-    "defendAnim": 420,
+    "defendAnim": 12806,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 2.2,
@@ -181479,7 +181479,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181493,7 +181493,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181507,7 +181507,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181521,7 +181521,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181535,7 +181535,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181549,7 +181549,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181563,7 +181563,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181577,7 +181577,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181591,7 +181591,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181605,7 +181605,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -181619,7 +181619,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184504,7 +184504,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184529,7 +184529,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184554,7 +184554,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184579,7 +184579,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184604,7 +184604,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184629,7 +184629,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184654,7 +184654,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184679,7 +184679,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184704,7 +184704,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184729,7 +184729,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -184754,7 +184754,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -196715,7 +196715,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Salve nettles."
+    "examine": "This can be spun and woven to form salve cloth. (Tier 1)"
   },
   "17449": {
     "uidName": "picture_dupe194",
@@ -196737,7 +196737,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Wildercress."
+    "examine": "This can be spun and woven to form wildercress cloth. (Tier 2)"
   },
   "17451": {
     "uidName": "picture_dupe195",
@@ -196759,7 +196759,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Blightleaf."
+    "examine": "This can be spun and woven to form blightleaf cloth. (Tier 3)"
   },
   "17453": {
     "uidName": "picture_dupe196",
@@ -196781,7 +196781,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Roseblood."
+    "examine": "This can be spun and woven to form roseblood cloth. (Tier 4)"
   },
   "17455": {
     "uidName": "picture_dupe197",
@@ -196803,7 +196803,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Bryll."
+    "examine": "This can be spun and woven to form bryll cloth. (Tier 5)"
   },
   "17457": {
     "uidName": "picture_dupe198",
@@ -196825,7 +196825,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Duskweed."
+    "examine": "This can be spun and woven to form duskweed cloth. (Tier 6)"
   },
   "17459": {
     "uidName": "picture_dupe199",
@@ -196847,7 +196847,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Soulbell."
+    "examine": "This can be spun and woven to form soulbell cloth. (Tier 7)"
   },
   "17461": {
     "uidName": "picture_dupe200",
@@ -196869,7 +196869,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's an Ectograss."
+    "examine": "This can be spun and woven to form ectocloth. (Tier 8)"
   },
   "17463": {
     "uidName": "picture_dupe201",
@@ -196891,7 +196891,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Runeleaf."
+    "examine": "This can be spun and woven to form runic cloth. (Tier 9)"
   },
   "17465": {
     "uidName": "picture_dupe202",
@@ -196913,7 +196913,7 @@
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,
-    "examine": "It's a Spiritbloom."
+    "examine": "This can be spun and woven to form spiritbloom cloth. (Tier 10)"
   },
   "17467": {
     "uidName": "picture_dupe203",
@@ -206703,7 +206703,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -206717,7 +206717,7 @@
     "attackAnims": {
       "0": 2661
     },
-    "defendAnim": 1666,
+    "defendAnim": 13054,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 4.9,
@@ -206731,7 +206731,7 @@
     "attackAnims": {
       "0": 419
     },
-    "defendAnim": 420,
+    "defendAnim": 13046,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 1.8,
@@ -206745,7 +206745,7 @@
     "attackAnims": {
       "0": 419
     },
-    "defendAnim": 420,
+    "defendAnim": 13406,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 1.8,
@@ -206948,7 +206948,7 @@
     "attackAnims": {
       "0": 419
     },
-    "defendAnim": 420,
+    "defendAnim": 13046,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 1.0,
@@ -266079,7 +266079,7 @@
       "2": 1067,
       "0": 393
     },
-    "defendAnim": 403,
+    "defendAnim": 430,
     "defendSound": -1,
     "attackRange": 0,
     "weight": 0.0,

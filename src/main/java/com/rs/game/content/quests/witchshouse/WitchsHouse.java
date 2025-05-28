@@ -10,7 +10,7 @@ import com.rs.game.World;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
@@ -122,7 +122,7 @@ public class WitchsHouse extends QuestOutline {
 
 	public static ObjectClickHandler handleWitchHouseFrontDoor = new ObjectClickHandler(new Object[] { 2861 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(p.getInventory().containsItem(new Item(DOOR_KEY, 1)))
 			handleDoor(p, obj);
 		else
@@ -136,7 +136,7 @@ public class WitchsHouse extends QuestOutline {
 
 	public static ObjectClickHandler handleWitchHouseBackRoomDoor = new ObjectClickHandler(new Object[] { 2863 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(p.getInventory().containsItem(new Item(BACKROOM_KEY, 1))) {
 			handleDoor(p, obj);
 			if(!p.getQuestManager().getAttribs(Quest.WITCHS_HOUSE).getB("KILLED_EXPERIMENT")) {
@@ -203,7 +203,7 @@ public class WitchsHouse extends QuestOutline {
 
 	public static ObjectClickHandler handleWitchHouseMouseDoor = new ObjectClickHandler(new Object[] { 2862 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(p.getQuestManager().getAttribs(Quest.WITCHS_HOUSE).getB("MOUSE_SOLVED"))
 			handleDoor(p, obj);
 		else
@@ -286,7 +286,7 @@ public class WitchsHouse extends QuestOutline {
 		Player p = e.getPlayer();
 		String itemName = new Item(p.getEquipment().getGlovesId(), 1).getName();
 		if(p.getEquipment().wearingGloves() || (itemName.contains("gloves") && itemName.contains("Gloves")))
-            handleDoubleDoor(e.getPlayer(), e.getObject());
+            handleDoubleDoor(e.getPlayer(), e.getObj());
         else
             p.startConversation(new Conversation(e.getPlayer()) {
                 {
@@ -299,7 +299,7 @@ public class WitchsHouse extends QuestOutline {
 
 	public static ObjectClickHandler handleWitchsHouseCupboard = new ObjectClickHandler(new Object[] { 2868, 2869 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getOption().equalsIgnoreCase("open")) {
 			p.setNextAnimation(new Animation(536));
 			p.lock(2);

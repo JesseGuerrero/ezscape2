@@ -26,7 +26,7 @@ import com.rs.game.model.entity.player.InstancedController;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.managers.InterfaceManager;
 import com.rs.game.model.entity.player.managers.InterfaceManager.Sub;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.GroundItem;
 import com.rs.lib.game.Item;

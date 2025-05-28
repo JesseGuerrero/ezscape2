@@ -22,7 +22,7 @@ import com.rs.engine.pathfinder.WorldCollision;
 import com.rs.game.map.Chunk;
 import com.rs.game.map.ChunkManager;
 import com.rs.game.model.entity.npc.NPC;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.game.WorldObject;
 import com.rs.lib.util.MapUtils;

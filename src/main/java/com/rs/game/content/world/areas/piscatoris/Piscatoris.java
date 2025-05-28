@@ -68,7 +68,7 @@ public class Piscatoris {
 				e.getPlayer().lock();
 				ticks++;
 				if (ticks == 1) {
-					e.getPlayer().forceMove(e.getObject().getTile(), 2589, 0, 30, false, () -> e.getPlayer().setNextAnimation(new Animation(2590)));
+					e.getPlayer().forceMove(e.getObj().getTile(), 2589, 0, 30, false, () -> e.getPlayer().setNextAnimation(new Animation(2590)));
 				} else if (ticks == 5)
 					e.getPlayer().setNextAnimation(new Animation(2591));
 				else if (ticks == 6) {
@@ -82,7 +82,7 @@ public class Piscatoris {
 
 	public static ObjectClickHandler handleEaglesPeakShortcut = new ObjectClickHandler(new Object[] { 19849 }, e -> {
 		Player p = e.getPlayer();
-		WorldObject obj = e.getObject();
+		WorldObject obj = e.getObj();
 		if (!Agility.hasLevel(p, 25)) {
 			p.getPackets().sendGameMessage("You need level 25 agility to use this shortcut.");
 			return;

@@ -30,7 +30,7 @@ import com.rs.game.model.entity.player.Skills.ATTACK
 import com.rs.game.model.entity.player.Skills.STRENGTH
 import com.rs.game.model.entity.player.managers.AuraManager
 import com.rs.game.model.entity.player.managers.InterfaceManager
-import com.rs.game.model.`object`.GameObject
+import com.rs.game.model.gameobject.GameObject
 import com.rs.game.tasks.WorldTasks
 import com.rs.lib.Constants
 import com.rs.lib.game.Animation
@@ -213,7 +213,7 @@ fun mapWarriorsGuild() {
             wait(4)
             val npc = AnimatedArmor(player, 4278 + realIndex, obj.tile)
             npc.run = false
-            npc.forceTalk("IM ALIVE!")
+            npc.forceTalk("I'M ALIVE!")
             npc.anim(4166)
             npc.addWalkSteps(player.x, player.y + 2)
             player.tempAttribs.setB("animator_spawned", true)
@@ -233,7 +233,6 @@ class WarriorsGuildController: Controller() {
     override fun start() {
         sendInterfaces()
         amountOfPlayers++
-        player.sendMessage(inCyclopsRoom.toString())
     }
 
     override fun canAttack(target: Entity): Boolean {
@@ -257,7 +256,7 @@ class WarriorsGuildController: Controller() {
                 return false
             }
         } else if (interfaceId == 271 || interfaceId == 749 && componentId == 4) if (player.prayer.isCurses) {
-            player.sendMessage("Harllaak frowns upon using curses in the Warrior's Guild.")
+            player.sendMessage("Harrallak frowns upon using curses in the Warrior's Guild.")
             return false
         }
         return true

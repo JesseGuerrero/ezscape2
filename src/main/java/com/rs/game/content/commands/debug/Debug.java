@@ -18,11 +18,16 @@ package com.rs.game.content.commands.debug;
 
 import com.rs.Settings;
 import com.rs.cache.loaders.ItemDefinitions;
+import com.rs.db.WorldDB;
 import com.rs.engine.command.Commands;
 import com.rs.engine.miniquest.Miniquest;
 import com.rs.engine.quest.Quest;
 import com.rs.game.World;
 import com.rs.game.content.combat.CombatDefinitions.Spellbook;
+import com.rs.game.content.dnds.penguins.PenguinManager;
+import com.rs.game.content.dnds.penguins.PenguinServices;
+import com.rs.game.content.dnds.penguins.PenguinSpawnService;
+import com.rs.game.content.dnds.penguins.PolarBearManager;
 import com.rs.game.content.minigames.fightkiln.FightKilnController;
 import com.rs.game.content.minigames.shadesofmortton.TempleWall;
 import com.rs.game.content.quests.death_plateau.instances.PlayerVSTheMapController;
@@ -49,9 +54,9 @@ import com.rs.plugin.handlers.EnterChunkHandler;
 import com.rs.utils.music.Music;
 import com.rs.game.content.minigames.shadesofmortton.ShadesOfMortton;
 
+import java.util.*;
 
-import java.util.Arrays;
-
+import static com.rs.game.content.dnds.penguins.PenguinHASControllerKt.PENGUIN_POINTS;
 import static com.rs.game.content.randomevents.RandomEvents.attemptSpawnRandom;
 
 @PluginEventHandler
@@ -164,7 +169,7 @@ public class Debug {
 		});
 
 		Commands.add(Rights.PLAYER, "fightcaves", "Marks fight caves as having been completed.", (p, args) -> p.incrementCount("Fight Caves clears"));
-		
+
 		Commands.add(Rights.PLAYER, "showhitchance", "Toggles the display of your hit chance when attacking opponents.", (p, args) -> {
 			p.getNSV().setB("hitChance", !p.getNSV().getB("hitChance"));
 			p.sendMessage("Hit chance display: " + p.getNSV().getB("hitChance"));
@@ -198,7 +203,7 @@ public class Debug {
 					return;
 				}
 		});
-		
+
 		Commands.add(Rights.PLAYER, "resetquest [questName]", "Resets the specified quest.", (p, args) -> {
 			for (Quest quest : Quest.values())
 				if (quest.name().toLowerCase().contains(args[0]) && quest.isImplemented()) {
@@ -303,7 +308,7 @@ public class Debug {
 				p.getSkills().setXp(skill, 0);
 			p.getSkills().init();
 		});
-		
+
 		Commands.add(Rights.PLAYER, "spec", "Restores special attack energy to full.", (p, args) -> p.getCombatDefinitions().resetSpecialAttack());
 
 		Commands.add(Rights.PLAYER, "copy [player name]", "Copies the other player's levels, equipment, and inventory.", (p, args) -> {
@@ -498,5 +503,63 @@ public class Debug {
 		// case "loadouts":
 		// player.sendLoadoutText();
 		// return true;
+
+		// Start Penguin Hide And Seek debug commands
+		Commands.add(Rights.ADMIN, "penguin_points [set/add/remove]", "Manipulates the player's Penguin Points by the action chosen (Set/Add/Remove).", (p, args) -> {
+			if (args.length < 3) {
+				p.getPackets().sendDevConsoleMessage("Usage: ::penguin_points [set/add/remove] [username] [points]");
+				return;
+			}
+
+			String action = args[0].toLowerCase();
+			String username = args[1];
+			int points;
+
+			try {
+				points = Integer.parseInt(args[2]);
+			} catch (NumberFormatException e) {
+				p.getPackets().sendDevConsoleMessage("Points must be a valid number.");
+				return;
+			}
+
+			WorldDB.getPlayers().getByUsername(username, player -> {
+				if (player == null) {
+					p.getPackets().sendDevConsoleMessage("Player " + username + " not found.");
+					return;
+				}
+
+				int currentPoints = player.getI(PENGUIN_POINTS);
+
+				switch (action) {
+					case "set":
+						int newPointsSet = Math.min(points, 50);
+						player.set(PENGUIN_POINTS, newPointsSet);
+						p.getPackets().sendDevConsoleMessage("Set " + username + "'s Penguin Points to " + newPointsSet + ".");
+						break;
+					case "add":
+						int newPointsAdd = (currentPoints + points);
+						p.getPackets().sendDevConsoleMessage("Added " + points + " points to " + username + "'s Penguin Points.");
+						if (newPointsAdd > 50) {
+							newPointsAdd = 50;
+							p.getPackets().sendDevConsoleMessage("Cannot add " + points + " points. Setting " + username + "'s points to 50 instead.");
+						}
+						player.set(PENGUIN_POINTS, newPointsAdd);
+						break;
+					case "remove":
+						int newPointsRemove = (currentPoints - points);
+						if (newPointsRemove < 0) {
+							newPointsRemove = 0;
+							p.getPackets().sendDevConsoleMessage("Cannot remove " + points + " points. Setting " + username + "'s points to zero instead.");
+						}
+						player.set(PENGUIN_POINTS, newPointsRemove);
+						p.getPackets().sendDevConsoleMessage("Removed " + points + " points from " + username + "'s Penguin Points.");
+						break;
+					default:
+						p.getPackets().sendDevConsoleMessage("Invalid action. Use set/add/remove.");
+						break;
+				}
+			});
+		});
+		// End Penguin Hide And Seek debug commands
 	}
 }

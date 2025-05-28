@@ -17,7 +17,6 @@
 package com.rs.game.content.skills.mining;
 
 import com.rs.game.content.Effect;
-import com.rs.game.content.achievements.AchievementSetRewards;
 import com.rs.game.content.achievements.SetReward;
 import com.rs.game.content.dnds.shootingstar.Star;
 import com.rs.game.map.ChunkManager;
@@ -26,7 +25,7 @@ import com.rs.game.model.entity.actions.Action;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.managers.AuraManager;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.util.Utils;
@@ -40,79 +39,77 @@ import com.rs.rsps.EZScape;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Supplier;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 @PluginEventHandler
 public class Mining extends Action {
 
 	public static ObjectClickHandler handleClay = new ObjectClickHandler(new Object[] { "Clay rocks", "Clay vein", "Clay rock" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.CLAY, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.CLAY, e.getObj())));
 	
 	public static ObjectClickHandler handleCopper = new ObjectClickHandler(new Object[] { "Copper ore rocks", "Copper ore vein", "Copper rock" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.COPPER, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.COPPER, e.getObj())));
 
 	public static ObjectClickHandler handleTin = new ObjectClickHandler(new Object[] { "Tin ore rocks", "Tin ore vein", "Tin rock" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.TIN, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.TIN, e.getObj())));
 
 	public static ObjectClickHandler handleBlurite = new ObjectClickHandler(new Object[] { "Blurite ore rocks" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.BLURITE, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.BLURITE, e.getObj())));
 
 	public static ObjectClickHandler handleLimestone = new ObjectClickHandler(new Object[] { "Limestone rocks" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.LIMESTONE, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.LIMESTONE, e.getObj())));
 
 	public static ObjectClickHandler handleIron = new ObjectClickHandler(new Object[] { "Iron ore rocks", "Iron ore vein" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.IRON, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.IRON, e.getObj())));
 
 	public static ObjectClickHandler handleSilver = new ObjectClickHandler(new Object[] { "Silver ore rocks", "Silver ore vein" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.SILVER, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.SILVER, e.getObj())));
 
 	public static ObjectClickHandler handleGold = new ObjectClickHandler(new Object[] { "Gold ore rocks", "Gold ore vein" }, e -> {
-		if(e.getObject().getTile().getRegionId() == 10903)//witchhaven mine
-			e.getPlayer().getActionManager().setAction(new Mining(RockType.PERFECT_GOLD, e.getObject()));
+		if(e.getObj().getTile().getRegionId() == 10903)//witchhaven mine
+			e.getPlayer().getActionManager().setAction(new Mining(RockType.PERFECT_GOLD, e.getObj()));
 		else
-			e.getPlayer().getActionManager().setAction(new Mining(RockType.GOLD, e.getObject()));
+			e.getPlayer().getActionManager().setAction(new Mining(RockType.GOLD, e.getObj()));
 	});
 
 	public static ObjectClickHandler handleCoal = new ObjectClickHandler(new Object[] { "Coal rocks", "Coal vein" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.COAL, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.COAL, e.getObj())));
 
 	public static ObjectClickHandler handleMithril = new ObjectClickHandler(new Object[] { "Mithril ore rocks", "Mithril ore vein" }, 
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.MITHRIL, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.MITHRIL, e.getObj())));
 
 	public static ObjectClickHandler handleAddy = new ObjectClickHandler(new Object[] { "Adamantite ore rocks", "Adamantite ore vein" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.ADAMANT, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.ADAMANT, e.getObj())));
 
 	public static ObjectClickHandler handleBane = new ObjectClickHandler(new Object[] { "Bane ore rock" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.BANE, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.BANE, e.getObj())));
 
 	public static ObjectClickHandler handleRune = new ObjectClickHandler(new Object[] { "Runite ore rocks" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.RUNE, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.RUNE, e.getObj())));
 
 	public static ObjectClickHandler handleGranite = new ObjectClickHandler(new Object[] { "Granite rocks" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.GRANITE, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.GRANITE, e.getObj())));
 
 	public static ObjectClickHandler handleSandstone = new ObjectClickHandler(new Object[] { "Sandstone rocks" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.SANDSTONE, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.SANDSTONE, e.getObj())));
 
 	public static ObjectClickHandler handleGemRocks = new ObjectClickHandler(new Object[] { "Gem rocks" },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.GEM, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.GEM, e.getObj())));
 
 	public static ObjectClickHandler handleLRCCoal = new ObjectClickHandler(new Object[] { 5999 }, 
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.CONC_COAL, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.CONC_COAL, e.getObj())));
 
 	public static ObjectClickHandler handleLRCGold = new ObjectClickHandler(new Object[] { 45076 },
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.CONC_GOLD, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.CONC_GOLD, e.getObj())));
 
 	public static ObjectClickHandler handleEss = new ObjectClickHandler(new Object[] { 2491 }, 
-			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.ESSENCE, e.getObject())));
+			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.ESSENCE, e.getObj())));
 
 	public static NPCClickHandler handleLRCMinerals = new NPCClickHandler(new Object[] { 8837, 8838, 8839 }, 
 			e -> e.getPlayer().getActionManager().setAction(new Mining(RockType.LIVING_MINERALS, e.getNPC(), () -> e.getNPC().getId() - 5)));
 
 	public static ObjectClickHandler handleRedSandstone = new ObjectClickHandler(new Object[] { 2330 }, e -> {
 		if (e.getPlayer().getDailyI("redSandstoneMined") < 50)
-			e.getPlayer().getActionManager().setAction(new Mining(RockType.RED_SANDSTONE, e.getObject()));
+			e.getPlayer().getActionManager().setAction(new Mining(RockType.RED_SANDSTONE, e.getObj()));
 		else
 			e.getPlayer().sendMessage("You've mined all you can from the rock.");
 	});

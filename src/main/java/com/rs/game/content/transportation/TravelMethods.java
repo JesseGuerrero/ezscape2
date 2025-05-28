@@ -33,6 +33,7 @@ import com.rs.utils.shop.ShopsHandler;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -41,6 +42,9 @@ public class TravelMethods {
 
 	private static final int TRAVEL_INTERFACE = 299, CHARTER_INTERFACE = 95;
 	private static final int[] REGIONS = { 8496, 14646, 11061, 11823, 11825, 11058, 10545, 12081, 14637, -1, 10284 };
+
+	// List of allowed items (Ice Gloves, for Heroes' Quest, etc)
+	public static final Set<Integer> allowedEntranaItems = Set.of(1580);
 
 	public enum Carrier {
 		PORT_TYRAS(new int[] { -1, 3200, 3200, 3200, 3200, 3200, 3200, 3200, 1600, -1, 3200 }, Tile.of(0,33,48,30,50)),
@@ -77,7 +81,7 @@ public class TravelMethods {
 
 		private final int[] fares;
 		private final Tile destination;
-        private final Tile origin;
+		private final Tile origin;
 		private final String secondDest;
 
 		private Carrier(int[] fare, String secondDest, Tile destination, Tile origin) {
@@ -115,26 +119,26 @@ public class TravelMethods {
 	private static int getComponentForMap(Carrier ship, boolean returning) {
 		int iComp = -1;
 		switch(ship) {
-		case ENTRANA_FARE:
-			if(ship.getFixedName(returning).equalsIgnoreCase("entrana fare"))//sarim->entrana
-				iComp = 54;
-			else if(ship.getFixedName(returning).equalsIgnoreCase("port sarim"))//entrana-> sarim
-				iComp = 46;
-			break;
-		case KARAMJA_FARE://fare, meaning not charter
-			if(ship.getFixedName(returning).equalsIgnoreCase("port sarim"))//brimhaven->port sarim
-				iComp = 42;
-			else if(ship.getFixedName(returning).equalsIgnoreCase("karamja fare"))//sarim->karamja
-				iComp = 43;
-			break;
-		case BRIMHAVEN_FARE:
-			if(ship.getFixedName(returning).equalsIgnoreCase("ardougne"))//karamja/brim->ardougn
-				iComp = 40;
-			else if(ship.getFixedName(returning).equalsIgnoreCase("brimhaven fare"))//ardy->brim fare
-				iComp = 41;
-			break;
-		default:
-			break;
+			case ENTRANA_FARE:
+				if(ship.getFixedName(returning).equalsIgnoreCase("entrana fare"))//sarim->entrana
+					iComp = 54;
+				else if(ship.getFixedName(returning).equalsIgnoreCase("port sarim"))//entrana-> sarim
+					iComp = 46;
+				break;
+			case KARAMJA_FARE://fare, meaning not charter
+				if(ship.getFixedName(returning).equalsIgnoreCase("port sarim"))//brimhaven->port sarim
+					iComp = 42;
+				else if(ship.getFixedName(returning).equalsIgnoreCase("karamja fare"))//sarim->karamja
+					iComp = 43;
+				break;
+			case BRIMHAVEN_FARE:
+				if(ship.getFixedName(returning).equalsIgnoreCase("ardougne"))//karamja/brim->ardougn
+					iComp = 40;
+				else if(ship.getFixedName(returning).equalsIgnoreCase("brimhaven fare"))//ardy->brim fare
+					iComp = 41;
+				break;
+			default:
+				break;
 		}
 		return iComp;
 	}
@@ -226,12 +230,13 @@ public class TravelMethods {
 						Arrays.stream(player.getEquipment().getItemsCopy()).filter(Objects::nonNull),
 						Arrays.stream(player.getInventory().getItems().array()).filter(Objects::nonNull)
 				);
-				boolean hasItemsWithStats = playerItems.anyMatch(item ->
-						IntStream.range(0, item.getDefinitions().bonuses.length)
-								.filter(i -> i != Bonus.PRAYER.ordinal())
-								.anyMatch(i -> item.getDefinitions().bonuses[i] > 0)
-				);
-
+				boolean hasItemsWithStats = playerItems
+						.filter(item -> !allowedEntranaItems.contains(item.getId()))
+						.anyMatch(item ->
+								IntStream.range(0, item.getDefinitions().bonuses.length)
+										.filter(i -> i != Bonus.PRAYER.ordinal())
+										.anyMatch(i -> item.getDefinitions().bonuses[i] > 0)
+						);
 				if (hasItemsWithStats) {
 					player.sendMessage("The monk refuses to let you board. Please bank all your equippable items.");
 					return false;

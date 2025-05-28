@@ -50,7 +50,7 @@ public class IkovDungeon {
 
 	public static ObjectClickHandler handleFireWarriorDoorWithFight = new ObjectClickHandler(new Object[]{ 93 }, e -> {
 		if(e.getPlayer().getQuestManager().getAttribs(Quest.TEMPLE_OF_IKOV).getB("FireWarriorKilled")) {
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		for(NPC npc : World.getNPCsInChunkRange(e.getPlayer().getChunkId(), 3))
@@ -62,7 +62,7 @@ public class IkovDungeon {
 		warrior.setRandomWalk(false);
 	});
 
-	public static ObjectClickHandler handleArmadylWall = new ObjectClickHandler(new Object[]{1586}, e -> Doors.handleDoor(e.getPlayer(), e.getObject(), -1));
+	public static ObjectClickHandler handleArmadylWall = new ObjectClickHandler(new Object[]{1586}, e -> Doors.handleDoor(e.getPlayer(), e.getObj(), -1));
 
 	public static PickupItemHandler handleArmaStaffPickup = new PickupItemHandler(new Object[] { 84 }, Tile.of(2638, 9906, 0), e -> {
 		for (NPC npc : World.getNPCsInChunkRange(e.getPlayer().getChunkId(), 3))
@@ -109,14 +109,14 @@ public class IkovDungeon {
 		if(e.getOption().equals("Search for traps")) {
 			if(e.getPlayer().getSkills().getLevel(Skills.THIEVING) >= 42) {
 				e.getPlayer().getTempAttribs().setB("IkovLeverTrapDisabled", true);
-				e.getPlayer().sendMessage("You disable to trap...");
+				e.getPlayer().sendMessage("You disable the trap...");
 				return;
 			}
-			e.getPlayer().sendMessage("This trap requires 42 thieving...");
+			e.getPlayer().sendMessage("This trap requires 42 thieving to disarm.");
 		}
 		if(e.getOption().equals("Pull")) {
 			if(e.getPlayer().getTempAttribs().getB("IkovLeverTrapDisabled")) {
-				e.getObject().setIdTemporary(36, Ticks.fromSeconds(20));
+				e.getObj().setIdTemporary(36, Ticks.fromSeconds(20));
 				e.getPlayer().getQuestManager().getAttribs(Quest.TEMPLE_OF_IKOV).setB("IkovFireWarriorEntranceOpen", true);
 				return;
 			}
@@ -126,23 +126,23 @@ public class IkovDungeon {
 	});
 
 	public static ObjectClickHandler handleIceArrowChests = new ObjectClickHandler(new Object[]{ 35123 }, e -> {
-		if(e.getOption().equals("Search") && e.getPlayer().getTempAttribs().getL("IkovChest" + e.getObject().getX()) < World.getServerTicks()) {
+		if(e.getOption().equals("Search") && e.getPlayer().getTempAttribs().getL("IkovChest" + e.getObj().getX()) < World.getServerTicks()) {
 			e.getPlayer().getInventory().addItem(78, Utils.random(0, 6));
-			e.getPlayer().getTempAttribs().setL("IkovChest" + e.getObject().getX(), World.getServerTicks() + (long)Ticks.fromSeconds(30));
+			e.getPlayer().getTempAttribs().setL("IkovChest" + e.getObj().getX(), World.getServerTicks() + (long)Ticks.fromSeconds(30));
 		}
 	});
 
 	public static ObjectClickHandler handleFireWarriorDoorByLever = new ObjectClickHandler(new Object[]{ 92 }, e -> {
 		if(e.getPlayer().getQuestManager().getAttribs(Quest.TEMPLE_OF_IKOV).getB("IkovFireWarriorEntranceOpen")) {
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		e.getPlayer().sendMessage("The door is firmly locked...");
 	});
 
 	public static ObjectClickHandler handleFearGate = new ObjectClickHandler(new Object[]{ 94, 95 }, e -> {
-		if(e.getPlayer().getEquipment().getAmuletId() == 86 || e.getPlayer().getY() >= e.getObject().getY()) {
-			handleDoubleDoor(e.getPlayer(), e.getObject());
+		if(e.getPlayer().getEquipment().getAmuletId() == 86 || e.getPlayer().getY() >= e.getObj().getY()) {
+			handleDoubleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		e.getPlayer().faceDir(Direction.NORTH);
@@ -152,7 +152,7 @@ public class IkovDungeon {
 
 	public static ObjectClickHandler handleSouthIceGate = new ObjectClickHandler(new Object[]{ 89, 90 }, e -> {
 		if(e.getPlayer().isQuestComplete(Quest.TEMPLE_OF_IKOV) || e.getPlayer().getQuestManager().getAttribs(Quest.TEMPLE_OF_IKOV).getB("LeverIcePulled")) {
-			handleDoubleDoor(e.getPlayer(), e.getObject());
+			handleDoubleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		e.getPlayer().faceDir(Direction.SOUTH);

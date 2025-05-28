@@ -39,11 +39,11 @@ public class BrimhavenDungeon {
 		WorldTasks.schedule(new Task() {
 			@Override
 			public void run() {
-				Tile tile = Tile.of(e.getObject().getTile());
-				if (e.getObject().getRotation() == 3 || e.getObject().getRotation() == 1)
-					tile = e.getObject().getTile().transform(e.getPlayer().getX() < e.getObject().getX() ? 1 : -1, 0, 0);
+				Tile tile = Tile.of(e.getObj().getTile());
+				if (e.getObj().getRotation() == 3 || e.getObj().getRotation() == 1)
+					tile = e.getObj().getTile().transform(e.getPlayer().getX() < e.getObj().getX() ? 1 : -1, 0, 0);
 				else
-					tile = e.getObject().getTile().transform(0, e.getPlayer().getY() < e.getObject().getY() ? 1 : -1, 0);
+					tile = e.getObj().getTile().transform(0, e.getPlayer().getY() < e.getObj().getY() ? 1 : -1, 0);
 				e.getPlayer().unlock();
 				e.getPlayer().tele(tile);
 			}
@@ -54,8 +54,8 @@ public class BrimhavenDungeon {
 		if (!Agility.hasLevel(e.getPlayer(), 12))
 			return;
 		e.getPlayer().lock();
-		e.getPlayer().forceMove(e.getObject().getTile(), 741, 0, 30, false);
-		if (e.getObject().getId() == 5110)
+		e.getPlayer().forceMove(e.getObj().getTile(), 741, 0, 30, false);
+		if (e.getObj().getId() == 5110)
 			WorldTasks.scheduleLooping(new Task() {
 				int ticks = 0;
 
@@ -63,7 +63,7 @@ public class BrimhavenDungeon {
 				public void run() {
 					ticks++;
 					if (ticks == 1)
-						e.getPlayer().tele(e.getObject().getTile());
+						e.getPlayer().tele(e.getObj().getTile());
 					else if (ticks == 2 || ticks == 3) {
 						Tile next = e.getPlayer().transform(0, -1, 0);
 						if (ticks == 2) {
@@ -109,7 +109,7 @@ public class BrimhavenDungeon {
 				public void run() {
 					ticks++;
 					if (ticks == 1)
-						e.getPlayer().tele(e.getObject().getTile());
+						e.getPlayer().tele(e.getObj().getTile());
 					else if (ticks == 2 || ticks == 3) {
 						Tile next = e.getPlayer().transform(0, 1, 0);
 						if (ticks == 2) {
@@ -161,7 +161,7 @@ public class BrimhavenDungeon {
 	public static ObjectClickHandler handleRedDragonLogBalance = new ObjectClickHandler(new Object[] { 5088, 5090 }, e -> {
 		if (!Agility.hasLevel(e.getPlayer(), 30))
 			return;
-		final int id = e.getObject().getId();
+		final int id = e.getObj().getId();
 		boolean back = id == 5088;
 		e.getPlayer().lock(4);
 		final Tile tile = back ? Tile.of(2687, 9506, 0) : Tile.of(2682, 9506, 0);

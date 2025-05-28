@@ -1,6 +1,7 @@
 package com.rs.game.map.instance;
 
 import com.rs.Settings;
+import com.rs.game.model.entity.Entity;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.tasks.WorldTasks;
@@ -11,6 +12,7 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.UUID;
@@ -291,22 +293,18 @@ public class Instance {
         return returnTo;
     }
 
-    public void teleportLocal(Player player, int localX, int localY, int plane) {
-        player.setInstancedArea(this);
-        player.tele(Tile.of(getBaseX() + localX, getBaseY() + localY, plane));
+    public void teleportLocal(Entity entity, int localX, int localY, int plane) {
+        if (entity instanceof Player player) {
+            player.setInstancedArea(this);
+        }
+        entity.tele(Tile.of(getBaseX() + localX, getBaseY() + localY, plane));
     }
 
-    public void teleportLocal(NPC npc, int localX, int localY, int plane) {
-        npc.tele(Tile.of(getBaseX() + localX, getBaseY() + localY, plane));
-    }
-
-    public void teleportChunkLocal(Player player, int chunkXOffset, int chunkYOffset, int xOffset, int yOffset, int plane) {
-        player.setInstancedArea(this);
-        player.tele(Tile.of(getLocalX(chunkXOffset, xOffset), getLocalY(chunkYOffset, yOffset), plane));
-    }
-
-    public void teleportChunkLocal(NPC npc, int chunkXOffset, int chunkYOffset, int xOffset, int yOffset, int plane) {
-        npc.tele(Tile.of(getLocalX(chunkXOffset, xOffset), getLocalY(chunkYOffset, yOffset), plane));
+    public void teleportChunkLocal(Entity entity, int chunkXOffset, int chunkYOffset, int xOffset, int yOffset, int plane) {
+        if (entity instanceof Player player) {
+            player.setInstancedArea(this);
+        }
+        entity.tele(Tile.of(getLocalX(chunkXOffset, xOffset), getLocalY(chunkYOffset, yOffset), plane));
     }
 
     public void teleportTo(Player player) {
@@ -324,4 +322,5 @@ public class Instance {
     public boolean isPersistent() {
         return persistent;
     }
+
 }

@@ -28,7 +28,6 @@ import com.rs.game.content.quests.RuneMysteries;
 import com.rs.game.content.quests.dragonslayer.DragonSlayer;
 import com.rs.game.content.world.areas.dungeons.UndergroundDungeonController;
 import com.rs.game.model.entity.player.Player;
-import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.*;
@@ -38,9 +37,6 @@ import static com.rs.game.content.quests.dragonslayer.DragonSlayer.KNOWS_ABOUT_D
 
 @PluginEventHandler
 public class Lumbridge {
-
-	public static final String WHEAT_DEPOSITED = "wheatInMill";
-	public static final String WHEAT_GRINDED = "wheatGrinded";
 	
 	public static ItemOnNPCHandler handleBobRepairs = new ItemOnNPCHandler(new Object[] { 519 }, e -> ItemConstants.handleRepairs(e.getPlayer(), e.getItem(), false, e.getItem().getSlot()));
 
@@ -95,21 +91,6 @@ public class Lumbridge {
 		else
 			ShopsHandler.openShop(e.getPlayer(), "bobs_brilliant_axes");
 	});
-
-	public static ItemOnObjectHandler handleWheatDeposit = new ItemOnObjectHandler(new Object[] { 70034 }, new Object[] { 1947 }, e -> {
-		if (e.getPlayer().get(WHEAT_DEPOSITED) == Boolean.FALSE) {
-			e.getPlayer().getInventory().deleteItem(1947, 1);
-			e.getPlayer().setNextAnimation(new Animation(832));
-			e.getPlayer().sendMessage("You put the wheat in the hopper.");
-			e.getPlayer().set(WHEAT_DEPOSITED, Boolean.TRUE);
-		}
-	});
-
-	public static void updateWheat(Player player) {
-		player.getVars().setVar(695, player.get(WHEAT_GRINDED) == Boolean.TRUE ? 1 : 0);
-	}
-
-	public static LoginHandler updateWheatLogin = new LoginHandler(e -> updateWheat(e.getPlayer()));
 
 	public static NPCClickHandler handleDukeHoratio = new NPCClickHandler(new Object[] { 741 }, e -> {
 		if (e.getOption().equalsIgnoreCase("talk-to")) {
@@ -183,41 +164,6 @@ public class Lumbridge {
 			e.getPlayer().useLadder(Tile.of(3207, 3224, 2));
 	});
 
-	public static ObjectClickHandler handleTakeFlour = new ObjectClickHandler(new Object[] { 36880 }, e -> {
-		if (e.getPlayer().getInventory().containsItem(1931, 1)) {
-			if (e.getPlayer().get(WHEAT_GRINDED) == Boolean.TRUE) {
-				e.getPlayer().set(WHEAT_GRINDED, Boolean.FALSE);
-				e.getPlayer().set(WHEAT_DEPOSITED, Boolean.FALSE);
-				e.getPlayer().sendMessage("You take the ground flour.");
-				e.getPlayer().setNextAnimation(new Animation(832));
-				e.getPlayer().getInventory().deleteItem(1931, 1);
-				e.getPlayer().getInventory().addItem(1933, 1);
-				updateWheat(e.getPlayer());
-			}
-		} else
-			e.getPlayer().sendMessage("You need an empty pot to gather the flour.");
-	});
-
-	public static ItemOnObjectHandler handleTakeFlourWithPot = new ItemOnObjectHandler(new Object[] { 36880 }, new Object[] { 1931 }, e -> {
-			if (e.getPlayer().get(WHEAT_GRINDED) == Boolean.TRUE) {
-				e.getPlayer().set(WHEAT_GRINDED, Boolean.FALSE);
-				e.getPlayer().set(WHEAT_DEPOSITED, Boolean.FALSE);
-				e.getPlayer().sendMessage("You take the ground flour.");
-				e.getPlayer().setNextAnimation(new Animation(832));
-				e.getPlayer().getInventory().replace(1931, 1933);
-				updateWheat(e.getPlayer());
-			}
-	});
-
-	public static ObjectClickHandler handleWindmillLever = new ObjectClickHandler(new Object[] { 2718 }, e -> {
-		e.getPlayer().sendMessage("You pull the lever.");
-		if (e.getPlayer().get(WHEAT_DEPOSITED) == Boolean.TRUE) {
-			e.getPlayer().set(WHEAT_GRINDED, Boolean.TRUE);
-			e.getPlayer().sendMessage("You hear the grinding of stones and the wheat falls below.");
-			updateWheat(e.getPlayer());
-		}
-	});
-
 	public static ObjectClickHandler handleHatchetStump = new ObjectClickHandler(new Object[] { 36974 }, e -> {
 		if (e.getPlayer().getInventory().containsItem(1351, 1))
 			e.getPlayer().sendMessage("You have already taken the hatchet.");
@@ -227,16 +173,16 @@ public class Lumbridge {
 
 	public static ObjectClickHandler handleStaircases1 = new ObjectClickHandler(new Object[] { 45481, 45482 }, e -> {
 		if (e.getObjectId() == 45481)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 3 : e.getObject().getRotation() == 3 ? -3 : 0, e.getObject().getRotation() == 0 ? 3 : e.getObject().getRotation() == 2 ? -3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 3 : e.getObj().getRotation() == 3 ? -3 : 0, e.getObj().getRotation() == 0 ? 3 : e.getObj().getRotation() == 2 ? -3 : 0, 1));
 		else if (e.getObjectId() == 45482)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -3 : e.getObject().getRotation() == 3 ? 3 : 0, e.getObject().getRotation() == 0 ? -3 : e.getObject().getRotation() == 2 ? 3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -3 : e.getObj().getRotation() == 3 ? 3 : 0, e.getObj().getRotation() == 0 ? -3 : e.getObj().getRotation() == 2 ? 3 : 0, -1));
 	});
 
 	public static ObjectClickHandler handleStaircases2 = new ObjectClickHandler(new Object[] { 45483, 45484 }, e -> {
 		if (e.getObjectId() == 45483)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? -3 : e.getObject().getRotation() == 3 ? 3 : 0, e.getObject().getRotation() == 0 ? -3 : e.getObject().getRotation() == 2 ? 3 : 0, 1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? -3 : e.getObj().getRotation() == 3 ? 3 : 0, e.getObj().getRotation() == 0 ? -3 : e.getObj().getRotation() == 2 ? 3 : 0, 1));
 		else if (e.getObjectId() == 45484)
-			e.getPlayer().tele(e.getPlayer().transform(e.getObject().getRotation() == 1 ? 3 : e.getObject().getRotation() == 3 ? -3 : 0, e.getObject().getRotation() == 0 ? 3 : e.getObject().getRotation() == 2 ? -3 : 0, -1));
+			e.getPlayer().tele(e.getPlayer().transform(e.getObj().getRotation() == 1 ? 3 : e.getObj().getRotation() == 3 ? -3 : 0, e.getObj().getRotation() == 0 ? 3 : e.getObj().getRotation() == 2 ? -3 : 0, -1));
 	});
 
 	public static ObjectClickHandler handleChurchLadders = new ObjectClickHandler(new Object[] { 36984, 36986 }, e -> e.getPlayer().useLadder(e.getPlayer().transform(e.getObjectId() == 36984 ? -2 : 2, 0, 1)));
@@ -271,7 +217,7 @@ public class Lumbridge {
 	});
 
 	public static ObjectClickHandler handleKitchenBasementHole = new ObjectClickHandler(new Object[] { 6898 }, e -> {
-		e.getPlayer().useStairs(10578, e.getObject().getTile());
+		e.getPlayer().useStairs(10578, e.getObj().getTile());
 		e.getPlayer().useStairs(10579, Tile.of(3221, 9618, 0));
 		e.getPlayer().getControllerManager().startController(new UndergroundDungeonController(false, true));
 		e.getPlayer().sendMessage("You squeeze through the hole.");
@@ -279,8 +225,8 @@ public class Lumbridge {
 
 	public static ObjectClickHandler handleBloodPactStairs = new ObjectClickHandler(new Object[] { 48797, 48798, 48678, 48677, 48679, 48688, 48683, 48682 }, e -> {
 		Player player = e.getPlayer();
-		int x = e.getObject().getX();
-		int y = e.getObject().getY();
+		int x = e.getObj().getX();
+		int y = e.getObj().getY();
 
 		switch (e.getObjectId()) {
 			case 48797 -> player.useStairs(-1, Tile.of(3877, 5526, 1), 0, 1);

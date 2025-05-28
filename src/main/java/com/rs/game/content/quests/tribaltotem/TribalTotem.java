@@ -25,7 +25,7 @@ import com.rs.engine.quest.QuestOutline;
 import com.rs.game.World;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
@@ -128,7 +128,7 @@ public class TribalTotem extends QuestOutline {
 
 	public static ObjectClickHandler handleLockDoorInMansion = new ObjectClickHandler(new Object[] { 2705 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if (p.getX() < obj.getX() || p.isQuestComplete(Quest.TRIBAL_TOTEM) || (p.getQuestManager().getAttribs(Quest.TRIBAL_TOTEM).getO("LOCK_PASS") != null
 				&& ((String) p.getQuestManager().getAttribs(Quest.TRIBAL_TOTEM).getO("LOCK_PASS")).equalsIgnoreCase("KURT"))) {
 			handleDoor(p, obj);
@@ -142,7 +142,7 @@ public class TribalTotem extends QuestOutline {
 
 	public static ObjectClickHandler handleTrapStairs = new ObjectClickHandler(new Object[] { 2711 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getOption().equalsIgnoreCase("climb-up"))
 			if(p.isQuestComplete(Quest.TRIBAL_TOTEM)
 					|| p.getQuestManager().getAttribs(Quest.TRIBAL_TOTEM).getB("DISARMED_STAIRS"))
@@ -236,7 +236,7 @@ public class TribalTotem extends QuestOutline {
 
 	public static ObjectClickHandler handleMansionTotemChest = new ObjectClickHandler(new Object[] { 2709 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(e.getOption().equalsIgnoreCase("open")) {
 			p.setNextAnimation(new Animation(536));
 			p.lock(2);
@@ -260,7 +260,7 @@ public class TribalTotem extends QuestOutline {
 
 	public static ObjectClickHandler handleRPDTCrateMansion = new ObjectClickHandler(new Object[] { 2708 }, e -> {
 		Player p = e.getPlayer();
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		if(obj.getTile().matches(Tile.of(2650, 3272, 0)))
 			if(p.getQuestManager().getStage(Quest.TRIBAL_TOTEM) == REDIRECT_TELE_STONE)
 				p.startConversation(new Conversation(e.getPlayer()) {

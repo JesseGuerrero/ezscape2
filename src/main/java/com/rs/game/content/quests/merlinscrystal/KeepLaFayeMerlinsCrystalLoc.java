@@ -8,7 +8,7 @@ import com.rs.engine.quest.Quest;
 import com.rs.game.World;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
@@ -25,12 +25,12 @@ import static com.rs.game.content.quests.merlinscrystal.MerlinsCrystal.CONFRONT_
 @PluginEventHandler
 public class KeepLaFayeMerlinsCrystalLoc {
 	public static ObjectClickHandler handleVariousStaircasesUp = new ObjectClickHandler(new Object[] { 25786 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		e.getPlayer().useStairs(-1, Tile.of(e.getPlayer().getX(), obj.getY()+3, e.getPlayer().getPlane() + 1), 0, 1);
 	});
 	
 	public static ObjectClickHandler handleVariousStaircasesDown = new ObjectClickHandler(new Object[] { 25787 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		e.getPlayer().useStairs(-1, Tile.of(e.getPlayer().getX(), obj.getY()-3, e.getPlayer().getPlane() - 1), 0, 1);
 	});
 
@@ -69,7 +69,7 @@ public class KeepLaFayeMerlinsCrystalLoc {
 	});
 
 	public static ObjectClickHandler handleFrontDoor = new ObjectClickHandler(new Object[] { 71, 72 }, e -> {
-		GameObject obj = e.getObject();
+		GameObject obj = e.getObj();
 		e.getPlayer().sendMessage("The door is securely locked.");
 		if(e.getPlayer().getX() > obj.getX())
 			return;

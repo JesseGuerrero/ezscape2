@@ -27,7 +27,7 @@ import com.rs.game.model.entity.actions.Action;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.game.model.entity.player.managers.AuraManager;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
@@ -71,59 +71,69 @@ public class Woodcutting extends Action {
 
 	public static LoginHandler unlockBlisterwoodTree = new LoginHandler(e -> e.getPlayer().getVars().setVarBit(9776, 1));
 
-	public static ObjectClickHandler handleTree = new ObjectClickHandler(new Object[] { "Tree", "Swamp tree", "Dead tree", "Evergreen", "Dying tree", "Jungle tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.NORMAL));
+	public static ObjectClickHandler handleTree = new ObjectClickHandler(new Object[] { "Tree", "Swamp tree", "Dead tree", "Evergreen", "Dying tree", "Jungle Tree" }, e -> {
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down") || e.getObj().getDefinitions().containsOption(0, "Chop-down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.NORMAL));
+	});
+
+	public static ObjectClickHandler handleAchey = new ObjectClickHandler(new Object[] { "Achey", "Achey Tree" }, e -> {
+		if (e.getObj().getDefinitions().containsOption(0, "Chop"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.ACHEY));
 	});
 
 	public static ObjectClickHandler handleOak = new ObjectClickHandler(new Object[] { "Oak", "Oak tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.OAK));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.OAK));
 	});
 
 	public static ObjectClickHandler handleWillow = new ObjectClickHandler(new Object[] { "Willow", "Willow tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.WILLOW));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.WILLOW));
 	});
 
 	public static ObjectClickHandler handleMaple = new ObjectClickHandler(new Object[] { "Maple", "Maple tree", "Maple Tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.MAPLE));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.MAPLE));
 	});
 
 	public static ObjectClickHandler handleTeak = new ObjectClickHandler(new Object[] { "Teak", "Teak tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.TEAK));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.TEAK));
 	});
 
 	public static ObjectClickHandler handleMahogany = new ObjectClickHandler(new Object[] { "Mahogany", "Mahogany tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.MAHOGANY));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.MAHOGANY));
 	});
 
 	public static ObjectClickHandler handleArcticPine = new ObjectClickHandler(new Object[] { "Arctic Pine" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down") || e.getObject().getDefinitions().containsOption(0, "Cut down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.ARCTIC_PINE));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down") || e.getObj().getDefinitions().containsOption(0, "Cut down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.ARCTIC_PINE));
+	});
+
+	public static ObjectClickHandler handleEucalyptus = new ObjectClickHandler(new Object[] { "Eucalyptus", "Eucalyptus tree" }, e -> {
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.EUCALYPTUS));
 	});
 
 	public static ObjectClickHandler handleIvy = new ObjectClickHandler(new Object[] { "Ivy" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.IVY));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.IVY));
 	});
 
 	public static ObjectClickHandler handleYew = new ObjectClickHandler(new Object[] { "Yew", "Yew tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.YEW));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.YEW));
 	});
 
 	public static ObjectClickHandler handleMagic = new ObjectClickHandler(new Object[] { "Magic tree", "Cursed magic tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Chop down"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.MAGIC));
+		if (e.getObj().getDefinitions().containsOption(0, "Chop down"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.MAGIC));
 	});
 
 	public static ObjectClickHandler handleSwayingTree = new ObjectClickHandler(new Object[] { "Swaying tree" }, e -> {
-		if (e.getObject().getDefinitions().containsOption(0, "Cut-branch"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.SWAYING) {
+		if (e.getObj().getDefinitions().containsOption(0, "Cut-branch"))
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.SWAYING) {
 				@Override
 				public void fellTree() {
 
@@ -133,7 +143,7 @@ public class Woodcutting extends Action {
 
 	public static ObjectClickHandler handleBlisterwood = new ObjectClickHandler(new Object[] { 61321 }, e -> {
 		if (e.getOption().equals("Chop"))
-			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObject(), TreeType.BLISTERWOOD) {
+			e.getPlayer().getActionManager().setAction(new Woodcutting(e.getObj(), TreeType.BLISTERWOOD) {
 				@Override
 				public void fellTree() {
 					e.getPlayer().getVars().setVarBit(9776, 2);
@@ -162,7 +172,7 @@ public class Woodcutting extends Action {
 		if (entity instanceof Familiar familiar)
 			familiar.getOwner().sendMessage("Your beaver uses its strong teeth to chop down the tree...");
 		else if (entity instanceof Player player)
-			player.sendMessage("You swing your hatchet at the " + (TreeType.IVY == type ? "ivy" : "tree") + "...", true);
+			player.sendMessage("You swing your hatchet at the " + (TreeType.IVY == type ? "ivy" : "tree") + ".", true);
 		setActionDelay(entity, 4);
 		return true;
 	}
@@ -172,14 +182,18 @@ public class Woodcutting extends Action {
 			hatchet = entity instanceof Player player ? Hatchet.getBest(player) : Hatchet.MITHRIL;
 		if (entity instanceof Player player) {
 			if (hatchet == null) {
-				player.sendMessage("You dont have the required level to use that axe or you don't have a hatchet.");
+				player.sendMessage("You do not have a hatchet which you have the woodcutting level to use.");
 				return false;
 			}
 			if (!hasWoodcuttingLevel(player))
 				return false;
 			if (!player.getInventory().hasFreeSlots()) {
-				player.sendMessage("Not enough space in your inventory.");
-				player.setNextAnimation(new Animation(-1));
+				TreeType treeType = TreeType.forObject(player, treeObj);
+				String logName = treeType != null && treeType.getLogsId() != null && treeType.getLogsId().length > 0
+						? ItemDefinitions.getDefs(treeType.getLogsId()[0]).getName().toLowerCase()
+						: "logs";
+				player.sendMessage("Your inventory is too full to hold any more " + logName + ".");
+				player.anim(-1);
 				return false;
 			}
 		} else if (entity instanceof Familiar familiar && familiar.getInventory().freeSlots() == 0)
@@ -189,7 +203,7 @@ public class Woodcutting extends Action {
 
 	private boolean hasWoodcuttingLevel(Player player) {
 		if (type.getLevel() > player.getSkills().getLevel(8)) {
-			player.sendMessage("You need a woodcutting level of " + type.getLevel() + " to chop down this tree.");
+			player.sendMessage("You need a woodcutting level of " + type.getLevel() + " to chop down " + (TreeType.IVY == type ? "the ivy" : "this tree") + ".");
 			return false;
 		}
 		return true;
@@ -200,7 +214,7 @@ public class Woodcutting extends Action {
 		entity.anim(entity instanceof Familiar ? 7722 : hatchet.getAnim(type));
 		if (entity instanceof Familiar)
 			entity.spotAnim(1459);
-		return checkAll(entity) && checkTree();
+        return checkAll(entity) && checkTree();
 	}
 
 	@Override
@@ -215,14 +229,14 @@ public class Woodcutting extends Action {
 				giveLog(entity);
 				giveLog(entity);
 			}
-			int fellChance = entity instanceof Player player && player.hasEffect(Effect.EVIL_TREE_WOODCUTTING_BUFF) ? 16 : 8;
+			int fellChance = entity.hasEffect(Effect.EVIL_TREE_WOODCUTTING_BUFF) ? 16 : 8;
 			if (!type.isPersistent() || (Utils.random(fellChance) == 0)) {
 				if (entity instanceof Player player && player.getAuraManager().isActivated(AuraManager.Aura.RESOURCEFUL) && Utils.random(10) == 0) {
-					player.sendMessage("Your resourceful aura prevents the tree from being felled.");
+					player.sendMessage("Your resourceful aura prevents the " + (TreeType.IVY == type ? "ivy" : "tree") + " from being felled.");
 					return 3;
 				}
 				fellTree();
-				entity.setNextAnimation(new Animation(-1));
+				entity.anim(-1);
 				return -1;
 			}
 		}
@@ -269,7 +283,7 @@ public class Woodcutting extends Action {
 			if (Utils.random(256) == 0) {
 				for (Item rew : DropTable.calculateDrops(player, DropSets.getDropSet("nest_drop")))
 					World.addGroundItem(rew, Tile.of(player.getTile()), player, true, 30);
-				player.sendMessage("<col=FF0000>A bird's nest falls out of the tree!");
+				player.sendMessage("<col=FF0000>A bird's nest falls out of the " + (TreeType.IVY == type ? "ivy" : "tree") + "!");
 			}
 			double bxp = type.getXp() * getLumberjackBonus(player);
 			player.getSkills().addXp(Constants.WOODCUTTING, type.getXp() + bxp);
@@ -283,7 +297,7 @@ public class Woodcutting extends Action {
 			if (Utils.random(256) == 0) {
 				for (Item rew : DropTable.calculateDrops(player, DropSets.getDropSet("nest_drop")))
 					World.addGroundItem(rew, Tile.of(player.getTile()), player, true, 30);
-				player.sendMessage("<col=FF0000>A bird's nest falls out of the tree!");
+				player.sendMessage("<col=FF0000>A bird's nest falls out of the " + (TreeType.IVY == type ? "ivy" : "tree") + "!");
 			}
 			if (type.getLogsId() != null) {
 				if (player.hasEffect(Effect.JUJU_WC_BANK) || player.hasEffect(Effect.EVIL_TREE_WOODCUTTING_BUFF)) {
@@ -305,7 +319,7 @@ public class Woodcutting extends Action {
 							player.getSkills().addXp(Constants.FIREMAKING, type.getXp() * 1);
 							player.getInventory().deleteItem(type.getLogsId()[0], 1);
 							player.sendMessage("The adze's heat instantly incinerates the " + logName + ".");
-							player.setNextSpotAnim(new SpotAnim(1776));
+							player.spotAnim(1776);
 						}
 				}
 			}
@@ -313,7 +327,7 @@ public class Woodcutting extends Action {
 		if (entity instanceof Familiar familiar) {
 			for (int item : type.getLogsId())
 				familiar.getInventory().add(new Item(item, 1));
-			familiar.getOwner().getSkills().addXp(Constants.WOODCUTTING, type.getXp() * getLumberjackBonus(familiar.getOwner()));
+			familiar.getOwner().getSkills().addXp(Constants.WOODCUTTING, type.getXp());
 		}
 	}
 

@@ -6,10 +6,9 @@ import com.rs.game.World;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.Constants;
-import com.rs.lib.game.Animation;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
@@ -129,35 +128,65 @@ public class HankyPoints {
         return xp;
     }
 
-    public static void claimHankyPoints(Player player, NPC npc){
-        int availablePoints = player.getWeeklyI("HankyPoints") - player.getWeeklyI("ClaimedHankyPoints");
-        double xp = (calculateXP(player) / maxPoints(player)) * availablePoints;
-        if(availablePoints == 0) {
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have no hanky points to claim! Try some of the guild's training exercises.");
+    public static void claimHankyPoints(Player player, NPC npc) {
+        int hankyPoints = player.getWeeklyI("HankyPoints");
+        int claimedPoints = player.getWeeklyI("ClaimedHankyPoints");
+        int maxPoints = maxPoints(player);
+        int remainingPoints = maxPoints - claimedPoints;
+        int claimablePoints = Math.max(0, Math.min(hankyPoints, remainingPoints));
+
+        if (remainingPoints <= 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have claimed the maximum amount of hanky points this week. Come back next week to claim more rewards!");
+            return;
         }
-        else {
-            player.getSkills().addXp(Skills.THIEVING, xp);
-            player.sendMessage("You gain " + (int) xp + " Thieving XP. ");
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You may turn in up to " + (maxPoints(player) - player.getWeeklyI("ClaimedHankyPoints")) + " more points this week.");
-            player.incWeeklyI("ClaimedHankyPoints", availablePoints);
+
+        if (claimablePoints == 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have no hanky points to claim! Try some of the guild's training exercises to earn more.");
+            return;
         }
+
+        player.startConversation(new Dialogue().addNPC(npc.getId(), HeadE.CALM_TALK, "Sure thing! Let's see now..."));
+
+        double xp = (calculateXP(player) / maxPoints) * claimablePoints;
+        player.getSkills().addXp(Skills.THIEVING, xp);
+
+        player.sendMessage("You gain " + Utils.getFormattedNumber((int) xp, ',') + " Thieving XP.");
+
+        player.incWeeklyI("ClaimedHankyPoints", claimablePoints);
+        player.setWeeklyI("HankyPoints", hankyPoints - claimablePoints);
     }
 
     public static void checkPoints(Player player, NPC npc) {
-        int availablePoints = player.getWeeklyI("HankyPoints") - player.getWeeklyI("ClaimedHankyPoints");
-        if(player.getWeeklyI("HankyPoints") == 0) {
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have no hanky points! Try some of the guild's training exercises.");
-            return;
-        }
-        if(player.getWeeklyI("ClaimedHankyPoints") == maxPoints(player)) {
+        int hankyPoints = player.getWeeklyI("HankyPoints");
+        int claimedPoints = player.getWeeklyI("ClaimedHankyPoints");
+        int maxPoints = maxPoints(player);
+        int remainingClaimablePoints = Math.max(0, maxPoints - claimedPoints);
+        int availablePoints = Math.min(hankyPoints, remainingClaimablePoints);
+
+        if (remainingClaimablePoints == 0) {
             player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have collected all your hanky points this week.");
             return;
         }
-        if(player.getWeeklyI("ClaimedHankyPoints") > 0) {
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have " + availablePoints + " hanky points ready to turn in. You have collected " + player.getWeeklyI("ClaimedHankyPoints") + " hanky points. You may claim the reward for up to " + (maxPoints(player) - player.getWeeklyI("ClaimedHankyPoints")) + " more hanky points this week.");
+
+        if (hankyPoints == 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK, "You have no hanky points! Try some of the guild's training exercises.");
+            return;
         }
-        else
-            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,"You have " + availablePoints + " ready to turn in. You may claim the reward for up to " + (maxPoints(player) - player.getWeeklyI("ClaimedHankyPoints")) + " more hanky points this week.");
+
+        if (claimedPoints > 0) {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have " + availablePoints + " " + (availablePoints == 1 ? "hanky point" : "hanky points") + " ready to turn in. " +
+                            "You have collected " + claimedPoints + " " + (claimedPoints == 1 ? "hanky point" : "hanky points") + ". " +
+                            "You may claim the reward for up to " + remainingClaimablePoints + " more " + (remainingClaimablePoints == 1 ? "hanky point" : "hanky points") + " this week."
+            );
+        } else {
+            player.npcDialogue(npc.getId(), HeadE.CALM_TALK,
+                    "You have " + availablePoints + " " + (availablePoints == 1 ? "hanky point" : "hanky points") + " ready to turn in. " +
+                            "You may claim the reward for up to " + remainingClaimablePoints + " more " + (remainingClaimablePoints == 1 ? "hanky point" : "hanky points") + " this week."
+            );
+        }
     }
 
     public static NPCClickHandler checkPoints = new NPCClickHandler(new Object[] { 11281, 11294, 11282, 11284, 11286 }, new String[] {"Check-points"}, e -> checkPoints(e.getPlayer(), e.getNPC()));
@@ -208,32 +237,32 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleNorthDoors = new ObjectClickHandler(new Object[] { 52302 }, e -> {
         if(e.getOption().equalsIgnoreCase("Open")) {
-            if(e.getPlayer().getTile().getY() >= e.getObject().getY()) {
-                World.removeObjectTemporary(e.getObject(), Ticks.fromSeconds(10));
-                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() - 1, e.getObject().getTile().transform(0, -1, 0)), Ticks.fromSeconds(10), true);
+            if(e.getPlayer().getTile().getY() >= e.getObj().getY()) {
+                World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromSeconds(10), true);
+                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() - 1, e.getObj().getTile().transform(0, -1, 0)), Ticks.fromSeconds(10), true);
                 return;
             }
             e.getPlayer().lock();
+            e.getPlayer().sendMessage("You examine the lock on the door...");
             WorldTasks.scheduleTimer(i -> {
                 switch(i) {
                     case 1 -> {
-                        e.getPlayer().faceObject(e.getObject());
-                        e.getPlayer().setNextAnimation(new Animation(832));
-                        e.getPlayer().sendMessage("You examine the lock on the door...");
+                        e.getPlayer().faceObject(e.getObj());
+                        e.getPlayer().anim(832);
                     }
                     case 3 -> {
                         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
                             e.getPlayer().sendMessage("The door swings open.");
                             e.getPlayer().getSkills().addXp(Constants.THIEVING, 210);
-                            World.removeObjectTemporary(e.getObject(), Ticks.fromMinutes(5));
-                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() - 3, e.getObject().getTile().transform(0, -1, 0)), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() - 3, e.getObj().getTile().transform(0, -1, 0)), Ticks.fromMinutes(5), true);
                         } else {
                             e.getPlayer().sendMessage("You fail to pick the lock.");
                             e.getPlayer().unlock();
                             return false;
                         }
                     }
-                    case 6 -> e.getPlayer().unlock();
+                    case 4 -> e.getPlayer().unlock();
                 }
                 return true;
             });
@@ -242,13 +271,13 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleSouthDoors = new ObjectClickHandler(new Object[] { 52304 }, e -> {
         if(e.getOption().equalsIgnoreCase("Open")) {
-            if(e.getPlayer().getY() <= e.getObject().getY()) {
-                World.removeObjectTemporary(e.getObject(), Ticks.fromSeconds(10));
-                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() + 1, e.getObject().getTile().transform(0, +1, 0)), Ticks.fromSeconds(10), true);
+            if(e.getPlayer().getY() <= e.getObj().getY()) {
+                World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromSeconds(10), true);
+                World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() + 1, e.getObj().getTile().transform(0, +1, 0)), Ticks.fromSeconds(10), true);
                 return;
             }
             if(e.getPlayer().getSkills().getLevel(Skills.THIEVING) < 35){
-                e.getPlayer().simpleDialogue("You need a thieving level of at least 35 to pick this lock.");
+                e.getPlayer().simpleDialogue("You need a Thieving level of at least 35 to pick this lock.");
                 return;
             }
             if(!e.getPlayer().getInventory().containsOneItem(1523)){
@@ -256,26 +285,26 @@ public class HankyPoints {
                 return;
             }
             e.getPlayer().lock();
+            e.getPlayer().sendMessage("You examine the lock on the door...");
             WorldTasks.scheduleTimer(i -> {
                 switch(i) {
                     case 1 -> {
-                        e.getPlayer().faceObject(e.getObject());
-                        e.getPlayer().setNextAnimation(new Animation(832));
-                        e.getPlayer().sendMessage("You examine the lock on the door...");
+                        e.getPlayer().faceObject(e.getObj());
+                        e.getPlayer().anim(832);
                     }
                     case 3 -> {
                         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
                             e.getPlayer().sendMessage("The door swings open.");
                             e.getPlayer().getSkills().addXp(Constants.THIEVING, 280);
-                            World.removeObjectTemporary(e.getObject(), Ticks.fromMinutes(5));
-                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObject().getType(), e.getObject().getRotation() + 1, e.getObject().getTile().transform(0, +1, 0)), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(-1, e.getObj().getType(), e.getObj().getRotation(), e.getObj().getTile()), Ticks.fromMinutes(5), true);
+                            World.spawnObjectTemporary(new GameObject(e.getObjectId() + 1, e.getObj().getType(), e.getObj().getRotation() + 1, e.getObj().getTile().transform(0, +1, 0)), Ticks.fromMinutes(5), true);
                         } else {
                             e.getPlayer().sendMessage("You fail to pick the lock.");
                             e.getPlayer().unlock();
                             return false;
                         }
                     }
-                    case 6 -> e.getPlayer().unlock();
+                    case 4 -> e.getPlayer().unlock();
                 }
                 return true;
             });
@@ -284,20 +313,20 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleNorthChests = new ObjectClickHandler(new Object[] { 52296 }, e -> {
         Player player = e.getPlayer();
-        GameObject object = e.getObject();
+        GameObject object = e.getObj();
         player.faceObject(object);
         if (player.getSkills().getLevel(Constants.THIEVING) < 26) {
             player.simpleDialogue("You need a Thieving level of at least 26 to pick this lock.");
             return;
         }
+        player.lock(1);
         player.sendMessage("You attempt to pick the lock.");
-        player.setNextAnimation(new Animation(536));
-        player.lock(2);
+        player.anim(536);
         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
             player.getSkills().addXp(Constants.THIEVING, 30);
             object.setIdTemporary(e.getObjectId() + 1, Ticks.fromMinutes(1));
             player.incWeeklyI("HankyPoints", 1);
-            player.sendMessage("You find a blue hankerchief.");
+            player.sendMessage("You find a blue handkerchief.");
         }
         else {
             e.getPlayer().sendMessage("You fail to pick the lock.");
@@ -307,18 +336,18 @@ public class HankyPoints {
 
     public static ObjectClickHandler handleSouthChests = new ObjectClickHandler(new Object[] { 52299 }, e -> {
         Player player = e.getPlayer();
-        GameObject object = e.getObject();
+        GameObject object = e.getObj();
         player.faceObject(object);
         if (player.getSkills().getLevel(Constants.THIEVING) < 35) {
             player.simpleDialogue("You need a Thieving level of at least 35 to pick this lock.");
             return;
         }
+        player.lock(1);
         player.sendMessage("You attempt to pick the lock.");
-        player.setNextAnimation(new Animation(536));
-        player.lock(2);
+        player.anim(536);
         if (Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.THIEVING), 190, 190)) {
             player.getSkills().addXp(Constants.THIEVING, 180);
-            player.sendMessage("You find a red hankerchief.");
+            player.sendMessage("You find a red handkerchief.");
             player.incWeeklyI("HankyPoints", 4);
             object.setIdTemporary(e.getObjectId() + 1, Ticks.fromMinutes(1));
 

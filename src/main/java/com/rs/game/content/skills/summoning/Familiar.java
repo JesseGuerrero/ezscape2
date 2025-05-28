@@ -33,7 +33,7 @@ import com.rs.game.model.entity.player.Inventory;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.managers.InterfaceManager.Sub;
 import com.rs.game.model.item.ItemsContainer;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
@@ -534,9 +534,9 @@ public final class Familiar extends NPC {
 				owner.getSkills().drainSummoning(1);
 			trackDrain = !trackDrain;
 			if (ticks == 100)
-				owner.sendMessage("You have 1 minute before your familiar vanishes.");
+				owner.sendMessage("<col=FF0000>You have 1 minute before your familiar vanishes.");
 			else if (ticks == 50)
-				owner.sendMessage("You have 30 seconds before your familiar vanishes.");
+				owner.sendMessage("<col=FF0000>You have 30 seconds before your familiar vanishes.");
 			sendTimeRemaining();
 		}
 		if (ticks == 0) {

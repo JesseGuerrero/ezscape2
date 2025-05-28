@@ -5,7 +5,7 @@ import com.rs.engine.dialogue.startConversation
 import com.rs.engine.miniquest.Miniquest
 import com.rs.engine.miniquest.MiniquestHandler
 import com.rs.engine.miniquest.MiniquestOutline
-import com.rs.game.content.skills.runecrafting.Abyss
+import com.rs.game.content.skills.runecrafting.teleportRCAbyss
 import com.rs.game.model.entity.npc.NPC
 import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.Skills
@@ -20,7 +20,7 @@ fun mapEnterTheAbyss() {
         when (option) {
             "Talk-to" -> mapMageDialogue(player, npc)
             "Trade" -> ShopsHandler.openShop(player, "zamorak_mage_shop")
-            "Teleport" -> Abyss.teleport(player, npc)
+            "Teleport" -> teleportRCAbyss(player, npc)
         }
     }
     onNpcClick(2260) { (player, npc) ->

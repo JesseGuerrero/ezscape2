@@ -21,7 +21,7 @@ import static com.rs.game.content.world.doors.Doors.handleInPlaceSingleDoor;
 public class ClockTowerDungeon {
 	public static ObjectClickHandler handleGateLever = new ObjectClickHandler(new Object[]{ 37 }, e -> {
 		if(e.getPlayer().getTempAttribs().getB("ClockTowerGateOpenedRats") || e.getPlayer().getX() <= 2595) {
-			handleGate(e.getPlayer(), e.getObject());
+			handleGate(e.getPlayer(), e.getObj());
 			return;
 		}
 		e.getPlayer().faceDir(Direction.WEST);
@@ -30,17 +30,17 @@ public class ClockTowerDungeon {
 	});
 
 	public static ObjectClickHandler handleGateLeverRats = new ObjectClickHandler(new Object[]{ 33 }, Tile.of(2591, 9661, 0), e -> {
-		e.getObject().setIdTemporary(34, Ticks.fromSeconds(20));
+		e.getObj().setIdTemporary(34, Ticks.fromSeconds(20));
 		e.getPlayer().getTempAttribs().setB("ClockTowerGateOpenedRats", true);
 	});
 
 	public static ObjectClickHandler handlePoisonedRatDoor = new ObjectClickHandler(new Object[]{ 39 }, e -> {
 		if(e.getPlayer().getX() <= 2578) {
-			handleInPlaceSingleDoor(e.getPlayer(), e.getObject());
+			handleInPlaceSingleDoor(e.getPlayer(), e.getObj());
 			return;
 		}
 		if(e.getPlayer().getTempAttribs().getB("ClockTowerPoisonedRats")) {
-			handleInPlaceSingleDoor(e.getPlayer(), e.getObject());
+			handleInPlaceSingleDoor(e.getPlayer(), e.getObj());
 			e.getPlayer().startConversation(new Dialogue().addSimple("The death of the rats seemed to shake the door open."));
 			return;
 		}

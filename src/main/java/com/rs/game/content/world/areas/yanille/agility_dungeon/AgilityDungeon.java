@@ -46,13 +46,13 @@ public class AgilityDungeon {
                     e.getPlayer().sendMessage("You need a Thieving level of 82 to pick this lock.");
                     return;
                 }
-                Doors.handleLeftHandedDoor(e.getPlayer(), e.getObject());
+                Doors.handleLeftHandedDoor(e.getPlayer(), e.getObj());
             }
         }
     });
 
     public static ObjectClickHandler handleWebStairs = new ObjectClickHandler(new Object[] { 32270, 32271, 37023 }, e -> {
-        if (e.getObject().getTile().isAt(2603, 9478) || e.getObjectId() == 32271)
+        if (e.getObj().getTile().isAt(2603, 9478) || e.getObjectId() == 32271)
             e.getPlayer().useStairs(e.getPlayer().getTile().transform(e.getObjectId() == 32271 ? -4 : 4, e.getObjectId() == 32271 ? 6400 : -6400));
         else
             e.getPlayer().useStairs(e.getPlayer().getTile().transform(0, e.getObjectId() == 37023 ? 6404 : -6404));
@@ -99,7 +99,7 @@ public class AgilityDungeon {
     public static ObjectClickHandler handlePipe = new ObjectClickHandler(new Object[] { 2290 }, e -> {
         if (!Agility.hasLevel(e.getPlayer(), 49))
             return;
-        e.getPlayer().forceMove(e.getObject().getTile().transform(e.getPlayer().getX() < 2575 ? 5 : -5, 0, 0), 10580, 35, 120, () -> e.getPlayer().getSkills().addXp(Constants.AGILITY, 5.0));
+        e.getPlayer().forceMove(e.getObj().getTile().transform(e.getPlayer().getX() < 2575 ? 5 : -5, 0, 0), 10580, 35, 120, () -> e.getPlayer().getSkills().addXp(Constants.AGILITY, 5.0));
         if (!Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.AGILITY), -35, 350))
             e.getPlayer().applyHit(Hit.flat(e.getPlayer(), (int) (e.getPlayer().getMaxHitpoints() * 0.1)));
     });
@@ -108,14 +108,14 @@ public class AgilityDungeon {
         if (!Agility.hasLevel(e.getPlayer(), 57))
             return;
         if (!Utils.skillSuccess(e.getPlayer().getSkills().getLevel(Skills.AGILITY), -15, 323)) {
-            Agility.crossMonkeybars(e.getPlayer(), e.getObject().getTile(), e.getObject().getTile().transform(0, e.getPlayer().getY() > 9491 ? -2 : 2), 0);
+            Agility.crossMonkeybars(e.getPlayer(), e.getObj().getTile(), e.getObj().getTile().transform(0, e.getPlayer().getY() > 9491 ? -2 : 2), 0);
             WorldTasks.schedule(6, () -> {
                 e.getPlayer().tele(Tile.of(2572, 9568, 0));
                 e.getPlayer().applyHit(Hit.flat(e.getPlayer(), (int) (e.getPlayer().getMaxHitpoints() * 0.2)));
             });
             return;
         }
-        Agility.crossMonkeybars(e.getPlayer(), e.getObject().getTile(), e.getObject().getTile().transform(0, e.getPlayer().getY() > 9491 ? -5 : 5), 20);
+        Agility.crossMonkeybars(e.getPlayer(), e.getObj().getTile(), e.getObj().getTile().transform(0, e.getPlayer().getY() > 9491 ? -5 : 5), 20);
     });
 
     public static ObjectClickHandler handleRubble = new ObjectClickHandler(new Object[] { 2317, 2318 }, e -> {

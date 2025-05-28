@@ -128,7 +128,6 @@ public class Bank {
 			e.getPlayer().closeInterfaces();
 			e.getPlayer().getInterfaceManager().sendInterface(767);
 			e.getPlayer().setCloseInterfacesEvent(() -> {
-				e.getPlayer().getBank().open();
 				e.getPlayer().abortDialogue();
 				e.getPlayer().getPackets().sendRunScript(571);
 			});
@@ -642,7 +641,6 @@ public class Bank {
 	public void open() {
 		if (!checkPin())
 			return;
-		withdrawNotes = false;
 		player.getTempAttribs().removeB("viewingOtherBank");
 		player.getVars().setVar(638, 0);
 		player.getVars().setVarBit(8348, 0);

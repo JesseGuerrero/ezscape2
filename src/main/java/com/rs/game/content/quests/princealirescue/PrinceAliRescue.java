@@ -22,6 +22,7 @@ import com.rs.engine.quest.Quest;
 import com.rs.engine.quest.QuestHandler;
 import com.rs.engine.quest.QuestOutline;
 import com.rs.game.World;
+import com.rs.game.content.items.Dye;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.game.Item;
@@ -66,7 +67,6 @@ public class PrinceAliRescue extends QuestOutline {
 	public final static int BALL_WOOL = 1759;
 	public final static int WIG = 2421;
 	public final static int BLONDE_WIG = 2419;
-	public final static int YELLOW_DYE = 1765;
 
 	//Paste items
 	public final static int ASHES = 592;
@@ -163,9 +163,9 @@ public class PrinceAliRescue extends QuestOutline {
 	}
 
 	public static ObjectClickHandler handleJailCellDoor = new ObjectClickHandler(new Object[] { 3436 }, e -> {
-		if(e.getObject().getTile().matches(Tile.of(3128, 3243, 0))) {
+		if(e.getObj().getTile().matches(Tile.of(3128, 3243, 0))) {
 			if (e.getPlayer().getInventory().containsItem(BRONZE_KEY, 1))
-				handleDoor(e.getPlayer(), e.getObject());
+				handleDoor(e.getPlayer(), e.getObj());
 			else
 				e.getPlayer().startConversation(new Conversation(e.getPlayer()) {
 					{
@@ -182,7 +182,7 @@ public class PrinceAliRescue extends QuestOutline {
 					e.getPlayer().sendMessage("You'd better get rid of Lady Keli before trying to go through there.");
 					return;
 				}
-			handleDoor(e.getPlayer(), e.getObject());
+			handleDoor(e.getPlayer(), e.getObj());
 		}
 		else
 			e.getPlayer().startConversation(new Conversation(e.getPlayer()) {
@@ -192,8 +192,8 @@ public class PrinceAliRescue extends QuestOutline {
 			});
 	});
 
-	public static ItemOnItemHandler handleRedYellowDyes = new ItemOnItemHandler(YELLOW_DYE, new int[] {WIG}, e -> {
-		if(e.usedWith(WIG, YELLOW_DYE)) {
+	public static ItemOnItemHandler handleRedYellowDyes = new ItemOnItemHandler(Dye.YELLOW.getId(), new int[] {WIG}, e -> {
+		if(e.usedWith(WIG, Dye.YELLOW.getId())) {
 			e.getPlayer().getInventory().replace(e.getItem2(), new Item(BLONDE_WIG, 1));
 			e.getPlayer().getInventory().deleteItem(e.getItem1().getSlot(), e.getItem1());
 		}

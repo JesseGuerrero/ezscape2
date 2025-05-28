@@ -16,6 +16,7 @@
 //
 package com.rs.game.content.skills.thieving;
 
+import com.rs.game.content.items.GlovesOfSilenceKt;
 import com.rs.game.model.entity.ForceTalk;
 import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.Hit.HitLook;
@@ -102,6 +103,7 @@ public class PickPocketAction extends PlayerAction {
 			player.setNextAnimation(new Animation(424));
 			player.setNextSpotAnim(new SpotAnim(80, 5, 60));
 			player.sendMessage("You've been stunned.");
+			GlovesOfSilenceKt.degradeGlovesOfSilence(player);
 			player.applyHit(new Hit(player, npcData.getStunDamage(), HitLook.TRUE_DAMAGE));
 			if (npcData.equals(PickPocketableNPC.MASTER_FARMER) || npcData.equals(PickPocketableNPC.FARMER))
 				npc.setNextForceTalk(new ForceTalk("Cor blimey mate, what are ye doing in me pockets?"));
@@ -174,7 +176,7 @@ public class PickPocketAction extends PlayerAction {
 		if (player.isDead() || player.hasFinished() || npc.isDead() || npc.hasFinished() || player.hasPendingHits())
 			return false;
 		if (player.getSkills().getLevel(Constants.THIEVING) < npcData.getThievingLevels()[0]) {
-			player.simpleDialogue("You need a thieving level of " + npcData.getThievingLevels()[0] + " to steal from this npc.");
+			player.simpleDialogue("You need a thieving level of " + npcData.getThievingLevels()[0] + " to steal from the " + npc.getName().toLowerCase() + ".");
 			return false;
 		}
 		if (!EZScape.canEmptyInventoryPickpocket() && player.getInventory().getFreeSlots() < 1) {
@@ -182,15 +184,15 @@ public class PickPocketAction extends PlayerAction {
 			return false;
 		}
 		if (player.getAttackedBy() != null && player.inCombat()) {
-			player.sendMessage("You can't do this while you're under combat.");
+			player.sendMessage("You can't do that while you're in combat.");
 			return false;
 		}
 		if (npc.getAttackedBy() != null && npc.inCombat()) {
-			player.sendMessage("The npc is under combat.");
+			player.sendMessage("The " + npc.getName().toLowerCase() + " is under combat.");
 			return false;
 		}
 		if (npc.isDead()) {
-			player.sendMessage("Too late, the npc is dead.");
+			player.sendMessage("Too late, they're dead.");
 			return false;
 		}
 		return true;

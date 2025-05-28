@@ -55,7 +55,7 @@ public class Foods {
         }
         player.sendMessage("You eat the " + item.getName().toLowerCase() + ".", true);
         player.incrementCount("Food eaten");
-        player.setNextAnimation(EAT_ANIM);
+        player.anim(EAT_ANIM);
         player.addFoodDelay(food.ids.length > 1 ? 2 : 3);
         player.getActionManager().setActionDelay(player.getActionManager().getActionDelay() + 3);
         Item replace = new Item(item.getId(), item.getAmount());
@@ -98,6 +98,7 @@ public class Foods {
         APPLE_PIE(new int[] { 2323, 2335 }, 2313, 70),
         AQUATIC_FRUIT(21380, 150),
         BAGUETTE(6961, 60),
+        BAKED_CAVE_POTATO(new int[] { 18093 }, 20),
         BAKED_POTATO(6701, 40),
         BANANA(1963, 20),
         BANANA_STEW(4016, 110),
@@ -107,9 +108,15 @@ public class Foods {
         BISCUITS(19467, 20),
         BLACK_MUSHROOM(4620, 0, p -> p.sendMessage("Eugh! It tastes horrible, and stains your fingers black.")),
         BLUE_CRAB(18175, 220),
+        BLUE_CRAB_POTATO(new int[] { 18115 }, 250),
+        BLUE_CRAB_AND_EDICAP_POTATO(new int[] { 18155 }, 340),
+        BLUE_CRAB_AND_GISSEL_POTATO(new int[] { 18135 }, 280),
         BLUE_SWEETS(4558, 2),
         BLURBERRY_SPECIAL(2064, 2),
         BOULDABASS(18171, 170),
+        BOULDABASS_POTATO(new int[] { 18111 }, 200),
+        BOULDABASS_AND_EDICAP_POTATO(new int[] { 18151 }, 290),
+        BOULDABASS_AND_GISSEL_POTATO(new int[] { 18131 }, 230),
         BREAD(2309, 50),
         BUTTON_MUSHROOM(13563, 10),
         CABBAGE(1965, 10, p -> p.sendMessage("You don't really like it much.", true)),
@@ -119,6 +126,7 @@ public class Foods {
         CAVEFISH(15266, 220),
         CAVE_EEL(5003, 110),
         CAVE_MORAY(18177, 250),
+        CAVE_MORAY_POTATO(new int[] { 18117 }, 280),
         CAVE_NIGHTSHADE(2398, 0, player -> {
             player.applyHit(new Hit(player, 15, HitLook.POISON_DAMAGE));
             player.sendMessage("Ahhhh! What have I done");
@@ -132,7 +140,7 @@ public class Foods {
         CHEESE_AND_TOMATO_BATTA(9535, 110),
         CHEESE_WHEEL(18789, 20),
         CHICKEN(2140, 30),
-        CHILLI_CON_CARNIE(new int[] { 7062 }, 1923, 50),
+        CHILLI_CON_CARNE(new int[] { 7062 }, 1923, 50),
         CHILLI_POTATO(7054, 140),
         CHOCCHIP_CRUNCHIES(2209, 70),
         CHOCOLATE_BAR(1973, 30),
@@ -147,7 +155,8 @@ public class Foods {
         CHOC_ICE(6794, 70),
         CHOC_SATURDAY(2074, 50),
         CHOMPY(2878, 60),
-        CHOPPED_ONION(new int[] { 1871 }, 1923, 50),
+        CHOPPED_GARLIC(new int[] { 7074 }, 1923, 0),
+        CHOPPED_ONION(new int[] { 1871 }, 1923, 10,  p -> p.sendMessage("It hurts to see a grown " + (p.getAppearance().isMale() ? "man" : "woman") + "cry.")),
         CHOPPED_TOMATO(new int[] { 1869 }, 1923, 50),
         CHOPPED_TUNA(new int[] { 7086 }, 1923, 50),
         COATED_FROGS_LEGS(10963, 20),
@@ -183,6 +192,9 @@ public class Foods {
         DRACONIC_FRUIT(21385, 100),
         DRUGGED_MEAT(15277, -1),
         DUSK_EEL(18163, 70),
+        DUSK_EEL_POTATO(new int[] { 18103 }, 100),
+        DUSK_EEL_AND_EDICAP_POTATO(new int[] { 18143 }, 190),
+        DUSK_EEL_AND_GISSEL_POTATO(new int[] { 18123 }, 130),
         DWELLBERRIES(2126, 20),
         EASTER_EGG(1961, 20),
         EASTER_EGG1(7928, 20),
@@ -204,6 +216,7 @@ public class Foods {
         EASTER_EGG17(1961, 20),
         EASTER_EGG18(1961, 20),
         EDIBLE_SEAWEED(403, 20),
+        EDICAP_POTATO(new int[] { 18097 }, 120),
         EELSUSHI(10971, 20),
         EGG_AND_TOMATO(new int[] { 7064 }, 1923, 80),
         EGG_POTATO(7056, 160),
@@ -217,7 +230,9 @@ public class Foods {
         FISHCAKE(7530, 110),
         FISH_LIKE_THING(6202, -1),
         FISH_N_CHIPS(24400, 50),
-        FISH_PIE(new int[] { 7188, 7190 }, 2313, p -> p.getSkills().adjustStat(3, 0.0, Constants.FISHING)),
+        FISH_PIE(new int[] { 7188, 7190 }, 2313, 60,  p -> p.getSkills().adjustStat(3, 0.0, Constants.FISHING)),
+        FLATFISH_AND_EDICAP_POTATO(new int[] { 18145 }, 220),
+        FLATFISH_AND_GISSEL_POTATO(new int[] { 18125 }, 160),
         FOOD_CLASS_1(14162, 40),
         FOOD_CLASS_2(14164, 80),
         FOOD_CLASS_3(14166, 120),
@@ -232,10 +247,12 @@ public class Foods {
         FRUIT_BATTA(2277, 110),
         FULL_BREAKFAST(24404, 100),
         FURY_SHARK(20429, 280),
-        GARDEN_PIE(new int[] { 7178, 7180 }, 2313, p -> p.getSkills().adjustStat(3, 0.0, Constants.FARMING)),
+        GARDEN_PIE(new int[] { 7178, 7180 }, 2313, 60, p -> p.getSkills().adjustStat(3, 0.0, Constants.FARMING)),
         GIANT_CARP(337, -1),
         GIANT_FLATFISH(18165, 100),
+        GIANT_FLATFISH_POTATO(new int[] { 18105 }, 130),
         GIANT_FROG_LEGS(4517, 60),
+        GISSEL_POTATO(new int[] { 18095 }, 60),
         GOUT_TUBER(6311, 10, p -> p.restoreRunEnergy(100)),
         GREEN_GLOOP_SOUP(10960, 20),
         GREEN_SWEETS(4563, 20),
@@ -243,6 +260,9 @@ public class Foods {
         GUTHIX_FRUIT(21387, 200),
         HALF_WINE_JUG(1989, 87),
         HEIM_CRAB(18159, 20),
+        HEIM_CRAB_POTATO(new int[] { 18099 }, 50),
+        HEIM_CRAB_AND_EDICAP_POTATO(new int[] { 18139 }, 140),
+        HEIM_CRAB_AND_GISSEL_POTATO(new int[] { 18119 }, 80),
         HERRING(347, 20),
         HUMBLE_PIE(18767, -1),
         IGNEOUS_FRUIT(21378, 150),
@@ -250,7 +270,7 @@ public class Foods {
         JUBBLY(7568, 150),
         JUJU_GUMBO(19949, 320, p -> p.addEffect(Effect.BARON_SHARK, Ticks.fromSeconds(12))),
         KARAMBWANJI(3151, 30),
-        KEBAB(1971, 0, KEBAB_EFFECT),
+        KEBAB(1971, 0, p -> KEBAB_EFFECT.accept(p)),
         KING_WORM(2162, 20),
         LAVA_EEL(2149, 110),
         LEAN_SNAIL_MEAT(3371, 80),
@@ -274,6 +294,8 @@ public class Foods {
         MONKEY_BAR(4014, 90),
         MONKEY_NUTS(4012, 20),
         MONKFISH(7946, 160),
+        MORAY_AND_EDICAP_POTATO(new int[] { 18157 }, 370),
+        MORAY_AND_GISSEL_POTATO(new int[] { 18137 }, 310),
         MUSHROOMS(10968, 25),
         MUSHROOM_AND_ONIONS(new int[] { 7066 }, 1923, 110),
         MUSHROOM_AND_ONION_POTATO(7058, 200),
@@ -331,6 +353,9 @@ public class Foods {
         REDBERRY_PIE(new int[] { 2325, 2333 }, 2313, 50),
         RED_BANANA(7572, 50),
         RED_EYE(18161, 50),
+        RED_EYE_POTATO(new int[] { 18101 }, 80),
+        RED_EYE_AND_EDICAP_POTATO(new int[] { 18141 }, 170),
+        RED_EYE_AND_GISSEL_POTATO(new int[] { 18121 }, 110),
         RED_SWEETS(4562, 20),
         ROASTED_BEAST_MEAT(9988, 42),
         ROASTED_BIRD_MEAT(9980, 42),
@@ -346,6 +371,9 @@ public class Foods {
         ROTTEN_APPLE(1984, -1),
         SALMON(329, 90),
         SALVE_EEL(18173, 200),
+        SALVE_EEL_POTATO(new int[] { 18113 }, 230),
+        SALVE_EEL_AND_EDICAP_POTATO(new int[] { 18153 }, 320),
+        SALVE_EEL_AND_GISSEL_POTATO(new int[] { 18133 }, 260),
         SARADOMIN_FRUIT(21386, 200),
         SARDINE(325, 40),
         SCORPION_MEAT(22342, 80),
@@ -358,12 +386,19 @@ public class Foods {
         SHADOW_FRUIT(21377, 150),
         SHARK(385, 200),
         SHORT_FINNED_EEL(18167, 120),
+        SHORT_FIN_EEL_POTATO(new int[] { 18107 }, 150),
+        SHORT_FIN_AND_EDICAP_POTATO(new int[] { 18147 }, 240),
+        SHORT_FIN_AND_GISSEL_POTATO(new int[] { 18127 }, 180),
         SHRIMP(315, 30),
         SHRUNK_OGLEROOT(11205, 20),
         SKEWERED_KEBAB(15123, 90),
         SLICED_BANANA(3162, 20),
+        SLICED_MUSHROOMS(new int[] { 7080 }, 1923, 0),
         SLICED_RED_BANANA(7574, 20),
         SLIMY_EEL(3381, 70),
+        SNIPPER_POTATO(new int[] { 18109 }, 180),
+        SNIPPER_AND_EDICAP_POTATO(new int[] { 18149 }, 270),
+        SNIPPER_AND_GISSEL_POTATO(new int[] { 18129 }, 210),
         SPICEY_SAUCE(new int[] { 7072 }, 1923, 20),
         SPICY_CRUNCHIES(2213, 20),
         SPICY_MINCED_MEAT(9996, 20),
@@ -384,7 +419,7 @@ public class Foods {
             p.restoreRunEnergy(10);
         }),
         SUMMER_SQIRKJUICE(10849, 150, p -> p.getSkills().adjustStat(2, 0.1, true, Constants.THIEVING)),
-        SUPER_KEBAB(4608, 0, KEBAB_EFFECT),
+        SUPER_KEBAB(4608, 0, p -> KEBAB_EFFECT.accept(p)),
         SWORDFISH(373, 140),
         TANGLED_TOAD_LEGS(2187, 150),
         TCHIKI_MONKEY_NUTS(7573, 2),
@@ -499,35 +534,48 @@ public class Foods {
 
     private static final Consumer<Player> KEBAB_EFFECT = player -> {
         int roll = Utils.random(100);
-        if (roll >= 95) {
+        int maxHp = player.getMaxHitpoints();
+        int currentHp = player.getHitpoints();
+
+        if (currentHp == maxHp) {
+            if (roll < 10) {
+                player.applyHit(new Hit(player, Utils.random(10, 20), Hit.HitLook.TRUE_DAMAGE));
+                player.sendMessage("The kebab didn't sit well with you.");
+            }
+            return;
+        }
+
+        if (roll >= 96) {
             player.sendMessage("Wow, that was an amazing kebab! You feel really invigorated.");
-            int healChance = Utils.random(26, 32);
-            int hp = (int) Math.round(player.getMaxHitpoints() * healChance);
-            player.heal(hp);
-            player.getSkills().adjustStat(2, 0.1, true, Constants.ATTACK);
-            player.getSkills().adjustStat(2, 0.1, true, Constants.STRENGTH);
-            player.getSkills().adjustStat(2, 0.1, true, Constants.DEFENSE);
-        } else if (roll >= 90 && roll <= 94) {
-            player.sendMessage("That tasted very dodgy. You feel very ill. Eating the kebab has done damage to some of your stats.");
-            player.getSkills().adjustStat(-3, 0.1, true, Constants.ATTACK);
-            player.getSkills().adjustStat(-3, 0.1, true, Constants.STRENGTH);
-            player.getSkills().adjustStat(-3, 0.1, true, Constants.DEFENSE);
-        } else if (roll >= 40 && roll <= 89) {
-            player.sendMessage("It restores some life points.");
-            double healChance = Utils.random(7.3, 10.0);
-            int hp = (int) Math.round(player.getMaxHitpoints() * healChance);
-            player.heal(hp);
-        } else if (roll >= 25 && roll <= 39) {
-            player.sendMessage("That kebab didn't seem to do a lot.");
-        } else if (roll >= 10 && roll <= 24) {
+            int healAmount = Math.min(300, maxHp - currentHp);
+            player.heal(healAmount);
+            player.getSkills().adjustStat(1 + Utils.random(3), 0.1, true, Constants.ATTACK);
+            player.getSkills().adjustStat(1 + Utils.random(3), 0.1, true, Constants.STRENGTH);
+            player.getSkills().adjustStat(1 + Utils.random(3), 0.1, true, Constants.DEFENSE);
+        } else if (roll >= 75 && roll <= 95) {
             player.sendMessage("That was a good kebab. You feel a lot better.");
-            double healChance = Utils.random(14.6, 20.0);
-            int hp = (int) Math.round(player.getMaxHitpoints() * healChance);
-            player.heal(hp);
-        } else if (roll >= 0 && roll <= 9) {
-            int skill = Utils.random(0, 25);
-            player.sendMessage("That tasted very dodgy. You feel very ill. Eating the kebab has done damage to some of your " + Constants.SKILL_NAME[skill] + " stats.");
-            player.getSkills().adjustStat(-3, 0.1, true, skill);
+            int healAmount = Math.min(Utils.random(100, 200), maxHp - currentHp);
+            player.heal(healAmount);
+        } else if (roll >= 10 && roll <= 74) {
+            player.sendMessage("It restores some life points.");
+            int healAmount = Math.min((int) (maxHp * 0.10), maxHp - currentHp);
+            player.heal(healAmount);
+        } else if (roll >= 1 && roll <= 9) {
+            player.sendMessage("That kebab didn't seem to do a lot.");
+        } else {
+            int skillEffectRoll = Utils.random(0, 1);
+            if (skillEffectRoll == 0) {
+                int skill = Utils.random(0, Constants.SKILL_NAME.length - 1);
+                player.sendMessage("That tasted a bit dodgy. You feel a bit ill.");
+                player.sendMessage("Eating the kebab has damaged your " + Constants.SKILL_NAME[skill] + " stat.");
+                player.getSkills().adjustStat(-1, 0.1, true, skill);
+            } else {
+                player.sendMessage("That tasted very dodgy. You feel very ill.");
+                player.sendMessage("Eating the kebab has done damage to some of your stats.");
+                player.getSkills().adjustStat(-5, 0.05, true, Constants.ATTACK);
+                player.getSkills().adjustStat(-5, 0.05, true, Constants.STRENGTH);
+                player.getSkills().adjustStat(-5, 0.05, true, Constants.DEFENSE);
+            }
         }
     };
 }

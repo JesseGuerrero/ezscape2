@@ -28,7 +28,7 @@ import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.npc.combat.CombatScript;
 import com.rs.game.model.entity.npc.combat.NPCCombatDefinitions;
 import com.rs.game.model.entity.player.Player;
-import com.rs.game.model.object.GameObject;
+import com.rs.game.model.gameobject.GameObject;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
@@ -97,7 +97,7 @@ public class GluttonousBehemothCombat extends CombatScript {
 		if (attackStyle == 0) {
 			npc.setNextAnimation(new Animation(13719));
 			World.sendProjectile(npc, target, 2612, new Pair<>(41, 16), 41, 5, 16);
-			int damage = getMaxHitFromAttackStyleLevel(npc, CombatStyle.MAGE, target);
+			int damage = getMaxHitFromAttackStyleLevel(npc, CombatStyle.MAGIC, target);
 			delayHit(npc, 2, target, Hit.magic(npc, damage));
 			if (damage != 0)
 				WorldTasks.schedule(new Task() {

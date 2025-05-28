@@ -119,15 +119,15 @@ public class FightArena extends QuestOutline {
 	});
 
 	public static ObjectClickHandler handleJailEntrance = new ObjectClickHandler(new Object[] { 81 }, e -> {
-		if(e.getObject().getRotation() == 2) {
-			if(e.getPlayer().getX() > e.getObject().getX()) {
-				handleDoor(e.getPlayer(), e.getObject());
+		if(e.getObj().getRotation() == 2) {
+			if(e.getPlayer().getX() > e.getObj().getX()) {
+				handleDoor(e.getPlayer(), e.getObj());
 				return;
 			}
 			if(e.getPlayer().getEquipment().getHatId() == 74 && e.getPlayer().getEquipment().getChestId() == 75) {
 				e.getPlayer().startConversation(new Dialogue().addPlayer(HeadE.FRUSTRATED, "This door appears to be locked.")
 						.addNPC(253, HeadE.CALM_TALK, "Nice observation, guard. You could have asked to be let in like any normal person.")
-						.addNext(()-> handleDoor(e.getPlayer(), e.getObject()))
+						.addNext(()-> handleDoor(e.getPlayer(), e.getObj()))
 				);
 				return;
 			}
@@ -135,15 +135,15 @@ public class FightArena extends QuestOutline {
 					.addNPC(253, HeadE.CALM_TALK, "Nice observation")
 			);
 		}
-		if(e.getObject().getRotation() == 3) {
-			if(e.getPlayer().getY() < e.getObject().getY()) {
-				handleDoor(e.getPlayer(), e.getObject());
+		if(e.getObj().getRotation() == 3) {
+			if(e.getPlayer().getY() < e.getObj().getY()) {
+				handleDoor(e.getPlayer(), e.getObj());
 				return;
 			}
 			if(e.getPlayer().getEquipment().getHatId() == 74 && e.getPlayer().getEquipment().getChestId() == 75) {
 				e.getPlayer().startConversation(new Dialogue().addPlayer(HeadE.FRUSTRATED, "This door appears to be locked.")
 						.addNPC(253, HeadE.CALM_TALK, "Nice observation, guard. You could have asked to be let in like any normal person.")
-						.addNext(()-> handleDoor(e.getPlayer(), e.getObject()))
+						.addNext(()-> handleDoor(e.getPlayer(), e.getObj()))
 				);
 				return;
 			}
