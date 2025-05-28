@@ -25,6 +25,8 @@ import com.rs.game.model.entity.player.Player;
 import com.rs.lib.game.Animation;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
+import com.rs.plugin.handlers.NPCClickHandler;
+import com.rs.utils.shop.ShopsHandler;
 import com.rs.rsps.tileman.StartTilemanCutscene;
 
 @PluginEventHandler
@@ -275,9 +277,13 @@ public final class PlayerLook {
 		e.getPlayer().getAppearance().generateAppearanceData();
 	});
 
+//	public static NPCClickHandler ThessaliasMakeOver = new NPCClickHandler(new Object[] {548}, e -> PlayerLook.openThessaliasMakeOver(e.getPlayer()));
+
 	public static void openThessaliasMakeOver(final Player player) {
 		if (player.getEquipment().wearingArmour()) {
-			player.npcDialogue(548, HeadE.CALM_TALK, "You're not able to try on my clothes with all that armour. Take it off and then speak to me again.");
+			player.sendMessage("Take off your armour to open the clothes manager");
+			ShopsHandler.openShop(player, "Thessalia's Fine Clothes");
+//			player.npcDialogue(548, HeadE.CALM_TALK, "You're not able to try on my clothes with all that armour. Take it off and then speak to me again.");
 			return;
 		}
 		player.setNextAnimation(new Animation(11623));

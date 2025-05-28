@@ -132,15 +132,15 @@ fun mapLoginModifiers() {
             }
     }
 
-    Commands.add(Rights.PLAYER, "item,spawn [itemId (amount)]", "Spawns an item with specified id and amount.") { p, args ->
-        val itemId = args[0].toInt()
-        if (arrayOf(5733, 25349, 25357).contains(itemId)) {
-            p.sendMessage("You can't spawn that item.")
-            return@add
-        }
-        p.inventory.addItem(args[0].toInt(), if (args.size >= 2) args[1].toInt() else 1)
-        p.stopAll()
-    }
+//    Commands.add(Rights.PLAYER, "item,spawn [itemId (amount)]", "Spawns an item with specified id and amount.") { p, args ->
+//        val itemId = args[0].toInt()
+//        if (arrayOf(5733, 25349, 25357).contains(itemId)) {
+//            p.sendMessage("You can't spawn that item.")
+//            return@add
+//        }
+//        p.inventory.addItem(args[0].toInt(), if (args.size >= 2) args[1].toInt() else 1)
+//        p.stopAll()
+//    }
 }
 
 fun updateSkull(player: Player) {

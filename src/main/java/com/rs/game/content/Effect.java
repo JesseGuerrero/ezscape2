@@ -23,6 +23,7 @@ import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.Skills;
 import com.rs.lib.Constants;
 import com.rs.lib.game.SpotAnim;
+import com.rs.rsps.EZScape;
 import com.rs.utils.Ticks;
 
 import java.util.List;

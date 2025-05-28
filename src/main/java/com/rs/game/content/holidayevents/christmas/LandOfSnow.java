@@ -16,6 +16,7 @@
 //
 package com.rs.game.content.holidayevents.christmas;
 
+import com.rs.Settings;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.game.World;
 import com.rs.game.model.entity.npc.NPC;
@@ -27,6 +28,7 @@ import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.annotations.ServerStartupEvent;
 import com.rs.plugin.handlers.ObjectClickHandler;
 import com.rs.plugin.handlers.XPGainHandler;
+import com.rs.rsps.Power.Power;
 import com.rs.utils.Areas;
 import com.rs.utils.spawns.NPCSpawn;
 import com.rs.utils.spawns.NPCSpawns;
@@ -37,7 +39,6 @@ import com.rs.utils.spawns.ObjectSpawns;
 public class LandOfSnow {
 
     private static final boolean ACTIVE = false;
-	private static final int TRADEABLE_REWARD = 1050;
 
 	@ServerStartupEvent
 	public static void initObjects() {
@@ -88,7 +89,7 @@ public class LandOfSnow {
 		n.setPermName("Yule-cien");
 		n.setHitpoints(Integer.MAX_VALUE / 2);
 		n.getCombatDefinitions().setHitpoints(Integer.MAX_VALUE / 2);
-		n.setCapDamage(750);
+		n.setCapDamage(Power.setInfCapDamage());
 		n.setForceMultiArea(true);
 		n.setForceMultiAttacked(true);
 	}
@@ -101,11 +102,17 @@ public class LandOfSnow {
 				e.getPlayer().sendMessage("<shad=000000><col=ff0000>You've been granted a 10% experience boost for skilling within the Land of Snow!");
 				e.getPlayer().setBonusXpRate(0.10);
 			}
-			double chance = e.getXp() / 75000.0;
+			double chance = e.getXp() * Settings.getConfig().getXpRate() / 750_000.0;
 			if (Math.random() < chance) {
+                int[] TRADEABLE_REWARDS = new int[] {1050, 1037, 962, 1053, 1055, 1057, 4566};
+				int index = e.getPlayer().getI("snow", 0) % TRADEABLE_REWARDS.length;
+				int TRADEABLE_REWARD = TRADEABLE_REWARDS[index];
                 e.getPlayer().sendMessage("<shad=000000><col=ff0000>You found a "+ItemDefinitions.getDefs(TRADEABLE_REWARD).name+" while skilling!");
-				if (e.getPlayer().getInventory().hasFreeSlots())
+				e.getPlayer().set("snow", e.getPlayer().getI("snow", 0) + 1);
+				e.getPlayer().getInventory().addCoins(60_000);
+				if (e.getPlayer().getInventory().hasFreeSlots()) {
 					e.getPlayer().getInventory().addItemDrop(TRADEABLE_REWARD, 1);
+				}
 				else {
 					e.getPlayer().sendMessage("<shad=000000><col=ff0000>as you did not have room in your inventory, it has been added to your bank.");
 					e.getPlayer().getBank().addItem(new Item(TRADEABLE_REWARD, 1), true);

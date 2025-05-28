@@ -36,6 +36,7 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.net.ClientPacket;
 import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 import com.rs.utils.Ticks;
 
 public class FightCavesController extends Controller {
@@ -73,7 +74,7 @@ public class FightCavesController extends Controller {
 			player.npcDialogue(THHAAR_MEJ_JAL, HeadE.T_CALM_TALK, "No Kimit-Zil in the pits! This is a fight for YOU, not your friends!");
 			return;
 		}
-		player.getControllerManager().startController(new FightCavesController(1));
+		player.getControllerManager().startController(new FightCavesController(EZScape.getFightCavesWave(player)));
 	}
 
 	private static enum Stages {
@@ -275,6 +276,7 @@ public class FightCavesController extends Controller {
 	public void exitCave(int type) {
 		stage = Stages.DESTROYING;
 		Tile outside = Tile.of(OUTSIDE, 2); // radomizes alil
+		EZScape.saveFightCaveWave(player, getCurrentWave());
 		if (type == 0 || type == 2)
 			player.setTile(outside);
 		else {
@@ -283,6 +285,7 @@ public class FightCavesController extends Controller {
 			if (type == 1 || type == 4) {
 				player.tele(outside);
 				if (type == 4) {
+					EZScape.saveFightCaveWave(player, 1);
 					player.incrementCount("Fight Caves clears");
 					player.reset();
 					player.npcDialogue(THHAAR_MEJ_JAL, HeadE.T_CALM_TALK, "You even defeated Tz Tok-Jad, I am most impressed! Please accept this gift as a reward.");
@@ -297,10 +300,12 @@ public class FightCavesController extends Controller {
 						World.addGroundItem(new Item(6529, 16064), Tile.of(player.getTile()), player, true, 180);
 					} else if (!player.getInventory().addItem(6529, 16064))
 						World.addGroundItem(new Item(6529, 16064), Tile.of(player.getTile()), player, true, 180);
-				} else if (getCurrentWave() == 1)
+				} else if (getCurrentWave() == 1) {
 					player.npcDialogue(THHAAR_MEJ_JAL, HeadE.T_CALM_TALK, "Well I suppose you tried... better luck next time.");
+					EZScape.saveFightCaveWave(player, 1);
+				}
 				else {
-					int tokkul = getCurrentWave() * 8032 / WAVES.length;
+					int tokkul = (getCurrentWave() - EZScape.getFightCavesWave(player)) * 8032 / WAVES.length;
 					if (!player.getInventory().addItem(6529, tokkul))
 						World.addGroundItem(new Item(6529, tokkul), Tile.of(player.getTile()), player, true, 180);
 					player.npcDialogue(THHAAR_MEJ_JAL, HeadE.T_CALM_TALK, "Well done in the cave, here, take TokKul as reward.");

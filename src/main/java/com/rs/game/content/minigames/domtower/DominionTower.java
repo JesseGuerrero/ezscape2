@@ -28,6 +28,7 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
+import com.rs.rsps.Power.Power;
 import com.rs.plugin.handlers.ObjectClickHandler;
 
 @PluginEventHandler
@@ -120,7 +121,7 @@ public final class DominionTower {
 				e.getPlayer().getDominionTower().startEnduranceMode();
 	});
 
-	public static ObjectClickHandler handleDominionTowerInteractions = new ObjectClickHandler(new Object[] { 62674, 62675, 62678, 62679, 62688, 62677, 62680 }, e -> {
+	public static ObjectClickHandler handleDominionTowerInteractions = new ObjectClickHandler(new Object[] { 62674, 62678, 62679, 62688, 62677, 62680 }, e -> {
 		Player player = e.getPlayer();
 
 		switch (e.getObjectId()) {
@@ -128,27 +129,18 @@ public final class DominionTower {
 			case 62675 -> player.getCutsceneManager().play(new DTPreview());
 			case 62676 -> player.useStairs(-1, Tile.of(3374, 3093, 0), 0, 1);
 			case 62678, 62679 -> player.getDominionTower().openModes();
-			case 62688 -> {
-				if (e.getOption().equals("Claim-rewards")) {
-					player.startConversation(new Dialogue()
-							.addSimple("You have a Dominion Factor of " + player.getDominionTower().getDominionFactor() + ".")
-							.addOptions("If you claim your rewards your progress will be reset.", ops -> {
-								ops.add("Claim rewards", () -> player.getDominionTower().openRewardsChest());
-								ops.add("Nevermind.");
-							}));
-				} else if (e.getOption().equals("Check-DF")) {
-					e.getPlayer().simpleDialogue("You have a Dominion Factor of " + e.getPlayer().getDominionTower().getDominionFactor() + ".");
-				}
-			}
-			case 62677 -> {
-				if (e.getOption().equals("Talk-to"))
-					player.getDominionTower().talkToFace();
-				else if (e.getOption().equals("Rewards"))
-					e.getPlayer().getDominionTower().openRewards();
-			}
+			case 62688 -> player.startConversation(new Dialogue()
+				.addSimple("You have a Dominion Factor of " + player.getDominionTower().getDominionFactor() + ". Also boss count: " + player.getDominionTower().killedBossesCount)
+				.addOptions("If you claim your rewards your progress will be reset.", ops -> {
+					ops.add("Claim rewards", () -> player.getDominionTower().openRewardsChest());
+					ops.add("Nevermind.");
+				}));
+			case 62677 -> player.getDominionTower().talkToFace();
 			case 62680 -> player.getDominionTower().openBankChest();
 		}
 	});
+
+	public static ObjectClickHandler handleDominionTowerRewards = new ObjectClickHandler(new Object[] { 62677 }, e -> e.getPlayer().getDominionTower().openRewards());
 
 
 	private static final int[] MUSICS = { 1015, 1022, 1018, 1016, 1021 };
@@ -363,9 +355,9 @@ public final class DominionTower {
 			if (progress > maxFloorEndurance)
 				maxFloorEndurance = progress;
 
-		killedBossesCount++;
-		dominionFactor += factor;
-		totalScore += factor;
+		killedBossesCount += 1* Power.multiplyBossKillsDomTower();
+		dominionFactor += factor * Power.multiplyBossKillsDomTower();
+		totalScore += factor* Power.multiplyBossKillsDomTower();
 		if (dominionFactor > MAX_FACTOR) {
 			dominionFactor = MAX_FACTOR;
 			player.sendMessage("You've reached the maximum Dominion Factor you can get so you should spend it!");

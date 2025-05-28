@@ -21,6 +21,7 @@ import com.rs.game.model.entity.Hit.HitLook;
 import com.rs.game.model.entity.player.Player;
 import com.rs.game.model.entity.player.managers.AuraManager.Aura;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.Power.SpecialItems;
 
 public final class Poison {
 
@@ -62,6 +63,8 @@ public final class Poison {
 				if (player.getAuraManager().isActivated(Aura.POISON_PURGE, Aura.GREATER_POISON_PURGE, Aura.MASTER_POISON_PURGE, Aura.SUPREME_POISON_PURGE))
 					heal = true;
 			}
+			if (entity instanceof Player player)
+				SpecialItems.codexPoison(player, poisonDamage);
 			if (!heal && entity instanceof Player p)
 				p.incrementCount("Poison damage taken", poisonDamage);
 			entity.applyHit(new Hit(entity, poisonDamage, heal ? HitLook.HEALED_DAMAGE : HitLook.POISON_DAMAGE));

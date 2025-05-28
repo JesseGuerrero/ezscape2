@@ -25,6 +25,7 @@ import com.rs.lib.game.Item;
 import com.rs.lib.net.packets.encoders.Sound;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemOnObjectHandler;
+import com.rs.rsps.Power.Power;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -256,6 +257,7 @@ public class Cooking extends PlayerAction {
 				player.getSkills().addXp(Constants.COOKING, xp);
 			}
 			player.sendMessage("You successfully cook " + (cookable == Cookables.RAW_SHRIMP || cookable == Cookables.RAW_ANCHOVIES ? "some" : "a") + " " + productName.toLowerCase() + ".", true);
+			Power.incrementPowerCooking(player, new Item(cookable.getProductItem()[option]).getId());
 		}
 		player.getPackets().sendSound(new Sound(2577, 0, Sound.SoundType.EFFECT));
 		if (quantity > 0) {

@@ -33,6 +33,7 @@ import com.rs.plugin.annotations.ServerStartupEvent;
 import com.rs.plugin.handlers.ItemOnItemHandler;
 import com.rs.plugin.handlers.NPCClickHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -116,6 +117,7 @@ public class Fishing extends PlayerAction {
         int level = player.getSkills().getLevel(Constants.FISHING) + player.getInvisibleSkillBoost(Skills.FISHING);
         for (Fish f : spot.getFish()) {
             if (f.checkRequirements(player) && f.rollSuccess(player, level)) {
+                EZScape.giveTwoExtraFish(player, spot, f);
                 f.giveFish(player, spot);
                 return 4;
             }

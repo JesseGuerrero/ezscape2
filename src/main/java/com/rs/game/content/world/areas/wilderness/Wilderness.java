@@ -182,7 +182,7 @@ public class Wilderness {
 		}
 	});
 
-	public static ObjectClickHandler handleCorpCave2 = new ObjectClickHandler(new Object[] { 37929 }, new Tile[] { Tile.of(2918, 4382, 0) }, e -> {
+	public static ObjectClickHandler handleCorpCave2 = new ObjectClickHandler(new Object[] { 37929 }, new Tile[] { Tile.of(2918, 4382, 2) }, e -> {
 		e.getPlayer().stopAll();
 		e.getPlayer().tele(Tile.of(e.getPlayer().getX() == 2921 ? 2917 : 2921, e.getPlayer().getY(), e.getPlayer().getPlane()));
 	});

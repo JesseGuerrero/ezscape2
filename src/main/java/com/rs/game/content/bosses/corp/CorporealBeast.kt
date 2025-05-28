@@ -37,6 +37,8 @@ import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.instantiateNpc
 import com.rs.plugin.kts.npcCombat
 import com.rs.plugin.kts.onButtonClick
+import com.rs.rsps.EZScape
+import com.rs.rsps.Power.Power
 import com.rs.utils.WorldUtil
 
 @ServerStartupEvent
@@ -134,7 +136,7 @@ class CorporealBeast(id: Int, tile: Tile?, spawned: Boolean) : NPC(id, tile, spa
     private var core: DarkEnergyCore? = null
 
     init {
-        capDamage = 1000
+        capDamage = Power.setInfCapDamage()
         lureDelay = 3000
         setForceAggroDistance(64)
         isIntelligentRouteFinder = true
@@ -183,7 +185,7 @@ class CorporealBeast(id: Int, tile: Tile?, spawned: Boolean) : NPC(id, tile, spa
             setAttackedBy(null)
         }
 
-        if (hitpoints < maxHitpoints && possibleTargets.isEmpty() && attackedBy == null) {
+        if (EZScape.corpReset() && hitpoints < maxHitpoints && possibleTargets.isEmpty() && attackedBy == null) {
             resetLevels()
             hitpoints = maxHitpoints
         }

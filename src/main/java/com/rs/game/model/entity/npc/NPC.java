@@ -59,6 +59,9 @@ import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.NPCDeathEvent;
 import com.rs.plugin.events.NPCDropEvent;
 import com.rs.plugin.events.NPCKillParticipatedEvent;
+import com.rs.rsps.EZScape;
+import com.rs.rsps.Power.ScalingWorld;
+import com.rs.rsps.Power.SpecialItems;
 import com.rs.tools.old.CharmDrop;
 import com.rs.utils.DropSets;
 import com.rs.utils.EffigyDrop;
@@ -69,6 +72,8 @@ import com.rs.utils.drop.DropTable;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static com.rs.rsps.Power.ScalingWorld.extractScaleFromName;
 
 public class NPC extends Entity {
 
@@ -387,6 +392,7 @@ public class NPC extends Entity {
 		combat.reset();
 		combatLevels = getCombatDefinitions().getLevels(); // back to real bonuses
 		forceWalk = null;
+		ScalingWorld.resetNameAndCombatLevelOnDeath(this);
 	}
 
 	@Override
@@ -555,7 +561,7 @@ public class NPC extends Entity {
 				killer.getVars().setVarBit(464, killer.getBarrowsKillCount() + killer.getKilledBarrowBrothersCount());
 			}
 
-			Item[] drops = DropTable.calculateDrops(killer, DropSets.getDropSet(id));
+			Item[] drops = EZScape.tripleNPCDrops(killer, id);
 
 			for (Item item : drops)
 				sendDrop(killer, item);
@@ -706,7 +712,9 @@ public class NPC extends Entity {
 	}
 
 	public int getMaxHit() {
-		return getCombatDefinitions().getMaxHit();
+		int scale = extractScaleFromName(getName());
+		double boost = 1.0 + (scale / 10.0);
+		return (int)(getCombatDefinitions().getMaxHit() * boost);
 	}
 
 	public int getLevelForStyle(CombatStyle style) {

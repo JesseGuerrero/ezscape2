@@ -27,6 +27,7 @@ import com.rs.game.model.entity.npc.combat.NPCCombatDefinitions;
 import com.rs.game.model.entity.player.Player;
 import com.rs.lib.game.Animation;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.Power.SpecialItems;
 import com.rs.utils.WorldUtil;
 import kotlin.Pair;
 
@@ -49,7 +50,7 @@ public class MetalDragonCombat extends CombatScript {
 			if (player != null) {
 				int protection = PlayerCombatKt.getAntifireLevel(target, false);
 				if (protection == 1)
-					damage = Utils.getRandomInclusive(50);
+					damage = SpecialItems.reduceDragonFire(target, Utils.getRandomInclusive(50));
 				else if (protection == 2)
 					damage = 0;
 			}

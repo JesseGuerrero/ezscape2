@@ -30,6 +30,7 @@ import com.rs.lib.game.Item;
 import com.rs.lib.game.SpotAnim;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.InterfaceOnInterfaceHandler;
+import com.rs.rsps.Power.Power;
 
 @PluginEventHandler
 public class Alchemy {
@@ -127,7 +128,8 @@ public class Alchemy {
 			}
 			World.soundEffect(player.getTile(), 98);
 			player.getInventory().deleteItem(item.getId(), 1);
-			player.getInventory().addCoins(def.getSellPrice());
+			player.getInventory().addCoins(def.getSellPrice() + Power.addCoins(player));
+			Power.incrementAlchemy(player, def.getSellPrice());
 			player.getSkills().addXp(Constants.MAGIC, 31);
 			player.addSpellDelay(2);
 		} else {
@@ -140,7 +142,8 @@ public class Alchemy {
 			}
 			World.soundEffect(player.getTile(), 98); //low alch id... high alch doesnt match osrs... reeeee
 			player.getInventory().deleteItem(item.getId(), 1);
-			player.getInventory().addCoins(def.getHighAlchPrice());
+			player.getInventory().addCoins(def.getHighAlchPrice() + Power.addCoins(player));
+			Power.incrementAlchemy(player, def.getHighAlchPrice());
 			player.getSkills().addXp(Constants.MAGIC, 65);
 			player.addSpellDelay(4);
 		}

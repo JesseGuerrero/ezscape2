@@ -25,6 +25,7 @@ import com.rs.game.model.entity.Hit;
 import com.rs.game.model.entity.Hit.HitLook;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.game.model.entity.npc.combat.NPCCombatDefinitions;
+import com.rs.game.model.entity.player.Player;
 import com.rs.game.tasks.Task;
 import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
@@ -33,6 +34,8 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.Power.Power;
+import com.rs.rsps.Power.SpecialItems;
 import com.rs.utils.WorldUtil;
 import kotlin.Pair;
 
@@ -63,7 +66,7 @@ public final class Nex extends NPC {
 		super(13447, tile, true);
 		this.arena = arena;
 		setCantInteract(true);
-		setCapDamage(500);
+//		setCapDamage(500);
 		setLureDelay(3000);
 		setIntelligentRouteFinder(true);
 		setRun(true);
@@ -150,6 +153,11 @@ public final class Nex extends NPC {
 				setNextAnimation(new Animation(defs.getDeathEmote()));
 			else if (tick >= defs.getDeathDelay()*2) { //TODO need to redo all npc death timers since they're increment of 2 ticks..
 				drop();
+				if(source instanceof Player player) {
+					SpecialItems.dropCodex(player, this, "Health");
+					SpecialItems.dropCodex(player, this, "Alchemy");
+					SpecialItems.dropCodex(player, this, "Agility");
+				}
 				reset();
 				finish();
 				arena.endWar();
@@ -207,25 +215,26 @@ public final class Nex extends NPC {
 
 	public void nextPhase() {
 		if (phase == Phase.SMOKE && minionStage == 1) {
-			setCapDamage(500);
+			setCapDamage(Power.setInfCapDamage());
 			setNextForceTalk(new ForceTalk("Darken my shadow!"));
 			World.sendProjectile(arena.umbra, this, 2244, new Pair<>(18, 18), 60, 5, 0);
 			getCombat().addCombatDelay(1);
 			voiceEffect(3302, true);
 		} else if (phase == Phase.SHADOW && minionStage == 2) {
-			setCapDamage(500);
+			setCapDamage(Power.setInfCapDamage());
 			setNextForceTalk(new ForceTalk("Flood my lungs with blood!"));
 			World.sendProjectile(arena.cruor, this, 2244, new Pair<>(18, 18), 60, 5, 0);
 			getCombat().addCombatDelay(1);
 			voiceEffect(3306, true);
 		} else if (phase == Phase.BLOOD && minionStage == 3) {
-			setCapDamage(500);
+			setCapDamage(Power.setInfCapDamage());
+			killBloodReavers();
 			setNextForceTalk(new ForceTalk("Infuse me with the power of ice!"));
 			World.sendProjectile(arena.glacies, this, 2244, new Pair<>(18, 18), 60, 5, 0);
 			getCombat().addCombatDelay(1);
 			voiceEffect(3303, true);
 		} else if (phase == Phase.ICE && minionStage == 4) {
-			setCapDamage(500);
+			setCapDamage(Power.setInfCapDamage());
 			setNextForceTalk(new ForceTalk("NOW, THE POWER OF ZAROS!"));
 			setNextAnimation(new Animation(6326));
 			setNextSpotAnim(new SpotAnim(1204));

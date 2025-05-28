@@ -35,6 +35,8 @@ import com.rs.lib.util.Utils;
 
 import javax.annotation.Nonnull;
 
+import static com.rs.rsps.Power.ScalingWorld.extractScaleFromName;
+
 public abstract class CombatScript {
 
 	public abstract Object[] getKeys();
@@ -110,6 +112,11 @@ public abstract class CombatScript {
 	}
 
 	public static int getMaxHit(NPC npc, int maxHit, @Nonnull Bonus attackBonus, CombatStyle attackStyle, Entity target, double accuracyModifier) {
+		if(maxHit < npc.getMaxHit()) {
+			int scale = extractScaleFromName(npc.getName());
+			double boost = 1.0 + (scale / 10.0);
+			maxHit = (int)(maxHit * boost);
+		}
 		return CombatFormulaKt.calculateHit(npc, target, 1, maxHit, attackBonus, attackStyle, true, accuracyModifier).getDamage();
 	}
 }

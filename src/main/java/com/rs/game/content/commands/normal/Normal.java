@@ -21,6 +21,7 @@ import com.rs.cache.loaders.NPCDefinitions;
 import com.rs.db.WorldDB;
 import com.rs.engine.command.Command;
 import com.rs.engine.command.Commands;
+import com.rs.game.ge.GE;
 import com.rs.game.ge.Offer;
 import com.rs.game.model.entity.npc.NPC;
 import com.rs.lib.game.Rights;
@@ -29,6 +30,13 @@ import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.annotations.ServerStartupEvent;
 import com.rs.utils.drop.DropTable;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static com.rs.game.ge.GE.resetVars;
+import static com.rs.game.ge.GE.updateGE;
 
 @PluginEventHandler
 public class Normal {
@@ -52,6 +60,95 @@ public class Normal {
             p.getPackets().sendRunScript(1207, componentId - 10);
             p.getInterfaceManager().sendInterface(275);
         });
+//
+//        Commands.add(Rights.PLAYER, "sell [itemId amount cost]", "Displays all buy offers currently active in the Grand Exchange.", (p, args) -> {
+//            int itemId = Integer.valueOf(args[0]);
+//            int amount = Integer.valueOf(args[1]);
+//            int cost = Integer.valueOf(args[2]);
+//            int box = 0;
+//            for(int b = 0; b < p.getGEOffers().keySet().size(); b++)
+//                if(p.getGEOffers().keySet().contains(b))
+//                    box++;
+//                else
+//                    break;
+//
+//            Offer offer = new Offer(p.getUsername(), box, true, itemId, amount, cost, GE.OfferType.SELL);
+//            if (!GE.deleteItems(p, offer)) {
+//                p.sendMessage("You don't have the items to cover the offer.");
+//                return;
+//            }
+//            GE.resetVars(p);
+//            p.getGEOffers().put(offer.getBox(), offer);
+//            GE.updateGE(p);
+//            p.getTempAttribs().setB("geLocked", true);
+//            WorldDB.getGE().execute(() -> {
+//                Set<String> ownersNeedUpdate = new HashSet<>();
+//                List<Offer> offers = WorldDB.getGE().getBestOffersSync(offer);
+//                offer.setState(Offer.State.STABLE);
+//                if (offers == null || offers.isEmpty()) {
+//                    WorldDB.getGE().saveSync(offer);
+//                    GE.updateGE(p);
+//                    p.getTempAttribs().setB("geLocked", false);
+//                    return;
+//                }
+//                for (Offer other : offers)
+//                    if (offer.process(other)) {
+//                        WorldDB.getGE().saveSync(other);
+//                        ownersNeedUpdate.add(other.getOwner());
+//                    }
+//                if (offer.getState() == Offer.State.STABLE)
+//                    WorldDB.getGE().saveSync(offer);
+//                updateGE(p);
+//                p.getTempAttribs().setB("geLocked", false);
+//                if (!ownersNeedUpdate.isEmpty())
+//                    for (String username : ownersNeedUpdate)
+//                        GE.updateOffers(username);
+//            });
+//        });
+//
+//        Commands.add(Rights.PLAYER, "buy [itemId amount cost]", "Displays all buy offers currently active in the Grand Exchange.", (p, args) -> {
+//            int itemId = Integer.valueOf(args[0]);
+//            int amount = Integer.valueOf(args[1]);
+//            int cost = Integer.valueOf(args[2]);
+//            int box = 0;
+//            for(int b = 0; b < p.getGEOffers().keySet().size(); b++)
+//                if(p.getGEOffers().keySet().contains(b))
+//                    box++;
+//                else
+//                    break;
+//            Offer offer = new Offer(p.getUsername(), box, false, itemId, amount, cost, GE.OfferType.BUY);
+//            if (!GE.deleteItems(p, offer)) {
+//                p.sendMessage("You don't have the items to cover the offer.");
+//                return;
+//            }
+//            GE.resetVars(p);
+//            p.getGEOffers().put(offer.getBox(), offer);
+//            GE.updateGE(p);
+//            p.getTempAttribs().setB("geLocked", true);
+//            WorldDB.getGE().execute(() -> {
+//                Set<String> ownersNeedUpdate = new HashSet<>();
+//                List<Offer> offers = WorldDB.getGE().getBestOffersSync(offer);
+//                offer.setState(Offer.State.STABLE);
+//                if (offers == null || offers.isEmpty()) {
+//                    WorldDB.getGE().saveSync(offer);
+//                    GE.updateGE(p);
+//                    p.getTempAttribs().setB("geLocked", false);
+//                    return;
+//                }
+//                for (Offer other : offers)
+//                    if (offer.process(other)) {
+//                        WorldDB.getGE().saveSync(other);
+//                        ownersNeedUpdate.add(other.getOwner());
+//                    }
+//                if (offer.getState() == Offer.State.STABLE)
+//                    WorldDB.getGE().saveSync(offer);
+//                updateGE(p);
+//                p.getTempAttribs().setB("geLocked", false);
+//                if (!ownersNeedUpdate.isEmpty())
+//                    for (String username : ownersNeedUpdate)
+//                        GE.updateOffers(username);
+//            });
+//        });
 
         Commands.add(Rights.PLAYER, "drops [npcId/droptablename numberKilled]", "Emulates a number of NPC kills and displays the collected loot.", (p, args) -> {
             int npcId = -1;

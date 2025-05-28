@@ -41,6 +41,7 @@ import com.rs.lib.net.ClientPacket
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.*
+import com.rs.rsps.EZScape
 import kotlin.random.Random
 
 private var killedCyclopses = 0
@@ -143,7 +144,7 @@ fun mapWarriorsGuild() {
         val player = killer as? Player ?: return@onNpcDeath
         val controller = player.controllerManager.controller as? WarriorsGuildController ?: return@onNpcDeath
         if (!controller.inCyclopsRoom) return@onNpcDeath player.sendMessage("Your time has expired and the cyclops will no longer drop defenders.")
-        if (Utils.random(50) == 0)
+        if (Utils.random(Utils.random(EZScape.defenderDropRate())) == 0)
             npc.sendDrop(player, Item(getBestDefender(player)))
         killedCyclopses++
     }

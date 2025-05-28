@@ -25,6 +25,7 @@ import com.rs.game.model.entity.player.managers.AuraManager.Aura;
 import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 
 public class HarvestPatch extends PlayerAction {
 
@@ -124,7 +125,7 @@ public class HarvestPatch extends PlayerAction {
 				if (Utils.random(3) == 0)
 					amount++;
 			player.incrementCount(patch.seed.productId.getName() + " harvested", amount);
-			player.getInventory().addItemDrop(player.hasEffect(Effect.PATCH_BOMB) ? ItemConstants.noteIfPossible(patch.seed.productId.getId()) : patch.seed.productId.getId(), amount);
+			player.getInventory().addItemDrop(player.hasEffect(Effect.PATCH_BOMB) ? ItemConstants.noteIfPossible(patch.seed.productId.getId()) : patch.seed.productId.getId(), amount * EZScape.farmMultiplier());
 		}
 		switch (patch.seed.type) {
 			case CALQUAT:

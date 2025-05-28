@@ -22,6 +22,7 @@ import com.rs.lib.game.SpotAnim
 import com.rs.lib.game.Tile
 import com.rs.lib.util.Utils
 import com.rs.plugin.annotations.ServerStartupEvent
+import com.rs.rsps.Power.ScalingWorld
 import com.rs.utils.ItemConfig
 import com.rs.utils.Ticks
 import com.rs.utils.closestOrNull
@@ -742,6 +743,12 @@ fun handleClick(player: Player) {
 
 fun execute(type: SpecialAttack.Type, player: Player, target: Entity?): Int {
     val spec = getSpec(player.equipment.weaponId)
+    if(ScalingWorld.checkMetaListForString(player.getO("weaponsWithSpecials"), player.equipment.weaponId.toString())) { // Fixed block
+        val specsIds = ScalingWorld.getMetaListFromString(player.getO(player.equipment.weaponId.toString() + "_specs"))
+        for(specId in specsIds) {
+            getSpec(specId)?.execute?.apply(player, target!!)
+        }
+    }
     var cost = spec!!.energyCost.toDouble()
     if (spec.type != type) {
         player.combatDefinitions.drainSpec(0)

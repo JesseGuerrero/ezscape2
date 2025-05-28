@@ -28,6 +28,7 @@ import com.rs.lib.net.ClientPacket;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ButtonClickHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.Power.ScalingWorld;
 
 @PluginEventHandler
 public class LodestoneAction extends PlayerAction {
@@ -149,6 +150,7 @@ public class LodestoneAction extends PlayerAction {
 				} else if (stage == 5)
 					player.setNextAnimation(new Animation(16393));
 				else if (stage == 7) {
+					ScalingWorld.resetWorldScale(player);
 					player.tele(tile.transform(0, -1, 0));
 					player.setNextAnimation(new Animation(-1));
 					player.setNextSpotAnim(new SpotAnim(-1));

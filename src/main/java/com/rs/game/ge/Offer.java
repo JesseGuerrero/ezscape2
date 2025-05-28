@@ -132,7 +132,7 @@ public class Offer {
 	}
 
 	public void sendItems(Player player) {
-		player.getPackets().sendItems(523+box, processedItems);
+		player.getPackets().sendItems(523+box - player.getI("geShift", 0), processedItems);
 		if (player.getInterfaceManager().topOpen(105)) {
 			player.getPackets().setIFEvents(new IFEvents(105, 206, -1, 0).enableRightClickOptions(0,1));
 			player.getPackets().setIFEvents(new IFEvents(105, 208, -1, 0).enableRightClickOptions(0,1));

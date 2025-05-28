@@ -6,6 +6,7 @@ import com.rs.game.model.entity.interactions.StandardEntityInteraction
 import com.rs.lib.Constants
 import com.rs.plugin.annotations.ServerStartupEvent
 import com.rs.plugin.kts.onNpcClick
+import com.rs.rsps.Power.ScalingWorld
 
 @ServerStartupEvent
 fun mapNpcAttackOptions() {

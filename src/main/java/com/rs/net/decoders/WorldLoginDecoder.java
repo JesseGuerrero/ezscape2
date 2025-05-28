@@ -154,10 +154,10 @@ public final class WorldLoginDecoder extends Decoder {
 			return -1;
 		}
 
-		if (AccountLimiter.getSessionsIP(session.getIP()) >= 3) {
-			session.sendClientPacket(9);
-			return -1;
-		}
+//		if (AccountLimiter.getSessionsIP(session.getIP()) > 3) {
+//			session.sendClientPacket(9);
+//			return -1;
+//		}
 
 		Account a = null;
 		try {

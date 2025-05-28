@@ -41,6 +41,7 @@ import com.rs.lib.game.Tile;
 import com.rs.lib.net.ClientPacket;
 import com.rs.lib.util.Logger;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 import com.rs.utils.Ticks;
 import com.rs.utils.music.Genre;
 import com.rs.utils.music.Music;
@@ -168,11 +169,11 @@ public class FightKilnController extends Controller {
 					.addSimple("You journey directly to the Kiln.")
 					.addNext(()->{
 						player.lock();
-						player.getControllerManager().startController(new FightKilnController(0));
+						player.getControllerManager().startController(new FightKilnController(EZScape.getFightKilnWave(player), true));
 					})
 			);
 		else
-			player.getControllerManager().startController(new FightKilnController(1));
+			player.getControllerManager().startController(new FightKilnController(EZScape.getFightKilnWave(player), true));
 	}
 
 	private enum Stages {
@@ -793,6 +794,7 @@ public class FightKilnController extends Controller {
 	public void exitCave(int type) {
 		stage = Stages.DESTROYING;
 		Tile outside = Tile.of(OUTSIDE, 2); // radomizes alil
+		EZScape.saveFightKilnWave(player, getCurrentWave());
 		if (type == 0) {
 			player.setTile(outside);
 			if (getCurrentWave() == 0) // leaves if didnt start
@@ -808,6 +810,7 @@ public class FightKilnController extends Controller {
 				if (type == 4) {
 					player.incrementCount("Fight Kiln clears");
 					player.sendMessage("You were victorious!!");
+					EZScape.saveFightKilnWave(player, 0);
 					int reward = player.getTempAttribs().getI("FightKilnReward");
 					int itemId = reward != -1 && reward == 1 ? 6571 : 23659;
 					if (!player.getInventory().addItem(itemId, 1))

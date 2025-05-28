@@ -24,6 +24,7 @@ import com.rs.game.tasks.WorldTasks;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Tile;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.Power.Power;
 
 public class PestPortal extends NPC {
 
@@ -36,7 +37,7 @@ public class PestPortal extends NPC {
 		this.control = control;
 		setCantFollowUnderCombat(true);
 		setForceMultiArea(true);
-		setCapDamage(400);
+		setCapDamage(Power.setInfCapDamage());
 		isLocked = true;
 	}
 

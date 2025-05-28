@@ -42,6 +42,7 @@ import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
 import com.rs.lib.net.ClientPacket;
 import com.rs.lib.util.Utils;
+import com.rs.rsps.EZScape;
 import com.rs.utils.drop.Drop;
 import com.rs.utils.drop.DropSet;
 import com.rs.utils.drop.DropTable;
@@ -49,6 +50,7 @@ import com.rs.utils.drop.DropTable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 import java.util.Set;
 
 public final class BarrowsController extends Controller {
@@ -241,6 +243,10 @@ public final class BarrowsController extends Controller {
 
 	public void sendReward() {
 		Item[] rewards = getRewards();
+		if(EZScape.tripleBarrowsReward()) {
+			Item[] firstTwoRewards = Stream.concat(Arrays.stream(getRewards()), Arrays.stream(getRewards())).toArray(Item[]::new);
+			rewards = Stream.concat(Arrays.stream(getRewards()), Arrays.stream(firstTwoRewards)).toArray(Item[]::new);
+		}
 		if (rewards == null || rewards.length <= 0)
 			return;
 		for (Item item : rewards) {

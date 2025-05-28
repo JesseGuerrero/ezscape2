@@ -36,6 +36,7 @@ import com.rs.plugin.PluginManager;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.events.XPGainEvent;
 import com.rs.plugin.handlers.ButtonClickHandler;
+import com.rs.rsps.EZScape;
 import com.rs.rsps.tileman.TileMan;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
@@ -46,7 +47,7 @@ import java.util.Set;
 @PluginEventHandler
 public final class Skills {
 
-	public static final double MAXIMUM_EXP = 200000000;
+	public static final double MAXIMUM_EXP = EZScape.totalXPCap();
 	public static final int
 	ATTACK = 0,
 	DEFENSE = 1,

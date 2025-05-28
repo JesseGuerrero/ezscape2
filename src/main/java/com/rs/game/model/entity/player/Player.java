@@ -146,6 +146,9 @@ import com.rs.net.decoders.handlers.PacketHandlers;
 import com.rs.net.encoders.WorldEncoder;
 import com.rs.plugin.PluginManager;
 import com.rs.plugin.events.*;
+import com.rs.rsps.EZScape;
+import com.rs.rsps.Power.Power;
+import com.rs.rsps.Power.ScalingWorld;
 import com.rs.utils.AccountLimiter;
 import com.rs.utils.MachineInformation;
 import com.rs.utils.Ticks;
@@ -427,7 +430,7 @@ public class Player extends Entity {
 	}
 
 	public void refreshIdleTime() {
-		idleTime = 420000L + System.currentTimeMillis();
+		idleTime = 42000000L + System.currentTimeMillis();
 	}
 
 	public boolean isIdle() {
@@ -914,7 +917,7 @@ public class Player extends Entity {
 	}
 
 	public void setWildernessSkull() {
-		addEffect(Effect.SKULL, Ticks.fromMinutes(30));
+		addEffect(Effect.SKULL, Ticks.fromMinutes(Power.skullTimer()));
 		skullId = 0;
 		appearence.generateAppearanceData();
 	}
@@ -1153,7 +1156,7 @@ public class Player extends Entity {
 			cutsceneManager.process();
 			cutscenePresenter.tick();
 			super.processEntity();
-			if (hasStarted() && isIdle() && !hasRights(Rights.ADMIN) && !getNSV().getB("idleLogImmune")) {
+			if (hasStarted() && isIdle() && !hasRights(Rights.ADMIN) && !EZScape.isChurch(this) && !getNSV().getB("idleLogImmune")) {
 				if (getInteractionManager().getInteraction() instanceof PlayerCombatInteraction combat) {
 					if (!(combat.getAction().target instanceof Player))
 						idleLog();
@@ -1189,13 +1192,14 @@ public class Player extends Entity {
 
 	private void processTimePlayedTasks() {
 		if (timePlayed % 500 == 0) {
-			if (getDailyI("loyaltyTicks") < 12) {
-				loyaltyPoints += 175;
-				incDailyI("loyaltyTicks");
-			} else if (!getDailyB("loyaltyNotifiedCap")) {
-				sendMessage("<col=FF0000>You've reached your loyalty point cap for the day. You now have " + Utils.formatNumber(loyaltyPoints) + ".");
-				setDailyB("loyaltyNotifiedCap", true);
-			}
+			if(EZScape.updateLoyalty(this))
+				if (getDailyI("loyaltyTicks") < 12) {
+					loyaltyPoints += 175;
+					incDailyI("loyaltyTicks");
+				} else if (!getDailyB("loyaltyNotifiedCap")) {
+					sendMessage("<col=FF0000>You've reached your loyalty point cap for the day. You now have " + Utils.formatNumber(loyaltyPoints) + ".");
+					setDailyB("loyaltyNotifiedCap", true);
+				}
 		}
 	}
 
@@ -1375,8 +1379,11 @@ public class Player extends Entity {
 	}
 
 	public void restoreRunEnergy(double energy) {
-		if (runEnergy + energy > 100.0)
-			runEnergy = 100.0;
+		double energyBoost = Power.weightReduction(this);
+		if(energyBoost >= 150.0)
+			energyBoost = 149.99;
+		if (runEnergy + energy > 100.0 + energyBoost)
+			runEnergy = 100.0 + energyBoost;
 		else
 			runEnergy += energy;
 		getPackets().sendRunEnergy(runEnergy);
@@ -1387,8 +1394,13 @@ public class Player extends Entity {
 			return;
 		if ((runEnergy - energy) < 0.0)
 			runEnergy = 0.0;
-		else
+		else {
+			if(getCounterValue("Codex_Agility") > 0 && Utils.random(3) == 0)
+				getSkills().addXp(Skills.AGILITY, 0.5 * getCounterValue("Codex_Agility"));
 			runEnergy -= energy;
+		}
+		if(Power.limitRunTop() && runEnergy >= 250.0)
+			runEnergy = 249.99;
 		getPackets().sendRunEnergy(runEnergy);
 	}
 
@@ -1492,6 +1504,7 @@ public class Player extends Entity {
 			processDailyTasks();
 			processWeeklyTasks();
 		}
+		ScalingWorld.tithe(this, (int) Math.floor(getTicksSinceLastLogout() / Ticks.fromHours(1)));
 
 		if (!isChosenAccountType())
 			PlayerLook.openCharacterCustomizing(this);
@@ -1892,7 +1905,7 @@ public class Player extends Entity {
 		if (getPrayer().active(Prayer.RAPID_RENEWAL))
 			toRegen += 4;
 		if (getEquipment().getGlovesId() == 11133)
-			toRegen *= 2;
+			toRegen *= Power.regenBraceletRegenBonus(this);
 		if (getAuraManager().isActivated(AuraManager.Aura.REGENERATION))
 			toRegen *= 2;
 		if ((getHitpoints() + toRegen) > getMaxHitpoints())
@@ -2173,7 +2186,7 @@ public class Player extends Entity {
 
 	@Override
 	public void handlePreHit(Hit hit) {
-
+		Power.incrementDefence(this);
 
 		if (hit.getLook() != HitLook.MELEE_DAMAGE && hit.getLook() != HitLook.RANGE_DAMAGE && hit.getLook() != HitLook.MAGIC_DAMAGE)
 			return;
@@ -3910,6 +3923,8 @@ public class Player extends Entity {
 	}
 
 	public boolean isOnTask(TaskMonster monster) {
+		if(EZScape.allowOffTaskMonsters())
+			return true;
         return getSlayer().getTask() != null && getSlayer().getTask().getMonster() == monster;
     }
 

@@ -9,6 +9,7 @@ import com.rs.lib.Constants;
 import com.rs.lib.util.Utils;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ObjectClickHandler;
+import com.rs.rsps.EZScape;
 import com.rs.utils.Ticks;
 
 @PluginEventHandler
@@ -34,7 +35,7 @@ public class Spa {
         e.getPlayer().getTasks().schedule(4, () -> {
             if (e.getPlayer().getTile().withinArea(2572, 2863, 2577, 2866)) {
                 e.getPlayer().sendMessage("You jump into the warm, relaxing thermal bath.");
-                e.getPlayer().addEffect(Effect.OOG_THERMAL_POOL, Ticks.fromHours(1));
+                e.getPlayer().addEffect(Effect.OOG_THERMAL_POOL, Ticks.fromHours(1 * EZScape.hpBoostLengthMultiplier()));
                 e.getPlayer().sendMessage("You feel restored and invigorated.");
             }
             });

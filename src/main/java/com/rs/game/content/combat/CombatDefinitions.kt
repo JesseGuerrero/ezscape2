@@ -25,6 +25,8 @@ import com.rs.game.model.entity.player.Player
 import com.rs.game.model.entity.player.managers.AuraManager
 import com.rs.game.model.entity.player.managers.InterfaceManager
 import com.rs.lib.util.Logger
+import com.rs.rsps.Power.Power
+import com.rs.rsps.Power.SpecialItems
 
 class CombatDefinitions {
     enum class Spellbook(@JvmField val interfaceId: Int) {
@@ -282,12 +284,16 @@ class CombatDefinitions {
     fun refreshBonuses() {
         bonuses = IntArray(18)
         for (item in player.equipment.itemsCopy) {
-            if (item == null) continue
+            if (item == null) continue;
             for (bonus in Bonus.entries) {
                 if (bonus == Bonus.RANGE_STR && getBonus(Bonus.RANGE_STR) != 0) continue
                 bonuses[bonus.ordinal] += Equipment.getBonus(player, item, bonus)
             }
         }
+        for (bonus in Bonus.entries)
+            bonuses[bonus.ordinal] += SpecialItems.codexBonuses(player, bonus)
+        for (bonus in Bonus.entries)
+            bonuses[bonus.ordinal] = SpecialItems.limitAbsorbBonuses(player, bonus, bonuses[bonus.ordinal])
     }
 
     fun resetSpecialAttack() {
@@ -383,6 +389,8 @@ class CombatDefinitions {
         var finalAmount = amount
         isUsingSpecialAttack = false
         refreshUsingSpecialAttack()
+        var percentage = Power.getCombatAmplificationPercentage(player, player.equipment.weaponId)
+        finalAmount = (finalAmount.toDouble() * (1.0 - percentage / 1000.0)).toInt();
         if (player.nsv.getB("infSpecialAttack")) finalAmount = 0
         if (finalAmount > 0) {
             specialAttackPercentage = (specialAttackPercentage - finalAmount).toByte()
