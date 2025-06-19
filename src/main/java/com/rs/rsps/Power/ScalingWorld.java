@@ -1,5 +1,6 @@
 package com.rs.rsps.Power;
 
+import java.util.Random;
 import com.rs.Settings;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cache.loaders.NPCDefinitions;
@@ -33,7 +34,7 @@ import java.util.regex.Pattern;
 
 @PluginEventHandler
 public class ScalingWorld {
-    public static int minimumBossLevel = 275;
+    public static int minimumBossLevel = 0;
     public static Object[] uniqueSuperScaledItems = {};
     public static int costPerUpOne = 2750;
     public static int megaPerUpOne = 200;
@@ -309,10 +310,10 @@ public class ScalingWorld {
             .addNPC(2899, HeadE.CALM_TALK, "However evil rulers will have more possessions when defeated.")
             .addNPC(2899, HeadE.CALM_TALK, "We can allow them to gain power for your sake if you wish...")
             .addNext(() -> {
-                if(e.getPlayer().getBool("WaitScale") && !Settings.isOwner(e.getPlayer().getUsername()) && !Settings.getConfig().isDebug()) {
-                    e.getPlayer().sendMessage("You must wait about 10 minutes between scale changes or lodestone teleport");
-                    return;
-                }
+//                if(e.getPlayer().getBool("WaitScale") && !Settings.isOwner(e.getPlayer().getUsername()) && !Settings.getConfig().isDebug()) {
+//                    e.getPlayer().sendMessage("You must wait about 10 minutes between scale changes or lodestone teleport");
+//                    return;
+//                }
                 e.getPlayer().sendInputInteger("How much would you like to scale the world?", (scale) -> {
                     if(scale < 1)
                         scale = 0;
@@ -321,8 +322,8 @@ public class ScalingWorld {
                         e.getPlayer().sendMessage("Your unlocked scale is " + e.getPlayer().getScaleAvailable());
                     }
                     e.getPlayer().set("WorldScale", scale);
-                    e.getPlayer().set("WaitScale", true);
-                    e.getPlayer().getTasks().schedule(Ticks.fromMinutes(10), () -> e.getPlayer().set("WaitScale", false));
+//                    e.getPlayer().set("WaitScale", true);
+//                    e.getPlayer().getTasks().schedule(Ticks.fromMinutes(10), () -> e.getPlayer().set("WaitScale", false));
                     e.getPlayer().playCutscene(new ReleaseStrongholds());
                 });
             })
@@ -554,10 +555,7 @@ public class ScalingWorld {
                                 Power.incrementItem(e.getPlayer(), itemId, powerIncrease);
                                 if(itemId == 11283)
                                     Power.incrementItem(e.getPlayer(), itemId+1, powerIncrease);
-                                if(scaledItem.containsMetaData())
-                                    scaledItem.deleteMetaData();
-                                else
-                                    e.getPlayer().getInventory().deleteItem(scaledItem);
+                                e.getPlayer().getInventory().deleteItem(scaledItem);
                                 e.getPlayer().getInventory().removeCoins(cost);
                                 e.getPlayer().sendMessage("<col=00FF00>Your power with " + itemName + " has increased by " + formattedPower + "%...");
                             })
@@ -569,12 +567,30 @@ public class ScalingWorld {
             e.getPlayer().startConversation(new Dialogue().addSimple("You need " + String.format("%,d", cost) + "GP..."));
     });
 
+    public static boolean incrementChins() {
+        return true;
+    }
+
+    public static void chinGiveMore(Player player) {
+        int chinchompas = player.getCounterValue("Chinchompas_Success");
+        int multiplier = chinchompas / 15000;
+
+        int remaining = chinchompas % 15000; // Remaining chinchompas after guaranteed rolls
+        double chance = (remaining / 150) * 0.01;
+
+        if (new Random().nextDouble() < chance)
+            multiplier += 1;
+
+        player.getInventory().addItem(10034, multiplier);
+    }
+
     private static Class<? extends Controller>[] exemptControllers = new Class[]{
             FightKilnController.class, FightCavesController.class, SoulWarsGameController.class, CastleWarsPlayingController.class, QBDController.class
     };
+
     public static void changeCombatBoss(Player player, NPC npc) {
         if(npc.getName() == "Umbra" || npc.getName() == "Nex" || npc.getName() == "Fumus" || npc.getName() == "Glacies"
-                || npc.getName() == "Cruor" || npc.getName() == "Queen Black Dragon")
+                || npc.getName() == "Cruor" || npc.getName() == "Queen Black Dragon" || npc.getName() == "Nex")
             return;
         double scale = player.getI("WorldScale", 0);
         if(scale == 0 || player.getCutsceneManager().hasCutscene() || player.getDungManager().isInsideDungeon()
@@ -637,7 +653,7 @@ public class ScalingWorld {
     public static int scaleCoins(Player player, NPC npc, int amount) {
         if(player.getDungManager().isInsideDungeon())
             return amount;
-        return scaleAmountEquation(player, extractScaleFromName(npc.getName()), (int)(amount * 1.1));
+        return scaleAmountEquation(player, extractScaleFromName(npc.getName()), (int)(amount));
     }
 
     public static int scaleCharms(Player player, NPC npc, Item item) {

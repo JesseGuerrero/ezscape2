@@ -173,8 +173,20 @@ public class Player extends Entity {
 	private int previousQP = 0;
 	private boolean tileMan;
 	private Integer tilesAvailable = 5;
-	private Integer scaleAvailable = 0;
+	private Integer scaleAvailable = 100;
 	private Map<Integer, IntOpenHashSet> tilesUnlocked = Map.of(0, new IntOpenHashSet());
+
+	public int getTilesAvailable() {
+		return tilesAvailable;
+	}
+
+	public void changeTilesAvailableByDiff(int diff) {
+		tilesAvailable += diff;
+		if(diff > 0)
+			sendMessage("Tiles available has increased by " + (diff) + " tiles.");
+		if(diff < 0)
+			sendMessage("Tiles available is less by " + (diff) + " tiles.");
+	}
 
 	public int getScaleAvailable() {
 		return scaleAvailable;

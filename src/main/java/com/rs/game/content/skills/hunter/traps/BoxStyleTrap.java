@@ -32,6 +32,7 @@ import com.rs.lib.Constants;
 import com.rs.lib.game.Animation;
 import com.rs.lib.game.Item;
 import com.rs.lib.game.Tile;
+import com.rs.rsps.Power.ScalingWorld;
 
 import java.util.Arrays;
 
@@ -103,6 +104,8 @@ public class BoxStyleTrap extends OwnedObject {
 				setId(success ? npcType.getObjectSuccess() : npcType.getObjectFail());
 				setStatus(success ? Status.SUCCESS : Status.FAIL);
 				if (success) {
+					if (ScalingWorld.incrementChins() && npc.getId() == 5080)
+						getOwner().incrementCount("Chinchompas_Success");
 					npc.anim(new Animation(-1));
 					npc.setRespawnTask();
 				}
@@ -130,6 +133,8 @@ public class BoxStyleTrap extends OwnedObject {
 			if (i == null || DropCleanersKt.bonecrush(player, i) || DropCleanersKt.herbicide(player, i))
 				continue;
 			player.getInventory().addItemDrop(i);
+			if(i.getId() == 10034)
+				ScalingWorld.chinGiveMore(player);
 		}
 		if (getTrapType() != BoxTrapType.MAGIC_BOX && getTrapType() != BoxTrapType.DEAD_FALL)
 			player.getInventory().addItemDrop(getTrapType().getId(), 1);

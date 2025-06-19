@@ -13,6 +13,7 @@
 ::interface 12 //Left side of screen glowing
 ::interface 13 //PIN Screen
 ::interface 14 //Bank PIN settings
+::interface 14 //Bank PIN settings
 ::interface 15 //Water/Activity Bars
 ::interface 16 //Message of the Week
 ::interface 17 //Items Kept on Death{"Wildy"}

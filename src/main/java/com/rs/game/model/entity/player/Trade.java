@@ -332,8 +332,8 @@ public class Trade {
 		if (item == null)
 			return;
 		player.sendMessage(ItemConfig.get(item.getId()).getExamine(item));
-		if (player.hasRights(Rights.DEVELOPER))
-			player.sendMessage("Item: " + (item.getId() + ", "+item.getMetaData()));
+//		if (player.hasRights(Rights.DEVELOPER))
+//			player.sendMessage("Item: " + (item.getId() + ", "+item.getMetaData()));
 	}
 
 	public boolean nextStage() {

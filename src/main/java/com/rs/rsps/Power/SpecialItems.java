@@ -24,92 +24,38 @@ import static com.rs.rsps.Power.ScalingWorld.extractScaleFromName;
 
 @PluginEventHandler
 public class SpecialItems {
-    //Quality check code
-    //Push and update
+    //---Features---
+    //High value
+        //Allow shops to save to the world save in data.
+    //Moderate value
+        //Every 2000 cannonballs you get 1 cannonball added per steel bar smithing
+        //Every 1000 fired cannonballs you get 1% damage and attack boost
+        //Skill Cape, Max cape, completionist all share augments
+        //Scaling summoning -> consumes summoning shards
+        //Unlock optional house exits
+        //Respawn GWD boss item, maybe use 50 summoning shards on the prayer altar
+    //Low value
+        //Enhance Corp, QBD, Nex
+            //Scale QBD Loot
+        //Scale barrows
+        //All soft bonuses like these only happen when bonuses are 1 or greater
+        //Create a consumeX
+        //HP Copy coin pouch code and clamp varbit to UI limit
+        //Special Effects Augmented Barrows, Spirit Shield and DFS
+        //100k Herb XP increases duration 5 second and stat +1
+        //Add scaling to potions with hammer
+        //Ring of wealth scaling perk
+        //Perks past 1000%
+        //Item accumulator (20M)
 
-    //Allow shops to save to the world save in data.
-    //Agility xp for running
-    //All soft bonuses like these only happen when bonuses are 1 or greater
-    //Strength: +1 str every 1 million xp
-    //Attack: +1 crush, slash, stab every 1 million xp
-    //Defense: +1 crush, slash, stab, range defense every 1 million xp
-    //Range: +1 ranged att and str every 1 million xp
-    //Mage: +1 mage str, def and att
-    //Every 2000 cannonballs you get 1 cannonball added per steel bar smithing
-    //Every 1000 fired cannonballs you get 1% damage and attack boost
-    //Make codexes consumable and tradeable for different bosses or situations
-
-    //QBD
-    //Make a codex that gives 1 xp based on codexes consumed every 5 tiles ran, not walked. 1/512 drop rate from QBD
-    //Make a codex that converts dragonfire to healing by 1 for fire damage. 1/512 from QBD
-
-    //Bandos
-    //Make a codex which increases alchs by 1 coin, 1/512 drop rate
-
-    //Tormented demons
-    //Make a codex which regenerates prayer by 5 every 20 ticks. This is half of the 10 in 990, 1/512 drop rate
-
-    //KBD
-    //Make a codex which converts poison to healing by 1, cap it on full poisen. 1/512 from KBD
-
-    //Zamorak
-    //Add the poison codex 1/512
-
-    //Dagganoth Kings
-    //Rex: A codex which adds 1 point to one of these 4, str, crush, slash, stab attack. It only picks one. 1/512
-    //Prime: A codex which adds 1 point to one of these 5 mage att, mage def, mage damage 0.25%, def crush, slash
-    //Supreme: A codex which adds 1 point to these 4 range str, att, def, defensive stab, 1/512
-    //Prime and supreme drop agility codex
-
-    //Armadyl
-    //Drop ranged codex
-
-    //Nex
-    //Make a codex that increases hitpoints permanently 1 point 1/512 drop rate
-
-    //#1 Do ranged strength fraction based on weapon. Do the same for mage.
-    //Create a consumeX
-    //Fix item container usage with hammer
-    //Combine special attack
-    //Later...
-    //TODO: Scale QBD Loot, keep it 1x loot
-    //TODO: Enhance Corp, QBD, Nex
-    //Make dwarf cannon consume cannonballs
-    //scale qbd and nex
-    //Copy coin pouch code and clamp varbit to UI limit
-
-    //Max cape <-> completionist
-    //Effects overhaul barrows
-    //1M Herb XP increases duration 5 second and stat +1
-    //Add scaling to potions with hammer
-    //Do NPCDropHandler instead of injected drops
-    //Do gano only charged or full
-    //Make a money investment ability
-    //Penny Codex
-
-    //Ring of wealth scaling perk
-    //Perks past 1000%
-    //Scaling summoning -> money
-    //1m xp -> Extra time, lowered special
-    //Unlock optional house exits
-    //Fix requirement of relogging for spec weapons
-    //Fix loss of scale
-    //Fix GE Bug
-    //Fix special attack usage
-    //Fix 100% specs not speccing Saradomin sword, double check old bug
-    //Fix broadbolts in shop selling for slayer points
-    //Teleport Yak gate
-    //Item accumulator (20M)
-    //Scale chinchompas and cannons
-    //Limit scale drops cost
-
-    // These
-    //Make coins and stackables increase at each scale for all monsters
-    //Make the anarchy pvp timer 5 minutes
-    //Test most to all features
-    //Reduce perk xp amounts on level ups
-    //Make an X Tiles codex, make tiles tradeable
-    //Make all monsters scale not just boses, but just the coins and stackables with the levels
+    //---BUGS---
+    //Small
+        //(Doesnt work) Make a codex that converts dragonfire to healing by 1 for fire damage. 1/512 from QBD
+        //(Doesnt work) Make a codex which converts poison to healing by 1, cap it on full poisen. 1/512 from KBD
+        //Fix requirement of relogging for spec weapons
+        //Fix broadbolts in shop selling for slayer points
+    //Moderate
+    //Huge
 
 
     public static NPCDeathHandler dropCodexes = new NPCDeathHandler(new Object[]{"Kree\u0027arra", "General Graardor",
@@ -207,11 +153,15 @@ public class SpecialItems {
                             .addSimple("It seems to be glowing with power...")
                             .addNext(() -> {
                                 if(codexType.contains(" Scale Unlock")) {
-                                    if(e.getPlayer().getScaleAvailable() + 1 == Integer.valueOf(codexType.split(" ")[0])) {
+                                    if (e.getPlayer().getScaleAvailable() + 1 == Integer.valueOf(codexType.split(" ")[0])) {
                                         e.getPlayer().addScaleAvailable();
                                     } else {
                                         e.getPlayer().sendMessage("You need a scale " + String.valueOf(e.getPlayer().getScaleAvailable() + 1) + " codex to unlock the next scale.");
                                     }
+                                }
+                                else if(codexType.contains(" Tiles")) {
+                                    int tileCount = Integer.valueOf(codexType.split(" ")[0]);
+                                    e.getPlayer().changeTilesAvailableByDiff(tileCount);
                                 } else {
                                     e.getPlayer().incrementCount("Codex_" + codexType);
                                 }
@@ -225,11 +175,50 @@ public class SpecialItems {
 
     });
 
+    public static ItemOnItemHandler createTileCodex = new ItemOnItemHandler(new int[]{995}, new int[]{2347}, e -> {
+        Item coins = e.getItem1().getId() == 2347 ? e.getItem2() : e.getItem1();
+        e.getPlayer().startConversation(new Dialogue()
+                .addItem(995, "You look at your coins and the " + String.valueOf(e.getPlayer().getTilesAvailable()) + " tiles that you have...")
+                .addOptions("Do you really want to turn your tiles into a codex?", option -> {
+                    option.add("Yes", new Dialogue()
+                            .addSimple("You hammer the coins into your tiles...")
+                            .addSimple("A book forms and seems to be glowing with power...")
+                            .addNext(() -> {
+                                e.getPlayer().sendInputInteger("How many tiles do you want to put into the book?", (tileCount) -> {
+                                    if(!e.getPlayer().getInventory().hasFreeSlots()) {
+                                        e.getPlayer().sendMessage("You need at least one free slot...");
+                                        return;
+                                    }
+                                    if(tileCount < 1) {
+                                        e.getPlayer().sendMessage("At least 1 tile");
+                                        return;
+                                    }
+                                    if(tileCount > 1_000_000) {
+                                        e.getPlayer().sendMessage("Max is 1M tiles");
+                                        return;
+                                    }
+                                    if(tileCount > e.getPlayer().getTilesAvailable()) {
+                                        e.getPlayer().sendMessage("You have " + e.getPlayer().getTilesAvailable() + " tiles not " + tileCount + " tiles...");
+                                        return;
+                                    }
+                                    e.getPlayer().changeTilesAvailableByDiff(0-tileCount);
+                                    Item codex = new Item(6767);
+                                    codex.setMetaDataO("Codex", String.valueOf(tileCount) + " Tiles");
+                                    e.getPlayer().getInventory().addItem(codex);
+                                });
+                            })
+                    );
+                    option.add("No");
+                })
+        );
+
+    });
+
     public static int statBonus(Player player, int skillId) {
         double xp = player.getSkills().getXp(skillId) - 13_000_000.0;
         if(xp < 1.0)
             return 0;
-        int bonus = (int)Math.ceil(xp / 1_000_000.0);
+        int bonus = (int)Math.ceil(xp / 100_000.0);
         return bonus;
     }
 
@@ -284,5 +273,9 @@ public class SpecialItems {
 
     public static int hpCodex(Player player) {
         return statBonus(player, Constants.HITPOINTS)*5 + player.getCounterValue("Codex_Health") * 5;
+    }
+
+    public static boolean metaDataDoesntAllowCombine(Item item1, Item item2) {
+        return (item1.containsMetaData() || item2.containsMetaData());
     }
 }

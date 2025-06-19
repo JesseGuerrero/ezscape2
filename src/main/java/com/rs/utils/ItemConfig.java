@@ -142,11 +142,11 @@ public class ItemConfig {
 	}
 
 	public String getExamine(Item item) {
-		if (item.getAmount() >= 100000)
-			return Utils.formatNumber(item.getAmount()) + " x " + item.getDefinitions().getName() + ".";
+		if (item.getAmount() >= 100_000)
+			return item.getMetaData() + ": " + Utils.formatNumber(item.getAmount()) + " x " + item.getDefinitions().getName() + ".";
 		if (item.getDefinitions().isNoted())
 			return "Swap this note at any bank for the equivalent item.";
-		return examine;
+		return item.getMetaData() + ": "+ examine;
 	}
 
 	public static ItemConfig get(int itemId) {

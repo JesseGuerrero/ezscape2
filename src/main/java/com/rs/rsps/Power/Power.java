@@ -88,6 +88,8 @@ public class Power {
         int gloveId = player.getEquipment().getGlovesId();
         if(player.getEquipment().getWeaponId() == -1 && gloveId != 22358 && gloveId != 22366 && gloveId != 22362)
             mul *= 5;
+        if(player.getEquipment().getWeaponId() == 10034)
+            mul *= 2;
         if(Utils.random(40) < 1 * mul || Settings.getConfig().isDebug()) {//1/40 to continue
             String weaponId = String.valueOf(player.getEquipment().getWeaponId());
             if((gloveId == 22358 || gloveId == 22366 || gloveId == 22362) && player.getEquipment().getWeaponId() == -1)
@@ -175,7 +177,7 @@ public class Power {
         double xp = player.getSkills().getXp(Skills.AGILITY) - 13_000_000;
         if(xp < 0.0)
             return 0.0;
-        double weightDecrease = xp/50_000.0 + player.getCounterValue("Codex_Weight");
+        double weightDecrease = xp/100_000.0 + player.getCounterValue("Codex_Weight");
         return weightDecrease;
     }
 

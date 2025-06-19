@@ -1,9 +1,12 @@
 package com.rs.game.content.items.combinations;
 
 import com.rs.cache.loaders.ItemDefinitions;
+import com.rs.engine.dialogue.Dialogue;
+import com.rs.engine.dialogue.HeadE;
 import com.rs.plugin.annotations.PluginEventHandler;
 import com.rs.plugin.handlers.ItemClickHandler;
 import com.rs.plugin.handlers.ItemOnItemHandler;
+import com.rs.rsps.Power.SpecialItems;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -97,11 +100,33 @@ public class CombinationItems {
             combineable = Combineable.BY_COMPONENT.get((e.getItem2().getId() << 16) + e.getItem1().getId());
         if (combineable == null)
             return;
-        e.getPlayer().getInventory().deleteItem(e.getItem1());
-        e.getPlayer().getInventory().deleteItem(e.getItem2());
-        e.getPlayer().getInventory().addItem(combineable.resultId1, 1);
-        if (combineable.resultId2 != -1) {
-            e.getPlayer().getInventory().addItem(combineable.resultId2, 1);
+        if(SpecialItems.metaDataDoesntAllowCombine(e.getItem1(), e.getItem2())) {
+            Combineable finalCombineable = combineable;
+            e.getPlayer().startConversation(new Dialogue()
+                    .addPlayer(HeadE.AMAZED, "Woah!")
+                    .addPlayer(HeadE.AMAZED, "This has either a scale or metadata!")
+                    .addPlayer(HeadE.AMAZED, "If you want to scale the item this creates, like a godsword, spectral shield or DFS, just hammer this item...")
+                    .addOptions("Do you really want to destroy the metadata?", opts -> {
+                        opts.add("Yes", new Dialogue().addOptions("Are you sure?", opt -> {
+                            opt.add("Nevermind");
+                            opt.add("I am sure...", new Dialogue()
+                                    .addPlayer(HeadE.HAPPY_TALKING, "I'm sure...")
+                                    .addPlayer(HeadE.HAPPY_TALKING, "Let's see how to combine these...")
+                                    .addPlayer(HeadE.HAPPY_TALKING, "Pull out these components and datum here and there...")
+                                    .addPlayer(HeadE.HAPPY_TALKING, "Ah hah!")
+                                    .addNext(()-> {
+                                        e.getPlayer().getInventory().deleteItem(e.getItem1());
+                                        e.getPlayer().getInventory().deleteItem(e.getItem2());
+                                        e.getPlayer().getInventory().addItem(finalCombineable.resultId1, 1);
+                                        if (finalCombineable.resultId2 != -1) {
+                                            e.getPlayer().getInventory().addItem(finalCombineable.resultId2, 1);
+                                        }
+                                    })
+                            );
+                        }));
+                        opts.add("No");
+                    })
+            );
         }
     });
 
