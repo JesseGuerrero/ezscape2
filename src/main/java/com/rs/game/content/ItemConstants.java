@@ -415,6 +415,8 @@ public class ItemConstants {
 	}
 
 	public static boolean isTradeable(Item item) {
+		if(item.getId() == 6767)
+			return true;
 		if (item.getMetaData() != null)
 			return false;
 		switch(item.getId()) {
