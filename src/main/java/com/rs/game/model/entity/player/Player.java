@@ -173,7 +173,7 @@ public class Player extends Entity {
 	private int previousQP = 0;
 	private boolean tileMan;
 	private Integer tilesAvailable = 5;
-	private Integer scaleAvailable = 100;
+	private Integer scaleAvailable = 5;
 	private Map<Integer, IntOpenHashSet> tilesUnlocked = Map.of(0, new IntOpenHashSet());
 
 	public int getTilesAvailable() {
