@@ -336,23 +336,20 @@ public class ScalingWorld {
 
 
     private static int scaleAmountEquation(Player player, int npcScale, int amount) {
-        int scale = player.getI("WorldScale", 0);
-        if(npcScale > scale)
-            scale = npcScale;
-        return (int)Math.ceil(amount*(scale*0.1 + 1));
+        return (int)Math.ceil(amount*(npcScale*0.1 + 1));
     }
 
     private static Object[] scaledAmountItems;
 
     public static NPCDropHandler scaleItemAmounts = new NPCDropHandler(null, scaledAmountItems, e -> {
-        if(e.getPlayer().getDungManager().isInsideDungeon() || e.getNPC().getCombatLevel() < minimumBossLevel)
+        if(e.getPlayer().getDungManager().isInsideDungeon() || e.getNPC().getDefinitions().combatLevel < minimumBossLevel)
             return;
         int npcScale = extractScaleFromName(e.getNPC().getName());
         e.getItem().setAmount(scaleAmountEquation(e.getPlayer(), npcScale, e.getItem().getAmount()));
     });
 
     public static NPCDropHandler scaleItemPower = new NPCDropHandler(null, uniqueSuperScaledItems, e -> {
-        if(e.getPlayer().getDungManager().isInsideDungeon() || e.getNPC().getCombatLevel() < minimumBossLevel)
+        if(e.getPlayer().getDungManager().isInsideDungeon() || e.getNPC().getDefinitions().combatLevel < minimumBossLevel)
             return;
         int npcScale = extractScaleFromName(e.getNPC().getName());
         e.getPlayer().sendMessage(npcScale + "." + e.getNPC().getName());
@@ -651,13 +648,15 @@ public class ScalingWorld {
     }
 
     public static int scaleCoins(Player player, NPC npc, int amount) {
-        if(player.getDungManager().isInsideDungeon())
+        if(player.getDungManager().isInsideDungeon() || npc.getDefinitions().combatLevel < minimumBossLevel)
             return amount;
         return scaleAmountEquation(player, extractScaleFromName(npc.getName()), (int)(amount));
     }
 
     public static int scaleCharms(Player player, NPC npc, Item item) {
         int amount = item.getAmount();
+        if(player.getDungManager().isInsideDungeon() || npc.getDefinitions().combatLevel < minimumBossLevel)
+            return amount;
         if(item.getDefinitions().isStackable())
             amount = scaleAmountEquation(player, extractScaleFromName(npc.getName()), item.getAmount());
         return amount;
