@@ -25,9 +25,12 @@ import com.rs.utils.drop.DropTable;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static com.rs.game.content.quests.plague_city.utils.PlagueCityConstantsKt.ARDOUGNE_TELEPORT_UNLOCKED;
+
 @PluginEventHandler
 public class EZScape {
     public static LoginHandler onLogin = new LoginHandler(e -> {
+        e.getPlayer().set(ARDOUGNE_TELEPORT_UNLOCKED, true);
         if(!e.getPlayer().getBool("XPNormalized")) {
             for(int skill = 0; skill < Skills.SIZE; skill++) {
                 int max = 99;
