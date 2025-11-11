@@ -229,7 +229,7 @@ fun mapTrollheim() {
         if (e.player.isQuestStarted(Quest.TROLL_STRONGHOLD)) {
             when (e.objectId) {
                 3748 -> {
-                    if (e.player.equipment.getId(Equipment.FEET) == CLIMBING_BOOTS || e.player.equipment.getId(Equipment.FEET) == ROCK_CLIMBING_BOOTS) {
+                    if (true) {
                         handleObstacleInteractions(e)
                     } else {
                         e.player.sendMessage("<col=A31818>You'll need some climbing boots to go that way.</col>")
